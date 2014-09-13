@@ -52,9 +52,11 @@ public abstract class WorldGeneratorXYZOreAbstract implements IWorldGeneratorXYZ
 		} else if (numberOfBlocks == 1) {
 			generate1(world, chunkGenerator, chunkProvider, random, x, y, z);
 		} else if (numberOfBlocks == 0) {
+			/*
 			new RuntimeException(
 				getClass().getName() + "#generate: numberOfBlocks = 0, (" + x + ", " + y + ", " + z + ")")
 				.printStackTrace();
+				*/
 		}
 
 	}
