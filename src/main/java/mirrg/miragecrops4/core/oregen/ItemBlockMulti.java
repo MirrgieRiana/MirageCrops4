@@ -22,4 +22,10 @@ public class ItemBlockMulti extends ItemBlock
 		return blockMulti.multibase.get(itemStack.getItemDamage()).getUnlocalizedName(itemStack);
 	}
 
+	@Override
+	public int getMetadata(int meta)
+	{
+		return meta;
+	}
+
 }
