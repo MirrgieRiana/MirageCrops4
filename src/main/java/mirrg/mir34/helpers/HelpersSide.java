@@ -5,40 +5,40 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.FMLCommonHandler;
 
-public class HelperSide
+public class HelpersSide
 {
 
-	public final static HelperSide REMOTE = new HelperSide(true);
-	public final static HelperSide SIMULATING = new HelperSide(false);
+	public final static HelpersSide REMOTE = new HelpersSide(true);
+	public final static HelpersSide SIMULATING = new HelpersSide(false);
 
-	public static HelperSide helper(Entity entity)
+	public static HelpersSide helper(Entity entity)
 	{
 		return helper(entity.worldObj);
 	}
 
-	public static HelperSide helper(TileEntity tileEntity)
+	public static HelpersSide helper(TileEntity tileEntity)
 	{
 		return helper(tileEntity.getWorldObj());
 	}
 
-	public static HelperSide helper(World world)
+	public static HelpersSide helper(World world)
 	{
 		return helper(world.isRemote);
 	}
 
-	public static HelperSide helper()
+	public static HelpersSide helper()
 	{
 		return helper(FMLCommonHandler.instance().getEffectiveSide().isClient());
 	}
 
-	public static HelperSide helper(boolean isRemote)
+	public static HelpersSide helper(boolean isRemote)
 	{
 		return isRemote ? REMOTE : SIMULATING;
 	}
 
 	public final boolean isRemote;
 
-	public HelperSide(boolean isRemote)
+	public HelpersSide(boolean isRemote)
 	{
 		this.isRemote = isRemote;
 	}
