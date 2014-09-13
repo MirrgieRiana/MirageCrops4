@@ -1,6 +1,5 @@
 syntax: glob
 eclipse/.metadata/*
-build/tmp/makeStart/*
 .gradle/*
 gradle/*
 gradlew.bat
@@ -17,3 +16,7 @@ build/natives/*
 eclipse/RemoteSystemsTempFiles/*
 .settings/*
 eclipse/*
+build/classes/*
+build/resources/*
+build/sources/*
+build/tmp/*
