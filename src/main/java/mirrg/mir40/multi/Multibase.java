@@ -9,7 +9,7 @@ public class Multibase<T extends Metabase> implements IMulti<T>, Iterable<T>
 
 	public Multibase(int length)
 	{
-		metas = (T[]) new Object[length];
+		metas = (T[]) new Metabase[length];
 	}
 
 	public void bind(int index, T meta)
@@ -63,6 +63,9 @@ public class Multibase<T extends Metabase> implements IMulti<T>, Iterable<T>
 			{
 				T t = get(i);
 				i++;
+				while (hasNext() && !contains(i)) {
+					i++;
+				}
 				return t;
 			}
 

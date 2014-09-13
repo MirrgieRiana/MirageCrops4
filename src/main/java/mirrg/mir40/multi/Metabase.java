@@ -31,7 +31,7 @@ public class Metabase<T extends Multibase> implements IMeta<T>
 
 	boolean isBindable()
 	{
-		return isBound();
+		return !isBound();
 	}
 
 	void bind(int index, T multi)
