@@ -17,6 +17,7 @@ import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsOtherMetal;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlob;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -100,10 +101,15 @@ public class ModuleOregen extends ModuleAbstract
 			// メタブロックの設定
 			{
 				String unlocalizedName = HelpersGlob.getDictionaryName(ItemsOregen.slotOre, globs[i].getGlob());
+
 				metablock.unlocalizedName = unlocalizedName;
 				if (getMod().isClient()) {
 					metablock.iconName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
 				}
+
+				// 鉱石辞書に登録
+				OreDictionary.registerOre(unlocalizedName, new ItemStack(blockMulti, 1, i));
+
 			}
 
 		}
