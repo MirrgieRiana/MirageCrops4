@@ -56,7 +56,15 @@ public class WorldGeneratorXZOre implements IWorldGeneratorXZ
 	@Override
 	public boolean isSpawnableAtCoord(World world, Random random, int x, int y, int z)
 	{
+		if (filterBiome != null) return filterBiome.isSpawnableAtCoord(world, random, x, y, z);
 		return true;
+	}
+
+	protected FilterBiome filterBiome;
+
+	public void setFilter(FilterBiome filterBiome)
+	{
+		this.filterBiome = filterBiome;
 	}
 
 }
