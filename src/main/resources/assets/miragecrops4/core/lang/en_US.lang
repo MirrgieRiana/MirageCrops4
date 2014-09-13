@@ -1,0 +1,23 @@
+itemGroup.miragecrops4=MirageCrops
+
+tile.oreCalcite.name=Calcite Ore
+tile.oreMagnesite.name=Magnesite Ore
+tile.oreSiderite.name=Siderite Ore
+tile.oreRhodochrosite.name=Rhodochrosite Ore
+tile.oreSmithsonite.name=Smithsonite Ore
+tile.oreSphaerocobaltite.name=Sphaerocobaltite Ore
+tile.oreGaspeite.name=Gaspeite Ore
+tile.oreOtavite.name=Otavite Ore
+
+tile.oreTalc.name=Talc Ore
+tile.oreGypsum.name=Gypsum Ore
+tile.oreFluorite.name=Fluorite Ore
+tile.oreApatite.name=Apatite Ore
+tile.oreOrthoclase.name=Orthoclase Ore
+tile.oreCertusQuartz.name=CertusQuartz Ore
+tile.oreTopaz.name=Topaz Ore
+tile.oreRuby.name=Ruby Ore
+tile.oreDiamond.name=Diamond Ore
+
+tile.oreBismuth.name=Bismuth Ore
+tile.oreSpinatite.name=Spinatite Ore
