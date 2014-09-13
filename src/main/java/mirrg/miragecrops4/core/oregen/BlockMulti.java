@@ -51,6 +51,13 @@ public class BlockMulti extends Block
 
 	@Override
 	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int side, int meta)
+	{
+		return multibase.get(meta).getIcon(side, meta);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
 		for (Metablock metablock : multibase) {

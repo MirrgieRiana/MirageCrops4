@@ -37,6 +37,12 @@ public class Metablock extends Metabase
 	}
 
 	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int side, int meta)
+	{
+		return icon;
+	}
+
+	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
 		icon = iconRegister.registerIcon(iconName);
@@ -46,9 +52,14 @@ public class Metablock extends Metabase
 
 	public String unlocalizedName;
 
-	public String getUnlocalizedName(ItemStack itemStack)
+	public String getPlainName(ItemStack itemStack)
 	{
 		return unlocalizedName;
+	}
+
+	public String getUnlocalizedName(ItemStack itemStack)
+	{
+		return "tile." + unlocalizedName;
 	}
 
 }

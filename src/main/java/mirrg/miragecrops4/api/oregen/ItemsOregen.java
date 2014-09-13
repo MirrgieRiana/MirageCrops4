@@ -7,7 +7,19 @@ import net.minecraft.block.Block;
 public class ItemsOregen
 {
 
-	public static enum EnumGlobsCalciteGroup
+	/**
+	 * 要素は16個まで
+	 */
+	public interface IEnumGlob
+	{
+
+		public void setGlob(IGlob glob);
+
+		public IGlob getGlob();
+
+	}
+
+	public static enum EnumGlobsCalciteGroup implements IEnumGlob
 	{
 		calcite,
 		magnesite,
@@ -19,9 +31,22 @@ public class ItemsOregen
 		otavite, ;
 
 		public IGlob glob;
+
+		@Override
+		public IGlob getGlob()
+		{
+			return glob;
+		}
+
+		@Override
+		public void setGlob(IGlob glob)
+		{
+			this.glob = glob;
+		}
+
 	}
 
-	public static enum EnumGlobsMohsHardnessCrystal
+	public static enum EnumGlobsMohsHardnessCrystal implements IEnumGlob
 	{
 		talc,
 		gypsum,
@@ -35,20 +60,59 @@ public class ItemsOregen
 		diamond, ;
 
 		public IGlob glob;
+
+		@Override
+		public IGlob getGlob()
+		{
+			return glob;
+		}
+
+		@Override
+		public void setGlob(IGlob glob)
+		{
+			this.glob = glob;
+		}
+
 	}
 
-	public static enum EnumGlobsOtherMetal
+	public static enum EnumGlobsOtherMetal implements IEnumGlob
 	{
 		bismuth, ;
 
 		public IGlob glob;
+
+		@Override
+		public IGlob getGlob()
+		{
+			return glob;
+		}
+
+		@Override
+		public void setGlob(IGlob glob)
+		{
+			this.glob = glob;
+		}
+
 	}
 
-	public static enum EnumGlobsMirageMagic
+	public static enum EnumGlobsMirageMagic implements IEnumGlob
 	{
 		spinatite, ;
 
 		public IGlob glob;
+
+		@Override
+		public IGlob getGlob()
+		{
+			return glob;
+		}
+
+		@Override
+		public void setGlob(IGlob glob)
+		{
+			this.glob = glob;
+		}
+
 	}
 
 	public static ISlot slotOre;

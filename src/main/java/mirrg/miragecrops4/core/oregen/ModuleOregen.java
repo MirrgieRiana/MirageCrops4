@@ -6,7 +6,6 @@ import mirrg.mir40.glob.GlobAbstract;
 import mirrg.mir40.glob.SlotAbstract;
 import mirrg.mir40.glob.api.HelpersGlob;
 import mirrg.mir40.worldgen.FilterBiome;
-import mirrg.mir40.worldgen.IWorldGeneratorXZ;
 import mirrg.mir40.worldgen.WorldGeneratorXYZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre.CountPer;
@@ -15,6 +14,7 @@ import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsCalciteGroup;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsMirageMagic;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsMohsHardnessCrystal;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsOtherMetal;
+import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlob;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -40,114 +40,114 @@ public class ModuleOregen extends ModuleAbstract
 
 	}
 
+	protected BlockMulti createBlock(String name)
+	{
+		BlockMulti block = new BlockMulti();
+		GameRegistry.registerBlock(block, ItemBlockMulti.class, name);
+		return block;
+	}
+
+	protected void createGlob(IEnumGlob[] globs)
+	{
+		for (int i = 0; i < globs.length; i++) {
+			globs[i].setGlob(new GlobAbstract());
+		}
+	}
+
 	protected void createBlocks()
 	{
 
-		{
-			BlockMulti block = new BlockMulti();
-			String name = "blockOreCalciteGroup";
-			GameRegistry.registerBlock(block, ItemBlockMulti.class, name);
-			ItemsOregen.blockOreCalciteGroup = block;
-		}
+		ItemsOregen.blockOreCalciteGroup = createBlock("blockOreCalciteGroup");
+		ItemsOregen.blockOreMohsHardnessCrystal = createBlock("blockOreMohsHardnessCrystal");
+		ItemsOregen.blockOreOtherMetal = createBlock("blockOreOtherMetal");
+		ItemsOregen.blockOreMirageMagic = createBlock("blockOreMirageMagic");
 
-		{
-			BlockMulti block = new BlockMulti();
-			String name = "blockOreMohsHardnessCrystal";
-			GameRegistry.registerBlock(block, ItemBlockMulti.class, name);
-			ItemsOregen.blockOreMohsHardnessCrystal = block;
-		}
-
-		{
-			EnumGlobsCalciteGroup[] globs = EnumGlobsCalciteGroup.values();
-			for (int i = 0; i < globs.length; i++) {
-				globs[i].glob = new GlobAbstract();
-			}
-		}
-
-		{
-			EnumGlobsMohsHardnessCrystal[] globs = EnumGlobsMohsHardnessCrystal.values();
-			for (int i = 0; i < globs.length; i++) {
-				globs[i].glob = new GlobAbstract();
-			}
-		}
+		createGlob(EnumGlobsCalciteGroup.values());
+		createGlob(EnumGlobsMohsHardnessCrystal.values());
+		createGlob(EnumGlobsOtherMetal.values());
+		createGlob(EnumGlobsMirageMagic.values());
 
 		ItemsOregen.slotOre = new SlotAbstract();
 
 	}
 
+	protected void registerBlock(Block block, String name)
+	{
+		block
+			.setHardness(3.0F)
+			.setResistance(5.0F)
+			.setStepSound(Block.soundTypePiston)
+			.setBlockName(name)
+			.setBlockTextureName(getMod().getModId() + ":" + getModuleName() + "/" + name);
+	}
+
+	protected void createMetaBlock(IEnumGlob[] globs, BlockMulti blockMulti)
+	{
+		for (int i = 0; i < globs.length; i++) {
+
+			// グロブの設定
+			((GlobAbstract) globs[i].getGlob()).setName(((Enum) globs[i]).name());
+
+			// メタブロックの作成
+			Metablock metablock = new Metablock();
+
+			// マルチブロックにメタブロックを登録
+			blockMulti.multibase.bind(i, metablock);
+
+			// グロブにアイテムスタックを登録
+			((GlobAbstract) globs[i].getGlob()).put(ItemsOregen.slotOre,
+				new ItemStack(blockMulti, 1, i));
+
+			// メタブロックの設定
+			{
+				String unlocalizedName = HelpersGlob.getDictionaryName(ItemsOregen.slotOre, globs[i].getGlob());
+				metablock.unlocalizedName = unlocalizedName;
+				if (getMod().isClient()) {
+					metablock.iconName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
+				}
+			}
+
+		}
+	}
+
 	protected void registerBlocks()
 	{
 
-		ItemsOregen.blockOreCalciteGroup
-			.setHardness(3.0F)
-			.setResistance(5.0F)
-			.setStepSound(Block.soundTypePiston)
-			.setBlockName("blockOreCalciteGroup")
-			.setBlockTextureName(getMod().getModId() + ":" + getModuleName() + "/" + "blockOreMohsHardnessCrystal");
-
-		ItemsOregen.blockOreMohsHardnessCrystal
-			.setHardness(3.0F)
-			.setResistance(5.0F)
-			.setStepSound(Block.soundTypePiston)
-			.setBlockName("blockOreMohsHardnessCrystal")
-			.setBlockTextureName(getMod().getModId() + ":" + getModuleName() + "/" + "blockOreMohsHardnessCrystal");
-
-		{
-			EnumGlobsCalciteGroup[] globs = EnumGlobsCalciteGroup.values();
-			for (int i = 0; i < globs.length; i++) {
-
-				// メタブロックの作成
-				Metablock metablock = new Metablock();
-
-				// マルチブロックにメタブロックを登録
-				((BlockMulti) ItemsOregen.blockOreCalciteGroup).multibase.bind(i, metablock);
-
-				// グロブにアイテムスタックを登録
-				((GlobAbstract) globs[i].glob).put(ItemsOregen.slotOre,
-					new ItemStack(ItemsOregen.blockOreCalciteGroup, 1, i));
-
-				// メタブロックの設定
-				{
-					String unlocalizedName = HelpersGlob.getDictionaryName(globs[i].glob, ItemsOregen.slotOre);
-					metablock.unlocalizedName = unlocalizedName;
-					metablock.iconName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
-				}
-
-				// グロブの設定
-				((GlobAbstract) globs[i].glob).setName(globs[i].name());
-			}
-
-		}
-
-		{
-			EnumGlobsMohsHardnessCrystal[] globs = EnumGlobsMohsHardnessCrystal.values();
-			for (int i = 0; i < globs.length; i++) {
-
-				// メタブロックの作成
-				Metablock metablock = new Metablock();
-
-				// マルチブロックにメタブロックを登録
-				((BlockMulti) ItemsOregen.blockOreMohsHardnessCrystal).multibase.bind(i, metablock);
-
-				// グロブにアイテムスタックを登録
-				((GlobAbstract) globs[i].glob).put(ItemsOregen.slotOre,
-					new ItemStack(ItemsOregen.blockOreMohsHardnessCrystal, 1, i));
-
-				// メタブロックの設定
-				{
-					String unlocalizedName = HelpersGlob.getDictionaryName(globs[i].glob, ItemsOregen.slotOre);
-					metablock.unlocalizedName = unlocalizedName;
-					metablock.iconName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
-				}
-
-				// グロブの設定
-				((GlobAbstract) globs[i].glob).setName(globs[i].name());
-			}
-
-		}
+		registerBlock(ItemsOregen.blockOreCalciteGroup, "blockOreCalciteGroup");
+		registerBlock(ItemsOregen.blockOreMohsHardnessCrystal, "blockOreMohsHardnessCrystal");
+		registerBlock(ItemsOregen.blockOreOtherMetal, "blockOreOtherMetal");
+		registerBlock(ItemsOregen.blockOreMirageMagic, "blockOreMirageMagic");
 
 		((SlotAbstract) ItemsOregen.slotOre).setName("ore");
 
+		// グロブ・スロットの後
+		createMetaBlock(EnumGlobsCalciteGroup.values(), (BlockMulti) ItemsOregen.blockOreCalciteGroup);
+		createMetaBlock(EnumGlobsMohsHardnessCrystal.values(), (BlockMulti) ItemsOregen.blockOreMohsHardnessCrystal);
+		createMetaBlock(EnumGlobsOtherMetal.values(), (BlockMulti) ItemsOregen.blockOreOtherMetal);
+		createMetaBlock(EnumGlobsMirageMagic.values(), (BlockMulti) ItemsOregen.blockOreMirageMagic);
+
+	}
+
+	protected void registerWorldgenFromCountPerCube(
+		int minHeight,
+		int maxHeight,
+		double countPerCube,
+		double numberOfBlocks,
+		ItemStack ore,
+		String biome)
+	{
+		WorldGeneratorXZOre iWorldGeneratorXY;
+
+		iWorldGeneratorXY = new WorldGeneratorXZOre(
+			CountPer.CUBE, countPerCube, minHeight, maxHeight,
+			new WorldGeneratorXYZOre(numberOfBlocks, ore));
+		GameRegistry.registerWorldGenerator(iWorldGeneratorXY, 801);
+
+		if (biome != null) {
+			iWorldGeneratorXY.setFilter(new FilterBiome(biome));
+		}
+
+		GameRegistry.registerWorldGenerator(iWorldGeneratorXY, 801);
 	}
 
 	/**
@@ -155,75 +155,120 @@ public class ModuleOregen extends ModuleAbstract
 	 */
 	protected void registerWorldgen()
 	{
-		IWorldGeneratorXZ iWorldGeneratorXY;
-		double blocksPerCube;
+		int minHeight;
+		int maxHeight;
+		double countPerCube;
+		double numberOfBlocks;
+		ItemStack ore;
+		String biome;
 
-		blocksPerCube = 
-		iWorldGeneratorXY = new WorldGeneratorXZOre(CountPer.CUBE, 1.0, 0, 128,
-			new WorldGeneratorXYZOre(8, EnumGlobsCalciteGroup.calcite.glob.copy(ItemsOregen.slotOre)));
-		GameRegistry.registerWorldGenerator(iWorldGeneratorXY, 801);
-
-		//
-
-		iWorldGeneratorXY = new WorldGeneratorXZOre(CountPer.CUBE, 1.4, 0, 96,
-			new WorldGeneratorXYZOre(4, EnumGlobsCalciteGroup.magnesite.glob.copy(ItemsOregen.slotOre)));
-		GameRegistry.registerWorldGenerator(iWorldGeneratorXY, 801);
-
-		iWorldGeneratorXY = new WorldGeneratorXZOre(CountPer.CUBE, 1.2, 0, 80,
-			new WorldGeneratorXYZOre(3.5, EnumGlobsCalciteGroup.siderite.glob.copy(ItemsOregen.slotOre)));
-		GameRegistry.registerWorldGenerator(iWorldGeneratorXY, 801);
-
-		iWorldGeneratorXY = new WorldGeneratorXZOre(CountPer.CUBE, 1.0, 0, 64,
-			new WorldGeneratorXYZOre(3, EnumGlobsCalciteGroup.smithsonite.glob.copy(ItemsOregen.slotOre)));
-		GameRegistry.registerWorldGenerator(iWorldGeneratorXY, 801);
+		minHeight = 0;
+		maxHeight = 128;
+		countPerCube = 0.4;
+		numberOfBlocks = 32;
+		ore = EnumGlobsCalciteGroup.calcite.glob.copy(ItemsOregen.slotOre);
+		biome = null;
+		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
 		//
 
-		iWorldGeneratorXY = new FilterBiome(new WorldGeneratorXZOre(CountPer.CUBE, 0.6, 0, 48,
-			new WorldGeneratorXYZOre(2.5, EnumGlobsCalciteGroup.rhodochrosite.glob.copy(ItemsOregen.slotOre))),
-			"ocean");
-		GameRegistry.registerWorldGenerator(iWorldGeneratorXY, 801);
+		minHeight = 0;
+		maxHeight = 96;
+		countPerCube = 1.8;
+		numberOfBlocks = 8;
+		ore = EnumGlobsCalciteGroup.magnesite.glob.copy(ItemsOregen.slotOre);
+		biome = null;
+		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
-		iWorldGeneratorXY = new FilterBiome(new WorldGeneratorXZOre(CountPer.CUBE, 0.5, 0, 32,
-			new WorldGeneratorXYZOre(2, EnumGlobsCalciteGroup.sphaerocobaltite.glob.copy(ItemsOregen.slotOre))),
-			"forest");
-		GameRegistry.registerWorldGenerator(iWorldGeneratorXY, 801);
+		minHeight = 0;
+		maxHeight = 80;
+		countPerCube = 1.6;
+		numberOfBlocks = 7;
+		ore = EnumGlobsCalciteGroup.siderite.glob.copy(ItemsOregen.slotOre);
+		biome = null;
+		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
-		iWorldGeneratorXY = new FilterBiome(new WorldGeneratorXZOre(CountPer.CUBE, 0.4, 0, 24,
-			new WorldGeneratorXYZOre(2, EnumGlobsCalciteGroup.gaspeite.glob.copy(ItemsOregen.slotOre))),
-			"desert");
-		GameRegistry.registerWorldGenerator(iWorldGeneratorXY, 801);
+		minHeight = 0;
+		maxHeight = 64;
+		countPerCube = 1.4;
+		numberOfBlocks = 6;
+		ore = EnumGlobsCalciteGroup.smithsonite.glob.copy(ItemsOregen.slotOre);
+		biome = null;
+		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
+
+		//
+
+		minHeight = 0;
+		maxHeight = 48;
+		countPerCube = 0.9;
+		numberOfBlocks = 6;
+		ore = EnumGlobsCalciteGroup.rhodochrosite.glob.copy(ItemsOregen.slotOre);
+		biome = "ocean";
+		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
+
+		minHeight = 0;
+		maxHeight = 32;
+		countPerCube = 0.7;
+		numberOfBlocks = 5;
+		ore = EnumGlobsCalciteGroup.sphaerocobaltite.glob.copy(ItemsOregen.slotOre);
+		biome = "forest";
+		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
+
+		minHeight = 0;
+		maxHeight = 24;
+		countPerCube = 0.5;
+		numberOfBlocks = 4;
+		ore = EnumGlobsCalciteGroup.gaspeite.glob.copy(ItemsOregen.slotOre);
+		biome = "desert";
+		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
 		//
 
-		iWorldGeneratorXY = new FilterBiome(new WorldGeneratorXZOre(CountPer.CUBE, 0.2, 0, 16,
-			new WorldGeneratorXYZOre(1.5, EnumGlobsCalciteGroup.otavite.glob.copy(ItemsOregen.slotOre))),
-			"extreme");
-		GameRegistry.registerWorldGenerator(iWorldGeneratorXY, 801);
+		minHeight = 0;
+		maxHeight = 16;
+		countPerCube = 0.5;
+		numberOfBlocks = 1;
+		ore = EnumGlobsCalciteGroup.otavite.glob.copy(ItemsOregen.slotOre);
+		biome = "extreme";
+		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
 		//
 		//
 
-		iWorldGeneratorXY = new WorldGeneratorXZOre(CountPer.CUBE, 2.0, 0, 60,
-			new WorldGeneratorXYZOre(4, EnumGlobsOtherMetal.bismuth.glob.copy(ItemsOregen.slotOre)));
-		GameRegistry.registerWorldGenerator(iWorldGeneratorXY, 801);
+		minHeight = 0;
+		maxHeight = 60;
+		countPerCube = 0.1;
+		numberOfBlocks = 4;
+		ore = EnumGlobsOtherMetal.bismuth.glob.copy(ItemsOregen.slotOre);
+		biome = null;
+		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
-		iWorldGeneratorXY = new WorldGeneratorXZOre(CountPer.CUBE, 8.0, 0, 120,
-			new WorldGeneratorXYZOre(4, EnumGlobsMirageMagic.spinatite.glob.copy(ItemsOregen.slotOre)));
-		GameRegistry.registerWorldGenerator(iWorldGeneratorXY, 801);
+		minHeight = 0;
+		maxHeight = 60;
+		countPerCube = 0.3;
+		numberOfBlocks = 8;
+		ore = EnumGlobsMirageMagic.spinatite.glob.copy(ItemsOregen.slotOre);
+		biome = null;
+		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
 		//
 		//
 
-		iWorldGeneratorXY = new FilterBiome(new WorldGeneratorXZOre(CountPer.CUBE, 1.0, 64, 128,
-			new WorldGeneratorXYZOre(8, EnumGlobsMohsHardnessCrystal.apatite.glob.copy(ItemsOregen.slotOre))),
-			"extreme");
-		GameRegistry.registerWorldGenerator(iWorldGeneratorXY, 801);
+		minHeight = 64;
+		maxHeight = 128;
+		countPerCube = 0.8;
+		numberOfBlocks = 18;
+		ore = EnumGlobsMohsHardnessCrystal.apatite.glob.copy(ItemsOregen.slotOre);
+		biome = "extreme";
+		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
-		iWorldGeneratorXY = new FilterBiome(new WorldGeneratorXZOre(CountPer.CUBE, 1.0, 64, 128,
-			new WorldGeneratorXYZOre(4, EnumGlobsMohsHardnessCrystal.fluorite.glob.copy(ItemsOregen.slotOre))),
-			"extreme");
-		GameRegistry.registerWorldGenerator(iWorldGeneratorXY, 801);
+		minHeight = 64;
+		maxHeight = 128;
+		countPerCube = 1.5;
+		numberOfBlocks = 8;
+		ore = EnumGlobsMohsHardnessCrystal.fluorite.glob.copy(ItemsOregen.slotOre);
+		biome = "extreme";
+		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
 	}
 
