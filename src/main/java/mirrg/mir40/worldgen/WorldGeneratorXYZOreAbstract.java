@@ -38,7 +38,8 @@ public abstract class WorldGeneratorXYZOreAbstract implements IWorldGeneratorXYZ
 	}
 
 	@Override
-	public void generate(World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider, Random random, int x, int y, int z)
+	public void generate(World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider, Random random,
+		int x, int y, int z)
 	{
 		int numberOfBlocks = HelpersMath.floorRandom(this.numberOfBlocks, random);
 
@@ -58,7 +59,8 @@ public abstract class WorldGeneratorXYZOreAbstract implements IWorldGeneratorXYZ
 
 	}
 
-	protected void generate1(World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider, Random random, int x, int y, int z)
+	protected void generate1(World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider, Random random,
+		int x, int y, int z)
 	{
 		tryPutBlockAtCoord(world, chunkGenerator, chunkProvider, random, x, y, z);
 	}
@@ -73,7 +75,8 @@ public abstract class WorldGeneratorXYZOreAbstract implements IWorldGeneratorXYZ
 		0, 0, 0, 0, 1, -1,
 	};
 
-	protected void generate2(World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider, Random random, int x, int y, int z)
+	protected void generate2(World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider, Random random,
+		int x, int y, int z)
 	{
 		tryPutBlockAtCoord(world, chunkGenerator, chunkProvider, random, x, y, z);
 
@@ -81,7 +84,8 @@ public abstract class WorldGeneratorXYZOreAbstract implements IWorldGeneratorXYZ
 		tryPutBlockAtCoord(world, chunkGenerator, chunkProvider, random, x + TABLE_X[i], y + TABLE_Y[i], z + TABLE_Z[i]);
 	}
 
-	protected void generate3(World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider, Random random, int x, int y, int z)
+	protected void generate3(World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider, Random random,
+		int x, int y, int z)
 	{
 		tryPutBlockAtCoord(world, chunkGenerator, chunkProvider, random, x, y, z);
 
@@ -92,7 +96,8 @@ public abstract class WorldGeneratorXYZOreAbstract implements IWorldGeneratorXYZ
 		tryPutBlockAtCoord(world, chunkGenerator, chunkProvider, random, x + TABLE_X[i], y + TABLE_Y[i], z + TABLE_Z[i]);
 	}
 
-	protected void generate4(World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider, Random random, int x, int y, int z, int numberOfBlocks)
+	protected void generate4(World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider, Random random,
+		int x, int y, int z, int numberOfBlocks)
 	{
 		float course = random.nextFloat() * (float) Math.PI;
 		double minX = x + 8 + MathHelper.sin(course) * numberOfBlocks / 8.0F;
@@ -148,7 +153,8 @@ public abstract class WorldGeneratorXYZOreAbstract implements IWorldGeneratorXYZ
 
 	}
 
-	protected void tryPutBlockAtCoord(World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider, Random random, int x, int y, int z)
+	protected void tryPutBlockAtCoord(World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider,
+		Random random, int x, int y, int z)
 	{
 		Block block = world.getBlock(x, y, z);
 		if (block != null) {
@@ -158,6 +164,7 @@ public abstract class WorldGeneratorXYZOreAbstract implements IWorldGeneratorXYZ
 		}
 	}
 
-	public abstract void setBlock(World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider, Random random, int x, int y, int z);
+	public abstract void setBlock(World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider,
+		Random random, int x, int y, int z);
 
 }

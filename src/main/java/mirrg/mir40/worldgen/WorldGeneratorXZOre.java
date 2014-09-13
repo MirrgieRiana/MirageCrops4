@@ -14,7 +14,8 @@ public class WorldGeneratorXZOre implements IWorldGeneratorXZ
 	private int maxY;
 	private IWorldGeneratorXYZ iWorldGeneratorXYZ;
 
-	public WorldGeneratorXZOre(CountPer countPer, double count, int minY, int maxY, IWorldGeneratorXYZ iWorldGeneratorXYZ)
+	public WorldGeneratorXZOre(CountPer countPer, double count, int minY, int maxY,
+		IWorldGeneratorXYZ iWorldGeneratorXYZ)
 	{
 		switch (countPer) {
 			case CUBE:
@@ -30,7 +31,8 @@ public class WorldGeneratorXZOre implements IWorldGeneratorXZ
 	}
 
 	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator,
+		IChunkProvider chunkProvider)
 	{
 		int count = HelpersMath.floorRandom(countPerChunk, random);
 
