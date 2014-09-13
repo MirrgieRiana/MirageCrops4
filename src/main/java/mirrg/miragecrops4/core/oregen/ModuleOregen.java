@@ -32,13 +32,13 @@ public class ModuleOregen extends ModuleAbstract
 	@Override
 	public void handle(FMLPreInitializationEvent event)
 	{
-
+		//System.out.println(1);
 		createBlocks();
-
+		//System.out.println(2);
 		registerBlocks();
-
+		//System.out.println(3);
 		registerWorldgen();
-
+		//System.out.println(1);
 	}
 
 	protected BlockMulti registerBlock(String name)
