@@ -16,3 +16,4 @@ bin/*
 build/natives/*
 eclipse/RemoteSystemsTempFiles/*
 .settings/*
+eclipse/*
