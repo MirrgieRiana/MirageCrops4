@@ -32,7 +32,7 @@ public class GlobAbstract implements IGlob
 		return name;
 	}
 
-	protected Hashtable<String, ItemStack> table;
+	protected Hashtable<String, ItemStack> table = new Hashtable<String, ItemStack>();
 
 	@Override
 	public boolean contains(ISlot slot)
@@ -43,7 +43,7 @@ public class GlobAbstract implements IGlob
 	@Override
 	public ItemStack copy(ISlot slot)
 	{
-		return table.get(slot);
+		return table.get(slot.getName());
 	}
 
 	public void put(ISlot slot, ItemStack itemStack)

@@ -5,9 +5,9 @@ import mirrg.mir40.math.HelpersString;
 public class HelpersGlob
 {
 
-	public static String getDictionaryName(IGlob glob, ISlot slot)
+	public static String getDictionaryName(ISlot slot, IGlob glob)
 	{
-		return glob.getName() + HelpersString.toUpperCaseHead(slot.getName());
+		return slot.getName() + HelpersString.toUpperCaseHead(glob.getName());
 	}
 
 }

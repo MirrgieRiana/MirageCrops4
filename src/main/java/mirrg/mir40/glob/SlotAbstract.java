@@ -20,7 +20,7 @@ public class SlotAbstract implements ISlot
 	@Override
 	public String getName()
 	{
-		return null;
+		return name;
 	}
 
 	public void setName(String name)
