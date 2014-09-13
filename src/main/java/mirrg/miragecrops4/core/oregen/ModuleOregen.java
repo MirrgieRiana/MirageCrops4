@@ -95,8 +95,7 @@ public class ModuleOregen extends ModuleAbstract
 			blockMulti.multibase.bind(i, metablock);
 
 			// グロブにアイテムスタックを登録
-			((GlobAbstract) globs[i].getGlob()).put(ItemsOregen.slotOre,
-				new ItemStack(blockMulti, 1, i));
+			((GlobAbstract) globs[i].getGlob()).put(ItemsOregen.slotOre, new ItemStack(blockMulti, 1, i));
 
 			// メタブロックの設定
 			{
