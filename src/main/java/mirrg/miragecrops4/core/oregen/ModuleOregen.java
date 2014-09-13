@@ -40,7 +40,7 @@ public class ModuleOregen extends ModuleAbstract
 
 	}
 
-	protected BlockMulti createBlock(String name)
+	protected BlockMulti registerBlock(String name)
 	{
 		BlockMulti block = new BlockMulti();
 		GameRegistry.registerBlock(block, ItemBlockMulti.class, name);
@@ -57,10 +57,10 @@ public class ModuleOregen extends ModuleAbstract
 	protected void createBlocks()
 	{
 
-		ItemsOregen.blockOreCalciteGroup = createBlock("blockOreCalciteGroup");
-		ItemsOregen.blockOreMohsHardnessCrystal = createBlock("blockOreMohsHardnessCrystal");
-		ItemsOregen.blockOreOtherMetal = createBlock("blockOreOtherMetal");
-		ItemsOregen.blockOreMirageMagic = createBlock("blockOreMirageMagic");
+		ItemsOregen.blockOreCalciteGroup = registerBlock("blockOreCalciteGroup");
+		ItemsOregen.blockOreMohsHardnessCrystal = registerBlock("blockOreMohsHardnessCrystal");
+		ItemsOregen.blockOreOtherMetal = registerBlock("blockOreOtherMetal");
+		ItemsOregen.blockOreMirageMagic = registerBlock("blockOreMirageMagic");
 
 		createGlob(EnumGlobsCalciteGroup.values());
 		createGlob(EnumGlobsMohsHardnessCrystal.values());
@@ -71,7 +71,7 @@ public class ModuleOregen extends ModuleAbstract
 
 	}
 
-	protected void registerBlock(Block block, String name)
+	protected void configureBlock(Block block, String name)
 	{
 		block
 			.setHardness(3.0F)
@@ -113,10 +113,10 @@ public class ModuleOregen extends ModuleAbstract
 	protected void registerBlocks()
 	{
 
-		registerBlock(ItemsOregen.blockOreCalciteGroup, "blockOreCalciteGroup");
-		registerBlock(ItemsOregen.blockOreMohsHardnessCrystal, "blockOreMohsHardnessCrystal");
-		registerBlock(ItemsOregen.blockOreOtherMetal, "blockOreOtherMetal");
-		registerBlock(ItemsOregen.blockOreMirageMagic, "blockOreMirageMagic");
+		configureBlock(ItemsOregen.blockOreCalciteGroup, "blockOreCalciteGroup");
+		configureBlock(ItemsOregen.blockOreMohsHardnessCrystal, "blockOreMohsHardnessCrystal");
+		configureBlock(ItemsOregen.blockOreOtherMetal, "blockOreOtherMetal");
+		configureBlock(ItemsOregen.blockOreMirageMagic, "blockOreMirageMagic");
 
 		((SlotAbstract) ItemsOregen.slotOre).setName("ore");
 
