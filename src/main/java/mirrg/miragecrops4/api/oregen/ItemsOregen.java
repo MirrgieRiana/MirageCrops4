@@ -1,5 +1,7 @@
 package mirrg.miragecrops4.api.oregen;
 
+import java.util.LinkedList;
+
 import mirrg.mir40.glob.api.IGlob;
 import mirrg.mir40.glob.api.ISlot;
 import net.minecraft.block.Block;
@@ -10,7 +12,7 @@ public class ItemsOregen
 	/**
 	 * 要素は16個まで
 	 */
-	public interface IEnumGlob
+	public interface IEnumGlobs
 	{
 
 		public void setGlob(IGlob glob);
@@ -19,7 +21,7 @@ public class ItemsOregen
 
 	}
 
-	public static enum EnumGlobsCalciteGroup implements IEnumGlob
+	public static enum EnumGlobsCalciteGroup implements IEnumGlobs
 	{
 		calcite,
 		magnesite,
@@ -46,7 +48,7 @@ public class ItemsOregen
 
 	}
 
-	public static enum EnumGlobsMohsHardnessCrystal implements IEnumGlob
+	public static enum EnumGlobsMohsHardnessCrystal implements IEnumGlobs
 	{
 		talc,
 		gypsum,
@@ -75,7 +77,7 @@ public class ItemsOregen
 
 	}
 
-	public static enum EnumGlobsOtherMetal implements IEnumGlob
+	public static enum EnumGlobsOtherMetal implements IEnumGlobs
 	{
 		bismuth, ;
 
@@ -95,7 +97,7 @@ public class ItemsOregen
 
 	}
 
-	public static enum EnumGlobsMirageMagic implements IEnumGlob
+	public static enum EnumGlobsMirageMagic implements IEnumGlobs
 	{
 		spinatite, ;
 
@@ -113,6 +115,14 @@ public class ItemsOregen
 			this.glob = glob;
 		}
 
+	}
+
+	public static LinkedList<IEnumGlobs[]> enumGlobsList = new LinkedList<IEnumGlobs[]>();
+	{
+		enumGlobsList.add(EnumGlobsCalciteGroup.values());
+		enumGlobsList.add(EnumGlobsMohsHardnessCrystal.values());
+		enumGlobsList.add(EnumGlobsOtherMetal.values());
+		enumGlobsList.add(EnumGlobsMirageMagic.values());
 	}
 
 	public static ISlot slotOre;
