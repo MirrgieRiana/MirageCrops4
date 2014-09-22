@@ -1,9 +1,5 @@
 package mirrg.miragecrops4.core.oregen;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
-import cpw.mods.fml.common.registry.GameRegistry;
 import mirrg.mir34.modding.IMod;
 import mirrg.mir34.modding.ModuleAbstract;
 import mirrg.mir40.glob.GlobAbstract;
@@ -14,6 +10,10 @@ import mirrg.mir40.worldgen.WorldGeneratorXZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre.CountPer;
 import mirrg.miragecrops4.api.oregen.ItemsOregen;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobs;
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public abstract class ModuleOregenBase extends ModuleAbstract
 {
@@ -80,7 +80,8 @@ public abstract class ModuleOregenBase extends ModuleAbstract
 		}
 	}
 
-	protected void registerWorldgenFromCountPerCube(int minHeight, int maxHeight, double countPerCube, double numberOfBlocks, ItemStack ore,
+	protected void registerWorldgenFromCountPerCube(int minHeight, int maxHeight, double countPerCube,
+		double numberOfBlocks, ItemStack ore,
 		String biome)
 	{
 		WorldGeneratorXZOre iWorldGeneratorXY;
