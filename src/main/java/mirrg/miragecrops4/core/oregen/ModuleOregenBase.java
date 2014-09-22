@@ -52,6 +52,8 @@ public abstract class ModuleOregenBase extends ModuleAbstract
 			IEnumGlobs enumGlob = globs[i];
 
 			// グロブの設定
+			assert enumGlob != null;
+			assert enumGlob.getGlob() != null;
 			((GlobAbstract) enumGlob.getGlob()).setName(((Enum) enumGlob).name());
 
 			// メタブロックの作成
