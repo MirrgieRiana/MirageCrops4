@@ -31,18 +31,24 @@ public class ModuleOregen extends ModuleOregenBase
 
 	}
 
+	/**
+	 * 各種インスタンス生成と登録とAPIへの代入
+	 */
 	protected void createBlocks()
 	{
 
+		// ブロックのインスタンス生成と登録とAPIへの代入
 		ItemsOregen.blockOreCalciteGroup = registerBlock("blockOreCalciteGroup");
 		ItemsOregen.blockOreMohsHardnessCrystal = registerBlock("blockOreMohsHardnessCrystal");
 		ItemsOregen.blockOreOtherMetal = registerBlock("blockOreOtherMetal");
 		ItemsOregen.blockOreMirageMagic = registerBlock("blockOreMirageMagic");
 
+		// グロブのインスタンス生成とAPIへの代入
 		for (IEnumGlobs[] enumGlobs : ItemsOregen.enumGlobsList) {
 			createGlob(enumGlobs);
 		}
 
+		// グロブスロットのインスタンス生成とAPIへの代入
 		ItemsOregen.slotOre = new SlotAbstract();
 
 	}
