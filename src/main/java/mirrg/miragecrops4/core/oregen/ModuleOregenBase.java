@@ -49,9 +49,10 @@ public abstract class ModuleOregenBase extends ModuleAbstract
 	protected void createMetaBlock(IEnumGlobs[] globs, BlockMulti blockMulti)
 	{
 		for (int i = 0; i < globs.length; i++) {
+			IEnumGlobs enumGlob = globs[i];
 
 			// グロブの設定
-			((GlobAbstract) globs[i].getGlob()).setName(((Enum) globs[i]).name());
+			((GlobAbstract) enumGlob.getGlob()).setName(((Enum) enumGlob).name());
 
 			// メタブロックの作成
 			Metablock metablock = new Metablock();
@@ -60,11 +61,11 @@ public abstract class ModuleOregenBase extends ModuleAbstract
 			blockMulti.multibase.bind(i, metablock);
 
 			// グロブにアイテムスタックを登録
-			((GlobAbstract) globs[i].getGlob()).put(ItemsOregen.slotOre, new ItemStack(blockMulti, 1, i));
+			((GlobAbstract) enumGlob.getGlob()).put(ItemsOregen.slotOre, new ItemStack(blockMulti, 1, i));
 
 			// メタブロックの設定
 			{
-				String unlocalizedName = HelpersGlob.getDictionaryName(ItemsOregen.slotOre, globs[i].getGlob());
+				String unlocalizedName = HelpersGlob.getDictionaryName(ItemsOregen.slotOre, enumGlob.getGlob());
 
 				metablock.unlocalizedName = unlocalizedName;
 				if (getMod().isClient()) {
