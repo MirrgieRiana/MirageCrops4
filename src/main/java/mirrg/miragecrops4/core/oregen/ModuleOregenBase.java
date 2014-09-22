@@ -39,12 +39,11 @@ public abstract class ModuleOregenBase extends ModuleAbstract
 
 	protected void configureBlock(Block block, String name)
 	{
-		block
-			.setHardness(3.0F)
-			.setResistance(5.0F)
-			.setStepSound(Block.soundTypePiston)
-			.setBlockName(name)
-			.setBlockTextureName(getMod().getModId() + ":" + getModuleName() + "/" + name);
+		block.setHardness(3.0F);
+		block.setResistance(5.0F);
+		block.setStepSound(Block.soundTypePiston);
+		block.setBlockName(name);
+		block.setBlockTextureName(getMod().getModId() + ":" + getModuleName() + "/" + name);
 	}
 
 	protected void createMetaBlock(IEnumGlobs[] globs, BlockMulti blockMulti)
