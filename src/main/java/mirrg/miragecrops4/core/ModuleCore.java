@@ -10,6 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -51,6 +52,13 @@ public class ModuleCore extends ModuleAbstract
 		};
 
 		registerBlocks();
+
+		String name = "craftingHelmetDataViewer";
+		ItemArmor item = new ItemHelmetDataViewer(ItemArmor.ArmorMaterial.IRON, 3, 0);
+		item.setUnlocalizedName(name);
+		item.setTextureName("iron_helmet");
+
+		GameRegistry.registerItem(item, name);
 
 	}
 
