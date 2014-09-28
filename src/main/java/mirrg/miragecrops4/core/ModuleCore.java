@@ -65,19 +65,33 @@ public class ModuleCore extends ModuleAbstract
 
 	public static Block blockTorchFeeble;
 
+	public static Item craftingLeaf;
+
 	protected void registerBlocks()
 	{
 
-		String name = "blockTorchFeeble";
-		BlockTorchFeeble block = new BlockTorchFeeble();
-		block.setHardness(0.0F);
-		block.setLightLevel(12);
-		block.setStepSound(Block.soundTypeWood);
-		block.setBlockName(name);
-		block.setBlockTextureName(getMod().getModId() + ":" + getModuleName() + "/" + name);
-		block.setCreativeTab(creativeTab);
-		GameRegistry.registerBlock(block, name);
-		blockTorchFeeble = block;
+		{
+			String name = "blockTorchFeeble";
+			BlockTorchFeeble block = new BlockTorchFeeble();
+			block.setHardness(0.0F);
+			block.setLightLevel(12);
+			block.setStepSound(Block.soundTypeWood);
+			block.setBlockName(name);
+			block.setBlockTextureName(getMod().getModId() + ":" + getModuleName() + "/" + name);
+			block.setCreativeTab(creativeTab);
+			GameRegistry.registerBlock(block, name);
+			blockTorchFeeble = block;
+		}
+
+		{
+			String name = "craftingLeaf";
+			Item item = new Item();
+			item.setUnlocalizedName(name);
+			item.setCreativeTab(CreativeTabs.tabMaterials);
+			item.setTextureName(getMod().getModId() + ":" + getModuleName() + "/" + "craftingLeafSarracenia");
+			GameRegistry.registerItem(item, name);
+			craftingLeaf = item;
+		}
 
 	}
 
