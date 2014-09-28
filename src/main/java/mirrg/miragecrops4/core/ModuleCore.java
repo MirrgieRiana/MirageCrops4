@@ -11,8 +11,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -22,9 +25,14 @@ public class ModuleCore extends ModuleAbstract
 
 	public static CreativeTabs creativeTab;
 
+	public static SimpleNetworkWrapper snw;
+
 	public ModuleCore(IMod mod)
 	{
 		super(mod);
+
+		snw = NetworkRegistry.INSTANCE.newSimpleChannel(getMod().getModId());
+
 	}
 
 	@Override
@@ -42,6 +50,14 @@ public class ModuleCore extends ModuleAbstract
 		};
 
 		registerBlocks();
+
+	}
+
+	@Override
+	public void handle(FMLInitializationEvent event)
+	{
+
+		snw.registerMessage(MessageHandler.class, MessageDataViewInt.class, 0, Side.CLIENT);
 
 	}
 
