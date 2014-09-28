@@ -10,6 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -58,6 +59,15 @@ public class ModuleCore extends ModuleAbstract
 	{
 
 		snw.registerMessage(MessageHandler.class, MessageDataViewInt.class, 0, Side.CLIENT);
+
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void handleClient(FMLInitializationEvent event)
+	{
+
+		MinecraftForge.EVENT_BUS.register(new HandlerRendering());
 
 	}
 
