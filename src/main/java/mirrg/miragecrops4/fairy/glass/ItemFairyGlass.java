@@ -15,6 +15,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -37,6 +38,74 @@ public class ItemFairyGlass extends ItemArmor
 
 	}
 
+	protected void addIntData(List<int[]> dataList, IBlockAccess blockAccess, int x, int y, int z)
+	{
+		TileEntity te = blockAccess.getTileEntity(x, y, z);
+
+		if (te != null) {
+			if (te instanceof TileEntityCrop) {
+				TileEntityCrop tec = (TileEntityCrop) te;
+
+				if (tec.id >= 0) {
+					CropCard crop = Crops.instance.getCropList()[tec.id];
+					int value;
+
+					if (crop instanceof ICropDataView) {
+						value = ((ICropDataView) crop).getDataView(tec);
+					} else {
+						value = crop.growthDuration(tec) - tec.growthPoints;
+					}
+
+					dataList.add(new int[] {
+						x, y, z, value,
+					});
+
+				}
+
+			}
+		}
+
+	}
+
+	protected List<int[]> getIntData(IBlockAccess blockAccess, int x, int y, int z, int hMargin, int vMargin)
+	{
+		ArrayList<int[]> dataList = new ArrayList<int[]>();
+
+		for (int xi = -hMargin; xi <= hMargin; xi++) {
+			for (int yi = -vMargin; yi <= vMargin; yi++) {
+				for (int zi = -hMargin; zi <= hMargin; zi++) {
+
+					addIntData(dataList, blockAccess, x + xi, y + yi, z + zi);
+
+				}
+			}
+		}
+
+		return dataList;
+	}
+
+	protected MessageDataViewInt createMessage(List<int[]> dataList)
+	{
+		MessageDataViewInt message = new MessageDataViewInt();
+
+		message.reset(dataList.size());
+
+		for (int index = 0; index < dataList.size(); index++) {
+			int[] datum = dataList.get(index);
+			message.set(index, datum[0], datum[1], datum[2], datum[3]);
+		}
+
+		return message;
+	}
+
+	protected void onMessageTick(World world, EntityPlayer player, ItemStack arg2)
+	{
+		ModuleFairy.snw.sendTo(
+			createMessage(
+			getIntData(world, (int) player.posX, (int) player.posY, (int) player.posZ, 7, 3)),
+			(EntityPlayerMP) player);
+	}
+
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack arg2)
 	{
@@ -47,60 +116,7 @@ public class ItemFairyGlass extends ItemArmor
 			if (!lasttime.containsKey(player) || lasttime.get(player) + 20 < world.getWorldTime()) {
 				lasttime.put(player, world.getWorldTime());
 
-				ArrayList<int[]> data = new ArrayList<int[]>();
-
-				{
-					int centerX = (int) player.posX;
-					int centerY = (int) player.posY;
-					int centerZ = (int) player.posZ;
-
-					for (int xi = -7; xi <= 7; xi++) {
-						for (int yi = -3; yi <= 3; yi++) {
-							for (int zi = -7; zi <= 7; zi++) {
-
-								int currentX = centerX + xi;
-								int currentY = centerY + yi;
-								int currentZ = centerZ + zi;
-
-								TileEntity te = player.worldObj.getTileEntity(
-									currentX, currentY, currentZ);
-
-								if (te != null) {
-									if (te instanceof TileEntityCrop) {
-										TileEntityCrop tec = (TileEntityCrop) te;
-
-										if (tec.id >= 0) {
-											CropCard crop = Crops.instance.getCropList()[tec.id];
-											int value;
-
-											if (crop instanceof ICropDataView) {
-												value = ((ICropDataView) crop).getDataView(tec);
-											} else {
-												value = crop.growthDuration(tec) - tec.growthPoints;
-											}
-
-											data.add(new int[] {
-												currentX, currentY, currentZ, value,
-											});
-
-										}
-
-									}
-								}
-
-							}
-						}
-					}
-
-				}
-
-				MessageDataViewInt message = new MessageDataViewInt();
-				message.reset(data.size());
-				for (int index = 0; index < data.size(); index++) {
-					int[] datum = data.get(index);
-					message.set(index, datum[0], datum[1], datum[2], datum[3]);
-				}
-				ModuleFairy.snw.sendTo(message, (EntityPlayerMP) player);
+				onMessageTick(world, player, arg2);
 
 			}
 
