@@ -110,10 +110,11 @@ public abstract class ModuleOregenBase extends ModuleAbstract
 				MetaitemIcon metaitemIcon = new MetaitemIcon();
 
 				// マルチブロックにメタアイテムを登録
-				itemMultiIcon.multibase.bind(i + j * 16, metaitemIcon);
+				int id = i + j * 16;
+				itemMultiIcon.multibase.bind(id, metaitemIcon);
 
 				// グロブにアイテムスタックを登録
-				((GlobAbstract) enumGlob.getGlob()).put(slot, new ItemStack(itemMultiIcon, 1, i));
+				((GlobAbstract) enumGlob.getGlob()).put(slot, new ItemStack(itemMultiIcon, 1, id));
 
 				// メタアイテムの設定
 				{
@@ -126,7 +127,7 @@ public abstract class ModuleOregenBase extends ModuleAbstract
 					}
 
 					// 鉱石辞書に登録
-					OreDictionary.registerOre(unlocalizedName, new ItemStack(itemMultiIcon, 1, i));
+					OreDictionary.registerOre(unlocalizedName, new ItemStack(itemMultiIcon, 1, id));
 
 				}
 
