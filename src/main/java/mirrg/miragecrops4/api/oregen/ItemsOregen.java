@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import mirrg.mir40.glob.api.IGlob;
 import mirrg.mir40.glob.api.ISlot;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 
 public class ItemsOregen
 {
@@ -126,10 +127,15 @@ public class ItemsOregen
 	}
 
 	public static ISlot slotOre;
+	public static ISlot slotIngot;
+	public static ISlot slotGem;
 
 	public static Block blockOreCalciteGroup;
 	public static Block blockOreMohsHardnessCrystal;
 	public static Block blockOreOtherMetal;
 	public static Block blockOreMirageMagic;
+
+	public static Item itemIngot;
+	public static Item itemGem;
 
 }
