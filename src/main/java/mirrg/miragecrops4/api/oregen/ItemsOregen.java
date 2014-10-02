@@ -118,12 +118,33 @@ public class ItemsOregen
 
 	}
 
+	public static enum EnumGlobsMirageMaterial implements IEnumGlobs
+	{
+		spinachium, ;
+
+		public IGlob glob;
+
+		@Override
+		public IGlob getGlob()
+		{
+			return glob;
+		}
+
+		@Override
+		public void setGlob(IGlob glob)
+		{
+			this.glob = glob;
+		}
+
+	}
+
 	public static LinkedList<IEnumGlobs[]> enumGlobsList = new LinkedList<IEnumGlobs[]>();
 	static {
 		enumGlobsList.add(EnumGlobsCalciteGroup.values());
 		enumGlobsList.add(EnumGlobsMohsHardnessCrystal.values());
 		enumGlobsList.add(EnumGlobsOtherMetal.values());
 		enumGlobsList.add(EnumGlobsMirageMagic.values());
+		enumGlobsList.add(EnumGlobsMirageMaterial.values());
 	}
 
 	public static ISlot slotOre;
