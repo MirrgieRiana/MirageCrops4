@@ -25,6 +25,12 @@ public class MetaitemIcon extends Metaitem
 	}
 
 	@Override
+	public IIcon getIcon(ItemStack arg0, int arg1)
+	{
+		return getIconFromDamageForRenderPass(arg0.getItemDamage(), arg1);
+	}
+
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
