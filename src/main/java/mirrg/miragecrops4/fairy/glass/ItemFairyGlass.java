@@ -38,7 +38,7 @@ public class ItemFairyGlass extends ItemArmor
 
 	}
 
-	protected void addIntData(List<int[]> dataList, IBlockAccess blockAccess, int x, int y, int z)
+	protected void addInt(List<int[]> dataList, IBlockAccess blockAccess, int x, int y, int z)
 	{
 		TileEntity te = blockAccess.getTileEntity(x, y, z);
 
@@ -67,7 +67,7 @@ public class ItemFairyGlass extends ItemArmor
 
 	}
 
-	protected List<int[]> getIntData(IBlockAccess blockAccess, int x, int y, int z, int hMargin, int vMargin)
+	protected List<int[]> getFieldInt(IBlockAccess blockAccess, int x, int y, int z, int hMargin, int vMargin)
 	{
 		ArrayList<int[]> dataList = new ArrayList<int[]>();
 
@@ -75,7 +75,7 @@ public class ItemFairyGlass extends ItemArmor
 			for (int yi = -vMargin; yi <= vMargin; yi++) {
 				for (int zi = -hMargin; zi <= hMargin; zi++) {
 
-					addIntData(dataList, blockAccess, x + xi, y + yi, z + zi);
+					addInt(dataList, blockAccess, x + xi, y + yi, z + zi);
 
 				}
 			}
@@ -84,9 +84,9 @@ public class ItemFairyGlass extends ItemArmor
 		return dataList;
 	}
 
-	protected MessageDataViewInt createMessage(List<int[]> dataList)
+	protected MessageFieldInt createMessage(List<int[]> dataList)
 	{
-		MessageDataViewInt message = new MessageDataViewInt();
+		MessageFieldInt message = new MessageFieldInt();
 
 		message.reset(dataList.size());
 
@@ -100,9 +100,8 @@ public class ItemFairyGlass extends ItemArmor
 
 	protected void onMessageTick(World world, EntityPlayer player, ItemStack arg2)
 	{
-		ModuleFairy.snw.sendTo(
-			createMessage(
-			getIntData(world, (int) player.posX, (int) player.posY, (int) player.posZ, 7, 3)),
+		ModuleFairy.snw.sendTo(createMessage(
+			getFieldInt(world, (int) player.posX, (int) player.posY, (int) player.posZ, 7, 3)),
 			(EntityPlayerMP) player);
 	}
 

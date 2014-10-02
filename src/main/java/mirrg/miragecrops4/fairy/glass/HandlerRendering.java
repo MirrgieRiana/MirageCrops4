@@ -87,12 +87,12 @@ public class HandlerRendering
 
 				}
 
-				if (MessageHandler.lastMessage != null) {
-					for (int index = 0; index < MessageHandler.lastMessage.length; index++) {
-						int x = MessageHandler.lastMessage.xs[index];
-						int y = MessageHandler.lastMessage.ys[index];
-						int z = MessageHandler.lastMessage.zs[index];
-						int value = MessageHandler.lastMessage.values[index];
+				if (MessageHandlerFairyGlass.lastMessage != null) {
+					for (int index = 0; index < MessageHandlerFairyGlass.lastMessage.length; index++) {
+						int x = MessageHandlerFairyGlass.lastMessage.xs[index];
+						int y = MessageHandlerFairyGlass.lastMessage.ys[index];
+						int z = MessageHandlerFairyGlass.lastMessage.zs[index];
+						int value = MessageHandlerFairyGlass.lastMessage.values[index];
 
 						{
 							GL11.glPushMatrix();

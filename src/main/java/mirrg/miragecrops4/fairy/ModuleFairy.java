@@ -13,8 +13,8 @@ import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsMirageMaterial;
 import mirrg.miragecrops4.core.ModuleCore;
 import mirrg.miragecrops4.fairy.glass.HandlerRendering;
 import mirrg.miragecrops4.fairy.glass.ItemFairyGlass;
-import mirrg.miragecrops4.fairy.glass.MessageDataViewInt;
-import mirrg.miragecrops4.fairy.glass.MessageHandler;
+import mirrg.miragecrops4.fairy.glass.MessageFieldInt;
+import mirrg.miragecrops4.fairy.glass.MessageHandlerFairyGlass;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemTool;
@@ -91,7 +91,7 @@ public class ModuleFairy extends ModuleAbstract
 	public void handle(FMLInitializationEvent event)
 	{
 
-		snw.registerMessage(MessageHandler.class, MessageDataViewInt.class, 0, Side.CLIENT);
+		snw.registerMessage(MessageHandlerFairyGlass.class, MessageFieldInt.class, 0, Side.CLIENT);
 
 	}
 

@@ -3,7 +3,7 @@ package mirrg.miragecrops4.fairy.glass;
 import io.netty.buffer.ByteBuf;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 
-public class MessageDataViewInt implements IMessage
+public class MessageFieldInt implements IMessage
 {
 
 	public int length;
@@ -12,7 +12,7 @@ public class MessageDataViewInt implements IMessage
 	public int[] zs;
 	public int[] values;
 
-	public MessageDataViewInt()
+	public MessageFieldInt()
 	{
 
 	}
