@@ -40,6 +40,8 @@ public class ModuleOregen extends ModuleOregenBase
 
 		registerBlocks();
 
+		registerItems();
+
 		registerWorldgen();
 
 	}
@@ -97,6 +99,23 @@ public class ModuleOregen extends ModuleOregenBase
 		createMetaBlock(EnumGlobsMohsHardnessCrystal.values(), (BlockMulti) ItemsOregen.blockOreMohsHardnessCrystal);
 		createMetaBlock(EnumGlobsOtherMetal.values(), (BlockMulti) ItemsOregen.blockOreOtherMetal);
 		createMetaBlock(EnumGlobsMirageMagic.values(), (BlockMulti) ItemsOregen.blockOreMirageMagic);
+
+	}
+
+	protected void registerItems()
+	{
+
+		configureItem(ItemsOregen.itemIngot, "itemIngot");
+		configureItem(ItemsOregen.itemGem, "itemGem");
+
+		((SlotAbstract) ItemsOregen.slotIngot).setName("ingot");
+		((SlotAbstract) ItemsOregen.slotGem).setName("gem");
+
+		// グロブ・スロットの後
+		createMetaItem(ItemsOregen.enumGlobsList,
+			(ItemMultiIcon<MetaitemIcon>) ItemsOregen.itemIngot, ItemsOregen.slotIngot);
+		createMetaItem(ItemsOregen.enumGlobsList,
+			(ItemMultiIcon<MetaitemIcon>) ItemsOregen.itemGem, ItemsOregen.slotGem);
 
 	}
 
