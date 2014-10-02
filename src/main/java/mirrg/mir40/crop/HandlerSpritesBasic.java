@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.core.crop;
+package mirrg.mir40.crop;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;

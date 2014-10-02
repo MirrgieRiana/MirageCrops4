@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.core.crop;
+package mirrg.mir40.crop;
 
 import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;

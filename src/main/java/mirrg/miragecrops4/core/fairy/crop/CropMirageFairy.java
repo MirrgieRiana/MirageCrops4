@@ -1,8 +1,8 @@
 package mirrg.miragecrops4.core.fairy.crop;
 
 import ic2.api.crops.ICropTile;
+import mirrg.mir40.crop.CropMirage;
 import mirrg.mir40.data.EnumNBTTypes;
-import mirrg.miragecrops4.core.crop.CropMirage;
 import net.minecraft.nbt.NBTTagCompound;
 
 /**
