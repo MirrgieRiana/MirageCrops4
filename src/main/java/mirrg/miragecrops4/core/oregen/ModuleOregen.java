@@ -119,9 +119,9 @@ public class ModuleOregen extends ModuleOregenBase
 
 		// グロブ・スロットの後
 		createMetaItem(ItemsOregen.enumGlobsList,
-			(ItemMultiIcon<MetaitemIcon>) ItemsOregen.itemIngot, ItemsOregen.slotIngot);
+			(ItemMultiIcon<MetaitemIcon>) ItemsOregen.itemIngot, ItemsOregen.slotIngot, MultiIcons.INGOT);
 		createMetaItem(ItemsOregen.enumGlobsList,
-			(ItemMultiIcon<MetaitemIcon>) ItemsOregen.itemGem, ItemsOregen.slotGem);
+			(ItemMultiIcon<MetaitemIcon>) ItemsOregen.itemGem, ItemsOregen.slotGem, MultiIcons.GEM);
 
 	}
 

@@ -8,12 +8,14 @@ import mirrg.mir40.glob.GlobAbstract;
 import mirrg.mir40.glob.api.HelpersGlob;
 import mirrg.mir40.glob.api.ISlot;
 import mirrg.mir40.icon.MultiIcon;
+import mirrg.mir40.icon.api.IMultiIconShape;
 import mirrg.mir40.worldgen.FilterBiome;
 import mirrg.mir40.worldgen.WorldGeneratorXYZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre.CountPer;
 import mirrg.miragecrops4.api.oregen.ItemsOregen;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobs;
+import mirrg.miragecrops4.api.oregen.RegisterMaterialColor;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -97,7 +99,9 @@ public abstract class ModuleOregenBase extends ModuleAbstract
 		}
 	}
 
-	protected void createMetaItem(List<IEnumGlobs[]> globsList, ItemMultiIcon<MetaitemIcon> itemMultiIcon, ISlot slot)
+	protected void createMetaItem(
+		List<IEnumGlobs[]> globsList, ItemMultiIcon<MetaitemIcon> itemMultiIcon,
+		ISlot slot, IMultiIconShape multiIconShape)
 	{
 		for (int j = 0; j < globsList.size(); j++) {
 			for (int i = 0; i < globsList.get(j).length; i++) {
@@ -123,7 +127,9 @@ public abstract class ModuleOregenBase extends ModuleAbstract
 					metaitemIcon.unlocalizedName = unlocalizedName;
 					if (getMod().isClient()) {
 						metaitemIcon.iconName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
-						metaitemIcon.multiIcon = new MultiIcon(MultiIcons.INGOT, 0xbb5588);
+						metaitemIcon.multiIcon =
+							new MultiIcon(
+								multiIconShape, RegisterMaterialColor.instance.get(enumGlob.getGlob().getName()));
 					}
 
 					// 鉱石辞書に登録
