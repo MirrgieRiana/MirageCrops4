@@ -36,6 +36,8 @@ public class ModuleOregen extends ModuleOregenBase
 
 		createBlocks();
 
+		createItems();
+
 		registerBlocks();
 
 		registerWorldgen();
@@ -65,6 +67,18 @@ public class ModuleOregen extends ModuleOregenBase
 
 		// グロブスロットのインスタンス生成とAPIへの代入
 		ItemsOregen.slotOre = new SlotAbstract();
+
+	}
+
+	/**
+	 * 各種インスタンス生成と登録とAPIへの代入
+	 */
+	protected void createItems()
+	{
+
+		// アイテムのインスタンス生成と登録とAPIへの代入
+		ItemsOregen.itemIngot = registerItem(new ItemMulti<Metaitem>(), "itemIngot");
+		ItemsOregen.itemGem = registerItem(new ItemMulti<Metaitem>(), "itemGem");
 
 	}
 
