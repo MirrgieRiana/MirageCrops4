@@ -11,6 +11,7 @@ import mirrg.mir40.worldgen.WorldGeneratorXZOre.CountPer;
 import mirrg.miragecrops4.api.oregen.ItemsOregen;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobs;
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -27,6 +28,12 @@ public abstract class ModuleOregenBase extends ModuleAbstract
 	{
 		GameRegistry.registerBlock(block, classItemBlock, name);
 		return block;
+	}
+
+	protected ItemMulti registerItem(ItemMulti item, String name)
+	{
+		GameRegistry.registerItem(item, name);
+		return item;
 	}
 
 	protected void createGlob(IEnumGlobs[] globs)
