@@ -10,6 +10,8 @@ import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsOtherMetal;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobs;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ModuleOregen extends ModuleOregenBase
 {
@@ -17,6 +19,15 @@ public class ModuleOregen extends ModuleOregenBase
 	public ModuleOregen(IMod mod)
 	{
 		super(mod);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void handleClient(FMLPreInitializationEvent event)
+	{
+
+		MultiIcons.registerMultiIconShapes(getMod().getModId() + ":" + getModuleName() + "/multi/");
+
 	}
 
 	@Override
