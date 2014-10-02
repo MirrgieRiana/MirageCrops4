@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
-import mirrg.miragecrops4.core.ModuleCore;
 import mirrg.miragecrops4.core.fairy.crop.ICropDataView;
+import mirrg.miragecrops4.fairy.ModuleFairy;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemArmor;
@@ -100,7 +100,7 @@ public class ItemHelmetDataViewer extends ItemArmor
 					int[] datum = data.get(index);
 					message.set(index, datum[0], datum[1], datum[2], datum[3]);
 				}
-				ModuleCore.snw.sendTo(message, (EntityPlayerMP) player);
+				ModuleFairy.snw.sendTo(message, (EntityPlayerMP) player);
 
 			}
 
