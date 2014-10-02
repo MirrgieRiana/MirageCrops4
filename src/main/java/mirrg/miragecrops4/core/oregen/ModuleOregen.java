@@ -79,8 +79,8 @@ public class ModuleOregen extends ModuleOregenBase
 	{
 
 		// アイテムのインスタンス生成と登録とAPIへの代入
-		ItemsOregen.itemIngot = registerItem(new ItemMulti<Metaitem>(), "itemIngot");
-		ItemsOregen.itemGem = registerItem(new ItemMulti<Metaitem>(), "itemGem");
+		ItemsOregen.itemIngot = registerItem(new ItemMultiIcon<MetaitemIcon>(), "itemIngot");
+		ItemsOregen.itemGem = registerItem(new ItemMultiIcon<MetaitemIcon>(), "itemGem");
 
 		// グロブスロットのインスタンス生成とAPIへの代入
 		ItemsOregen.slotIngot = new SlotAbstract();
