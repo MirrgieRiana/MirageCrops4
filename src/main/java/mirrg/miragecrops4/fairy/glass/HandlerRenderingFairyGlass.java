@@ -84,7 +84,7 @@ public class HandlerRenderingFairyGlass
 	@SideOnly(Side.CLIENT)
 	public void onRenderLast(RenderWorldLastEvent event, EntityPlayer player)
 	{
-		ItemStack helmet = player.getEquipmentInSlot(0);
+		ItemStack helmet = player.getCurrentArmor(3);
 
 		if (helmet != null && helmet.getItem() instanceof ItemFairyGlass) {
 			renderFairyGlassVision(event, player,
