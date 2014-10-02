@@ -10,6 +10,13 @@ public class ItemMultiIcon<T extends MetaitemIcon> extends ItemMulti<T>
 
 	@Override
 	@SideOnly(Side.CLIENT)
+	public boolean requiresMultipleRenderPasses()
+	{
+		return true;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
 	public int getRenderPasses(int metadata)
 	{
 		return multibase.get(metadata).getRenderPasses(metadata);
