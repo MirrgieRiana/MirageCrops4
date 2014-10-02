@@ -4,6 +4,8 @@ import java.util.List;
 
 import mirrg.mir34.modding.IMod;
 import mirrg.mir34.modding.ModuleAbstract;
+import mirrg.mir40.block.BlockMulti;
+import mirrg.mir40.block.Metablock;
 import mirrg.mir40.glob.GlobAbstract;
 import mirrg.mir40.glob.api.HelpersGlob;
 import mirrg.mir40.glob.api.ISlot;
