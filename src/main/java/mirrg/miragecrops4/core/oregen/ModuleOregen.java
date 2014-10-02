@@ -23,7 +23,7 @@ public class ModuleOregen extends ModuleOregenBase
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void handleClient(FMLPreInitializationEvent event)
+	public void handlePreClient(FMLPreInitializationEvent event)
 	{
 
 		MultiIcons.registerMultiIconShapes(getMod().getModId() + ":" + getModuleName() + "/multi/");
