@@ -110,7 +110,7 @@ public abstract class ModuleOregenBase extends ModuleAbstract
 				MetaitemIcon metaitemIcon = new MetaitemIcon();
 
 				// マルチブロックにメタアイテムを登録
-				itemMultiIcon.multibase.bind(i, metaitemIcon);
+				itemMultiIcon.multibase.bind(i + j * 16, metaitemIcon);
 
 				// グロブにアイテムスタックを登録
 				((GlobAbstract) enumGlob.getGlob()).put(slot, new ItemStack(itemMultiIcon, 1, i));
