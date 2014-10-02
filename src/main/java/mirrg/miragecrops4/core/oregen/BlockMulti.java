@@ -14,10 +14,10 @@ import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockMulti extends Block
+public class BlockMulti<T extends Metablock> extends Block
 {
 
-	public Multibase<Metablock> multibase = new Multibase<Metablock>(16);
+	public Multibase<T> multibase = new Multibase<T>(16);
 
 	public BlockMulti()
 	{

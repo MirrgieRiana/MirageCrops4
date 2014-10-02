@@ -23,10 +23,9 @@ public abstract class ModuleOregenBase extends ModuleAbstract
 		super(mod);
 	}
 
-	protected BlockMulti registerBlock(String name)
+	protected BlockMulti registerBlock(BlockMulti block, Class<? extends ItemBlock> classItemBlock, String name)
 	{
-		BlockMulti block = new BlockMulti();
-		GameRegistry.registerBlock(block, ItemBlockMulti.class, name);
+		GameRegistry.registerBlock(block, classItemBlock, name);
 		return block;
 	}
 

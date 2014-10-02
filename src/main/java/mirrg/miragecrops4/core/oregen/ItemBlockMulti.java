@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 public class ItemBlockMulti extends ItemBlock
 {
 
-	protected BlockMulti blockMulti;
+	protected BlockMulti<? extends Metablock> blockMulti;
 
 	public ItemBlockMulti(Block block)
 	{

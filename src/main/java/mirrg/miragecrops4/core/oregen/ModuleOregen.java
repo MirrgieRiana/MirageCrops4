@@ -38,10 +38,14 @@ public class ModuleOregen extends ModuleOregenBase
 	{
 
 		// ブロックのインスタンス生成と登録とAPIへの代入
-		ItemsOregen.blockOreCalciteGroup = registerBlock("blockOreCalciteGroup");
-		ItemsOregen.blockOreMohsHardnessCrystal = registerBlock("blockOreMohsHardnessCrystal");
-		ItemsOregen.blockOreOtherMetal = registerBlock("blockOreOtherMetal");
-		ItemsOregen.blockOreMirageMagic = registerBlock("blockOreMirageMagic");
+		ItemsOregen.blockOreCalciteGroup =
+			registerBlock(new BlockMulti<Metablock>(), ItemBlockMulti.class, "blockOreCalciteGroup");
+		ItemsOregen.blockOreMohsHardnessCrystal =
+			registerBlock(new BlockMulti<Metablock>(), ItemBlockMulti.class, "blockOreMohsHardnessCrystal");
+		ItemsOregen.blockOreOtherMetal =
+			registerBlock(new BlockMulti<Metablock>(), ItemBlockMulti.class, "blockOreOtherMetal");
+		ItemsOregen.blockOreMirageMagic =
+			registerBlock(new BlockMulti<Metablock>(), ItemBlockMulti.class, "blockOreMirageMagic");
 
 		// グロブのインスタンス生成とAPIへの代入
 		for (IEnumGlobs[] enumGlobs : ItemsOregen.enumGlobsList) {
