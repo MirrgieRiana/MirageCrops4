@@ -11,7 +11,7 @@ import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsCalciteGroup;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsMirageMagic;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsMirageMaterial;
 import mirrg.miragecrops4.core.ModuleCore;
-import mirrg.miragecrops4.fairy.glass.HandlerRendering;
+import mirrg.miragecrops4.fairy.glass.HandlerRenderingFairyGlass;
 import mirrg.miragecrops4.fairy.glass.ItemFairyGlass;
 import mirrg.miragecrops4.fairy.glass.MessageFieldInt;
 import mirrg.miragecrops4.fairy.glass.MessageHandlerFairyGlass;
@@ -100,7 +100,7 @@ public class ModuleFairy extends ModuleAbstract
 	public void handleClient(FMLInitializationEvent event)
 	{
 
-		MinecraftForge.EVENT_BUS.register(new HandlerRendering());
+		MinecraftForge.EVENT_BUS.register(new HandlerRenderingFairyGlass());
 
 	}
 
