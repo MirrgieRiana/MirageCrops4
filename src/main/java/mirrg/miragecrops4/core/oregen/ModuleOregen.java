@@ -34,6 +34,8 @@ public class ModuleOregen extends ModuleOregenBase
 	public void handle(FMLPreInitializationEvent event)
 	{
 
+		ItemsOregen.registerMaterialColors();
+
 		createBlocks();
 
 		createItems();
