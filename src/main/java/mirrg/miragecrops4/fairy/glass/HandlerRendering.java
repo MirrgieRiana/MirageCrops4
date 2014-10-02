@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.core;
+package mirrg.miragecrops4.fairy.glass;
 
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;

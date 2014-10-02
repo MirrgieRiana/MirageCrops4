@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.core;
+package mirrg.miragecrops4.fairy.glass;
 
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
+import mirrg.miragecrops4.core.ModuleCore;
 import mirrg.miragecrops4.core.fairy.crop.ICropDataView;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -18,12 +19,12 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-class ItemHelmetDataViewer extends ItemArmor
+public class ItemHelmetDataViewer extends ItemArmor
 {
 
 	private static Hashtable<EntityPlayer, Long> lasttime = new Hashtable<EntityPlayer, Long>();
 
-	ItemHelmetDataViewer(ArmorMaterial arg0, int arg1, int arg2)
+	public ItemHelmetDataViewer(ArmorMaterial arg0, int arg1, int arg2)
 	{
 		super(arg0, arg1, arg2);
 	}

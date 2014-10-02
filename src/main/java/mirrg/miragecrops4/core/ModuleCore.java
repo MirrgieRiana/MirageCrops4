@@ -12,23 +12,17 @@ import mirrg.mir40.crop.HandlerSpritesWrapping;
 import mirrg.mir40.glob.api.HelpersGlob;
 import mirrg.miragecrops4.api.oregen.ItemsOregen;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsCalciteGroup;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsMirageMagic;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsMirageMaterial;
 import mirrg.miragecrops4.core.fairy.crop.CropMirageFairyHousing;
 import mirrg.miragecrops4.core.fairy.crop.CropMirageFairyWorkplace;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -38,14 +32,9 @@ public class ModuleCore extends ModuleAbstract
 
 	public static CreativeTabs creativeTab;
 
-	public static SimpleNetworkWrapper snw;
-
 	public ModuleCore(IMod mod)
 	{
 		super(mod);
-
-		snw = NetworkRegistry.INSTANCE.newSimpleChannel(getMod().getModId());
-
 	}
 
 	@Override
@@ -63,13 +52,6 @@ public class ModuleCore extends ModuleAbstract
 		};
 
 		registerBlocks();
-
-		String name = "craftingHelmetDataViewer";
-		ItemArmor item = new ItemHelmetDataViewer(ItemArmor.ArmorMaterial.IRON, 3, 0);
-		item.setUnlocalizedName(name);
-		item.setTextureName("iron_helmet");
-
-		GameRegistry.registerItem(item, name);
 
 	}
 
@@ -92,6 +74,8 @@ public class ModuleCore extends ModuleAbstract
 
 	protected void configureCrops()
 	{
+		// /give ForgeDevName IC2:itemCropSeed 1 0 {id:80,growth:31,gain:0,resistance:0,scan:4}
+
 		String maskMiragecrops4 = "miragecrops4:crop/blockCrop.%name%.%size%";
 
 		CropMirage crop;
@@ -129,22 +113,9 @@ public class ModuleCore extends ModuleAbstract
 	public void handle(FMLInitializationEvent event)
 	{
 
-		snw.registerMessage(MessageHandler.class, MessageDataViewInt.class, 0, Side.CLIENT);
-
-		// /give ForgeDevName IC2:itemCropSeed 1 0 {id:80,growth:31,gain:0,resistance:0,scan:4}
-
 		registerCrops();
 
 		configureCrops();
-
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void handleClient(FMLInitializationEvent event)
-	{
-
-		MinecraftForge.EVENT_BUS.register(new HandlerRendering());
 
 	}
 
