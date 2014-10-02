@@ -20,6 +20,7 @@ public class ItemMulti<T extends Metaitem> extends Item
 	public ItemMulti()
 	{
 		setCreativeTab(ModuleCore.creativeTab);
+		setHasSubtypes(true);
 	}
 
 	@Override
