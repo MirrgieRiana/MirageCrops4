@@ -19,14 +19,14 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemHelmetDataViewer extends ItemArmor
+public class ItemFairyGlass extends ItemArmor
 {
 
 	private static Hashtable<EntityPlayer, Long> lasttime = new Hashtable<EntityPlayer, Long>();
 
-	public ItemHelmetDataViewer(ArmorMaterial arg0, int arg1, int arg2)
+	public ItemFairyGlass()
 	{
-		super(arg0, arg1, arg2);
+		super(ItemArmor.ArmorMaterial.IRON, 3, 0);
 	}
 
 	@Override

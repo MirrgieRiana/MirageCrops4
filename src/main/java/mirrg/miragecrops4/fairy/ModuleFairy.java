@@ -12,7 +12,7 @@ import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsMirageMagic;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsMirageMaterial;
 import mirrg.miragecrops4.core.ModuleCore;
 import mirrg.miragecrops4.fairy.glass.HandlerRendering;
-import mirrg.miragecrops4.fairy.glass.ItemHelmetDataViewer;
+import mirrg.miragecrops4.fairy.glass.ItemFairyGlass;
 import mirrg.miragecrops4.fairy.glass.MessageDataViewInt;
 import mirrg.miragecrops4.fairy.glass.MessageHandler;
 import net.minecraft.item.Item.ToolMaterial;
@@ -60,7 +60,7 @@ public class ModuleFairy extends ModuleAbstract
 
 		{
 			String name = "craftingHelmetDataViewer";
-			ItemArmor item = new ItemHelmetDataViewer(ItemArmor.ArmorMaterial.IRON, 3, 0);
+			ItemArmor item = new ItemFairyGlass();
 
 			item.setUnlocalizedName(name);
 			item.setTextureName(getMod().getModId() + ":" + getModuleName() + "/" + name);
