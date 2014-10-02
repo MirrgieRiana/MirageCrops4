@@ -25,6 +25,7 @@ public class BlockMulti<T extends Metablock> extends Block
 		setCreativeTab(ModuleCore.creativeTab);
 	}
 
+	@Override
 	public int damageDropped(int damage)
 	{
 		return damage;
