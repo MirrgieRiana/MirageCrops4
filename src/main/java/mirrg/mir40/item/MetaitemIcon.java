@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.core.oregen;
+package mirrg.mir40.item;
 
 import mirrg.mir40.icon.MultiIcon;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -10,7 +10,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class MetaitemIcon extends Metaitem
 {
 
-	protected MultiIcon multiIcon;
+	public MultiIcon multiIcon;
 
 	@SideOnly(Side.CLIENT)
 	public int getRenderPasses(int metadata)

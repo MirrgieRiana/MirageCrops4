@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.core.oregen;
+package mirrg.mir40.item;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
