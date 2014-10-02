@@ -50,7 +50,7 @@ public class ModuleFairy extends ModuleAbstract
 		return "fairy";
 	}
 
-	public static ItemArmor craftingHelmetDataViewer;
+	public static ItemArmor craftingFairyGlass;
 
 	public static ItemTool craftingToolHardHammerSpinachium;
 
@@ -59,15 +59,17 @@ public class ModuleFairy extends ModuleAbstract
 	{
 
 		{
-			String name = "craftingHelmetDataViewer";
-			ItemArmor item = new ItemFairyGlass();
+			String name = "craftingFairyGlass";
+			ItemFairyGlass item = new ItemFairyGlass();
 
 			item.setUnlocalizedName(name);
 			item.setTextureName(getMod().getModId() + ":" + getModuleName() + "/" + name);
 			item.setCreativeTab(ModuleCore.creativeTab);
 			GameRegistry.registerItem(item, name);
 
-			craftingHelmetDataViewer = item;
+			item.armorTexture1 = getMod().getModId() + ":textures/models/armor/" + getModuleName() + "/" + name + "_1.png";
+			item.armorTexture2 = getMod().getModId() + ":textures/models/armor/" + getModuleName() + "/" + name + "_2.png";
+			craftingFairyGlass = item;
 		}
 
 		{
@@ -108,7 +110,7 @@ public class ModuleFairy extends ModuleAbstract
 	public void handle(FMLPostInitializationEvent event)
 	{
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(craftingHelmetDataViewer,
+		GameRegistry.addRecipe(new ShapedOreRecipe(craftingFairyGlass,
 			"III",
 			"IGI",
 			'I', HelpersGlob.getDictionaryName(slotIngot, EnumGlobsMirageMaterial.spinachium.glob),

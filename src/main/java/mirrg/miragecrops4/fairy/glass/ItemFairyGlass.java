@@ -10,6 +10,7 @@ import java.util.List;
 
 import mirrg.miragecrops4.core.fairy.crop.ICropDataView;
 import mirrg.miragecrops4.fairy.ModuleFairy;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemArmor;
@@ -28,6 +29,15 @@ public class ItemFairyGlass extends ItemArmor
 	public ItemFairyGlass()
 	{
 		super(ItemArmor.ArmorMaterial.IRON, 3, 0);
+	}
+
+	public String armorTexture1;
+	public String armorTexture2;
+
+	@Override
+	public String getArmorTexture(ItemStack arg0, Entity arg1, int arg2, String arg3)
+	{
+		return armorTexture1;
 	}
 
 	@Override
