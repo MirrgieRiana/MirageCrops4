@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.fairy.glass;
+package mirrg.mir40.net;
 
 import io.netty.buffer.ByteBuf;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
