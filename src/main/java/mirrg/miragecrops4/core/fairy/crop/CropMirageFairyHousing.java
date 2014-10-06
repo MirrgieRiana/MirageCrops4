@@ -2,6 +2,9 @@ package mirrg.miragecrops4.core.fairy.crop;
 
 import ic2.api.crops.ICropTile;
 
+/**
+ * CropTickごとに周囲9*9*3を検索して、{@link IFairyHirable}を発見次第妖精を派遣する。
+ */
 public class CropMirageFairyHousing extends CropMirageFairy<FairyTagHousing> implements ICropDataView
 {
 

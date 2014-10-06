@@ -2,7 +2,10 @@ package mirrg.miragecrops4.core.fairy.crop;
 
 import ic2.api.crops.ICropTile;
 
-public class CropMirageFairyWorkplace extends CropMirageFairy<FairyTagWorkplace> implements ICropDataView
+/**
+ * {@link IFairyHirable}であり、CropTickごとに派遣された分の妖精の労働効果を受理して妖精を再要請する。
+ */
+public class CropMirageFairyWorkplace extends CropMirageFairy<FairyTagWorkplace> implements ICropDataView, IFairyHirable
 {
 
 	@Override
@@ -40,6 +43,23 @@ public class CropMirageFairyWorkplace extends CropMirageFairy<FairyTagWorkplace>
 	protected int getCurrentVersion()
 	{
 		return 1;
+	}
+
+	@Override
+	public boolean isHirable()
+	{
+		
+		
+		
+		return false;
+	}
+
+	@Override
+	public boolean getFairyCapacity()
+	{
+		
+		
+		return false;
 	}
 
 }

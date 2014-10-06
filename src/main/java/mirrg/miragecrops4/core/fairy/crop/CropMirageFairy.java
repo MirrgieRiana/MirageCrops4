@@ -6,6 +6,7 @@ import mirrg.mir40.data.EnumNBTTypes;
 import net.minecraft.nbt.NBTTagCompound;
 
 /**
+ * オーバーライドはしない。カスタムデータの構築に関するヘルパーのみ提供する。
  * <pre>
  * crop.getCustomData()
  * └ "fairy" : COMPOUND
