@@ -17,9 +17,13 @@ public class CropMirage extends CropCard
 	private int tier = 0;
 	private String discoveredBy = "Mirrgie Riana";
 
-	public void setStatusRegular(String name, int tier, String discoveredBy)
+	public void setName(String name)
 	{
 		this.name = name;
+	}
+
+	public void setStatusRegular(int tier, String discoveredBy)
+	{
 		this.tier = tier;
 		this.discoveredBy = discoveredBy;
 	}
