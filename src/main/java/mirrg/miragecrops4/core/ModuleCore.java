@@ -87,42 +87,42 @@ public class ModuleCore extends ModuleMirageCropsBase
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 12),
 			"X",
 			"Y",
-			'X', HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.calcite.glob),
+			'X', HelpersGlob.getDictionaryName(slotGem, EnumGlobsCalciteGroup.calcite.glob),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 10),
 			"X",
 			"Y",
-			'X', HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.magnesite.glob),
+			'X', HelpersGlob.getDictionaryName(slotGem, EnumGlobsCalciteGroup.magnesite.glob),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 8),
 			"X",
 			"Y",
-			'X', HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.smithsonite.glob),
+			'X', HelpersGlob.getDictionaryName(slotGem, EnumGlobsCalciteGroup.smithsonite.glob),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 6),
 			"X",
 			"Y",
-			'X', HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.siderite.glob),
+			'X', HelpersGlob.getDictionaryName(slotGem, EnumGlobsCalciteGroup.siderite.glob),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 4),
 			"X",
 			"Y",
-			'X', HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.sphaerocobaltite.glob),
+			'X', HelpersGlob.getDictionaryName(slotGem, EnumGlobsCalciteGroup.sphaerocobaltite.glob),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 3),
 			"X",
 			"Y",
-			'X', HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.gaspeite.glob),
+			'X', HelpersGlob.getDictionaryName(slotGem, EnumGlobsCalciteGroup.gaspeite.glob),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 2),
 			"X",
 			"Y",
-			'X', HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.rhodochrosite.glob),
+			'X', HelpersGlob.getDictionaryName(slotGem, EnumGlobsCalciteGroup.rhodochrosite.glob),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 1),
 			"X",
 			"Y",
-			'X', HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.otavite.glob),
+			'X', HelpersGlob.getDictionaryName(slotGem, EnumGlobsCalciteGroup.otavite.glob),
 			'Y', Blocks.torch));
 
 	}
