@@ -1,9 +1,9 @@
 package mirrg.miragecrops4.core;
 
 import mirrg.mir34.modding.ModAbstract;
-import mirrg.miragecrops4.core.oregen.ModuleOregen;
 import mirrg.miragecrops4.crops.ModuleCrops;
 import mirrg.miragecrops4.fairy.ModuleFairy;
+import mirrg.miragecrops4.oregen.ModuleOregen;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;

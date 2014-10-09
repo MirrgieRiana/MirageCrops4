@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.core.oregen;
+package mirrg.miragecrops4.oregen;
 
 import java.util.List;
 

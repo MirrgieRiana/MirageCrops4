@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.core.oregen;
+package mirrg.miragecrops4.oregen;
 
 import mirrg.mir34.modding.IMod;
 import mirrg.mir40.block.BlockMulti;
