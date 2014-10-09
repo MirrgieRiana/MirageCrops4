@@ -22,6 +22,9 @@ public class ItemsOregen
 
 	}
 
+	/**
+	 * 鉱物
+	 */
 	public static enum EnumGlobsCalciteGroup implements IEnumGlobs
 	{
 		calcite,
@@ -49,6 +52,9 @@ public class ItemsOregen
 
 	}
 
+	/**
+	 * 鉱物
+	 */
 	public static enum EnumGlobsMohsHardnessCrystal implements IEnumGlobs
 	{
 		talc,
@@ -78,6 +84,9 @@ public class ItemsOregen
 
 	}
 
+	/**
+	 * 金属
+	 */
 	public static enum EnumGlobsOtherMetal implements IEnumGlobs
 	{
 		bismuth, ;
@@ -98,6 +107,9 @@ public class ItemsOregen
 
 	}
 
+	/**
+	 * 鉱物
+	 */
 	public static enum EnumGlobsMirageMagic implements IEnumGlobs
 	{
 		spinatite, ;
@@ -118,6 +130,9 @@ public class ItemsOregen
 
 	}
 
+	/**
+	 * 金属
+	 */
 	public static enum EnumGlobsMirageMaterial implements IEnumGlobs
 	{
 		spinachium, ;
