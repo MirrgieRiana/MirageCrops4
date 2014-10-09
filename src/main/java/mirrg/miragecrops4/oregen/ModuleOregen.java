@@ -39,6 +39,8 @@ public class ModuleOregen extends ModuleOregenBase
 	public void handlePreClient(FMLPreInitializationEvent event)
 	{
 
+		super.handlePreClient(event);
+
 		MultiIcons.registerMultiIconShapes(getMod().getModId() + ":" + getModuleName() + "/multi/");
 
 	}
