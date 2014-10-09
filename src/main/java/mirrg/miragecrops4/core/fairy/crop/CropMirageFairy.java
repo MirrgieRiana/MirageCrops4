@@ -1,8 +1,8 @@
 package mirrg.miragecrops4.core.fairy.crop;
 
 import ic2.api.crops.ICropTile;
-import mirrg.mir40.crop.CropMirage;
 import mirrg.mir40.data.EnumNBTTypes;
+import mirrg.miragecrops4.crops.CropMirageCropsBase;
 import net.minecraft.nbt.NBTTagCompound;
 
 /**
@@ -16,7 +16,7 @@ import net.minecraft.nbt.NBTTagCompound;
  * 　└ other properties
  * </pre>
  */
-public abstract class CropMirageFairy<T extends IFairyTag> extends CropMirage
+public abstract class CropMirageFairy<T extends IFairyTag> extends CropMirageCropsBase
 {
 
 	/**

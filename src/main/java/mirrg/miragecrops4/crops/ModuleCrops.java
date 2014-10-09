@@ -78,7 +78,7 @@ public class ModuleCrops extends ModuleMirageCropsBase
 
 	protected void registerCrops()
 	{
-		cropSarracenia = registerCrop(80, new CropMirage(), "Sarracenia");
+		cropSarracenia = registerCrop(80, new CropMirageCropsBase(), "Sarracenia");
 		cropLightningSarracenia = registerCrop(81, new CropMirageFairyHousing(), "Lightning Sarracenia");
 		cropRoseQuartz = registerCrop(100, new CropMirageFairyWorkplace(), "Rose Quartz");
 	}
@@ -89,9 +89,9 @@ public class ModuleCrops extends ModuleMirageCropsBase
 
 		String maskMiragecrops4 = "miragecrops4:crop/blockCrop.%name%.%size%";
 
-		CropMirage crop;
+		CropMirageCropsBase crop;
 
-		crop = (CropMirage) cropSarracenia;
+		crop = (CropMirageCropsBase) cropSarracenia;
 		crop.setStatusRegular(3, "Mirrgie Riana");
 		crop.setStatusCrossing(0, 0, 3, 1, 2, "Sarracenia");
 		crop.setMaxSize(5);
@@ -100,7 +100,7 @@ public class ModuleCrops extends ModuleMirageCropsBase
 		crop.setHandlerHarvest(
 			new HandlerHarvestOneItem(crop, new ItemStack(craftingLeaf)));
 
-		crop = (CropMirage) cropLightningSarracenia;
+		crop = (CropMirageCropsBase) cropLightningSarracenia;
 		crop.setStatusRegular(5, "Mirrgie Riana");
 		crop.setStatusCrossing(1, 0, 3, 2, 2, "Sarracenia", "Lightning", "Purple");
 		crop.setMaxSize(5);
@@ -109,7 +109,7 @@ public class ModuleCrops extends ModuleMirageCropsBase
 		crop.setHandlerHarvest(
 			new HandlerHarvestOneItem(crop, new ItemStack(craftingLeaf)));
 
-		crop = (CropMirage) cropRoseQuartz;
+		crop = (CropMirageCropsBase) cropRoseQuartz;
 		crop.setStatusRegular(7, "Mirrgie Riana");
 		crop.setStatusCrossing(2, 0, 1, 3, 0, "Roze");
 		crop.setMaxSize(4);
