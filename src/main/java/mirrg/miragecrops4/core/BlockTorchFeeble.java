@@ -3,7 +3,8 @@ package mirrg.miragecrops4.core;
 import java.util.List;
 
 import mirrg.mir40.math.HelpersMath;
-import net.minecraft.block.BlockTorch;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,12 +12,30 @@ import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockTorchFeeble extends BlockTorch
+public class BlockTorchFeeble extends Block
 {
 
 	public BlockTorchFeeble()
 	{
+		super(Material.circuits);
+	}
 
+	@Override
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
+
+	@Override
+	public boolean renderAsNormalBlock()
+	{
+		return false;
+	}
+
+	@Override
+	public int getRenderType()
+	{
+		return 2;
 	}
 
 	@Override
