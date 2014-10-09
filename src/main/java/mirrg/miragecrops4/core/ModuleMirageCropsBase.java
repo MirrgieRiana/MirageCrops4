@@ -15,8 +15,8 @@ public abstract class ModuleMirageCropsBase extends ModuleAbstract
 		super(mod);
 	}
 
-	protected <B extends Block> B registerBlock(
-		B block, Class<? extends ItemBlock> classItemBlock, String name)
+	protected <T extends Block> T registerBlock(
+		T block, Class<? extends ItemBlock> classItemBlock, String name)
 	{
 		GameRegistry.registerBlock(block, classItemBlock, name);
 		return block;
