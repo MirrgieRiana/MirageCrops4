@@ -2,6 +2,7 @@ package mirrg.miragecrops4.core;
 
 import mirrg.mir34.modding.ModAbstract;
 import mirrg.miragecrops4.core.oregen.ModuleOregen;
+import mirrg.miragecrops4.crops.ModuleCrops;
 import mirrg.miragecrops4.fairy.ModuleFairy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -34,6 +35,7 @@ public class ModMirageCrops4 extends ModAbstract
 		addModule(new ModuleCore(this));
 		addModule(new ModuleOregen(this));
 		addModule(new ModuleFairy(this));
+		addModule(new ModuleCrops(this));
 	}
 
 	/**
