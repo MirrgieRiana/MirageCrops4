@@ -14,6 +14,7 @@ import mirrg.miragecrops4.core.ModuleMirageCropsBase;
 import mirrg.miragecrops4.fairy.glass.HandlerRenderingFairyGlass;
 import mirrg.miragecrops4.fairy.glass.ItemFairyGlass;
 import mirrg.miragecrops4.fairy.glass.MessageHandlerFairyGlass;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraftforge.common.MinecraftForge;
@@ -82,6 +83,7 @@ public class ModuleFairy extends ModuleMirageCropsBase
 
 	public static ItemFairyGlass craftingFairyGlass;
 	public static ItemTool craftingToolHardHammerSpinachium;
+	public static Item dustMirage;
 
 	@Override
 	protected void registerItems()
@@ -89,6 +91,7 @@ public class ModuleFairy extends ModuleMirageCropsBase
 		craftingFairyGlass = registerItem(new ItemFairyGlass(), "craftingFairyGlass");
 		craftingToolHardHammerSpinachium = registerItem(
 			new ItemToolCrafting(), "craftingToolHardHammerSpinachium");
+		dustMirage = registerItem(new Item(), "dustMirage");
 	}
 
 	@Override
@@ -110,6 +113,9 @@ public class ModuleFairy extends ModuleMirageCropsBase
 		craftingToolHardHammerSpinachium.setMaxDamage(32 - 1);
 		OreDictionary.registerOre("craftingToolHardHammer",
 			new ItemStack(craftingToolHardHammerSpinachium, 1, 32767));
+
+		configureItem(dustMirage, "dustMirage");
+		dustMirage.setCreativeTab(ModuleCore.creativeTab);
 
 	}
 
@@ -169,6 +175,14 @@ public class ModuleFairy extends ModuleMirageCropsBase
 		GameRegistry.addSmelting(
 			EnumGlobsMirageMagic.spinatite.glob.copy(slotDust),
 			EnumGlobsMirageMaterial.spinachium.glob.copy(slotIngot), 1);
+
+		// カルサイト粉+スピナチウム粉→ミラージュパウダー
+		GameRegistry.addRecipe(new ShapelessOreRecipe(
+			new ItemStack(dustMirage, 4),
+			HelpersGlob.getDictionaryName(slotDust, EnumGlobsCalciteGroup.calcite.getGlob()),
+			HelpersGlob.getDictionaryName(slotDust, EnumGlobsCalciteGroup.calcite.getGlob()),
+			HelpersGlob.getDictionaryName(slotDust, EnumGlobsCalciteGroup.calcite.getGlob()),
+			HelpersGlob.getDictionaryName(slotDust, EnumGlobsMirageMaterial.spinachium.getGlob())));
 
 	}
 
