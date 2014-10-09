@@ -3,7 +3,6 @@ package mirrg.miragecrops4.oregen;
 import java.util.List;
 
 import mirrg.mir34.modding.IMod;
-import mirrg.mir34.modding.ModuleAbstract;
 import mirrg.mir40.block.BlockMulti;
 import mirrg.mir40.block.Metablock;
 import mirrg.mir40.glob.GlobAbstract;
@@ -21,25 +20,19 @@ import mirrg.mir40.worldgen.WorldGeneratorXZOre.CountPer;
 import mirrg.miragecrops4.api.oregen.ItemsOregen;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobs;
 import mirrg.miragecrops4.api.oregen.RegisterMaterialColor;
+import mirrg.miragecrops4.core.ModuleMirageCropsBase;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public abstract class ModuleOregenBase extends ModuleAbstract
+public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 {
 
 	public ModuleOregenBase(IMod mod)
 	{
 		super(mod);
-	}
-
-	protected BlockMulti registerBlock(BlockMulti block, Class<? extends ItemBlock> classItemBlock, String name)
-	{
-		GameRegistry.registerBlock(block, classItemBlock, name);
-		return block;
 	}
 
 	protected ItemMulti registerItem(ItemMulti item, String name)
@@ -57,11 +50,7 @@ public abstract class ModuleOregenBase extends ModuleAbstract
 
 	protected void configureBlock(Block block, String name)
 	{
-		block.setHardness(3.0F);
-		block.setResistance(5.0F);
-		block.setStepSound(Block.soundTypePiston);
-		block.setBlockName(name);
-		block.setBlockTextureName(getMod().getModId() + ":" + getModuleName() + "/" + name);
+		configureBlock(block, name, 3.0F, 5.0F, Block.soundTypePiston);
 	}
 
 	protected void configureItem(Item item, String name)
