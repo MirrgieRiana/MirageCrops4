@@ -6,6 +6,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Block.SoundType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public abstract class ModuleMirageCropsBase extends ModuleAbstract
@@ -15,6 +17,75 @@ public abstract class ModuleMirageCropsBase extends ModuleAbstract
 	{
 		super(mod);
 	}
+
+	//
+
+	@Override
+	public void handle(FMLPreInitializationEvent event)
+	{
+
+		register();
+
+		configure();
+
+	}
+
+	@Override
+	public void handle(FMLPostInitializationEvent event)
+	{
+
+		registerRecipes();
+
+	}
+
+	//
+
+	protected void register()
+	{
+
+		registerBlocks();
+
+		registerItems();
+
+	}
+
+	protected void configure()
+	{
+
+		configureBlocks();
+
+		configureItems();
+
+	}
+
+	//
+
+	protected void registerBlocks()
+	{
+
+	}
+
+	protected void registerItems()
+	{
+
+	}
+
+	protected void configureBlocks()
+	{
+
+	}
+
+	protected void configureItems()
+	{
+
+	}
+
+	protected void registerRecipes()
+	{
+
+	}
+
+	//
 
 	protected <T extends Block> T registerBlock(
 		T block, Class<? extends ItemBlock> classItemBlock, String name)

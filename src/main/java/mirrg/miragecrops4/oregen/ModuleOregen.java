@@ -27,6 +27,14 @@ public class ModuleOregen extends ModuleOregenBase
 	}
 
 	@Override
+	public String getModuleName()
+	{
+		return "oregen";
+	}
+
+	//
+
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void handlePreClient(FMLPreInitializationEvent event)
 	{
@@ -41,22 +49,19 @@ public class ModuleOregen extends ModuleOregenBase
 
 		ItemsOregen.registerMaterialColors();
 
-		createBlocks();
-
-		createItems();
-
-		registerBlocks();
-
-		registerItems();
+		super.handle(event);
 
 		registerWorldgen();
 
 	}
 
+	//
+
 	/**
 	 * 各種インスタンス生成と登録とAPIへの代入
 	 */
-	protected void createBlocks()
+	@Override
+	protected void registerBlocks()
 	{
 
 		// ブロックのインスタンス生成と登録とAPIへの代入
@@ -82,7 +87,8 @@ public class ModuleOregen extends ModuleOregenBase
 	/**
 	 * 各種インスタンス生成と登録とAPIへの代入
 	 */
-	protected void createItems()
+	@Override
+	protected void registerItems()
 	{
 
 		// アイテムのインスタンス生成と登録とAPIへの代入
@@ -95,7 +101,8 @@ public class ModuleOregen extends ModuleOregenBase
 
 	}
 
-	protected void registerBlocks()
+	@Override
+	protected void configureBlocks()
 	{
 
 		configureBlock(ItemsOregen.blockOreCalciteGroup, "blockOreCalciteGroup");
@@ -113,7 +120,8 @@ public class ModuleOregen extends ModuleOregenBase
 
 	}
 
-	protected void registerItems()
+	@Override
+	protected void configureItems()
 	{
 
 		configureItem(ItemsOregen.itemIngot, "itemIngot");
@@ -250,12 +258,6 @@ public class ModuleOregen extends ModuleOregenBase
 		biome = "extreme";
 		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
-	}
-
-	@Override
-	public String getModuleName()
-	{
-		return "oregen";
 	}
 
 }

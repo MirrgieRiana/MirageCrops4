@@ -11,7 +11,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -31,23 +30,15 @@ public class ModuleCore extends ModuleMirageCropsBase
 		return "core";
 	}
 
+	//
+
 	@Override
 	public void handle(FMLPreInitializationEvent event)
 	{
 
 		prepareCreativeTabs();
 
-		registerBlocks();
-
-		configureBlocks();
-
-	}
-
-	@Override
-	public void handle(FMLPostInitializationEvent event)
-	{
-
-		registerRecipes();
+		super.handle(event);
 
 	}
 
@@ -73,13 +64,15 @@ public class ModuleCore extends ModuleMirageCropsBase
 
 	}
 
-	private void registerBlocks()
+	@Override
+	protected void registerBlocks()
 	{
 		blockTorchFeeble = registerBlock(
 			new BlockTorchFeeble(), ItemBlockTorchFeeble.class, "blockTorchFeeble");
 	}
 
-	private void configureBlocks()
+	@Override
+	protected void configureBlocks()
 	{
 
 		configureBlock(blockTorchFeeble, "blockTorchFeeble", 0.0F, 0.0F, Block.soundTypeWood);
@@ -87,7 +80,8 @@ public class ModuleCore extends ModuleMirageCropsBase
 
 	}
 
-	private void registerRecipes()
+	@Override
+	protected void registerRecipes()
 	{
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 12),
