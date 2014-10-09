@@ -2,7 +2,6 @@ package mirrg.miragecrops4.core;
 
 import static mirrg.miragecrops4.api.oregen.ItemsOregen.*;
 import mirrg.mir34.modding.IMod;
-import mirrg.mir34.modding.ModuleAbstract;
 import mirrg.mir40.glob.api.HelpersGlob;
 import mirrg.miragecrops4.api.oregen.ItemsOregen;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsCalciteGroup;
@@ -10,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -17,7 +17,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ModuleCore extends ModuleAbstract
+public class ModuleCore extends ModuleMirageCropsBase
 {
 
 	public ModuleCore(IMod mod)
@@ -38,6 +38,8 @@ public class ModuleCore extends ModuleAbstract
 		prepareCreativeTabs();
 
 		registerBlocks();
+
+		configureBlocks();
 
 	}
 
@@ -73,29 +75,60 @@ public class ModuleCore extends ModuleAbstract
 
 	private void registerBlocks()
 	{
+		blockTorchFeeble = registerBlock(
+			new BlockTorchFeeble(), ItemBlockTorchFeeble.class, "blockTorchFeeble");
+	}
 
-		{
-			String name = "blockTorchFeeble";
-			BlockTorchFeeble block = new BlockTorchFeeble();
-			block.setHardness(0.0F);
-			block.setLightLevel(12);
-			block.setStepSound(Block.soundTypeWood);
-			block.setBlockName(name);
-			block.setBlockTextureName(getMod().getModId() + ":" + getModuleName() + "/" + name);
-			block.setCreativeTab(creativeTab);
-			GameRegistry.registerBlock(block, name);
-			blockTorchFeeble = block;
-		}
+	private void configureBlocks()
+	{
+
+		configureBlock(blockTorchFeeble, "blockTorchFeeble", 0.0F, 0.0F, Block.soundTypeWood);
+		blockTorchFeeble.setCreativeTab(creativeTab);
 
 	}
 
 	private void registerRecipes()
 	{
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(blockTorchFeeble,
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 12),
 			"X",
 			"Y",
 			'X', HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.calcite.glob),
+			'Y', Blocks.torch));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 10),
+			"X",
+			"Y",
+			'X', HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.magnesite.glob),
+			'Y', Blocks.torch));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 8),
+			"X",
+			"Y",
+			'X', HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.smithsonite.glob),
+			'Y', Blocks.torch));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 6),
+			"X",
+			"Y",
+			'X', HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.siderite.glob),
+			'Y', Blocks.torch));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 4),
+			"X",
+			"Y",
+			'X', HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.sphaerocobaltite.glob),
+			'Y', Blocks.torch));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 3),
+			"X",
+			"Y",
+			'X', HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.gaspeite.glob),
+			'Y', Blocks.torch));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 2),
+			"X",
+			"Y",
+			'X', HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.rhodochrosite.glob),
+			'Y', Blocks.torch));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 1),
+			"X",
+			"Y",
+			'X', HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.otavite.glob),
 			'Y', Blocks.torch));
 
 	}
