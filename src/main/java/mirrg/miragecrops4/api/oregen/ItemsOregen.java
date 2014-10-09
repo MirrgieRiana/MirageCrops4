@@ -150,6 +150,7 @@ public class ItemsOregen
 	public static ISlot slotOre;
 	public static ISlot slotIngot;
 	public static ISlot slotGem;
+	public static ISlot slotDust;
 
 	public static Block blockOreCalciteGroup;
 	public static Block blockOreMohsHardnessCrystal;
@@ -158,6 +159,7 @@ public class ItemsOregen
 
 	public static Item itemIngot;
 	public static Item itemGem;
+	public static Item itemDust;
 
 	public static void registerMaterialColor(String name, int color)
 	{

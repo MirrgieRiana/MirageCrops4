@@ -96,10 +96,12 @@ public class ModuleOregen extends ModuleOregenBase
 		// アイテムのインスタンス生成と登録とAPIへの代入
 		ItemsOregen.itemIngot = registerItem(new ItemMultiIcon<MetaitemIcon>(), "itemIngot");
 		ItemsOregen.itemGem = registerItem(new ItemMultiIcon<MetaitemIcon>(), "itemGem");
+		ItemsOregen.itemDust = registerItem(new ItemMultiIcon<MetaitemIcon>(), "itemDust");
 
 		// グロブスロットのインスタンス生成とAPIへの代入
 		ItemsOregen.slotIngot = new SlotAbstract();
 		ItemsOregen.slotGem = new SlotAbstract();
+		ItemsOregen.slotDust = new SlotAbstract();
 
 	}
 
@@ -128,15 +130,19 @@ public class ModuleOregen extends ModuleOregenBase
 
 		configureItem(ItemsOregen.itemIngot, "itemIngot");
 		configureItem(ItemsOregen.itemGem, "itemGem");
+		configureItem(ItemsOregen.itemDust, "itemDust");
 
 		((SlotAbstract) ItemsOregen.slotIngot).setName("ingot");
 		((SlotAbstract) ItemsOregen.slotGem).setName("gem");
+		((SlotAbstract) ItemsOregen.slotDust).setName("dust");
 
 		// グロブ・スロットの後
 		createMetaItem(ItemsOregen.enumGlobsList,
 			(ItemMultiIcon<MetaitemIcon>) ItemsOregen.itemIngot, ItemsOregen.slotIngot, MultiIcons.INGOT);
 		createMetaItem(ItemsOregen.enumGlobsList,
 			(ItemMultiIcon<MetaitemIcon>) ItemsOregen.itemGem, ItemsOregen.slotGem, MultiIcons.GEM);
+		createMetaItem(ItemsOregen.enumGlobsList,
+			(ItemMultiIcon<MetaitemIcon>) ItemsOregen.itemDust, ItemsOregen.slotDust, MultiIcons.DUST);
 
 	}
 
