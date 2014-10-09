@@ -20,16 +20,44 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ModuleCore extends ModuleAbstract
 {
 
-	public static CreativeTabs creativeTab;
-
 	public ModuleCore(IMod mod)
 	{
 		super(mod);
 	}
 
 	@Override
+	public String getModuleName()
+	{
+		return "core";
+	}
+
+	@Override
 	public void handle(FMLPreInitializationEvent event)
 	{
+
+		prepareCreativeTabs();
+
+		registerBlocks();
+
+	}
+
+	@Override
+	public void handle(FMLPostInitializationEvent event)
+	{
+
+		registerRecipes();
+
+	}
+
+	//
+
+	public static CreativeTabs creativeTab;
+
+	public static Block blockTorchFeeble;
+
+	private void prepareCreativeTabs()
+	{
+
 		creativeTab = new CreativeTabs("miragecrops4") {
 
 			@Override
@@ -41,31 +69,9 @@ public class ModuleCore extends ModuleAbstract
 
 		};
 
-		registerBlocks();
-
 	}
 
-	@Override
-	public void handle(FMLPostInitializationEvent event)
-	{
-
-		GameRegistry.addRecipe(new ShapedOreRecipe(blockTorchFeeble,
-			"X",
-			"Y",
-			'X', HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.calcite.glob),
-			'Y', Blocks.torch));
-
-	}
-
-	@Override
-	public String getModuleName()
-	{
-		return "core";
-	}
-
-	public static Block blockTorchFeeble;
-
-	protected void registerBlocks()
+	private void registerBlocks()
 	{
 
 		{
@@ -80,6 +86,17 @@ public class ModuleCore extends ModuleAbstract
 			GameRegistry.registerBlock(block, name);
 			blockTorchFeeble = block;
 		}
+
+	}
+
+	private void registerRecipes()
+	{
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(blockTorchFeeble,
+			"X",
+			"Y",
+			'X', HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.calcite.glob),
+			'Y', Blocks.torch));
 
 	}
 
