@@ -43,8 +43,9 @@ public class ModuleCrops extends ModuleMirageCropsBase
 
 	}
 
-	protected <T extends CropCard> T registerCrop(int id, T crop)
+	protected <T extends CropMirage> T registerCrop(int id, T crop, String name)
 	{
+		crop.setName(name);
 		Crops.instance.registerCrop(crop, id);
 		return crop;
 	}
@@ -77,9 +78,9 @@ public class ModuleCrops extends ModuleMirageCropsBase
 
 	protected void registerCrops()
 	{
-		cropSarracenia = registerCrop(80, new CropMirage());
-		cropLightningSarracenia = registerCrop(81, new CropMirageFairyHousing());
-		cropRoseQuartz = registerCrop(100, new CropMirageFairyWorkplace());
+		cropSarracenia = registerCrop(80, new CropMirage(), "Sarracenia");
+		cropLightningSarracenia = registerCrop(81, new CropMirageFairyHousing(), "Lightning Sarracenia");
+		cropRoseQuartz = registerCrop(100, new CropMirageFairyWorkplace(), "Rose Quartz");
 	}
 
 	protected void configureCrops()
@@ -91,7 +92,7 @@ public class ModuleCrops extends ModuleMirageCropsBase
 		CropMirage crop;
 
 		crop = (CropMirage) cropSarracenia;
-		crop.setStatusRegular("Sarracenia", 3, "Mirrgie Riana");
+		crop.setStatusRegular(3, "Mirrgie Riana");
 		crop.setStatusCrossing(0, 0, 3, 1, 2, "Sarracenia");
 		crop.setMaxSize(5);
 		crop.setHandlerSprites(
@@ -100,7 +101,7 @@ public class ModuleCrops extends ModuleMirageCropsBase
 			new HandlerHarvestOneItem(crop, new ItemStack(craftingLeaf)));
 
 		crop = (CropMirage) cropLightningSarracenia;
-		crop.setStatusRegular("Lightning Sarracenia", 5, "Mirrgie Riana");
+		crop.setStatusRegular(5, "Mirrgie Riana");
 		crop.setStatusCrossing(1, 0, 3, 2, 2, "Sarracenia", "Lightning", "Purple");
 		crop.setMaxSize(5);
 		crop.setHandlerSprites(
@@ -109,7 +110,7 @@ public class ModuleCrops extends ModuleMirageCropsBase
 			new HandlerHarvestOneItem(crop, new ItemStack(craftingLeaf)));
 
 		crop = (CropMirage) cropRoseQuartz;
-		crop.setStatusRegular("Rose Quartz", 7, "Mirrgie Riana");
+		crop.setStatusRegular(7, "Mirrgie Riana");
 		crop.setStatusCrossing(2, 0, 1, 3, 0, "Roze");
 		crop.setMaxSize(4);
 		crop.setHandlerSprites(
