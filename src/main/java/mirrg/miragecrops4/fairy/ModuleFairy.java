@@ -105,6 +105,7 @@ public class ModuleFairy extends ModuleMirageCropsBase
 
 		configureItem(craftingToolHardHammerSpinachium, "craftingToolHardHammerSpinachium");
 		craftingToolHardHammerSpinachium.setCreativeTab(ModuleCore.creativeTab);
+		craftingToolHardHammerSpinachium.setMaxDamage(32 - 1);
 		OreDictionary.registerOre("craftingToolHardHammer",
 			new ItemStack(craftingToolHardHammerSpinachium, 1, 32767));
 
