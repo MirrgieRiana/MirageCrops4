@@ -17,10 +17,21 @@ public class HelpersReflectCrop
 
 	static {
 
+		Class clazz = null;
+		try {
+			clazz = Class.forName("ic2.core.block.TileEntityCrop");
+		} catch (ClassNotFoundException e1) {
+			try {
+				clazz = Class.forName("ic2.core.crop.TileEntityCrop");
+			} catch (ClassNotFoundException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		class_TileEntityCrop = clazz;
+
 		try {
 
 			// class initialization
-			class_TileEntityCrop = Class.forName("ic2.core.block.TileEntityCrop");
 
 			// class member initialization
 			field_upgraded = class_TileEntityCrop.getField("upgraded");
