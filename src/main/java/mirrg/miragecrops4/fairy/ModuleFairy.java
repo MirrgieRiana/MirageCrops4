@@ -16,6 +16,7 @@ import mirrg.miragecrops4.fairy.glass.HandlerRenderingFairyGlass;
 import mirrg.miragecrops4.fairy.glass.ItemFairyGlass;
 import mirrg.miragecrops4.fairy.glass.MessageHandlerFairyGlass;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
@@ -91,6 +92,32 @@ public class ModuleFairy extends ModuleMirageCropsBase
 		craftingToolHardHammerSpinachium = registerItem(
 			new ItemTool(1, ToolMaterial.IRON, new HashSet()) {
 
+				@Override
+				public boolean hasContainerItem(ItemStack stack)
+				{
+					return true;
+				}
+
+				@Override
+				public boolean doesContainerItemLeaveCraftingGrid(ItemStack p_77630_1_)
+				{
+					return false;
+				}
+
+				@Override
+				public ItemStack getContainerItem(ItemStack itemStack)
+				{
+					ItemStack itemStack2 = itemStack.copy();
+
+					itemStack2.setItemDamage(itemStack2.getItemDamage() + 1);
+
+					if (itemStack2.getMaxDamage() < itemStack2.getItemDamage()) {
+						return null;
+					}
+
+					return itemStack2;
+				}
+
 			}, "craftingToolHardHammerSpinachium");
 	}
 
@@ -110,7 +137,8 @@ public class ModuleFairy extends ModuleMirageCropsBase
 
 		configureItem(craftingToolHardHammerSpinachium, "craftingToolHardHammerSpinachium");
 		craftingToolHardHammerSpinachium.setCreativeTab(ModuleCore.creativeTab);
-		OreDictionary.registerOre("craftingToolHardHammer", craftingToolHardHammerSpinachium);
+		OreDictionary.registerOre("craftingToolHardHammer",
+			new ItemStack(craftingToolHardHammerSpinachium, 1, 32767));
 
 	}
 
