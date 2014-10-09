@@ -7,6 +7,8 @@ import mirrg.mir40.net.MessageFieldInt;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsCalciteGroup;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsMirageMagic;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsMirageMaterial;
+import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsMohsHardnessCrystal;
+import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobs;
 import mirrg.miragecrops4.core.ModuleCore;
 import mirrg.miragecrops4.core.ModuleMirageCropsBase;
 import mirrg.miragecrops4.fairy.glass.HandlerRenderingFairyGlass;
@@ -111,6 +113,23 @@ public class ModuleFairy extends ModuleMirageCropsBase
 
 	}
 
+	private void addRecipeMineral(IEnumGlobs enumGlob)
+	{
+
+		// 鉱石→結晶
+		GameRegistry.addRecipe(new ShapelessOreRecipe(
+			enumGlob.getGlob().copy(slotGem),
+			HelpersGlob.getDictionaryName(slotOre, enumGlob.getGlob()),
+			"craftingToolHardHammer"));
+
+		// 結晶→粉末
+		GameRegistry.addRecipe(new ShapelessOreRecipe(
+			enumGlob.getGlob().copy(slotDust),
+			HelpersGlob.getDictionaryName(slotGem, enumGlob.getGlob()),
+			"craftingToolHardHammer"));
+
+	}
+
 	@Override
 	protected void registerRecipes()
 	{
@@ -121,6 +140,7 @@ public class ModuleFairy extends ModuleMirageCropsBase
 			'I', HelpersGlob.getDictionaryName(slotIngot, EnumGlobsMirageMaterial.spinachium.glob),
 			'G', HelpersGlob.getDictionaryName(slotGem, EnumGlobsCalciteGroup.calcite.glob)));
 
+		// 124578スピナチウム+6棒→スピナチウムのハンマー
 		GameRegistry.addRecipe(new ShapedOreRecipe(craftingToolHardHammerSpinachium,
 			"II ",
 			"IIS",
@@ -128,13 +148,26 @@ public class ModuleFairy extends ModuleMirageCropsBase
 			'I', HelpersGlob.getDictionaryName(slotIngot, EnumGlobsMirageMaterial.spinachium.glob),
 			'S', "stickWood"));
 
-		GameRegistry.addRecipe(new ShapelessOreRecipe(
-			EnumGlobsCalciteGroup.calcite.glob.copy(slotGem),
-			HelpersGlob.getDictionaryName(slotOre, EnumGlobsCalciteGroup.calcite.glob),
-			"craftingToolHardHammer"));
+		// 鉱物 鉱石→結晶→粉末
+		for (IEnumGlobs enumGlob : EnumGlobsMirageMagic.values()) {
+			addRecipeMineral(enumGlob);
+		}
+		for (IEnumGlobs enumGlob : EnumGlobsMohsHardnessCrystal.values()) {
+			addRecipeMineral(enumGlob);
+		}
+		for (IEnumGlobs enumGlob : EnumGlobsCalciteGroup.values()) {
+			addRecipeMineral(enumGlob);
+		}
 
+		// スピナチウム鉱→スピナチウム
 		GameRegistry.addSmelting(
 			EnumGlobsMirageMagic.spinatite.glob.copy(slotOre),
+			EnumGlobsMirageMaterial.spinachium.glob.copy(slotIngot), 1);
+		GameRegistry.addSmelting(
+			EnumGlobsMirageMagic.spinatite.glob.copy(slotGem),
+			EnumGlobsMirageMaterial.spinachium.glob.copy(slotIngot), 1);
+		GameRegistry.addSmelting(
+			EnumGlobsMirageMagic.spinatite.glob.copy(slotDust),
 			EnumGlobsMirageMaterial.spinachium.glob.copy(slotIngot), 1);
 
 	}
