@@ -1,9 +1,6 @@
 package mirrg.miragecrops4.fairy;
 
 import static mirrg.miragecrops4.api.oregen.ItemsOregen.*;
-
-import java.util.HashSet;
-
 import mirrg.mir34.modding.IMod;
 import mirrg.mir40.glob.api.HelpersGlob;
 import mirrg.mir40.net.MessageFieldInt;
@@ -15,7 +12,6 @@ import mirrg.miragecrops4.core.ModuleMirageCropsBase;
 import mirrg.miragecrops4.fairy.glass.HandlerRenderingFairyGlass;
 import mirrg.miragecrops4.fairy.glass.ItemFairyGlass;
 import mirrg.miragecrops4.fairy.glass.MessageHandlerFairyGlass;
-import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraftforge.common.MinecraftForge;
@@ -90,35 +86,7 @@ public class ModuleFairy extends ModuleMirageCropsBase
 	{
 		craftingFairyGlass = registerItem(new ItemFairyGlass(), "craftingFairyGlass");
 		craftingToolHardHammerSpinachium = registerItem(
-			new ItemTool(1, ToolMaterial.IRON, new HashSet()) {
-
-				@Override
-				public boolean hasContainerItem(ItemStack stack)
-				{
-					return true;
-				}
-
-				@Override
-				public boolean doesContainerItemLeaveCraftingGrid(ItemStack p_77630_1_)
-				{
-					return false;
-				}
-
-				@Override
-				public ItemStack getContainerItem(ItemStack itemStack)
-				{
-					ItemStack itemStack2 = itemStack.copy();
-
-					itemStack2.setItemDamage(itemStack2.getItemDamage() + 1);
-
-					if (itemStack2.getMaxDamage() < itemStack2.getItemDamage()) {
-						return null;
-					}
-
-					return itemStack2;
-				}
-
-			}, "craftingToolHardHammerSpinachium");
+			new ItemToolCrafting(), "craftingToolHardHammerSpinachium");
 	}
 
 	@Override
