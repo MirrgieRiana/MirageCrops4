@@ -2,7 +2,7 @@ package mirrg.miragecrops4.fairy.glass;
 
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
-import ic2.core.crop.TileEntityCrop;
+import ic2.api.crops.ICropTile;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -54,17 +54,17 @@ public class ItemFairyGlass extends ItemArmor
 		TileEntity te = blockAccess.getTileEntity(x, y, z);
 
 		if (te != null) {
-			if (te instanceof TileEntityCrop) {
-				TileEntityCrop tec = (TileEntityCrop) te;
+			if (te instanceof ICropTile) {
+				ICropTile tec = (ICropTile) te;
 
-				if (tec.id >= 0) {
-					CropCard crop = Crops.instance.getCropList()[tec.id];
+				if (tec.getID() >= 0) {
+					CropCard crop = Crops.instance.getCropList()[tec.getID()];
 					int value;
 
 					if (crop instanceof ICropDataView) {
 						value = ((ICropDataView) crop).getDataView(tec);
 					} else {
-						value = crop.growthDuration(tec) - tec.growthPoints;
+						value = 0; //crop.growthDuration(tec) - tec.growthPoints;
 					}
 
 					dataList.add(new int[] {
