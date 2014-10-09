@@ -3,21 +3,19 @@ package mirrg.miragecrops4.crops;
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
 import mirrg.mir34.modding.IMod;
-import mirrg.mir34.modding.ModuleAbstract;
 import mirrg.mir40.crop.CropMirage;
 import mirrg.mir40.crop.HandlerHarvestOneItem;
 import mirrg.mir40.crop.HandlerSpritesBasic;
 import mirrg.mir40.crop.HandlerSpritesWrapping;
+import mirrg.miragecrops4.core.ModuleCore;
+import mirrg.miragecrops4.core.ModuleMirageCropsBase;
 import mirrg.miragecrops4.core.fairy.crop.CropMirageFairyHousing;
 import mirrg.miragecrops4.core.fairy.crop.CropMirageFairyWorkplace;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
 
-public class ModuleCrops extends ModuleAbstract
+public class ModuleCrops extends ModuleMirageCropsBase
 {
 
 	public ModuleCrops(IMod mod)
@@ -31,17 +29,13 @@ public class ModuleCrops extends ModuleAbstract
 		return "crops";
 	}
 
-	@Override
-	public void handle(FMLPreInitializationEvent event)
-	{
-
-		registerBlocks();
-
-	}
+	//
 
 	@Override
 	public void handle(FMLInitializationEvent event)
 	{
+
+		super.handle(event);
 
 		registerCrops();
 
@@ -49,18 +43,36 @@ public class ModuleCrops extends ModuleAbstract
 
 	}
 
+	protected <T extends CropCard> T registerCrop(int id, T crop)
+	{
+		Crops.instance.registerCrop(crop, id);
+		return crop;
+	}
+
 	//
+
+	public static Item craftingLeaf;
 
 	public static CropCard cropSarracenia;
 	public static CropCard cropLightningSarracenia;
 	public static CropCard cropRoseQuartz;
 
-	public static Item craftingLeaf;
-
-	protected <T extends CropCard> T registerCrop(int id, T crop)
+	@Override
+	protected void registerItems()
 	{
-		Crops.instance.registerCrop(crop, id);
-		return crop;
+
+		craftingLeaf = registerItem(new Item(), "craftingLeaf");
+
+	}
+
+	@Override
+	protected void configureItems()
+	{
+
+		configureItem(craftingLeaf, "craftingLeaf");
+		craftingLeaf.setCreativeTab(ModuleCore.creativeTab);
+		craftingLeaf.setTextureName(getMod().getModId() + ":" + getModuleName() + "/" + "craftingLeafSarracenia");
+
 	}
 
 	protected void registerCrops()
@@ -104,21 +116,6 @@ public class ModuleCrops extends ModuleAbstract
 			new HandlerSpritesBasic(crop, maskMiragecrops4));
 		crop.setHandlerHarvest(
 			new HandlerHarvestOneItem(crop, new ItemStack(craftingLeaf)));
-
-	}
-
-	protected void registerBlocks()
-	{
-
-		{
-			String name = "craftingLeaf";
-			Item item = new Item();
-			item.setUnlocalizedName(name);
-			item.setCreativeTab(CreativeTabs.tabMaterials);
-			item.setTextureName(getMod().getModId() + ":" + getModuleName() + "/" + "craftingLeafSarracenia");
-			GameRegistry.registerItem(item, name);
-			craftingLeaf = item;
-		}
 
 	}
 
