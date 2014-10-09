@@ -10,7 +10,6 @@ import mirrg.mir40.glob.api.HelpersGlob;
 import mirrg.mir40.glob.api.ISlot;
 import mirrg.mir40.icon.MultiIcon;
 import mirrg.mir40.icon.api.IMultiIconShape;
-import mirrg.mir40.item.ItemMulti;
 import mirrg.mir40.item.ItemMultiIcon;
 import mirrg.mir40.item.MetaitemIcon;
 import mirrg.mir40.worldgen.FilterBiome;
@@ -22,7 +21,6 @@ import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobs;
 import mirrg.miragecrops4.api.oregen.RegisterMaterialColor;
 import mirrg.miragecrops4.core.ModuleMirageCropsBase;
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -35,12 +33,6 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		super(mod);
 	}
 
-	protected ItemMulti registerItem(ItemMulti item, String name)
-	{
-		GameRegistry.registerItem(item, name);
-		return item;
-	}
-
 	protected void createGlob(IEnumGlobs[] globs)
 	{
 		for (int i = 0; i < globs.length; i++) {
@@ -51,12 +43,6 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 	protected void configureBlock(Block block, String name)
 	{
 		configureBlock(block, name, 3.0F, 5.0F, Block.soundTypePiston);
-	}
-
-	protected void configureItem(Item item, String name)
-	{
-		item.setUnlocalizedName(name);
-		item.setTextureName(getMod().getModId() + ":" + getModuleName() + "/" + name);
 	}
 
 	protected void createMetaBlock(IEnumGlobs[] globs, BlockMulti blockMulti)

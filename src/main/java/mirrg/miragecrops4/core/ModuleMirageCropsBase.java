@@ -4,6 +4,7 @@ import mirrg.mir34.modding.IMod;
 import mirrg.mir34.modding.ModuleAbstract;
 import net.minecraft.block.Block;
 import net.minecraft.block.Block.SoundType;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -30,6 +31,18 @@ public abstract class ModuleMirageCropsBase extends ModuleAbstract
 		block.setHardness(hardness);
 		block.setResistance(resistance);
 		block.setStepSound(stepSound);
+	}
+
+	protected <T extends Item> T registerItem(T item, String name)
+	{
+		GameRegistry.registerItem(item, name);
+		return item;
+	}
+
+	protected void configureItem(Item item, String name)
+	{
+		item.setUnlocalizedName(name);
+		item.setTextureName(getMod().getModId() + ":" + getModuleName() + "/" + name);
 	}
 
 }
