@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.core.fairy.crop;
+package mirrg.miragecrops4.crops.fairy;
 
 import static mirrg.mir40.crop.reflect.HelpersReflectCrop.*;
 import ic2.api.crops.ICropTile;

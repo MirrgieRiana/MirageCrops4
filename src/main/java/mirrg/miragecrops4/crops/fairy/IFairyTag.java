@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.core.fairy.crop;
+package mirrg.miragecrops4.crops.fairy;
 
 import net.minecraft.nbt.NBTTagCompound;
 
