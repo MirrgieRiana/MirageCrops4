@@ -78,7 +78,7 @@ public class ModModDumper extends ModAbstract
 	{
 		for (IModule module : modules) {
 			if (module instanceof ILoadCompleteHandler) {
-
+				((ILoadCompleteHandler) module).handle(event);
 			}
 		}
 	}
