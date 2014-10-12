@@ -1,38 +1,24 @@
-package mirrg.moddumper1.core;
+package mirrg.moddumper1.core.dumper;
 
 import java.util.HashSet;
 
-import mirrg.mir34.modding.IMod;
-import mirrg.moddumper1.ModuleDumperAbstract;
+import mirrg.moddumper1.IDumper;
+import mirrg.moddumper1.ILogger;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.RecipeSorter;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 
-public class ModuleDumperRecipeSorter extends ModuleDumperAbstract
+public class DumperRecipeSorter implements IDumper
 {
 
-	public ModuleDumperRecipeSorter(IMod mod)
-	{
-		super(mod);
-	}
-
 	@Override
-	public String getModuleName()
+	public String getName()
 	{
 		return "dumperRecipeSorter";
 	}
 
 	@Override
-	public void handle(FMLPostInitializationEvent event)
-	{
-		super.handle(event);
-
-		processDump();
-	}
-
-	@Override
-	protected void onDump()
+	public void onDump(final ILogger logger)
 	{
 		HashSet<Class<?>> scaned = new HashSet<Class<?>>();
 
@@ -44,13 +30,13 @@ public class ModuleDumperRecipeSorter extends ModuleDumperAbstract
 				if (o instanceof IRecipe) {
 					IRecipe r = (IRecipe) o;
 
-					log("RECIPE CLASS,TOSTR,'%s',CN,'%s',CATE,'%s'",
+					logger.log("RECIPE CLASS,TOSTR,'%s',CN,'%s',CATE,'%s'",
 						r,
 						r.getClass().getName(),
 						RecipeSorter.getCategory(r));
 
 				} else {
-					log("Unknown Recipe Class: " + o + " : " + o.getClass().getName());
+					logger.log("Unknown Recipe Class: " + o + " : " + o.getClass().getName());
 				}
 
 			}

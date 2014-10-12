@@ -1,46 +1,41 @@
-package mirrg.moddumper1.core;
+package mirrg.moddumper1.core.dumper;
 
 import java.util.Map.Entry;
 
-import mirrg.mir34.modding.IMod;
 import mirrg.moddumper1.HelpersDump;
 import mirrg.moddumper1.ICallable1;
-import mirrg.moddumper1.ModuleDumperAbstract;
+import mirrg.moddumper1.IDumper;
+import mirrg.moddumper1.ILogger;
 import mods.railcraft.api.fuel.FuelManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
-public class ModuleDumperRailCraftFuels extends ModuleDumperAbstract
+public class DumperRailCraftFuels implements IDumper
 {
 
-	public ModuleDumperRailCraftFuels(IMod mod)
-	{
-		super(mod);
-	}
-
 	@Override
-	public String getModuleName()
+	public String getName()
 	{
 		return "dumperRailCraftFuels";
 	}
 
 	@Override
-	protected void onDump()
+	public void onDump(final ILogger logger)
 	{
-		log("[FluidFuels]");
+		logger.log("[FluidFuels]");
 
 		for (Entry<Fluid, Integer> entry : FuelManager.boilerFuel.entrySet()) {
 
-			log("FLUID,LN,'%s',UN,'%s',V,'%s'",
+			logger.log("FLUID,LN,'%s',UN,'%s',V,'%s'",
 				entry.getKey().getLocalizedName(new FluidStack(entry.getKey(), 1000)),
 				entry.getKey().getName(),
 				entry.getValue());
 
 		}
 
-		log("[SolidFuels]");
+		logger.log("[SolidFuels]");
 
 		HelpersDump.eachAllItemStacks(new ICallable1<ItemStack>() {
 
@@ -51,7 +46,7 @@ public class ModuleDumperRailCraftFuels extends ModuleDumperAbstract
 
 				if (itemBurnTime != 0) {
 
-					log("ITEM,%s,'%s'",
+					logger.log("ITEM,%s,'%s'",
 						HelpersDump.getItemStackString(object),
 						itemBurnTime);
 

@@ -1,34 +1,29 @@
-package mirrg.moddumper1.core;
+package mirrg.moddumper1.core.dumper;
 
 import java.lang.reflect.Method;
 
-import mirrg.mir34.modding.IMod;
 import mirrg.moddumper1.HelpersDump;
 import mirrg.moddumper1.ICallable1;
-import mirrg.moddumper1.ModuleDumperAbstract;
+import mirrg.moddumper1.IDumper;
+import mirrg.moddumper1.ILogger;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 
-public class ModuleDumperThaumCraft extends ModuleDumperAbstract
+public class DumperThaumCraft implements IDumper
 {
 
-	public ModuleDumperThaumCraft(IMod mod)
-	{
-		super(mod);
-	}
-
 	@Override
-	public String getModuleName()
+	public String getName()
 	{
 		return "dumperThaumCraft";
 	}
 
 	@Override
-	protected void onDump()
+	public void onDump(final ILogger logger)
 	{
 		if (gethod_getObjectTags == null) {
-			log("Thaumcraft is not available");
+			logger.log("Thaumcraft is not available");
 			return;
 		}
 
@@ -46,11 +41,11 @@ public class ModuleDumperThaumCraft extends ModuleDumperAbstract
 				if (objectTags == null) return;
 
 				try {
-					log("ITEM,%s,V,'%s'",
+					logger.log("ITEM,%s,V,'%s'",
 						HelpersDump.getItemStackString(object),
 						getAspectListString(objectTags));
 				} catch (Exception e) {
-					log(e.toString());
+					logger.log(e.toString());
 				}
 			}
 

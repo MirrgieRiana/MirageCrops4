@@ -2,7 +2,7 @@ package mirrg.moddumper1;
 
 import mirrg.mir34.modding.IModule;
 import mirrg.mir34.modding.ModAbstract;
-import mirrg.moddumper1.core.LoaderModules;
+import mirrg.moddumper1.core.dumper.ModuleDumper;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -32,7 +32,7 @@ public class ModModDumper extends ModAbstract
 	@Override
 	protected void loadModules()
 	{
-		LoaderModules.loadModules(this);
+		addModule(new ModuleDumper(this));
 	}
 
 	public static Configuration configuration;

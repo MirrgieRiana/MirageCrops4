@@ -21,9 +21,9 @@ public class HelpersDump
 
 	public static void eachAllItemStacks(ICallable1<ItemStack> handler)
 	{
-	
+
 		for (int i = 0; i < 65536; i++) {
-	
+
 			Item item;
 			try {
 				item = Item.getItemById(i);
@@ -31,9 +31,9 @@ public class HelpersDump
 				FMLLog.info(e.toString());
 				continue;
 			}
-	
+
 			if (item == null) continue;
-	
+
 			LinkedList<ItemStack> list = new LinkedList<ItemStack>();
 			try {
 				item.getSubItems(item, null, list);
@@ -41,26 +41,26 @@ public class HelpersDump
 				FMLLog.info(e.toString());
 				continue;
 			}
-	
+
 			for (ItemStack itemStack : list) {
-	
+
 				if (itemStack == null) continue;
-	
+
 				try {
 					handler.call(itemStack);
 				} catch (RuntimeException e) {
 					FMLLog.info(e.toString());
 					continue;
 				}
-	
+
 			}
-	
+
 			try {
 			} catch (Exception e) {
 				FMLLog.info(e.toString());
 			}
 		}
-	
+
 	}
 
 }
