@@ -37,13 +37,20 @@ public class ModuleDumper extends ModuleAbstract implements ILoadCompleteHandler
 	public void handle(FMLPreInitializationEvent event)
 	{
 		File parentDir = new File(Minecraft.getMinecraft().mcDataDir, getMod().getModId());
+		FMLLog.info("parent directry path = %s", parentDir.getAbsolutePath());
+
 		dumperWrappers = loadDumperWrappers(ModModDumper.configuration, "module", parentDir);
 	}
 
 	private static List<DumperWrapper> loadDumperWrappers(
 		Configuration configuration, String categoryName, File parentDir)
 	{
-		List<DumperWrapper> dumperWrappers = enableDumperWrappers(configuration, categoryName, getDumpers());
+		List<IDumper> dumpers = getDumpers();
+		FMLLog.info("all dumpers count = %s", dumpers.size());
+
+		List<DumperWrapper> dumperWrappers = enableDumperWrappers(configuration, categoryName, dumpers);
+		FMLLog.info("enabled dumpers count = %s", dumperWrappers.size());
+
 		initDumperWrappers(dumperWrappers, parentDir);
 		return dumperWrappers;
 	}
@@ -95,6 +102,7 @@ public class ModuleDumper extends ModuleAbstract implements ILoadCompleteHandler
 	@Override
 	public void handle(FMLLoadCompleteEvent event)
 	{
+		FMLLog.info("dumping... (FMLLoadCompleteEvent)");
 		for (DumperWrapper dumperWrapper : dumperWrappers) {
 			dumperWrapper.onDump();
 		}
