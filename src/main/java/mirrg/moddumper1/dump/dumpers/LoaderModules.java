@@ -1,8 +1,8 @@
-package mirrg.moddumper1.core.dumper;
+package mirrg.moddumper1.dump.dumpers;
 
 import java.util.List;
 
-import mirrg.moddumper1.IDumper;
+import mirrg.moddumper1.dump.IDumper;
 
 public class LoaderModules
 {

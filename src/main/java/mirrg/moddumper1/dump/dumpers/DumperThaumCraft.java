@@ -1,16 +1,16 @@
-package mirrg.moddumper1.core.dumper;
+package mirrg.moddumper1.dump.dumpers;
 
 import java.lang.reflect.Method;
 
-import mirrg.moddumper1.HelpersDump;
-import mirrg.moddumper1.ICallable1;
-import mirrg.moddumper1.IDumper;
-import mirrg.moddumper1.ILogger;
+import mirrg.moddumper1.dump.IDumper;
+import mirrg.moddumper1.dump.ILogger;
+import mirrg.moddumper1.dump.helpers.HelpersDump;
+import mirrg.moddumper1.dump.helpers.ICallable1;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 
-public class DumperThaumCraft implements IDumper
+class DumperThaumCraft implements IDumper
 {
 
 	@Override
@@ -74,7 +74,7 @@ public class DumperThaumCraft implements IDumper
 	{
 		try {
 			gethod_getObjectTags =
-				(Method) Class.forName(
+				Class.forName(
 					"thaumcraft.common.lib.crafting.ThaumcraftCraftingManager")
 					.getMethod("getObjectTags", ItemStack.class);
 		} catch (Exception e) {

@@ -1,14 +1,14 @@
-package mirrg.moddumper1.core.dumper;
+package mirrg.moddumper1.dump.dumpers;
 
 import java.util.HashSet;
 
-import mirrg.moddumper1.IDumper;
-import mirrg.moddumper1.ILogger;
+import mirrg.moddumper1.dump.IDumper;
+import mirrg.moddumper1.dump.ILogger;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.RecipeSorter;
 
-public class DumperRecipeSorter implements IDumper
+class DumperRecipeSorter implements IDumper
 {
 
 	@Override

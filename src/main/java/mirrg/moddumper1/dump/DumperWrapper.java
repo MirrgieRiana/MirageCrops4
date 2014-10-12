@@ -1,4 +1,4 @@
-package mirrg.moddumper1;
+package mirrg.moddumper1.dump;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,7 +7,7 @@ import java.io.PrintStream;
 
 import cpw.mods.fml.common.FMLLog;
 
-public class DumperWrapper implements ILogger
+class DumperWrapper implements ILogger
 {
 
 	public DumperWrapper(IDumper dumper)

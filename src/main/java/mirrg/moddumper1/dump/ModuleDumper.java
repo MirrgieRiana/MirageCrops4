@@ -1,4 +1,4 @@
-package mirrg.moddumper1.core.dumper;
+package mirrg.moddumper1.dump;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -6,10 +6,9 @@ import java.util.List;
 
 import mirrg.mir34.modding.IMod;
 import mirrg.mir34.modding.ModuleAbstract;
-import mirrg.moddumper1.DumperWrapper;
-import mirrg.moddumper1.IDumper;
 import mirrg.moddumper1.ILoadCompleteHandler;
 import mirrg.moddumper1.ModModDumper;
+import mirrg.moddumper1.dump.dumpers.LoaderModules;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.FMLLog;
@@ -38,7 +37,7 @@ public class ModuleDumper extends ModuleAbstract implements ILoadCompleteHandler
 	public void handle(FMLPreInitializationEvent event)
 	{
 		File parentDir = new File(Minecraft.getMinecraft().mcDataDir, getMod().getModId());
-		dumperWrappers = loadDumperWrappers(((ModModDumper) getMod()).configuration, "module", parentDir);
+		dumperWrappers = loadDumperWrappers(ModModDumper.configuration, "module", parentDir);
 	}
 
 	private static List<DumperWrapper> loadDumperWrappers(

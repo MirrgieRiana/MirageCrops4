@@ -2,7 +2,7 @@ package mirrg.moddumper1;
 
 import mirrg.mir34.modding.IModule;
 import mirrg.mir34.modding.ModAbstract;
-import mirrg.moddumper1.core.dumper.ModuleDumper;
+import mirrg.moddumper1.dump.ModuleDumper;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;

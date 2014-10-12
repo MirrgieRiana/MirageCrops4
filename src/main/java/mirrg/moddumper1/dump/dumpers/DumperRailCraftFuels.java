@@ -1,18 +1,18 @@
-package mirrg.moddumper1.core.dumper;
+package mirrg.moddumper1.dump.dumpers;
 
 import java.util.Map.Entry;
 
-import mirrg.moddumper1.HelpersDump;
-import mirrg.moddumper1.ICallable1;
-import mirrg.moddumper1.IDumper;
-import mirrg.moddumper1.ILogger;
+import mirrg.moddumper1.dump.IDumper;
+import mirrg.moddumper1.dump.ILogger;
+import mirrg.moddumper1.dump.helpers.HelpersDump;
+import mirrg.moddumper1.dump.helpers.ICallable1;
 import mods.railcraft.api.fuel.FuelManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
-public class DumperRailCraftFuels implements IDumper
+class DumperRailCraftFuels implements IDumper
 {
 
 	@Override

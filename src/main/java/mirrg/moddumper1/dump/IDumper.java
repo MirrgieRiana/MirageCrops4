@@ -1,4 +1,4 @@
-package mirrg.moddumper1;
+package mirrg.moddumper1.dump;
 
 public interface IDumper
 {
