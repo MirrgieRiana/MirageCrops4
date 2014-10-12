@@ -1,5 +1,7 @@
 package mirrg.moddumper1.core;
 
+import java.lang.reflect.Method;
+
 import mirrg.mir34.modding.IMod;
 import mirrg.moddumper1.HelpersDump;
 import mirrg.moddumper1.ICallable1;
@@ -25,6 +27,11 @@ public class ModuleDumperThaumCraft extends ModuleDumperAbstract
 	@Override
 	protected void onDump()
 	{
+		if (gethod_getObjectTags == null) {
+			log("Thaumcraft is not available");
+			return;
+		}
+
 		HelpersDump.eachAllItemStacks(new ICallable1<ItemStack>() {
 
 			@Override
@@ -32,7 +39,7 @@ public class ModuleDumperThaumCraft extends ModuleDumperAbstract
 			{
 				AspectList objectTags;
 				try {
-					objectTags = getObjectTags(object);
+					objectTags = (AspectList) gethod_getObjectTags.invoke(null, object);
 				} catch (Exception e) {
 					throw new RuntimeException(e);
 				}
@@ -66,10 +73,17 @@ public class ModuleDumperThaumCraft extends ModuleDumperAbstract
 		return sb.toString();
 	}
 
-	public static AspectList getObjectTags(ItemStack arg0) throws Exception
+	public static Method gethod_getObjectTags = null;
+
+	static
 	{
-		return (AspectList) Class.forName("thaumcraft.common.lib.crafting.ThaumcraftCraftingManager")
-			.getMethod("getObjectTags", ItemStack.class).invoke(null, arg0);
+		try {
+			gethod_getObjectTags =
+				(Method) Class.forName(
+					"thaumcraft.common.lib.crafting.ThaumcraftCraftingManager")
+					.getMethod("getObjectTags", ItemStack.class);
+		} catch (Exception e) {
+		}
 	}
 
 }
