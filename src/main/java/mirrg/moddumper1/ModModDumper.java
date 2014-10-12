@@ -3,6 +3,7 @@ package mirrg.moddumper1;
 import mirrg.mir34.modding.IModule;
 import mirrg.mir34.modding.ModAbstract;
 import mirrg.moddumper1.core.LoaderModules;
+import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -34,6 +35,8 @@ public class ModModDumper extends ModAbstract
 		LoaderModules.loadModules(this);
 	}
 
+	public static Configuration configuration;
+
 	/**
 	 * 必ずオーバーライドしなければならない
 	 */
@@ -41,7 +44,13 @@ public class ModModDumper extends ModAbstract
 	@EventHandler
 	public void handle(FMLPreInitializationEvent event)
 	{
+		configuration = new Configuration(event.getSuggestedConfigurationFile());
+		configuration.load();
+
 		super.handle(event);
+
+		configuration.save();
+		configuration = null;
 	}
 
 	/**
