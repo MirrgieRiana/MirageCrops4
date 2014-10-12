@@ -7,7 +7,6 @@ import mirrg.moddumper1.ModuleDumperAbstract;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import cpw.mods.fml.common.FMLLog;
 
 public class ModuleDumperThaumCraft extends ModuleDumperAbstract
 {
@@ -40,11 +39,11 @@ public class ModuleDumperThaumCraft extends ModuleDumperAbstract
 				if (objectTags == null) return;
 
 				try {
-					FMLLog.info("ITEM,%s,V,'%s'",
+					log("ITEM,%s,V,'%s'",
 						HelpersDump.getItemStackString(object),
 						getAspectListString(objectTags));
 				} catch (Exception e) {
-					FMLLog.info(e.toString());
+					log(e.toString());
 				}
 			}
 

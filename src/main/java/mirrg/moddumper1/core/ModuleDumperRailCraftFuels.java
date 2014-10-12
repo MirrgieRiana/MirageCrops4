@@ -11,7 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-import cpw.mods.fml.common.FMLLog;
 
 public class ModuleDumperRailCraftFuels extends ModuleDumperAbstract
 {
@@ -30,18 +29,18 @@ public class ModuleDumperRailCraftFuels extends ModuleDumperAbstract
 	@Override
 	protected void onDump()
 	{
-		FMLLog.info("[RailCraftBoilerFuels] FluidFuels");
+		log("[FluidFuels]");
 
 		for (Entry<Fluid, Integer> entry : FuelManager.boilerFuel.entrySet()) {
 
-			FMLLog.info("FLUID,LN,'%s',UN,'%s',V,'%s'",
+			log("FLUID,LN,'%s',UN,'%s',V,'%s'",
 				entry.getKey().getLocalizedName(new FluidStack(entry.getKey(), 1000)),
 				entry.getKey().getName(),
 				entry.getValue());
 
 		}
 
-		FMLLog.info("[RailCraftBoilerFuels] SolidFuels");
+		log("[SolidFuels]");
 
 		HelpersDump.eachAllItemStacks(new ICallable1<ItemStack>() {
 
@@ -52,7 +51,7 @@ public class ModuleDumperRailCraftFuels extends ModuleDumperAbstract
 
 				if (itemBurnTime != 0) {
 
-					FMLLog.info("ITEM,%s,'%s'",
+					log("ITEM,%s,'%s'",
 						HelpersDump.getItemStackString(object),
 						itemBurnTime);
 

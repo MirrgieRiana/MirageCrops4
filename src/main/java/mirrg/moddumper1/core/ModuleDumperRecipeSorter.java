@@ -7,7 +7,6 @@ import mirrg.moddumper1.ModuleDumperAbstract;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.RecipeSorter;
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 
 public class ModuleDumperRecipeSorter extends ModuleDumperAbstract
@@ -45,13 +44,13 @@ public class ModuleDumperRecipeSorter extends ModuleDumperAbstract
 				if (o instanceof IRecipe) {
 					IRecipe r = (IRecipe) o;
 
-					FMLLog.info("RECIPE CLASS,TOSTR,'%s',CN,'%s',CATE,'%s'",
+					log("RECIPE CLASS,TOSTR,'%s',CN,'%s',CATE,'%s'",
 						r,
 						r.getClass().getName(),
 						RecipeSorter.getCategory(r));
 
 				} else {
-					FMLLog.info("Unknown Recipe Class: " + o + " : " + o.getClass().getName());
+					log("Unknown Recipe Class: " + o + " : " + o.getClass().getName());
 				}
 
 			}

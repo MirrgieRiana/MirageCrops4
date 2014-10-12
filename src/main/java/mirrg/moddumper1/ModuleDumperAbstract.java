@@ -35,11 +35,11 @@ public abstract class ModuleDumperAbstract extends ModuleAbstract implements ILo
 	protected void processDump()
 	{
 		if (enabled) {
-			FMLLog.info("[%s] Dump Start", getModuleName());
+			log("[%s] Dump Start", getModuleName());
 			onDump();
-			FMLLog.info("[%s] Dump Start", getModuleName());
+			log("[%s] Dump Start", getModuleName());
 		} else {
-			FMLLog.info("[%s] Dump Canceled", getModuleName());
+			log("[%s] Dump Canceled", getModuleName());
 		}
 	}
 
@@ -47,5 +47,10 @@ public abstract class ModuleDumperAbstract extends ModuleAbstract implements ILo
 	 * ダンプ処理。{@link ModuleDumperAbstract#processDump}から呼び出される
 	 */
 	protected abstract void onDump();
+
+	protected void log(String format, Object... args)
+	{
+		FMLLog.info(format, args);
+	}
 
 }
