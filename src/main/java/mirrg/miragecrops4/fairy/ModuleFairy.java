@@ -14,7 +14,6 @@ import mirrg.miragecrops4.core.ModuleMirageCropsBase;
 import mirrg.miragecrops4.fairy.glass.HandlerRenderingFairyGlass;
 import mirrg.miragecrops4.fairy.glass.ItemFairyGlass;
 import mirrg.miragecrops4.fairy.glass.MessageHandlerFairyGlass;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraftforge.common.MinecraftForge;
@@ -83,7 +82,7 @@ public class ModuleFairy extends ModuleMirageCropsBase
 
 	public static ItemFairyGlass craftingFairyGlass;
 	public static ItemTool craftingToolHardHammerSpinachium;
-	public static Item dustMirage;
+	public static ItemDustMirage dustMirage;
 
 	@Override
 	protected void registerItems()
@@ -91,7 +90,7 @@ public class ModuleFairy extends ModuleMirageCropsBase
 		craftingFairyGlass = registerItem(new ItemFairyGlass(), "craftingFairyGlass");
 		craftingToolHardHammerSpinachium = registerItem(
 			new ItemToolCrafting(), "craftingToolHardHammerSpinachium");
-		dustMirage = registerItem(new Item(), "dustMirage");
+		dustMirage = registerItem(new ItemDustMirage(), "dustMirage");
 	}
 
 	@Override
