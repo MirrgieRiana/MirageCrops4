@@ -63,8 +63,6 @@ public class ItemFairyGlass extends ItemArmor
 
 					if (crop instanceof ICropDataView) {
 						value = ((ICropDataView) crop).getDataView(tec);
-					} else {
-						value = 0; //crop.growthDuration(tec) - tec.growthPoints;
 					}
 
 					dataList.add(new int[] {
