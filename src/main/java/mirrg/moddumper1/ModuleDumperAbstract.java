@@ -22,6 +22,8 @@ public abstract class ModuleDumperAbstract extends ModuleAbstract implements ILo
 
 	protected boolean enabled = false;
 
+	protected boolean finished = false;
+
 	protected PrintStream logStream;
 
 	@Override
@@ -74,13 +76,17 @@ public abstract class ModuleDumperAbstract extends ModuleAbstract implements ILo
 	 */
 	protected void processDump()
 	{
-		if (enabled) {
-			info("[%s] Dump Start", getModuleName());
-			log("// ###################### %s ######################", getModuleName());
-			onDump();
-			info("[%s] Dump Finish", getModuleName());
-		} else {
-			info("[%s] Dump Canceled", getModuleName());
+		if (!finished) {
+			finished = true;
+
+			if (enabled) {
+				info("[%s] Dump Start", getModuleName());
+				log("// ###################### %s ######################", getModuleName());
+				onDump();
+				info("[%s] Dump Finish", getModuleName());
+			} else {
+				info("[%s] Dump Canceled", getModuleName());
+			}
 		}
 	}
 
