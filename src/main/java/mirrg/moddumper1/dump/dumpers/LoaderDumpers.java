@@ -4,10 +4,10 @@ import java.util.List;
 
 import mirrg.moddumper1.dump.IDumper;
 
-public class LoaderModules
+public class LoaderDumpers
 {
 
-	public static void loadModules(List<IDumper> list)
+	public static void loadDumpers(List<IDumper> list)
 	{
 		list.add(new DumperRecipeSorter());
 		list.add(new DumperThaumCraft());

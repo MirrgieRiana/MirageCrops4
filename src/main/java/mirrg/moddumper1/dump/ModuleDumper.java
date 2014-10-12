@@ -8,7 +8,7 @@ import mirrg.mir34.modding.IMod;
 import mirrg.mir34.modding.ModuleAbstract;
 import mirrg.moddumper1.ILoadCompleteHandler;
 import mirrg.moddumper1.ModModDumper;
-import mirrg.moddumper1.dump.dumpers.LoaderModules;
+import mirrg.moddumper1.dump.dumpers.LoaderDumpers;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.FMLLog;
@@ -51,7 +51,7 @@ public class ModuleDumper extends ModuleAbstract implements ILoadCompleteHandler
 	private static List<IDumper> getDumpers()
 	{
 		List<IDumper> dumpers = new ArrayList<IDumper>();
-		LoaderModules.loadModules(dumpers);
+		LoaderDumpers.loadDumpers(dumpers);
 		return dumpers;
 	}
 
