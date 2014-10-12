@@ -68,7 +68,7 @@ public abstract class ModAbstract implements IMod
 		return dependencies;
 	}
 
-	private ArrayList<IModule> modules = new ArrayList<IModule>();
+	protected ArrayList<IModule> modules = new ArrayList<IModule>();
 
 	@Override
 	public void addModule(IModule module)
