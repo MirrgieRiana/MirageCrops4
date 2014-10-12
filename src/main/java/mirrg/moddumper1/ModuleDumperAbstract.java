@@ -1,7 +1,13 @@
 package mirrg.moddumper1;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintStream;
+
 import mirrg.mir34.modding.IMod;
 import mirrg.mir34.modding.ModuleAbstract;
+import net.minecraft.client.Minecraft;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -16,11 +22,45 @@ public abstract class ModuleDumperAbstract extends ModuleAbstract implements ILo
 
 	protected boolean enabled = false;
 
+	protected PrintStream logStream;
+
 	@Override
 	public void handle(FMLPreInitializationEvent event)
 	{
 		enabled = ((ModModDumper) getMod()).configuration.getBoolean(getModuleName(), "module", false,
 			"if true, output dump data when LoadComplete");
+
+		if (enabled) {
+			prepareLogFile();
+		}
+
+	}
+
+	protected void prepareLogFile()
+	{
+		File logFile = new File(
+			Minecraft.getMinecraft().mcDataDir, getMod().getModId() + "/" + getModuleName() + ".txt");
+		if (!logFile.exists()) {
+			File dir = logFile.getParentFile();
+			if (!dir.exists()) {
+				if (!dir.mkdirs()) {
+					new RuntimeException("could not make " + dir).printStackTrace();
+					return;
+				}
+			}
+			try {
+				logFile.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+				return;
+			}
+		}
+		try {
+			logStream = new PrintStream(logFile);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return;
+		}
 	}
 
 	@Override
@@ -35,11 +75,12 @@ public abstract class ModuleDumperAbstract extends ModuleAbstract implements ILo
 	protected void processDump()
 	{
 		if (enabled) {
-			log("[%s] Dump Start", getModuleName());
+			info("[%s] Dump Start", getModuleName());
+			log("// ###################### %s ######################", getModuleName());
 			onDump();
-			log("[%s] Dump Start", getModuleName());
+			info("[%s] Dump Finish", getModuleName());
 		} else {
-			log("[%s] Dump Canceled", getModuleName());
+			info("[%s] Dump Canceled", getModuleName());
 		}
 	}
 
@@ -49,6 +90,11 @@ public abstract class ModuleDumperAbstract extends ModuleAbstract implements ILo
 	protected abstract void onDump();
 
 	protected void log(String format, Object... args)
+	{
+		logStream.println(String.format(format, args));
+	}
+
+	protected void info(String format, Object... args)
 	{
 		FMLLog.info(format, args);
 	}
