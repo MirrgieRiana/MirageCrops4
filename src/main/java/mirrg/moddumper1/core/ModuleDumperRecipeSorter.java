@@ -27,11 +27,13 @@ public class ModuleDumperRecipeSorter extends ModuleDumperAbstract
 	@Override
 	public void handle(FMLPostInitializationEvent event)
 	{
-		processDraw();
+		super.handle(event);
+
+		processDump();
 	}
 
 	@Override
-	protected void onLoadComplete()
+	protected void onDump()
 	{
 		HashSet<Class<?>> scaned = new HashSet<Class<?>>();
 

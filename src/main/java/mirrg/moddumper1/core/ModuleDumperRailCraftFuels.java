@@ -27,7 +27,7 @@ public class ModuleDumperRailCraftFuels extends ModuleDumperAbstract
 	}
 
 	@Override
-	protected void onLoadComplete()
+	protected void onDump()
 	{
 		FMLLog.info("[RailCraftBoilerFuels] FluidFuels");
 

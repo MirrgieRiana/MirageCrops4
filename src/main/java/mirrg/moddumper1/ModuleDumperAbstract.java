@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public abstract class ModuleDumperAbstract extends ModuleAbstract implements ILoadCompleteHandler
 {
@@ -17,22 +18,39 @@ public abstract class ModuleDumperAbstract extends ModuleAbstract implements ILo
 		super(mod);
 	}
 
+	protected boolean enabled = false;
+
+	@Override
+	public void handle(FMLPreInitializationEvent event)
+	{
+		enabled = ((ModModDumper) getMod()).configuration.getBoolean(getModuleName(), "module", false,
+			"if true, output dump data when LoadComplete");
+	}
+
 	@Override
 	public void handle(FMLLoadCompleteEvent event)
 	{
-		processDraw();
+		processDump();
 	}
 
-	protected void processDraw()
+	/**
+	 * ダンプ命令。コンフィグで処理内容が変わる
+	 */
+	protected void processDump()
 	{
-		FMLLog.info("[%s] Draw Start", getModuleName());
-
-		onLoadComplete();
-
-		FMLLog.info("[%s] Draw Start", getModuleName());
+		if (enabled) {
+			FMLLog.info("[%s] Dump Start", getModuleName());
+			onDump();
+			FMLLog.info("[%s] Dump Start", getModuleName());
+		} else {
+			FMLLog.info("[%s] Dump Canceled", getModuleName());
+		}
 	}
 
-	protected abstract void onLoadComplete();
+	/**
+	 * ダンプ処理。{@link ModuleDumperAbstract#processDump}から呼び出される
+	 */
+	protected abstract void onDump();
 
 	public static String getItemStackString(ItemStack itemStack)
 	{

@@ -23,7 +23,7 @@ public class ModuleDumperThaumCraft extends ModuleDumperAbstract
 	}
 
 	@Override
-	protected void onLoadComplete()
+	protected void onDump()
 	{
 		eachAllItemStacks(new ICallable1<ItemStack>() {
 
