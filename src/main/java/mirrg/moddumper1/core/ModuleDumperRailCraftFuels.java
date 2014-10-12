@@ -3,6 +3,7 @@ package mirrg.moddumper1.core;
 import java.util.Map.Entry;
 
 import mirrg.mir34.modding.IMod;
+import mirrg.moddumper1.HelpersDump;
 import mirrg.moddumper1.ICallable1;
 import mirrg.moddumper1.ModuleDumperAbstract;
 import mods.railcraft.api.fuel.FuelManager;
@@ -42,7 +43,7 @@ public class ModuleDumperRailCraftFuels extends ModuleDumperAbstract
 
 		FMLLog.info("[RailCraftBoilerFuels] SolidFuels");
 
-		eachAllItemStacks(new ICallable1<ItemStack>() {
+		HelpersDump.eachAllItemStacks(new ICallable1<ItemStack>() {
 
 			@Override
 			public void call(ItemStack object)
@@ -52,7 +53,7 @@ public class ModuleDumperRailCraftFuels extends ModuleDumperAbstract
 				if (itemBurnTime != 0) {
 
 					FMLLog.info("ITEM,%s,'%s'",
-						getItemStackString(object),
+						HelpersDump.getItemStackString(object),
 						itemBurnTime);
 
 				}

@@ -1,6 +1,7 @@
 package mirrg.moddumper1.core;
 
 import mirrg.mir34.modding.IMod;
+import mirrg.moddumper1.HelpersDump;
 import mirrg.moddumper1.ICallable1;
 import mirrg.moddumper1.ModuleDumperAbstract;
 import net.minecraft.item.ItemStack;
@@ -25,7 +26,7 @@ public class ModuleDumperThaumCraft extends ModuleDumperAbstract
 	@Override
 	protected void onDump()
 	{
-		eachAllItemStacks(new ICallable1<ItemStack>() {
+		HelpersDump.eachAllItemStacks(new ICallable1<ItemStack>() {
 
 			@Override
 			public void call(ItemStack object)
@@ -40,7 +41,7 @@ public class ModuleDumperThaumCraft extends ModuleDumperAbstract
 
 				try {
 					FMLLog.info("ITEM,%s,V,'%s'",
-						getItemStackString(object),
+						HelpersDump.getItemStackString(object),
 						getAspectListString(objectTags));
 				} catch (Exception e) {
 					FMLLog.info(e.toString());
