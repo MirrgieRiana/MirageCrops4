@@ -23,7 +23,7 @@ public class ModuleDumperRailCraftFuels extends ModuleDumperAbstract
 	@Override
 	public String getModuleName()
 	{
-		return "dumperRecipeSorter";
+		return "dumperRailCraftFuels";
 	}
 
 	@Override
