@@ -163,6 +163,7 @@ public class ItemsOregen
 	}
 
 	public static ISlot slotOre;
+	public static ISlot slotBlock;
 	public static ISlot slotIngot;
 	public static ISlot slotGem;
 	public static ISlot slotDust;
@@ -171,6 +172,11 @@ public class ItemsOregen
 	public static Block blockOreMohsHardnessCrystal;
 	public static Block blockOreOtherMetal;
 	public static Block blockOreMirageMagic;
+
+	public static Block blockCalciteGroup;
+	public static Block blockMohsHardnessCrystal;
+	public static Block blockOtherMetal;
+	public static Block blockMirageMaterial;
 
 	public static Item itemIngot;
 	public static Item itemGem;

@@ -76,6 +76,15 @@ public class ModuleOregen extends ModuleOregenBase
 		ItemsOregen.blockOreMirageMagic =
 			registerBlock(new BlockMulti<Metablock>(), ItemBlockMulti.class, "blockOreMirageMagic");
 
+		ItemsOregen.blockCalciteGroup =
+			registerBlock(new BlockMulti<Metablock>(), ItemBlockMulti.class, "blockCalciteGroup");
+		ItemsOregen.blockMohsHardnessCrystal =
+			registerBlock(new BlockMulti<Metablock>(), ItemBlockMulti.class, "blockMohsHardnessCrystal");
+		ItemsOregen.blockOtherMetal =
+			registerBlock(new BlockMulti<Metablock>(), ItemBlockMulti.class, "blockOtherMetal");
+		ItemsOregen.blockMirageMaterial =
+			registerBlock(new BlockMulti<Metablock>(), ItemBlockMulti.class, "blockMirageMaterial");
+
 		// グロブのインスタンス生成とAPIへの代入
 		for (IEnumGlobs[] enumGlobs : ItemsOregen.enumGlobsList) {
 			createGlob(enumGlobs);
@@ -83,6 +92,7 @@ public class ModuleOregen extends ModuleOregenBase
 
 		// グロブスロットのインスタンス生成とAPIへの代入
 		ItemsOregen.slotOre = new SlotAbstract();
+		ItemsOregen.slotBlock = new SlotAbstract();
 
 	}
 
@@ -114,13 +124,32 @@ public class ModuleOregen extends ModuleOregenBase
 		configureBlock(ItemsOregen.blockOreOtherMetal, "blockOreOtherMetal");
 		configureBlock(ItemsOregen.blockOreMirageMagic, "blockOreMirageMagic");
 
+		configureBlock(ItemsOregen.blockCalciteGroup, "blockCalciteGroup");
+		configureBlock(ItemsOregen.blockMohsHardnessCrystal, "blockMohsHardnessCrystal");
+		configureBlock(ItemsOregen.blockOtherMetal, "blockOtherMetal");
+		configureBlock(ItemsOregen.blockMirageMaterial, "blockMirageMaterial");
+
 		((SlotAbstract) ItemsOregen.slotOre).setName("ore");
+		((SlotAbstract) ItemsOregen.slotBlock).setName("block");
 
 		// グロブ・スロットの後
-		createMetaBlock(EnumGlobsCalciteGroup.values(), (BlockMulti) ItemsOregen.blockOreCalciteGroup);
-		createMetaBlock(EnumGlobsMohsHardnessCrystal.values(), (BlockMulti) ItemsOregen.blockOreMohsHardnessCrystal);
-		createMetaBlock(EnumGlobsOtherMetal.values(), (BlockMulti) ItemsOregen.blockOreOtherMetal);
-		createMetaBlock(EnumGlobsMirageMagic.values(), (BlockMulti) ItemsOregen.blockOreMirageMagic);
+		createMetaBlock(EnumGlobsCalciteGroup.values(),
+			(BlockMulti) ItemsOregen.blockOreCalciteGroup, ItemsOregen.slotOre);
+		createMetaBlock(EnumGlobsMohsHardnessCrystal.values(),
+			(BlockMulti) ItemsOregen.blockOreMohsHardnessCrystal, ItemsOregen.slotOre);
+		createMetaBlock(EnumGlobsOtherMetal.values(),
+			(BlockMulti) ItemsOregen.blockOreOtherMetal, ItemsOregen.slotOre);
+		createMetaBlock(EnumGlobsMirageMagic.values(),
+			(BlockMulti) ItemsOregen.blockOreMirageMagic, ItemsOregen.slotOre);
+
+		createMetaBlock(EnumGlobsCalciteGroup.values(),
+			(BlockMulti) ItemsOregen.blockCalciteGroup, ItemsOregen.slotBlock);
+		createMetaBlock(EnumGlobsMohsHardnessCrystal.values(),
+			(BlockMulti) ItemsOregen.blockMohsHardnessCrystal, ItemsOregen.slotBlock);
+		createMetaBlock(EnumGlobsOtherMetal.values(),
+			(BlockMulti) ItemsOregen.blockOtherMetal, ItemsOregen.slotBlock);
+		createMetaBlock(EnumGlobsMirageMagic.values(),
+			(BlockMulti) ItemsOregen.blockMirageMaterial, ItemsOregen.slotBlock);
 
 	}
 

@@ -16,7 +16,6 @@ import mirrg.mir40.worldgen.FilterBiome;
 import mirrg.mir40.worldgen.WorldGeneratorXYZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre.CountPer;
-import mirrg.miragecrops4.api.oregen.ItemsOregen;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobs;
 import mirrg.miragecrops4.api.oregen.RegisterMaterialColor;
 import mirrg.miragecrops4.core.ModuleMirageCropsBase;
@@ -45,7 +44,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		configureBlock(block, name, 3.0F, 5.0F, Block.soundTypePiston);
 	}
 
-	protected void createMetaBlock(IEnumGlobs[] globs, BlockMulti blockMulti)
+	protected void createMetaBlock(IEnumGlobs[] globs, BlockMulti blockMulti, ISlot slot)
 	{
 		for (int i = 0; i < globs.length; i++) {
 			IEnumGlobs enumGlob = globs[i];
@@ -60,11 +59,11 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 			blockMulti.multibase.bind(i, metablock);
 
 			// グロブにアイテムスタックを登録
-			((GlobAbstract) enumGlob.getGlob()).put(ItemsOregen.slotOre, new ItemStack(blockMulti, 1, i));
+			((GlobAbstract) enumGlob.getGlob()).put(slot, new ItemStack(blockMulti, 1, i));
 
 			// メタブロックの設定
 			{
-				String unlocalizedName = HelpersGlob.getDictionaryName(ItemsOregen.slotOre, enumGlob.getGlob());
+				String unlocalizedName = HelpersGlob.getDictionaryName(slot, enumGlob.getGlob());
 
 				metablock.unlocalizedName = unlocalizedName;
 				if (getMod().isClient()) {
