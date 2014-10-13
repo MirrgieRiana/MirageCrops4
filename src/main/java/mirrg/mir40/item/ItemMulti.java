@@ -33,6 +33,20 @@ public class ItemMulti<T extends Metaitem> extends Item
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean requiresMultipleRenderPasses()
+	{
+		return true;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public int getRenderPasses(int metadata)
+	{
+		return 1;
+	}
+
+	@Override
 	public IIcon getIcon(ItemStack arg0, int arg1)
 	{
 		int meta = arg0.getItemDamage();
