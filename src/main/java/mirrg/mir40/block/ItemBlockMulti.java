@@ -4,10 +4,10 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
-public class ItemBlockMulti extends ItemBlock
+public class ItemBlockMulti<T extends Metablock> extends ItemBlock
 {
 
-	protected BlockMulti<? extends Metablock> blockMulti;
+	protected BlockMulti<T> blockMulti;
 
 	public ItemBlockMulti(Block block)
 	{
