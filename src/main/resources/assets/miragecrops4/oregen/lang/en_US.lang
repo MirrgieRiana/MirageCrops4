@@ -20,3 +20,29 @@ tile.oreDiamond.name=Diamond Ore
 
 tile.oreBismuth.name=Bismuth Ore
 tile.oreSpinatite.name=Spinatite Ore
+
+tile.oreSpinachium.name=Spinachium Ore
+
+tile.blockCalcite.name=Calcite Block
+tile.blockMagnesite.name=Magnesite Block
+tile.blockSiderite.name=Siderite Block
+tile.blockRhodochrosite.name=Rhodochrosite Block
+tile.blockSmithsonite.name=Smithsonite Block
+tile.blockSphaerocobaltite.name=Sphaerocobaltite Block
+tile.blockGaspeite.name=Gaspeite Block
+tile.blockOtavite.name=Otavite Block
+
+tile.blockTalc.name=Talc Block
+tile.blockGypsum.name=Gypsum Block
+tile.blockFluorite.name=Fluorite Block
+tile.blockApatite.name=Apatite Block
+tile.blockOrthoclase.name=Orthoclase Block
+tile.blockCertusQuartz.name=CertusQuartz Block
+tile.blockTopaz.name=Topaz Block
+tile.blockRuby.name=Ruby Block
+tile.blockDiamond.name=Diamond Block
+
+tile.blockBismuth.name=Bismuth Block
+tile.blockSpinatite.name=Spinatite Block
+
+tile.blockSpinachium.name=Spinachium Block
