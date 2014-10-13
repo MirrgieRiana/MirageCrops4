@@ -34,12 +34,20 @@ public class ModuleDumper extends ModuleAbstract implements ILoadCompleteHandler
 	protected List<DumperWrapper> dumperWrappers;
 
 	@Override
-	public void handle(FMLPreInitializationEvent event)
+	public void handleClient(FMLPreInitializationEvent event)
 	{
 		File parentDir = new File(Minecraft.getMinecraft().mcDataDir, getMod().getModId());
 		FMLLog.info("parent directry path = %s", parentDir.getAbsolutePath());
 
 		dumperWrappers = loadDumperWrappers(ModModDumper.configuration, "module", parentDir);
+	}
+
+	@Override
+	public void handleServer(FMLPreInitializationEvent event)
+	{
+		FMLLog.info("dumper is canceled: server side");
+
+		dumperWrappers = new ArrayList<DumperWrapper>();
 	}
 
 	private static List<DumperWrapper> loadDumperWrappers(

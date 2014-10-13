@@ -15,7 +15,7 @@ public class HandlerSpritesBase implements IHandlerSprites
 	protected IIcon textures[];
 
 	@SideOnly(Side.CLIENT)
-	protected boolean isRegistered = false;
+	protected boolean isRegistered;
 
 	public HandlerSpritesBase(CropMirage cropMirage)
 	{
