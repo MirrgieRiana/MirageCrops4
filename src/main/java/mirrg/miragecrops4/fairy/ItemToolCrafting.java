@@ -2,6 +2,7 @@ package mirrg.miragecrops4.fairy;
 
 import java.util.HashSet;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 
@@ -10,7 +11,7 @@ class ItemToolCrafting extends ItemTool
 
 	public ItemToolCrafting()
 	{
-		super(1, ToolMaterial.IRON, new HashSet());
+		super(1, ToolMaterial.IRON, new HashSet<Block>());
 	}
 
 	@Override

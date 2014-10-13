@@ -50,7 +50,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 			IEnumGlobs enumGlob = globs[i];
 
 			// グロブの設定
-			((GlobAbstract) enumGlob.getGlob()).setName(((Enum) enumGlob).name());
+			((GlobAbstract) enumGlob.getGlob()).setName(((Enum<?>) enumGlob).name());
 
 			// メタブロックの作成
 			MetablockGlob metablock = new MetablockGlob(enumGlob.getGlob(), slot);
@@ -87,7 +87,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 				IEnumGlobs enumGlob = globsList.get(j)[i];
 
 				// グロブの設定
-				((GlobAbstract) enumGlob.getGlob()).setName(((Enum) enumGlob).name());
+				((GlobAbstract) enumGlob.getGlob()).setName(((Enum<?>) enumGlob).name());
 
 				// メタアイテムの作成
 				MetaitemIconGlob metaitemIcon = new MetaitemIconGlob(enumGlob.getGlob(), slot);

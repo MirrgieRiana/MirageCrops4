@@ -6,6 +6,8 @@ import mirrg.mir34.modding.IMod;
 import mirrg.mir40.crop.CropMirage;
 import mirrg.mir40.crop.HandlerHarvestOneItem;
 import mirrg.mir40.crop.HandlerSpritesBasic;
+import mirrg.mir40.item.ItemMulti;
+import mirrg.mir40.item.Metaitem;
 import mirrg.miragecrops4.core.ModuleCore;
 import mirrg.miragecrops4.core.ModuleMirageCropsBase;
 import mirrg.miragecrops4.crops.fairy.CropMirageFairyHousing;
@@ -60,7 +62,7 @@ public class ModuleCrops extends ModuleMirageCropsBase
 	protected void registerItems()
 	{
 
-		craftingLeaf = registerItem(new Item(), "craftingLeaf");
+		craftingLeaf = registerItem(new ItemMulti<Metaitem>(), "craftingLeaf");
 
 	}
 

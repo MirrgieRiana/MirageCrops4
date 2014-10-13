@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 public class HelpersReflectCrop
 {
 
-	static final Class class_TileEntityCrop;
+	static final Class<?> class_TileEntityCrop;
 	static final Field field_upgraded;
 	static final Field field_ticker;
 	static final Field field_dirty;
@@ -17,7 +17,7 @@ public class HelpersReflectCrop
 
 	static {
 
-		Class clazz = null;
+		Class<?> clazz = null;
 		try {
 			clazz = Class.forName("ic2.core.block.TileEntityCrop");
 		} catch (ClassNotFoundException e1) {

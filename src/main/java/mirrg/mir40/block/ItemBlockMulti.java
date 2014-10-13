@@ -12,7 +12,7 @@ public class ItemBlockMulti<T extends Metablock> extends ItemBlock
 	public ItemBlockMulti(Block block)
 	{
 		super(block);
-		blockMulti = (BlockMulti) block;
+		blockMulti = (BlockMulti<T>) block;
 		setHasSubtypes(true);
 	}
 
