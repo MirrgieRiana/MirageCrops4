@@ -8,6 +8,7 @@ import mirrg.mir40.block.glob.MetablockGlob;
 import mirrg.mir40.glob.GlobAbstract;
 import mirrg.mir40.glob.api.HelpersGlob;
 import mirrg.mir40.glob.api.ISlot;
+import mirrg.mir40.icon.HelpersIcon;
 import mirrg.mir40.icon.MultiIcon;
 import mirrg.mir40.icon.api.IMultiIconShape;
 import mirrg.mir40.item.ItemMultiIcon;
@@ -77,7 +78,12 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 
 				metablock.unlocalizedName = unlocalizedName;
 				if (getMod().isClient()) {
-					metablock.iconName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
+					String textureName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
+					if (HelpersIcon.getURLFromTextureName(textureName, HelpersIcon.TYPE_BLOCKS) != null) {
+						metablock.iconName = textureName;
+					} else {
+						metablock.iconName = getMod().getModId() + ":" + "NULL_ICON";
+					}
 				}
 
 				// 鉱石辞書に登録
@@ -115,10 +121,14 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 
 					metaitemIcon.unlocalizedName = unlocalizedName;
 					if (getMod().isClient()) {
-						metaitemIcon.iconName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
-						metaitemIcon.multiIcon =
-							new MultiIcon(
-								multiIconShape, RegisterMaterialColor.instance.get(enumGlob.getGlob().getName()));
+						String textureName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
+						if (HelpersIcon.getURLFromTextureName(textureName, HelpersIcon.TYPE_ITEMS) != null) {
+							metaitemIcon.iconName = textureName;
+						} else {
+							metaitemIcon.multiIcon =
+								new MultiIcon(multiIconShape,
+									RegisterMaterialColor.instance.get(enumGlob.getGlob().getName()));
+						}
 					}
 
 					// 鉱石辞書に登録

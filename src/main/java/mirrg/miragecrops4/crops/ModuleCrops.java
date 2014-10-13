@@ -6,6 +6,7 @@ import mirrg.mir34.modding.IMod;
 import mirrg.mir40.crop.CropMirage;
 import mirrg.mir40.crop.HandlerHarvestOneItem;
 import mirrg.mir40.crop.HandlerSpritesBasic;
+import mirrg.mir40.icon.HelpersIcon;
 import mirrg.mir40.item.ItemMulti;
 import mirrg.mir40.item.Metaitem;
 import mirrg.miragecrops4.core.ModuleCore;
@@ -14,6 +15,7 @@ import mirrg.miragecrops4.crops.fairy.CropMirageFairyHousing;
 import mirrg.miragecrops4.crops.fairy.CropMirageFairyWorkplace;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 
 public class ModuleCrops extends ModuleMirageCropsBase
@@ -72,7 +74,36 @@ public class ModuleCrops extends ModuleMirageCropsBase
 
 		configureItem(craftingLeaf, "craftingLeaf");
 		craftingLeaf.setCreativeTab(ModuleCore.creativeTab);
+
 		craftingLeaf.setTextureName(getMod().getModId() + ":" + getModuleName() + "/" + "craftingLeafSarracenia");
+
+		configureCraftingLeaf((ItemMulti<Metaitem>) craftingLeaf);
+
+	}
+
+	protected void configureCraftingLeaf(ItemMulti<Metaitem> item)
+	{
+
+		{
+			int index = 0;
+			Metaitem metaitem = new Metaitem();
+			String unlocalizedName = "craftingLeafSarracenia";
+
+			item.multibase.bind(index, metaitem);
+
+			metaitem.unlocalizedName = unlocalizedName;
+			if (getMod().isClient()) {
+				String textureName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
+				if (HelpersIcon.getURLFromTextureName(textureName, HelpersIcon.TYPE_ITEMS) != null) {
+					metaitem.iconName = textureName;
+				} else {
+					System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
+				}
+				metaitem.iconName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
+			}
+
+			OreDictionary.registerOre(unlocalizedName, new ItemStack(craftingLeaf, 1, index));
+		}
 
 	}
 
