@@ -23,7 +23,7 @@ public class ItemsOregen
 	}
 
 	/**
-	 * 鉱物
+	 * 鉱物・宝石
 	 */
 	public static enum EnumGlobsCalciteGroup implements IEnumGlobs
 	{
@@ -53,7 +53,7 @@ public class ItemsOregen
 	}
 
 	/**
-	 * 鉱物
+	 * 鉱物・宝石
 	 */
 	public static enum EnumGlobsMohsHardnessCrystal implements IEnumGlobs
 	{
