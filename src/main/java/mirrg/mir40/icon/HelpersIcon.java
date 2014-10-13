@@ -8,7 +8,10 @@ public class HelpersIcon
 	public static final String TYPE_ITEMS = "textures/items";
 	public static final String TYPE_BLOCKS = "textures/blocks";
 
-	private static URL getURLFromTextureName(String domain, String typeString, String textureNameWithoutDomain)
+	/**
+	 * リソースが存在する場合のみURLを返す。存在しない場合はnullを返す
+	 */
+	public static URL getURLFromTextureName(String domain, String typeString, String textureNameWithoutDomain)
 	{
 		StringBuffer path = new StringBuffer();
 		path.append("assets/");
@@ -22,6 +25,9 @@ public class HelpersIcon
 		return HelpersIcon.class.getClassLoader().getResource(path.toString());
 	}
 
+	/**
+	 * テクスチャが存在する場合のみURLを返す。存在しない場合はnullを返す
+	 */
 	public static URL getURLFromTextureName(String textureName, String typeString)
 	{
 		int domainLength = textureName.indexOf(':');
