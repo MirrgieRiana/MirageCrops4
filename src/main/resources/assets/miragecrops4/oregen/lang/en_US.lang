@@ -1,48 +1,31 @@
 
-tile.oreCalcite.name=Calcite Ore
-tile.oreMagnesite.name=Magnesite Ore
-tile.oreSiderite.name=Siderite Ore
-tile.oreRhodochrosite.name=Rhodochrosite Ore
-tile.oreSmithsonite.name=Smithsonite Ore
-tile.oreSphaerocobaltite.name=Sphaerocobaltite Ore
-tile.oreGaspeite.name=Gaspeite Ore
-tile.oreOtavite.name=Otavite Ore
+glob.calcite.name=Calcite
+glob.magnesite.name=Magnesite
+glob.siderite.name=Siderite
+glob.rhodochrosite.name=Rhodochrosite
+glob.smithsonite.name=Smithsonite
+glob.sphaerocobaltite.name=Sphaerocobaltite
+glob.gaspeite.name=Gaspeite
+glob.otavite.name=Otavite
 
-tile.oreTalc.name=Talc Ore
-tile.oreGypsum.name=Gypsum Ore
-tile.oreFluorite.name=Fluorite Ore
-tile.oreApatite.name=Apatite Ore
-tile.oreOrthoclase.name=Orthoclase Ore
-tile.oreCertusQuartz.name=CertusQuartz Ore
-tile.oreTopaz.name=Topaz Ore
-tile.oreRuby.name=Ruby Ore
-tile.oreDiamond.name=Diamond Ore
+glob.talc.name=Talc
+glob.gypsum.name=Gypsum
+glob.fluorite.name=Fluorite
+glob.apatite.name=Apatite
+glob.orthoclase.name=Orthoclase
+glob.certusQuartz.name=CertusQuartz
+glob.topaz.name=Topaz
+glob.ruby.name=Ruby
+glob.diamond.name=Diamond
 
-tile.oreBismuth.name=Bismuth Ore
-tile.oreSpinatite.name=Spinatite Ore
+glob.bismuth.name=Bismuth
+glob.spinatite.name=Spinatite
 
-tile.oreSpinachium.name=Spinachium Ore
+glob.spinachium.name=Spinachium
 
-tile.blockCalcite.name=Calcite Block
-tile.blockMagnesite.name=Magnesite Block
-tile.blockSiderite.name=Siderite Block
-tile.blockRhodochrosite.name=Rhodochrosite Block
-tile.blockSmithsonite.name=Smithsonite Block
-tile.blockSphaerocobaltite.name=Sphaerocobaltite Block
-tile.blockGaspeite.name=Gaspeite Block
-tile.blockOtavite.name=Otavite Block
+slot.ore.format=%s Ore
+slot.block.format=%s Block
 
-tile.blockTalc.name=Talc Block
-tile.blockGypsum.name=Gypsum Block
-tile.blockFluorite.name=Fluorite Block
-tile.blockApatite.name=Apatite Block
-tile.blockOrthoclase.name=Orthoclase Block
-tile.blockCertusQuartz.name=CertusQuartz Block
-tile.blockTopaz.name=Topaz Block
-tile.blockRuby.name=Ruby Block
-tile.blockDiamond.name=Diamond Block
-
-tile.blockBismuth.name=Bismuth Block
-tile.blockSpinatite.name=Spinatite Block
-
-tile.blockSpinachium.name=Spinachium Block
+slot.ingot.format=%s Ingot
+slot.gem.format=%s
+slot.dust.format=%s Dust

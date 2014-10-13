@@ -4,14 +4,14 @@ import java.util.List;
 
 import mirrg.mir34.modding.IMod;
 import mirrg.mir40.block.BlockMulti;
-import mirrg.mir40.block.Metablock;
+import mirrg.mir40.block.glob.MetablockGlob;
 import mirrg.mir40.glob.GlobAbstract;
 import mirrg.mir40.glob.api.HelpersGlob;
 import mirrg.mir40.glob.api.ISlot;
 import mirrg.mir40.icon.MultiIcon;
 import mirrg.mir40.icon.api.IMultiIconShape;
 import mirrg.mir40.item.ItemMultiIcon;
-import mirrg.mir40.item.MetaitemIcon;
+import mirrg.mir40.item.glob.MetaitemIconGlob;
 import mirrg.mir40.worldgen.FilterBiome;
 import mirrg.mir40.worldgen.WorldGeneratorXYZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre;
@@ -44,7 +44,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		configureBlock(block, name, 3.0F, 5.0F, Block.soundTypePiston);
 	}
 
-	protected void createMetaBlock(IEnumGlobs[] globs, BlockMulti blockMulti, ISlot slot)
+	protected void createMetaBlock(IEnumGlobs[] globs, BlockMulti<MetablockGlob> blockMulti, ISlot slot)
 	{
 		for (int i = 0; i < globs.length; i++) {
 			IEnumGlobs enumGlob = globs[i];
@@ -53,7 +53,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 			((GlobAbstract) enumGlob.getGlob()).setName(((Enum) enumGlob).name());
 
 			// メタブロックの作成
-			Metablock metablock = new Metablock();
+			MetablockGlob metablock = new MetablockGlob(enumGlob.getGlob(), slot);
 
 			// マルチブロックにメタブロックを登録
 			blockMulti.multibase.bind(i, metablock);
@@ -79,7 +79,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 	}
 
 	protected void createMetaItem(
-		List<IEnumGlobs[]> globsList, ItemMultiIcon<MetaitemIcon> itemMultiIcon,
+		List<IEnumGlobs[]> globsList, ItemMultiIcon<MetaitemIconGlob> itemMultiIcon,
 		ISlot slot, IMultiIconShape multiIconShape)
 	{
 		for (int j = 0; j < globsList.size(); j++) {
@@ -90,7 +90,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 				((GlobAbstract) enumGlob.getGlob()).setName(((Enum) enumGlob).name());
 
 				// メタアイテムの作成
-				MetaitemIcon metaitemIcon = new MetaitemIcon();
+				MetaitemIconGlob metaitemIcon = new MetaitemIconGlob(enumGlob.getGlob(), slot);
 
 				// マルチブロックにメタアイテムを登録
 				int id = i + j * 16;

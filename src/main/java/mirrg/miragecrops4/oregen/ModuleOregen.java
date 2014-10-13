@@ -2,11 +2,9 @@ package mirrg.miragecrops4.oregen;
 
 import mirrg.mir34.modding.IMod;
 import mirrg.mir40.block.BlockMulti;
-import mirrg.mir40.block.ItemBlockMulti;
-import mirrg.mir40.block.Metablock;
+import mirrg.mir40.block.glob.MetablockGlob;
 import mirrg.mir40.glob.SlotAbstract;
-import mirrg.mir40.item.ItemMultiIcon;
-import mirrg.mir40.item.MetaitemIcon;
+import mirrg.mir40.item.glob.MetaitemIconGlob;
 import mirrg.miragecrops4.api.oregen.ItemsOregen;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsCalciteGroup;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsMirageMagic;
@@ -68,22 +66,23 @@ public class ModuleOregen extends ModuleOregenBase
 
 		// ブロックのインスタンス生成と登録とAPIへの代入
 		ItemsOregen.blockOreCalciteGroup =
-			registerBlock(new BlockMulti<Metablock>(), ItemBlockMulti.class, "blockOreCalciteGroup");
+			registerBlock(new BlockMulti<MetablockGlob>(), ItemBlockMultiMirageCrops.class, "blockOreCalciteGroup");
 		ItemsOregen.blockOreMohsHardnessCrystal =
-			registerBlock(new BlockMulti<Metablock>(), ItemBlockMulti.class, "blockOreMohsHardnessCrystal");
+			registerBlock(new BlockMulti<MetablockGlob>(), ItemBlockMultiMirageCrops.class,
+				"blockOreMohsHardnessCrystal");
 		ItemsOregen.blockOreOtherMetal =
-			registerBlock(new BlockMulti<Metablock>(), ItemBlockMulti.class, "blockOreOtherMetal");
+			registerBlock(new BlockMulti<MetablockGlob>(), ItemBlockMultiMirageCrops.class, "blockOreOtherMetal");
 		ItemsOregen.blockOreMirageMagic =
-			registerBlock(new BlockMulti<Metablock>(), ItemBlockMulti.class, "blockOreMirageMagic");
+			registerBlock(new BlockMulti<MetablockGlob>(), ItemBlockMultiMirageCrops.class, "blockOreMirageMagic");
 
 		ItemsOregen.blockCalciteGroup =
-			registerBlock(new BlockMulti<Metablock>(), ItemBlockMulti.class, "blockCalciteGroup");
+			registerBlock(new BlockMulti<MetablockGlob>(), ItemBlockMultiMirageCrops.class, "blockCalciteGroup");
 		ItemsOregen.blockMohsHardnessCrystal =
-			registerBlock(new BlockMulti<Metablock>(), ItemBlockMulti.class, "blockMohsHardnessCrystal");
+			registerBlock(new BlockMulti<MetablockGlob>(), ItemBlockMultiMirageCrops.class, "blockMohsHardnessCrystal");
 		ItemsOregen.blockOtherMetal =
-			registerBlock(new BlockMulti<Metablock>(), ItemBlockMulti.class, "blockOtherMetal");
+			registerBlock(new BlockMulti<MetablockGlob>(), ItemBlockMultiMirageCrops.class, "blockOtherMetal");
 		ItemsOregen.blockMirageMaterial =
-			registerBlock(new BlockMulti<Metablock>(), ItemBlockMulti.class, "blockMirageMaterial");
+			registerBlock(new BlockMulti<MetablockGlob>(), ItemBlockMultiMirageCrops.class, "blockMirageMaterial");
 
 		// グロブのインスタンス生成とAPIへの代入
 		for (IEnumGlobs[] enumGlobs : ItemsOregen.enumGlobsList) {
@@ -104,9 +103,9 @@ public class ModuleOregen extends ModuleOregenBase
 	{
 
 		// アイテムのインスタンス生成と登録とAPIへの代入
-		ItemsOregen.itemIngot = registerItem(new ItemMultiIcon<MetaitemIcon>(), "itemIngot");
-		ItemsOregen.itemGem = registerItem(new ItemMultiIcon<MetaitemIcon>(), "itemGem");
-		ItemsOregen.itemDust = registerItem(new ItemMultiIcon<MetaitemIcon>(), "itemDust");
+		ItemsOregen.itemIngot = registerItem(new ItemMultiIconMirageCrops<MetaitemIconGlob>(), "itemIngot");
+		ItemsOregen.itemGem = registerItem(new ItemMultiIconMirageCrops<MetaitemIconGlob>(), "itemGem");
+		ItemsOregen.itemDust = registerItem(new ItemMultiIconMirageCrops<MetaitemIconGlob>(), "itemDust");
 
 		// グロブスロットのインスタンス生成とAPIへの代入
 		ItemsOregen.slotIngot = new SlotAbstract();
@@ -134,22 +133,22 @@ public class ModuleOregen extends ModuleOregenBase
 
 		// グロブ・スロットの後
 		createMetaBlock(EnumGlobsCalciteGroup.values(),
-			(BlockMulti) ItemsOregen.blockOreCalciteGroup, ItemsOregen.slotOre);
+			(BlockMulti<MetablockGlob>) ItemsOregen.blockOreCalciteGroup, ItemsOregen.slotOre);
 		createMetaBlock(EnumGlobsMohsHardnessCrystal.values(),
-			(BlockMulti) ItemsOregen.blockOreMohsHardnessCrystal, ItemsOregen.slotOre);
+			(BlockMulti<MetablockGlob>) ItemsOregen.blockOreMohsHardnessCrystal, ItemsOregen.slotOre);
 		createMetaBlock(EnumGlobsOtherMetal.values(),
-			(BlockMulti) ItemsOregen.blockOreOtherMetal, ItemsOregen.slotOre);
+			(BlockMulti<MetablockGlob>) ItemsOregen.blockOreOtherMetal, ItemsOregen.slotOre);
 		createMetaBlock(EnumGlobsMirageMagic.values(),
-			(BlockMulti) ItemsOregen.blockOreMirageMagic, ItemsOregen.slotOre);
+			(BlockMulti<MetablockGlob>) ItemsOregen.blockOreMirageMagic, ItemsOregen.slotOre);
 
 		createMetaBlock(EnumGlobsCalciteGroup.values(),
-			(BlockMulti) ItemsOregen.blockCalciteGroup, ItemsOregen.slotBlock);
+			(BlockMulti<MetablockGlob>) ItemsOregen.blockCalciteGroup, ItemsOregen.slotBlock);
 		createMetaBlock(EnumGlobsMohsHardnessCrystal.values(),
-			(BlockMulti) ItemsOregen.blockMohsHardnessCrystal, ItemsOregen.slotBlock);
+			(BlockMulti<MetablockGlob>) ItemsOregen.blockMohsHardnessCrystal, ItemsOregen.slotBlock);
 		createMetaBlock(EnumGlobsOtherMetal.values(),
-			(BlockMulti) ItemsOregen.blockOtherMetal, ItemsOregen.slotBlock);
+			(BlockMulti<MetablockGlob>) ItemsOregen.blockOtherMetal, ItemsOregen.slotBlock);
 		createMetaBlock(EnumGlobsMirageMagic.values(),
-			(BlockMulti) ItemsOregen.blockMirageMaterial, ItemsOregen.slotBlock);
+			(BlockMulti<MetablockGlob>) ItemsOregen.blockMirageMaterial, ItemsOregen.slotBlock);
 
 	}
 
@@ -167,11 +166,11 @@ public class ModuleOregen extends ModuleOregenBase
 
 		// グロブ・スロットの後
 		createMetaItem(ItemsOregen.enumGlobsList,
-			(ItemMultiIcon<MetaitemIcon>) ItemsOregen.itemIngot, ItemsOregen.slotIngot, MultiIcons.INGOT);
+			(ItemMultiIconMirageCrops<MetaitemIconGlob>) ItemsOregen.itemIngot, ItemsOregen.slotIngot, MultiIcons.INGOT);
 		createMetaItem(ItemsOregen.enumGlobsList,
-			(ItemMultiIcon<MetaitemIcon>) ItemsOregen.itemGem, ItemsOregen.slotGem, MultiIcons.GEM);
+			(ItemMultiIconMirageCrops<MetaitemIconGlob>) ItemsOregen.itemGem, ItemsOregen.slotGem, MultiIcons.GEM);
 		createMetaItem(ItemsOregen.enumGlobsList,
-			(ItemMultiIcon<MetaitemIcon>) ItemsOregen.itemDust, ItemsOregen.slotDust, MultiIcons.DUST);
+			(ItemMultiIconMirageCrops<MetaitemIconGlob>) ItemsOregen.itemDust, ItemsOregen.slotDust, MultiIcons.DUST);
 
 	}
 
