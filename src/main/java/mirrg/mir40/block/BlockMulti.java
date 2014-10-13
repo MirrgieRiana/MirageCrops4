@@ -3,7 +3,6 @@ package mirrg.mir40.block;
 import java.util.List;
 
 import mirrg.mir40.multi.Multibase;
-import mirrg.miragecrops4.core.ModuleCore;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -22,7 +21,6 @@ public class BlockMulti<T extends Metablock> extends Block
 	public BlockMulti()
 	{
 		super(Material.rock);
-		setCreativeTab(ModuleCore.creativeTab);
 	}
 
 	@Override

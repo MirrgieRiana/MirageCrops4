@@ -3,7 +3,6 @@ package mirrg.mir40.item;
 import java.util.List;
 
 import mirrg.mir40.multi.Multibase;
-import mirrg.miragecrops4.core.ModuleCore;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -19,7 +18,6 @@ public class ItemMulti<T extends Metaitem> extends Item
 
 	public ItemMulti()
 	{
-		setCreativeTab(ModuleCore.creativeTab);
 		setHasSubtypes(true);
 	}
 

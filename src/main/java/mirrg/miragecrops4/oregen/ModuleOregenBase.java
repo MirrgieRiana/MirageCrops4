@@ -18,8 +18,10 @@ import mirrg.mir40.worldgen.WorldGeneratorXZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre.CountPer;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobs;
 import mirrg.miragecrops4.api.oregen.RegisterMaterialColor;
+import mirrg.miragecrops4.core.ModuleCore;
 import mirrg.miragecrops4.core.ModuleMirageCropsBase;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -42,6 +44,14 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 	protected void configureBlock(Block block, String name)
 	{
 		configureBlock(block, name, 3.0F, 5.0F, Block.soundTypePiston);
+		block.setCreativeTab(ModuleCore.creativeTab);
+	}
+
+	@Override
+	protected void configureItem(Item item, String name)
+	{
+		super.configureItem(item, name);
+		item.setCreativeTab(ModuleCore.creativeTab);
 	}
 
 	protected void createMetaBlock(IEnumGlobs[] globs, BlockMulti<MetablockGlob> blockMulti, ISlot slot)
