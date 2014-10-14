@@ -4,25 +4,26 @@ import java.util.Iterator;
 
 import mirrg.mir40.multi.api.IMulti;
 
-public class Multibase<T extends Metabase> implements IMulti<T>, Iterable<T>
+public class Multibase<MULTI extends Multibase<MULTI, META>, META extends Metabase<MULTI, META>>
+	implements IMulti<MULTI, META>, Iterable<META>
 {
 
 	public Multibase(int length)
 	{
-		metas = (T[]) new Metabase[length];
+		metas = (META[]) new Metabase[length];
 	}
 
-	public void bind(int index, T meta)
+	public void bind(int index, META meta)
 	{
 		if (contains(index)) throw new DuplicatedBindingToIndexException(this, index);
 		if (!meta.isBindable()) throw new DuplicatedBindingMetaException(meta, index, this);
-		meta.bind(index, this);
+		meta.bind(index, (MULTI) this);
 		metas[index] = meta;
 	}
 
 	// ----------------------- IMulti --------------------
 
-	private T[] metas;
+	private META[] metas;
 
 	@Override
 	public int getLength()
@@ -37,7 +38,7 @@ public class Multibase<T extends Metabase> implements IMulti<T>, Iterable<T>
 	}
 
 	@Override
-	public T get(int index)
+	public META get(int index)
 	{
 		if (contains(index)) return metas[index];
 		return metas[0];
@@ -46,9 +47,9 @@ public class Multibase<T extends Metabase> implements IMulti<T>, Iterable<T>
 	// ----------------------- Iterable --------------------
 
 	@Override
-	public Iterator<T> iterator()
+	public Iterator<META> iterator()
 	{
-		return new Iterator<T>() {
+		return new Iterator<META>() {
 
 			private int i = 0;
 
@@ -59,9 +60,9 @@ public class Multibase<T extends Metabase> implements IMulti<T>, Iterable<T>
 			}
 
 			@Override
-			public T next()
+			public META next()
 			{
-				T t = get(i);
+				META t = get(i);
 				i++;
 				while (hasNext() && !contains(i)) {
 					i++;

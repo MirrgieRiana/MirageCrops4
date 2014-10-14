@@ -1,9 +1,9 @@
 package mirrg.mir40.multi.api;
 
-public interface IMeta<T extends IMulti<?>>
+public interface IMeta<MULTI extends IMulti<MULTI, META>, META extends IMeta<MULTI, META>>
 {
 
-	public T getMulti();
+	public MULTI getMulti();
 
 	public int getIndex();
 

@@ -2,13 +2,14 @@ package mirrg.mir40.multi;
 
 import mirrg.mir40.multi.api.IMeta;
 
-public class Metabase<T extends Multibase> implements IMeta<T>
+public class Metabase<MULTI extends Multibase<MULTI, META>, META extends Metabase<MULTI, META>>
+	implements IMeta<MULTI, META>
 {
 
-	T multi;
+	MULTI multi;
 
 	@Override
-	public T getMulti()
+	public MULTI getMulti()
 	{
 		return multi;
 	}
@@ -34,7 +35,7 @@ public class Metabase<T extends Multibase> implements IMeta<T>
 		return !isBound();
 	}
 
-	void bind(int index, T multi)
+	void bind(int index, MULTI multi)
 	{
 		if (!isBindable()) throw new DuplicatedBindingMetaException(this, index, multi);
 		this.index = index;
