@@ -55,7 +55,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		item.setCreativeTab(ModuleCore.creativeTab);
 	}
 
-	protected void createMetaBlock(IEnumGlobs[] globs, BlockMulti<MetablockGlob> blockMulti, ISlot slot)
+	protected void createMetaBlock(IEnumGlobs[] globs, BlockMulti blockMulti, ISlot slot)
 	{
 		for (int i = 0; i < globs.length; i++) {
 			IEnumGlobs enumGlob = globs[i];
@@ -95,7 +95,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 	}
 
 	protected void createMetaItem(
-		List<IEnumGlobs[]> globsList, ItemMultiIcon<MetaitemIconGlob> itemMultiIcon,
+		List<IEnumGlobs[]> globsList, ItemMultiIcon itemMultiIcon,
 		ISlot slot, IMultiIconShape multiIconShape)
 	{
 		for (int j = 0; j < globsList.size(); j++) {

@@ -64,7 +64,7 @@ public class ModuleCrops extends ModuleMirageCropsBase
 	protected void registerItems()
 	{
 
-		craftingLeaf = registerItem(new ItemMulti<Metaitem>(), "craftingLeaf");
+		craftingLeaf = registerItem(new ItemMulti(), "craftingLeaf");
 
 	}
 
@@ -77,11 +77,11 @@ public class ModuleCrops extends ModuleMirageCropsBase
 
 		craftingLeaf.setTextureName(getMod().getModId() + ":" + getModuleName() + "/" + "craftingLeafSarracenia");
 
-		configureCraftingLeaf((ItemMulti<Metaitem>) craftingLeaf);
+		configureCraftingLeaf((ItemMulti) craftingLeaf);
 
 	}
 
-	protected void configureCraftingLeaf(ItemMulti<Metaitem> item)
+	protected void configureCraftingLeaf(ItemMulti item)
 	{
 
 		{

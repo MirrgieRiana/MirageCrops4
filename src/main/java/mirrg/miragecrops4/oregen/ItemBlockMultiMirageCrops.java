@@ -2,11 +2,13 @@ package mirrg.miragecrops4.oregen;
 
 import mirrg.mir40.block.ItemBlockMulti;
 import mirrg.mir40.block.glob.MetablockGlob;
+import mirrg.mir40.multi.Multibase;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
-public class ItemBlockMultiMirageCrops<T extends MetablockGlob> extends ItemBlockMulti<T>
+public class ItemBlockMultiMirageCrops<MULTI extends Multibase<MULTI, META>, META extends MetablockGlob<MULTI, META>>
+	extends ItemBlockMulti<MULTI, META>
 {
 
 	public ItemBlockMultiMirageCrops(Block block)
