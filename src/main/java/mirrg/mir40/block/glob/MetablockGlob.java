@@ -3,8 +3,10 @@ package mirrg.mir40.block.glob;
 import mirrg.mir40.block.Metablock;
 import mirrg.mir40.glob.api.IGlob;
 import mirrg.mir40.glob.api.ISlot;
+import mirrg.mir40.multi.Multibase;
 
-public class MetablockGlob extends Metablock
+public class MetablockGlob<MULTI extends Multibase<MULTI, META>, META extends MetablockGlob<MULTI, META>>
+	extends Metablock<MULTI, META>
 {
 
 	protected IGlob glob;

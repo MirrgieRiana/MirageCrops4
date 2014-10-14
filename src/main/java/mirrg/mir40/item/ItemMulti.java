@@ -11,10 +11,11 @@ import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemMulti<T extends Metaitem> extends Item
+public class ItemMulti<MULTI extends Multibase<MULTI, META>, META extends Metaitem<MULTI, META>>
+	extends Item
 {
 
-	public Multibase<T> multibase = new Multibase<T>(256);
+	public Multibase<MULTI, META> multibase = new Multibase<MULTI, META>(256);
 
 	public ItemMulti()
 	{
@@ -25,7 +26,7 @@ public class ItemMulti<T extends Metaitem> extends Item
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item arg0, CreativeTabs arg1, List arg2)
 	{
-		for (Metaitem metaitem : multibase) {
+		for (Metaitem<MULTI, META> metaitem : multibase) {
 			if (metaitem != null) {
 				metaitem.getSubItems(arg0, arg1, arg2);
 			}
@@ -57,7 +58,7 @@ public class ItemMulti<T extends Metaitem> extends Item
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister arg0)
 	{
-		for (Metaitem metaitem : multibase) {
+		for (Metaitem<MULTI, META> metaitem : multibase) {
 			if (metaitem != null) {
 				metaitem.registerIcons(arg0);
 			}

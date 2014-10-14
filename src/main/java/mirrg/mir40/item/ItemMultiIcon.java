@@ -1,11 +1,13 @@
 package mirrg.mir40.item;
 
+import mirrg.mir40.multi.Multibase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemMultiIcon<T extends MetaitemIcon> extends ItemMulti<T>
+public class ItemMultiIcon<MULTI extends Multibase<MULTI, META>, META extends MetaitemIcon<MULTI, META>>
+	extends ItemMulti<MULTI, META>
 {
 
 	@Override

@@ -3,8 +3,10 @@ package mirrg.mir40.item.glob;
 import mirrg.mir40.glob.api.IGlob;
 import mirrg.mir40.glob.api.ISlot;
 import mirrg.mir40.item.MetaitemIcon;
+import mirrg.mir40.multi.Multibase;
 
-public class MetaitemIconGlob extends MetaitemIcon
+public class MetaitemIconGlob<MULTI extends Multibase<MULTI, META>, META extends MetaitemIconGlob<MULTI, META>>
+	extends MetaitemIcon<MULTI, META>
 {
 
 	protected IGlob glob;

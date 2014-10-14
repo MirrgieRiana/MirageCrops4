@@ -1,13 +1,15 @@
 package mirrg.mir40.item;
 
 import mirrg.mir40.icon.MultiIcon;
+import mirrg.mir40.multi.Multibase;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class MetaitemIcon extends Metaitem
+public class MetaitemIcon<MULTI extends Multibase<MULTI, META>, META extends MetaitemIcon<MULTI, META>>
+	extends Metaitem<MULTI, META>
 {
 
 	public MultiIcon multiIcon;

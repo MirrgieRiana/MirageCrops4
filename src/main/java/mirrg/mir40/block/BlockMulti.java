@@ -13,10 +13,11 @@ import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockMulti<T extends Metablock> extends Block
+public class BlockMulti<MULTI extends Multibase<MULTI, META>, META extends Metablock<MULTI, META>>
+	extends Block
 {
 
-	public Multibase<T> multibase = new Multibase<T>(16);
+	public Multibase<MULTI, META> multibase = new Multibase<MULTI, META>(16);
 
 	public BlockMulti()
 	{
@@ -33,7 +34,7 @@ public class BlockMulti<T extends Metablock> extends Block
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
 	{
-		for (Metablock metablock : multibase) {
+		for (Metablock<MULTI, META> metablock : multibase) {
 			if (metablock != null) {
 				metablock.getSubBlocks(item, creativeTabs, list);
 			}
@@ -59,7 +60,7 @@ public class BlockMulti<T extends Metablock> extends Block
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
-		for (Metablock metablock : multibase) {
+		for (Metablock<MULTI, META> metablock : multibase) {
 			if (metablock != null) {
 				metablock.registerBlockIcons(iconRegister);
 			}

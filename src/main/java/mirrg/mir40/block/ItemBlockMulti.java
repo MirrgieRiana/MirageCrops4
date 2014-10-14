@@ -1,18 +1,20 @@
 package mirrg.mir40.block;
 
+import mirrg.mir40.multi.Multibase;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
-public class ItemBlockMulti<T extends Metablock> extends ItemBlock
+public class ItemBlockMulti<MULTI extends Multibase<MULTI, META>, META extends Metablock<MULTI, META>>
+	extends ItemBlock
 {
 
-	protected BlockMulti<T> blockMulti;
+	protected BlockMulti<MULTI, META> blockMulti;
 
 	public ItemBlockMulti(Block block)
 	{
 		super(block);
-		blockMulti = (BlockMulti<T>) block;
+		blockMulti = (BlockMulti<MULTI, META>) block;
 		setHasSubtypes(true);
 	}
 

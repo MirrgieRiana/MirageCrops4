@@ -3,6 +3,7 @@ package mirrg.mir40.block;
 import java.util.List;
 
 import mirrg.mir40.multi.Metabase;
+import mirrg.mir40.multi.Multibase;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -12,7 +13,8 @@ import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class Metablock extends Metabase
+public class Metablock<MULTI extends Multibase<MULTI, META>, META extends Metablock<MULTI, META>>
+	extends Metabase<MULTI, META>
 {
 
 	// ----------------------------- registration -----------------------------
