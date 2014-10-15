@@ -164,7 +164,10 @@ public class ModuleFairy extends ModuleMirageCropsBase
 			addRecipeMineral(enumGlob);
 		}
 
-		// スピナチウム鉱→スピナチウム
+		// スピナタイト鉱石→スピナチウムインゴット
+		// スピナタイト結晶→スピナチウムインゴット
+		// スピナタイト粉→スピナチウム粉
+		// スピナチウム粉→スピナチウムインゴット
 		GameRegistry.addSmelting(
 			EnumGlobsMirageMagic.spinatite.glob.copy(slotOre),
 			EnumGlobsMirageMaterial.spinachium.glob.copy(slotIngot), 1);
@@ -173,6 +176,9 @@ public class ModuleFairy extends ModuleMirageCropsBase
 			EnumGlobsMirageMaterial.spinachium.glob.copy(slotIngot), 1);
 		GameRegistry.addSmelting(
 			EnumGlobsMirageMagic.spinatite.glob.copy(slotDust),
+			EnumGlobsMirageMaterial.spinachium.glob.copy(slotDust), 1);
+		GameRegistry.addSmelting(
+			EnumGlobsMirageMaterial.spinachium.glob.copy(slotDust),
 			EnumGlobsMirageMaterial.spinachium.glob.copy(slotIngot), 1);
 
 		// カルサイト粉+スピナチウム粉→ミラージュパウダー
