@@ -1,7 +1,6 @@
 package mirrg.miragecrops4.fairy;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -11,7 +10,7 @@ public class ItemDustMirage extends Item
 
 	public ItemStack createChangedItem()
 	{
-		return new ItemStack(Items.potionitem);
+		return new ItemStack(ModuleFairy.craftingToolMirageFairy);
 	}
 
 	@Override

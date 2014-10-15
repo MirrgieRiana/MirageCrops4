@@ -14,6 +14,7 @@ import mirrg.miragecrops4.core.ModuleMirageCropsBase;
 import mirrg.miragecrops4.fairy.glass.HandlerRenderingFairyGlass;
 import mirrg.miragecrops4.fairy.glass.ItemFairyGlass;
 import mirrg.miragecrops4.fairy.glass.MessageHandlerFairyGlass;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraftforge.common.MinecraftForge;
@@ -83,6 +84,7 @@ public class ModuleFairy extends ModuleMirageCropsBase
 	public static ItemFairyGlass craftingFairyGlass;
 	public static ItemTool craftingToolHardHammerSpinachium;
 	public static ItemDustMirage dustMirage;
+	public static Item craftingToolMirageFairy;
 
 	@Override
 	protected void registerItems()
@@ -91,6 +93,7 @@ public class ModuleFairy extends ModuleMirageCropsBase
 		craftingToolHardHammerSpinachium = registerItem(
 			new ItemToolCrafting(), "craftingToolHardHammerSpinachium");
 		dustMirage = registerItem(new ItemDustMirage(), "dustMirage");
+		craftingToolMirageFairy = registerItem(new Item(), "craftingToolMirageFairy");
 	}
 
 	@Override
@@ -115,6 +118,11 @@ public class ModuleFairy extends ModuleMirageCropsBase
 
 		configureItem(dustMirage, "dustMirage");
 		dustMirage.setCreativeTab(ModuleCore.creativeTab);
+
+		configureItem(craftingToolMirageFairy, "craftingToolMirageFairy");
+		craftingToolMirageFairy.setCreativeTab(ModuleCore.creativeTab);
+		OreDictionary.registerOre("craftingToolMirageFairy",
+			new ItemStack(craftingToolMirageFairy));
 
 	}
 
