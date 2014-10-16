@@ -1,5 +1,6 @@
 package mirrg.mir40.crop.reflect;
 
+import ic2.api.crops.CropCard;
 import ic2.api.crops.ICropTile;
 
 import java.lang.reflect.Field;
@@ -8,12 +9,13 @@ import java.lang.reflect.Method;
 public class HelpersReflectCrop
 {
 
-	static final Class<?> class_TileEntityCrop;
-	static final Field field_upgraded;
-	static final Field field_ticker;
-	static final Field field_dirty;
-	static final Field field_growthPoints;
-	static final Method method_calcGrowthRate;
+	public static final Class<?> class_TileEntityCrop;
+	public static final Field field_upgraded;
+	public static final Field field_ticker;
+	public static final Field field_dirty;
+	public static final Field field_growthPoints;
+	public static final Method method_calcGrowthRate;
+	public static final Method method_calculateRatioFor;
 
 	static {
 
@@ -39,11 +41,21 @@ public class HelpersReflectCrop
 			field_dirty = class_TileEntityCrop.getField("dirty");
 			field_growthPoints = class_TileEntityCrop.getField("growthPoints");
 			method_calcGrowthRate = class_TileEntityCrop.getMethod("calcGrowthRate");
+			method_calculateRatioFor = class_TileEntityCrop.getMethod("calculateRatioFor");
 
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 
+	}
+
+	public static Object createTileEntityCrop()
+	{
+		try {
+			return class_TileEntityCrop.newInstance();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public static boolean isUpgraded(ICropTile iCropTile)
@@ -122,6 +134,15 @@ public class HelpersReflectCrop
 	{
 		try {
 			return Integer.parseInt(method_calcGrowthRate.invoke(iCropTile).toString());
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public static int calculateRatioFor(ICropTile iCropTile, CropCard a, CropCard b)
+	{
+		try {
+			return Integer.parseInt(method_calculateRatioFor.invoke(iCropTile, a, b).toString());
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
