@@ -66,7 +66,7 @@ class DumperCropCrossingRate implements IDumper
 				if (cards.get(j) == null) continue;
 
 				line.append(",");
-				line.append(j);
+				line.append(Crops.instance.getIdFor(cards.get(j)));
 			}
 
 			logger.log(line.toString());
@@ -98,7 +98,7 @@ class DumperCropCrossingRate implements IDumper
 
 		for (int i = 0; i < cards.size(); i++) {
 			StringBuffer line = new StringBuffer();
-			line.append(i);
+			line.append(Crops.instance.getIdFor(cards.get(i)));
 			line.append(",");
 			line.append(cards.get(i).name());
 			line.append(",");
