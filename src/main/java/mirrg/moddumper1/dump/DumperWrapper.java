@@ -60,6 +60,8 @@ class DumperWrapper implements ILogger
 			log("// ###################### %s ######################", dumper.getName());
 			dumper.onDump(this);
 			FMLLog.info("[%s] Dump Finish", dumper.getName());
+
+			logStream.close();
 		}
 
 	}
