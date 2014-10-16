@@ -41,7 +41,8 @@ public class HelpersReflectCrop
 			field_dirty = class_TileEntityCrop.getField("dirty");
 			field_growthPoints = class_TileEntityCrop.getField("growthPoints");
 			method_calcGrowthRate = class_TileEntityCrop.getMethod("calcGrowthRate");
-			method_calculateRatioFor = class_TileEntityCrop.getMethod("calculateRatioFor");
+			method_calculateRatioFor = class_TileEntityCrop.getMethod("calculateRatioFor",
+				CropCard.class, CropCard.class);
 
 		} catch (Exception e) {
 			throw new RuntimeException(e);
