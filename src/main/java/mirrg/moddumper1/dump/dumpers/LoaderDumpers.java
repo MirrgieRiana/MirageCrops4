@@ -12,6 +12,7 @@ public class LoaderDumpers
 		list.add(new DumperRecipeSorter());
 		list.add(new DumperThaumCraft());
 		list.add(new DumperRailCraftFuels());
+		list.add(new DumperCropCrossingRate());
 	}
 
 }
