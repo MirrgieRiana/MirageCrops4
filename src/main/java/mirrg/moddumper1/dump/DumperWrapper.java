@@ -66,4 +66,10 @@ class DumperWrapper implements ILogger
 
 	}
 
+	@Override
+	public PrintStream getPrintStream()
+	{
+		return logStream;
+	}
+
 }
