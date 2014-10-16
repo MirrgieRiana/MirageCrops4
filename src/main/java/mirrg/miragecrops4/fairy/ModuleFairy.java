@@ -141,7 +141,7 @@ public class ModuleFairy extends ModuleMirageCropsBase
 			HelpersGlob.getDictionaryName(slotGem, enumGlob.getGlob()),
 			"craftingToolHardHammer"));
 
-		// 結晶*4→ブロック
+		// 結晶*9→ブロック
 		GameRegistry.addRecipe(new ShapedOreRecipe(
 			enumGlob.getGlob().copy(slotBlock),
 			"XXX",
@@ -149,7 +149,7 @@ public class ModuleFairy extends ModuleMirageCropsBase
 			"XXX",
 			'X', HelpersGlob.getDictionaryName(slotGem, enumGlob.getGlob())));
 
-		// 結晶*4←ブロック
+		// 結晶*9←ブロック
 		GameRegistry.addRecipe(new ShapedOreRecipe(
 			HelpersGlob.copy(slotGem, enumGlob.getGlob(), 9),
 			"X",
