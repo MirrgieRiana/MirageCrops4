@@ -3,15 +3,15 @@ package mirrg.mir40.data;
 public enum EnumNBTTypes
 {
 	END,
-	BYTE,
-	SHORT,
-	INT,
-	LONG,
-	FLOAT,
-	DOUBLE,
-	BYTE_ARRAY,
-	STRING,
+	BYTE, // primitive
+	SHORT, // primitive
+	INT, // primitive
+	LONG, // primitive
+	FLOAT, // primitive
+	DOUBLE, // primitive
+	BYTE_ARRAY, // array
+	STRING, // object
 	LIST,
-	COMPOUND,
-	INT_ARRAY,
+	COMPOUND, // object
+	INT_ARRAY, // array
 }
