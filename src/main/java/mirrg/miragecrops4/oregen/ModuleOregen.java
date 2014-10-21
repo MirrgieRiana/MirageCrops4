@@ -13,6 +13,7 @@ import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsMohsHardnessCrystal;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsOtherMetal;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobs;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobsSlotProvider;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -137,34 +138,73 @@ public class ModuleOregen extends ModuleOregenBase
 	protected void configureBlocks()
 	{
 
-		configureBlock(ItemsOregen.blockOreCalciteGroup, "blockOreCalciteGroup");
-		configureBlock(ItemsOregen.blockOreMohsHardnessCrystal, "blockOreMohsHardnessCrystal");
-		configureBlock(ItemsOregen.blockOreOtherMetal, "blockOreOtherMetal");
-		configureBlock(ItemsOregen.blockOreMirageMagic, "blockOreMirageMagic");
-
-		configureBlock(ItemsOregen.blockCalciteGroup, "blockCalciteGroup");
-		configureBlock(ItemsOregen.blockMohsHardnessCrystal, "blockMohsHardnessCrystal");
-		configureBlock(ItemsOregen.blockOtherMetal, "blockOtherMetal");
-		configureBlock(ItemsOregen.blockMirageMaterial, "blockMirageMaterial");
-
 		// グロブ・スロットの後
-		createMetaBlock(EnumGlobsCalciteGroup.values(),
-			(BlockMulti) ItemsOregen.blockOreCalciteGroup, ItemsOregen.slotOre);
-		createMetaBlock(EnumGlobsMohsHardnessCrystal.values(),
-			(BlockMulti) ItemsOregen.blockOreMohsHardnessCrystal, ItemsOregen.slotOre);
-		createMetaBlock(EnumGlobsOtherMetal.values(),
-			(BlockMulti) ItemsOregen.blockOreOtherMetal, ItemsOregen.slotOre);
-		createMetaBlock(EnumGlobsMirageMagic.values(),
-			(BlockMulti) ItemsOregen.blockOreMirageMagic, ItemsOregen.slotOre);
+		ISlot[] slots = {
+			ItemsOregen.slotOre,
+			ItemsOregen.slotBlock,
+		};
 
-		createMetaBlock(EnumGlobsCalciteGroup.values(),
-			(BlockMulti) ItemsOregen.blockCalciteGroup, ItemsOregen.slotBlock);
-		createMetaBlock(EnumGlobsMohsHardnessCrystal.values(),
-			(BlockMulti) ItemsOregen.blockMohsHardnessCrystal, ItemsOregen.slotBlock);
-		createMetaBlock(EnumGlobsOtherMetal.values(),
-			(BlockMulti) ItemsOregen.blockOtherMetal, ItemsOregen.slotBlock);
-		createMetaBlock(EnumGlobsMirageMagic.values(),
-			(BlockMulti) ItemsOregen.blockMirageMaterial, ItemsOregen.slotBlock);
+		for (IEnumGlobsSlotProvider[] enumGlobs : ItemsOregen.enumGlobsList) {
+			IEnumGlobsSlotProvider glob = enumGlobs[0];
+
+			for (ISlot slot : slots) {
+
+				if (glob.isProviding(slot)) {
+
+					String unlocalizedName;
+					if (slot == ItemsOregen.slotBlock) {
+						unlocalizedName = "block" +
+							glob.getCategoryName();
+					} else {
+						unlocalizedName = "block" +
+							HelpersString.toUpperCaseHead(slot.getName()) +
+							glob.getCategoryName();
+					}
+
+					Object obj = HelpersReflect.getStaticField(ItemsOregen.class, unlocalizedName);
+
+					if (obj == null || obj instanceof Exception) {
+						throw new RuntimeException((Exception) obj);
+					}
+
+					configureBlock((Block) obj, unlocalizedName);
+
+				}
+
+			}
+
+		}
+
+		for (IEnumGlobsSlotProvider[] enumGlobs : ItemsOregen.enumGlobsList) {
+			IEnumGlobsSlotProvider glob = enumGlobs[0];
+
+			for (ISlot slot : slots) {
+
+				if (glob.isProviding(slot)) {
+
+					String unlocalizedName;
+					if (slot == ItemsOregen.slotBlock) {
+						unlocalizedName = "block" +
+							glob.getCategoryName();
+					} else {
+						unlocalizedName = "block" +
+							HelpersString.toUpperCaseHead(slot.getName()) +
+							glob.getCategoryName();
+					}
+
+					Object obj = HelpersReflect.getStaticField(ItemsOregen.class, unlocalizedName);
+
+					if (obj == null || obj instanceof Exception) {
+						throw new RuntimeException((Exception) obj);
+					}
+
+					createMetaBlock(glob.getValues(), (BlockMulti) obj, slot);
+
+				}
+
+			}
+
+		}
 
 	}
 
