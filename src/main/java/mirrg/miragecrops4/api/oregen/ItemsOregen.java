@@ -57,6 +57,12 @@ public class ItemsOregen
 		}
 
 		@Override
+		public IEnumGlobs[] getValues()
+		{
+			return values();
+		}
+
+		@Override
 		public boolean isProviding(ISlot slot)
 		{
 			if (slot == slotOre) return isProvidingOre();
@@ -136,6 +142,12 @@ public class ItemsOregen
 		}
 
 		@Override
+		public IEnumGlobs[] getValues()
+		{
+			return values();
+		}
+
+		@Override
 		public boolean isProviding(ISlot slot)
 		{
 			if (slot == slotOre) return isProvidingOre();
@@ -203,6 +215,12 @@ public class ItemsOregen
 		public String getCategoryName()
 		{
 			return "OtherMetal";
+		}
+
+		@Override
+		public IEnumGlobs[] getValues()
+		{
+			return values();
 		}
 
 		@Override
@@ -276,6 +294,12 @@ public class ItemsOregen
 		}
 
 		@Override
+		public IEnumGlobs[] getValues()
+		{
+			return values();
+		}
+
+		@Override
 		public boolean isProviding(ISlot slot)
 		{
 			if (slot == slotOre) return isProvidingOre();
@@ -346,6 +370,12 @@ public class ItemsOregen
 		}
 
 		@Override
+		public IEnumGlobs[] getValues()
+		{
+			return values();
+		}
+
+		@Override
 		public boolean isProviding(ISlot slot)
 		{
 			if (slot == slotOre) return isProvidingOre();
@@ -411,6 +441,8 @@ public class ItemsOregen
 		 * ex: "CalciteGroup"
 		 */
 		public String getCategoryName();
+
+		public IEnumGlobs[] getValues();
 
 		public boolean isProviding(ISlot slot);
 
