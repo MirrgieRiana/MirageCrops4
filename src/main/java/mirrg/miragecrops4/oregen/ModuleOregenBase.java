@@ -56,10 +56,10 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		item.setCreativeTab(ModuleCore.creativeTab);
 	}
 
-	protected void createMetaBlock(IEnumGlobs[] globs, BlockMulti blockMulti, ISlot slot)
+	protected void createMetaBlock(IEnumGlobsSlotProvider<?>[] globs, BlockMulti blockMulti, ISlot slot)
 	{
 		for (int i = 0; i < globs.length; i++) {
-			IEnumGlobs enumGlob = globs[i];
+			IEnumGlobsSlotProvider<?> enumGlob = globs[i];
 
 			// グロブの設定
 			((GlobAbstract) enumGlob.getGlob()).setName(((Enum<?>) enumGlob).name());
@@ -87,8 +87,10 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 					}
 				}
 
-				// 鉱石辞書に登録
-				OreDictionary.registerOre(unlocalizedName, new ItemStack(blockMulti, 1, i));
+				if (enumGlob.isProviding(slot)) {
+					// 鉱石辞書に登録
+					OreDictionary.registerOre(unlocalizedName, new ItemStack(blockMulti, 1, i));
+				}
 
 			}
 
@@ -96,12 +98,12 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 	}
 
 	protected void createMetaItem(
-		List<IEnumGlobsSlotProvider[]> globsList, ItemMultiIcon itemMultiIcon,
+		List<IEnumGlobsSlotProvider<?>[]> globsList, ItemMultiIcon itemMultiIcon,
 		ISlot slot, IMultiIconShape multiIconShape)
 	{
 		for (int j = 0; j < globsList.size(); j++) {
 			for (int i = 0; i < globsList.get(j).length; i++) {
-				IEnumGlobs enumGlob = globsList.get(j)[i];
+				IEnumGlobsSlotProvider<?> enumGlob = globsList.get(j)[i];
 
 				// グロブの設定
 				((GlobAbstract) enumGlob.getGlob()).setName(((Enum<?>) enumGlob).name());
@@ -132,8 +134,10 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 						}
 					}
 
-					// 鉱石辞書に登録
-					OreDictionary.registerOre(unlocalizedName, new ItemStack(itemMultiIcon, 1, id));
+					if (enumGlob.isProviding(slot)) {
+						// 鉱石辞書に登録
+						OreDictionary.registerOre(unlocalizedName, new ItemStack(itemMultiIcon, 1, id));
+					}
 
 				}
 

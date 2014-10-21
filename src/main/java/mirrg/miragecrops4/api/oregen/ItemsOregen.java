@@ -25,7 +25,8 @@ public class ItemsOregen
 	/**
 	 * 鉱物・宝石
 	 */
-	public static enum EnumGlobsCalciteGroup implements IEnumGlobsSlotProvider
+	public static enum EnumGlobsCalciteGroup
+		implements IEnumGlobsSlotProvider<EnumGlobsCalciteGroup>
 	{
 		calcite,
 		magnesite,
@@ -57,7 +58,7 @@ public class ItemsOregen
 		}
 
 		@Override
-		public IEnumGlobs[] getValues()
+		public EnumGlobsCalciteGroup[] getValues()
 		{
 			return values();
 		}
@@ -108,7 +109,8 @@ public class ItemsOregen
 	/**
 	 * 鉱物・宝石
 	 */
-	public static enum EnumGlobsMohsHardnessCrystal implements IEnumGlobsSlotProvider
+	public static enum EnumGlobsMohsHardnessCrystal
+		implements IEnumGlobsSlotProvider<EnumGlobsMohsHardnessCrystal>
 	{
 		talc,
 		gypsum,
@@ -142,7 +144,7 @@ public class ItemsOregen
 		}
 
 		@Override
-		public IEnumGlobs[] getValues()
+		public EnumGlobsMohsHardnessCrystal[] getValues()
 		{
 			return values();
 		}
@@ -193,7 +195,8 @@ public class ItemsOregen
 	/**
 	 * 金属・鉱石
 	 */
-	public static enum EnumGlobsOtherMetal implements IEnumGlobsSlotProvider
+	public static enum EnumGlobsOtherMetal
+		implements IEnumGlobsSlotProvider<EnumGlobsOtherMetal>
 	{
 		bismuth, ;
 
@@ -218,7 +221,7 @@ public class ItemsOregen
 		}
 
 		@Override
-		public IEnumGlobs[] getValues()
+		public EnumGlobsOtherMetal[] getValues()
 		{
 			return values();
 		}
@@ -269,7 +272,8 @@ public class ItemsOregen
 	/**
 	 * 鉱物
 	 */
-	public static enum EnumGlobsMirageMagic implements IEnumGlobsSlotProvider
+	public static enum EnumGlobsMirageMagic
+		implements IEnumGlobsSlotProvider<EnumGlobsMirageMagic>
 	{
 		spinatite, ;
 
@@ -294,7 +298,7 @@ public class ItemsOregen
 		}
 
 		@Override
-		public IEnumGlobs[] getValues()
+		public EnumGlobsMirageMagic[] getValues()
 		{
 			return values();
 		}
@@ -345,7 +349,8 @@ public class ItemsOregen
 	/**
 	 * 金属
 	 */
-	public static enum EnumGlobsMirageMaterial implements IEnumGlobsSlotProvider
+	public static enum EnumGlobsMirageMaterial
+		implements IEnumGlobsSlotProvider<EnumGlobsMirageMaterial>
 	{
 		spinachium, ;
 
@@ -370,7 +375,7 @@ public class ItemsOregen
 		}
 
 		@Override
-		public IEnumGlobs[] getValues()
+		public EnumGlobsMirageMaterial[] getValues()
 		{
 			return values();
 		}
@@ -418,8 +423,8 @@ public class ItemsOregen
 
 	}
 
-	public static LinkedList<IEnumGlobsSlotProvider[]> enumGlobsList =
-		new LinkedList<IEnumGlobsSlotProvider[]>();
+	public static LinkedList<IEnumGlobsSlotProvider<?>[]> enumGlobsList =
+		new LinkedList<IEnumGlobsSlotProvider<?>[]>();
 	static {
 		enumGlobsList.add(EnumGlobsCalciteGroup.values());
 		enumGlobsList.add(EnumGlobsMohsHardnessCrystal.values());
@@ -434,7 +439,8 @@ public class ItemsOregen
 	public static ISlot slotGem;
 	public static ISlot slotDust;
 
-	public static interface IEnumGlobsSlotProvider extends IEnumGlobs
+	public static interface IEnumGlobsSlotProvider<SELF extends IEnumGlobsSlotProvider<SELF>>
+		extends IEnumGlobs
 	{
 
 		/**
@@ -442,7 +448,7 @@ public class ItemsOregen
 		 */
 		public String getCategoryName();
 
-		public IEnumGlobs[] getValues();
+		public SELF[] getValues();
 
 		public boolean isProviding(ISlot slot);
 

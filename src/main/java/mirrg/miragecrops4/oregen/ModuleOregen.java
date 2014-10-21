@@ -86,8 +86,8 @@ public class ModuleOregen extends ModuleOregenBase
 			ItemsOregen.slotBlock,
 		};
 
-		for (IEnumGlobsSlotProvider[] enumGlobs : ItemsOregen.enumGlobsList) {
-			IEnumGlobsSlotProvider glob = enumGlobs[0];
+		for (IEnumGlobsSlotProvider<?>[] enumGlobs : ItemsOregen.enumGlobsList) {
+			IEnumGlobsSlotProvider<?> glob = enumGlobs[0];
 
 			for (ISlot slot : slots) {
 
@@ -144,8 +144,8 @@ public class ModuleOregen extends ModuleOregenBase
 			ItemsOregen.slotBlock,
 		};
 
-		for (IEnumGlobsSlotProvider[] enumGlobs : ItemsOregen.enumGlobsList) {
-			IEnumGlobsSlotProvider glob = enumGlobs[0];
+		for (IEnumGlobsSlotProvider<?>[] enumGlobs : ItemsOregen.enumGlobsList) {
+			IEnumGlobsSlotProvider<?> glob = enumGlobs[0];
 
 			for (ISlot slot : slots) {
 
@@ -175,8 +175,8 @@ public class ModuleOregen extends ModuleOregenBase
 
 		}
 
-		for (IEnumGlobsSlotProvider[] enumGlobs : ItemsOregen.enumGlobsList) {
-			IEnumGlobsSlotProvider glob = enumGlobs[0];
+		for (IEnumGlobsSlotProvider<?>[] enumGlobs : ItemsOregen.enumGlobsList) {
+			IEnumGlobsSlotProvider<?> glob = enumGlobs[0];
 
 			for (ISlot slot : slots) {
 
