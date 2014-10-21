@@ -145,7 +145,7 @@ public class ItemsOregen
 	}
 
 	/**
-	 * 金属
+	 * 金属・鉱石
 	 */
 	public static enum EnumGlobsOtherMetal implements IEnumGlobsSlotProvider
 	{
