@@ -18,6 +18,7 @@ import mirrg.mir40.worldgen.WorldGeneratorXYZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre.CountPer;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobs;
+import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobsSlotProvider;
 import mirrg.miragecrops4.api.oregen.RegisterMaterialColor;
 import mirrg.miragecrops4.core.ModuleCore;
 import mirrg.miragecrops4.core.ModuleMirageCropsBase;
@@ -95,7 +96,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 	}
 
 	protected void createMetaItem(
-		List<IEnumGlobs[]> globsList, ItemMultiIcon itemMultiIcon,
+		List<IEnumGlobsSlotProvider[]> globsList, ItemMultiIcon itemMultiIcon,
 		ISlot slot, IMultiIconShape multiIconShape)
 	{
 		for (int j = 0; j < globsList.size(); j++) {

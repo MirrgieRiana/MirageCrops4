@@ -388,7 +388,8 @@ public class ItemsOregen
 
 	}
 
-	public static LinkedList<IEnumGlobs[]> enumGlobsList = new LinkedList<IEnumGlobs[]>();
+	public static LinkedList<IEnumGlobsSlotProvider[]> enumGlobsList =
+		new LinkedList<IEnumGlobsSlotProvider[]>();
 	static {
 		enumGlobsList.add(EnumGlobsCalciteGroup.values());
 		enumGlobsList.add(EnumGlobsMohsHardnessCrystal.values());
