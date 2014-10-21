@@ -51,6 +51,23 @@ public class ItemsOregen
 		}
 
 		@Override
+		public String getCategoryName()
+		{
+			return "CalciteGroup";
+		}
+
+		@Override
+		public boolean isProviding(ISlot slot)
+		{
+			if (slot == slotOre) return isProvidingOre();
+			if (slot == slotBlock) return isProvidingBlock();
+			if (slot == slotIngot) return isProvidingIngot();
+			if (slot == slotGem) return isProvidingGem();
+			if (slot == slotDust) return isProvidingDust();
+			return false;
+		}
+
+		@Override
 		public boolean isProvidingOre()
 		{
 			return true;
@@ -113,6 +130,23 @@ public class ItemsOregen
 		}
 
 		@Override
+		public String getCategoryName()
+		{
+			return "MohsHardnessCrystal";
+		}
+
+		@Override
+		public boolean isProviding(ISlot slot)
+		{
+			if (slot == slotOre) return isProvidingOre();
+			if (slot == slotBlock) return isProvidingBlock();
+			if (slot == slotIngot) return isProvidingIngot();
+			if (slot == slotGem) return isProvidingGem();
+			if (slot == slotDust) return isProvidingDust();
+			return false;
+		}
+
+		@Override
 		public boolean isProvidingOre()
 		{
 			return true;
@@ -163,6 +197,23 @@ public class ItemsOregen
 		public void setGlob(IGlob glob)
 		{
 			this.glob = glob;
+		}
+
+		@Override
+		public String getCategoryName()
+		{
+			return "OtherMetal";
+		}
+
+		@Override
+		public boolean isProviding(ISlot slot)
+		{
+			if (slot == slotOre) return isProvidingOre();
+			if (slot == slotBlock) return isProvidingBlock();
+			if (slot == slotIngot) return isProvidingIngot();
+			if (slot == slotGem) return isProvidingGem();
+			if (slot == slotDust) return isProvidingDust();
+			return false;
 		}
 
 		@Override
@@ -219,6 +270,23 @@ public class ItemsOregen
 		}
 
 		@Override
+		public String getCategoryName()
+		{
+			return "MirageMagic";
+		}
+
+		@Override
+		public boolean isProviding(ISlot slot)
+		{
+			if (slot == slotOre) return isProvidingOre();
+			if (slot == slotBlock) return isProvidingBlock();
+			if (slot == slotIngot) return isProvidingIngot();
+			if (slot == slotGem) return isProvidingGem();
+			if (slot == slotDust) return isProvidingDust();
+			return false;
+		}
+
+		@Override
 		public boolean isProvidingOre()
 		{
 			return true;
@@ -272,6 +340,23 @@ public class ItemsOregen
 		}
 
 		@Override
+		public String getCategoryName()
+		{
+			return "MirageMaterial";
+		}
+
+		@Override
+		public boolean isProviding(ISlot slot)
+		{
+			if (slot == slotOre) return isProvidingOre();
+			if (slot == slotBlock) return isProvidingBlock();
+			if (slot == slotIngot) return isProvidingIngot();
+			if (slot == slotGem) return isProvidingGem();
+			if (slot == slotDust) return isProvidingDust();
+			return false;
+		}
+
+		@Override
 		public boolean isProvidingOre()
 		{
 			return false;
@@ -320,6 +405,13 @@ public class ItemsOregen
 
 	public static interface IEnumGlobsSlotProvider extends IEnumGlobs
 	{
+
+		/**
+		 * ex: "CalciteGroup"
+		 */
+		public String getCategoryName();
+
+		public boolean isProviding(ISlot slot);
 
 		public boolean isProvidingOre();
 
