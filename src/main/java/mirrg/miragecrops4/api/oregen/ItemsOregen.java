@@ -1,32 +1,48 @@
 package mirrg.miragecrops4.api.oregen;
 
-import java.util.LinkedList;
-
-import mirrg.mir40.glob.api.IGlob;
-import mirrg.mir40.glob.api.ISlot;
+import mirrg.mir40.icon.api.IMultiIconShape;
+import mirrg.mir41.glob.Glob;
+import mirrg.mir41.glob.GlobGroup;
+import mirrg.mir41.glob.GlobManager;
+import mirrg.mir41.glob.Slot;
+import mirrg.mir41.glob.api.IGlob;
+import mirrg.mir41.glob.api.ISlot;
+import mirrg.miragecrops4.oregen.MultiIcons;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
 public class ItemsOregen
 {
 
-	/**
-	 * 要素は16個まで
-	 */
-	public interface IEnumGlobs
+	public static GlobManager<ISlot, IGlob> globManager = new GlobManager<ISlot, IGlob>();
+
+	public static enum EnumSlotType
 	{
+		BLOCK, ITEM,
+	}
 
-		public void setGlob(IGlob glob);
+	public static enum Slots
+	{
+		ore(EnumSlotType.BLOCK, null),
+		block(EnumSlotType.BLOCK, null),
+		ingot(EnumSlotType.ITEM, MultiIcons.INGOT),
+		gem(EnumSlotType.ITEM, MultiIcons.GEM),
+		dust(EnumSlotType.ITEM, MultiIcons.DUST), ;
 
-		public IGlob getGlob();
+		public final Slot slot;
+		public final EnumSlotType type;
+		public final IMultiIconShape icon;
+
+		private Slots(EnumSlotType type, IMultiIconShape icon)
+		{
+			slot = new Slot(name());
+			this.type = type;
+			this.icon = icon;
+		}
 
 	}
 
-	/**
-	 * 鉱物・宝石
-	 */
-	public static enum EnumGlobsCalciteGroup
-		implements IEnumGlobsSlotProvider<EnumGlobsCalciteGroup>
+	public static enum Globs
 	{
 		calcite,
 		magnesite,
@@ -35,432 +51,114 @@ public class ItemsOregen
 		smithsonite,
 		sphaerocobaltite,
 		gaspeite,
-		otavite, ;
-
-		public IGlob glob;
-
-		@Override
-		public IGlob getGlob()
-		{
-			return glob;
-		}
-
-		@Override
-		public void setGlob(IGlob glob)
-		{
-			this.glob = glob;
-		}
-
-		@Override
-		public String getCategoryName()
-		{
-			return "CalciteGroup";
-		}
-
-		@Override
-		public EnumGlobsCalciteGroup[] getValues()
-		{
-			return values();
-		}
-
-		@Override
-		public boolean isProviding(ISlot slot)
-		{
-			if (slot == slotOre) return isProvidingOre();
-			if (slot == slotBlock) return isProvidingBlock();
-			if (slot == slotIngot) return isProvidingIngot();
-			if (slot == slotGem) return isProvidingGem();
-			if (slot == slotDust) return isProvidingDust();
-			return false;
-		}
-
-		@Override
-		public boolean isProvidingOre()
-		{
-			return true;
-		}
-
-		@Override
-		public boolean isProvidingBlock()
-		{
-			return true;
-		}
-
-		@Override
-		public boolean isProvidingIngot()
-		{
-			return false;
-		}
-
-		@Override
-		public boolean isProvidingGem()
-		{
-			return true;
-		}
-
-		@Override
-		public boolean isProvidingDust()
-		{
-			return true;
-		}
-
-	}
-
-	/**
-	 * 鉱物・宝石
-	 */
-	public static enum EnumGlobsMohsHardnessCrystal
-		implements IEnumGlobsSlotProvider<EnumGlobsMohsHardnessCrystal>
-	{
+		otavite,
 		talc,
 		gypsum,
-		calcite,
+		//calcite,
 		fluorite,
 		apatite,
 		orthoclase,
 		certusQuartz,
 		topaz,
 		ruby,
-		diamond, ;
-
-		public IGlob glob;
-
-		@Override
-		public IGlob getGlob()
-		{
-			return glob;
-		}
-
-		@Override
-		public void setGlob(IGlob glob)
-		{
-			this.glob = glob;
-		}
-
-		@Override
-		public String getCategoryName()
-		{
-			return "MohsHardnessCrystal";
-		}
-
-		@Override
-		public EnumGlobsMohsHardnessCrystal[] getValues()
-		{
-			return values();
-		}
-
-		@Override
-		public boolean isProviding(ISlot slot)
-		{
-			if (slot == slotOre) return isProvidingOre();
-			if (slot == slotBlock) return isProvidingBlock();
-			if (slot == slotIngot) return isProvidingIngot();
-			if (slot == slotGem) return isProvidingGem();
-			if (slot == slotDust) return isProvidingDust();
-			return false;
-		}
-
-		@Override
-		public boolean isProvidingOre()
-		{
-			return true;
-		}
-
-		@Override
-		public boolean isProvidingBlock()
-		{
-			return true;
-		}
-
-		@Override
-		public boolean isProvidingIngot()
-		{
-			return false;
-		}
-
-		@Override
-		public boolean isProvidingGem()
-		{
-			return true;
-		}
-
-		@Override
-		public boolean isProvidingDust()
-		{
-			return true;
-		}
-
-	}
-
-	/**
-	 * 金属・鉱石
-	 */
-	public static enum EnumGlobsOtherMetal
-		implements IEnumGlobsSlotProvider<EnumGlobsOtherMetal>
-	{
-		bismuth, ;
-
-		public IGlob glob;
-
-		@Override
-		public IGlob getGlob()
-		{
-			return glob;
-		}
-
-		@Override
-		public void setGlob(IGlob glob)
-		{
-			this.glob = glob;
-		}
-
-		@Override
-		public String getCategoryName()
-		{
-			return "OtherMetal";
-		}
-
-		@Override
-		public EnumGlobsOtherMetal[] getValues()
-		{
-			return values();
-		}
-
-		@Override
-		public boolean isProviding(ISlot slot)
-		{
-			if (slot == slotOre) return isProvidingOre();
-			if (slot == slotBlock) return isProvidingBlock();
-			if (slot == slotIngot) return isProvidingIngot();
-			if (slot == slotGem) return isProvidingGem();
-			if (slot == slotDust) return isProvidingDust();
-			return false;
-		}
-
-		@Override
-		public boolean isProvidingOre()
-		{
-			return true;
-		}
-
-		@Override
-		public boolean isProvidingBlock()
-		{
-			return true;
-		}
-
-		@Override
-		public boolean isProvidingIngot()
-		{
-			return true;
-		}
-
-		@Override
-		public boolean isProvidingGem()
-		{
-			return false;
-		}
-
-		@Override
-		public boolean isProvidingDust()
-		{
-			return true;
-		}
-
-	}
-
-	/**
-	 * 鉱物
-	 */
-	public static enum EnumGlobsMirageMagic
-		implements IEnumGlobsSlotProvider<EnumGlobsMirageMagic>
-	{
-		spinatite, ;
-
-		public IGlob glob;
-
-		@Override
-		public IGlob getGlob()
-		{
-			return glob;
-		}
-
-		@Override
-		public void setGlob(IGlob glob)
-		{
-			this.glob = glob;
-		}
-
-		@Override
-		public String getCategoryName()
-		{
-			return "MirageMagic";
-		}
-
-		@Override
-		public EnumGlobsMirageMagic[] getValues()
-		{
-			return values();
-		}
-
-		@Override
-		public boolean isProviding(ISlot slot)
-		{
-			if (slot == slotOre) return isProvidingOre();
-			if (slot == slotBlock) return isProvidingBlock();
-			if (slot == slotIngot) return isProvidingIngot();
-			if (slot == slotGem) return isProvidingGem();
-			if (slot == slotDust) return isProvidingDust();
-			return false;
-		}
-
-		@Override
-		public boolean isProvidingOre()
-		{
-			return true;
-		}
-
-		@Override
-		public boolean isProvidingBlock()
-		{
-			return false;
-		}
-
-		@Override
-		public boolean isProvidingIngot()
-		{
-			return false;
-		}
-
-		@Override
-		public boolean isProvidingGem()
-		{
-			return false;
-		}
-
-		@Override
-		public boolean isProvidingDust()
-		{
-			return true;
-		}
-
-	}
-
-	/**
-	 * 金属
-	 */
-	public static enum EnumGlobsMirageMaterial
-		implements IEnumGlobsSlotProvider<EnumGlobsMirageMaterial>
-	{
+		diamond,
+		bismuth,
+		spinatite,
 		spinachium, ;
 
-		public IGlob glob;
+		public final Glob glob;
 
-		@Override
-		public IGlob getGlob()
+		private Globs()
 		{
-			return glob;
-		}
-
-		@Override
-		public void setGlob(IGlob glob)
-		{
-			this.glob = glob;
-		}
-
-		@Override
-		public String getCategoryName()
-		{
-			return "MirageMaterial";
-		}
-
-		@Override
-		public EnumGlobsMirageMaterial[] getValues()
-		{
-			return values();
-		}
-
-		@Override
-		public boolean isProviding(ISlot slot)
-		{
-			if (slot == slotOre) return isProvidingOre();
-			if (slot == slotBlock) return isProvidingBlock();
-			if (slot == slotIngot) return isProvidingIngot();
-			if (slot == slotGem) return isProvidingGem();
-			if (slot == slotDust) return isProvidingDust();
-			return false;
-		}
-
-		@Override
-		public boolean isProvidingOre()
-		{
-			return false;
-		}
-
-		@Override
-		public boolean isProvidingBlock()
-		{
-			return true;
-		}
-
-		@Override
-		public boolean isProvidingIngot()
-		{
-			return true;
-		}
-
-		@Override
-		public boolean isProvidingGem()
-		{
-			return false;
-		}
-
-		@Override
-		public boolean isProvidingDust()
-		{
-			return true;
+			glob = new Glob(name());
 		}
 
 	}
 
-	public static LinkedList<IEnumGlobsSlotProvider<?>[]> enumGlobsList =
-		new LinkedList<IEnumGlobsSlotProvider<?>[]>();
-	static {
-		enumGlobsList.add(EnumGlobsCalciteGroup.values());
-		enumGlobsList.add(EnumGlobsMohsHardnessCrystal.values());
-		enumGlobsList.add(EnumGlobsOtherMetal.values());
-		enumGlobsList.add(EnumGlobsMirageMagic.values());
-		enumGlobsList.add(EnumGlobsMirageMaterial.values());
-	}
-
-	public static ISlot slotOre;
-	public static ISlot slotBlock;
-	public static ISlot slotIngot;
-	public static ISlot slotGem;
-	public static ISlot slotDust;
-
-	public static interface IEnumGlobsSlotProvider<SELF extends IEnumGlobsSlotProvider<SELF>>
-		extends IEnumGlobs
+	public static enum GlobGroups
 	{
+		CalciteGroup,
+		MohsHardnessCrystal,
+		OtherMetal,
+		MirageMagic,
+		MirageMaterial, ;
 
-		/**
-		 * ex: "CalciteGroup"
-		 */
-		public String getCategoryName();
+		public final GlobGroup<IGlob> globGroup;
 
-		public SELF[] getValues();
+		private GlobGroups()
+		{
+			globGroup = new GlobGroup<IGlob>(name());
+		}
 
-		public boolean isProviding(ISlot slot);
+	}
 
-		public boolean isProvidingOre();
+	static
+	{
+		{
+			GlobGroup<IGlob> globGroup = GlobGroups.CalciteGroup.globGroup;
+			globGroup.setAllowsSlot(Slots.ore.slot, true);
+			globGroup.setAllowsSlot(Slots.block.slot, true);
+			globGroup.setAllowsSlot(Slots.ingot.slot, false);
+			globGroup.setAllowsSlot(Slots.gem.slot, true);
+			globGroup.setAllowsSlot(Slots.dust.slot, true);
+			globGroup.registerGlob(Globs.calcite.glob);
+			globGroup.registerGlob(Globs.magnesite.glob);
+			globGroup.registerGlob(Globs.siderite.glob);
+			globGroup.registerGlob(Globs.rhodochrosite.glob);
+			globGroup.registerGlob(Globs.smithsonite.glob);
+			globGroup.registerGlob(Globs.sphaerocobaltite.glob);
+			globGroup.registerGlob(Globs.gaspeite.glob);
+			globGroup.registerGlob(Globs.otavite.glob);
+		}
 
-		public boolean isProvidingBlock();
+		{
+			GlobGroup<IGlob> globGroup = GlobGroups.MohsHardnessCrystal.globGroup;
+			globGroup.setAllowsSlot(Slots.ore.slot, true);
+			globGroup.setAllowsSlot(Slots.block.slot, true);
+			globGroup.setAllowsSlot(Slots.ingot.slot, false);
+			globGroup.setAllowsSlot(Slots.gem.slot, true);
+			globGroup.setAllowsSlot(Slots.dust.slot, true);
+			globGroup.registerGlob(Globs.talc.glob);
+			globGroup.registerGlob(Globs.gypsum.glob);
+			globGroup.registerGlob(Globs.calcite.glob);
+			globGroup.registerGlob(Globs.fluorite.glob);
+			globGroup.registerGlob(Globs.apatite.glob);
+			globGroup.registerGlob(Globs.orthoclase.glob);
+			globGroup.registerGlob(Globs.certusQuartz.glob);
+			globGroup.registerGlob(Globs.topaz.glob);
+			globGroup.registerGlob(Globs.ruby.glob);
+			globGroup.registerGlob(Globs.diamond.glob);
+		}
 
-		public boolean isProvidingIngot();
+		{
+			GlobGroup<IGlob> globGroup = GlobGroups.OtherMetal.globGroup;
+			globGroup.setAllowsSlot(Slots.ore.slot, true);
+			globGroup.setAllowsSlot(Slots.block.slot, true);
+			globGroup.setAllowsSlot(Slots.ingot.slot, true);
+			globGroup.setAllowsSlot(Slots.gem.slot, false);
+			globGroup.setAllowsSlot(Slots.dust.slot, true);
+			globGroup.registerGlob(Globs.bismuth.glob);
+		}
 
-		public boolean isProvidingGem();
+		{
+			GlobGroup<IGlob> globGroup = GlobGroups.MirageMagic.globGroup;
+			globGroup.setAllowsSlot(Slots.ore.slot, true);
+			globGroup.setAllowsSlot(Slots.block.slot, false);
+			globGroup.setAllowsSlot(Slots.ingot.slot, false);
+			globGroup.setAllowsSlot(Slots.gem.slot, true);
+			globGroup.setAllowsSlot(Slots.dust.slot, true);
+			globGroup.registerGlob(Globs.spinatite.glob);
+		}
 
-		public boolean isProvidingDust();
+		{
+			GlobGroup<IGlob> globGroup = GlobGroups.MirageMaterial.globGroup;
+			globGroup.setAllowsSlot(Slots.ore.slot, false);
+			globGroup.setAllowsSlot(Slots.block.slot, true);
+			globGroup.setAllowsSlot(Slots.ingot.slot, true);
+			globGroup.setAllowsSlot(Slots.gem.slot, false);
+			globGroup.setAllowsSlot(Slots.dust.slot, true);
+			globGroup.registerGlob(Globs.spinachium.glob);
+		}
 
 	}
 

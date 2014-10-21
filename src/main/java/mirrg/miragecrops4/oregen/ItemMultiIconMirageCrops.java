@@ -1,7 +1,6 @@
 package mirrg.miragecrops4.oregen;
 
 import mirrg.mir40.item.ItemMultiIcon;
-import mirrg.mir40.item.glob.MetaitemIconGlob;
 import mirrg.mir40.multi.Multibase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;

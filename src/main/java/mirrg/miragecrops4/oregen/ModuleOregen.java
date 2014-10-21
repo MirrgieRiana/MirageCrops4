@@ -1,19 +1,19 @@
 package mirrg.miragecrops4.oregen;
 
+import static mirrg.miragecrops4.api.oregen.ItemsOregen.*;
 import mirrg.mir34.modding.IMod;
 import mirrg.mir40.block.BlockMulti;
-import mirrg.mir40.glob.SlotAbstract;
-import mirrg.mir40.glob.api.ISlot;
+import mirrg.mir40.item.ItemMultiIcon;
 import mirrg.mir40.math.HelpersString;
 import mirrg.mir40.reflect.HelpersReflect;
+import mirrg.mir41.glob.HelpersGlob;
 import mirrg.miragecrops4.api.oregen.ItemsOregen;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsCalciteGroup;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsMirageMagic;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsMohsHardnessCrystal;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsOtherMetal;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobs;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobsSlotProvider;
+import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumSlotType;
+import mirrg.miragecrops4.api.oregen.ItemsOregen.GlobGroups;
+import mirrg.miragecrops4.api.oregen.ItemsOregen.Globs;
+import mirrg.miragecrops4.api.oregen.ItemsOregen.Slots;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -67,50 +67,30 @@ public class ModuleOregen extends ModuleOregenBase
 	protected void registerBlocks()
 	{
 
-		// グロブスロットのインスタンス生成とAPIへの代入
-		ItemsOregen.slotOre = new SlotAbstract();
-		ItemsOregen.slotBlock = new SlotAbstract();
+		for (Slots enumSlot : ItemsOregen.Slots.values()) {
+			if (enumSlot.type == EnumSlotType.BLOCK) {
 
-		((SlotAbstract) ItemsOregen.slotOre).setName("ore");
-		((SlotAbstract) ItemsOregen.slotBlock).setName("block");
+				for (GlobGroups enumGlobGroup : ItemsOregen.GlobGroups.values()) {
+					if (enumGlobGroup.globGroup.allowsSlot(enumSlot.slot)) {
 
-		// グロブのインスタンス生成とAPIへの代入
-		for (IEnumGlobs[] enumGlobs : ItemsOregen.enumGlobsList) {
-			createGlob(enumGlobs);
-		}
+						String unlocalizedName;
+						if (enumSlot == ItemsOregen.Slots.block) {
+							unlocalizedName = "block" +
+								enumGlobGroup.globGroup.getName();
+						} else {
+							unlocalizedName = "block" +
+								HelpersString.toUpperCaseHead(enumSlot.slot.getName()) +
+								enumGlobGroup.globGroup.getName();
+						}
 
-		// ブロックのインスタンス生成と登録とAPIへの代入
-		// グロブ・スロットインスタンス生成の後
-		ISlot[] slots = {
-			ItemsOregen.slotOre,
-			ItemsOregen.slotBlock,
-		};
+						Exception e = HelpersReflect.setStaticField(ItemsOregen.class, unlocalizedName,
+							registerBlock(new BlockMulti(), ItemBlockMultiMirageCrops.class, unlocalizedName));
+						if (e != null) throw new RuntimeException(e);
 
-		for (IEnumGlobsSlotProvider<?>[] enumGlobs : ItemsOregen.enumGlobsList) {
-			IEnumGlobsSlotProvider<?> glob = enumGlobs[0];
-
-			for (ISlot slot : slots) {
-
-				if (glob.isProviding(slot)) {
-
-					String unlocalizedName;
-					if (slot == ItemsOregen.slotBlock) {
-						unlocalizedName = "block" +
-							glob.getCategoryName();
-					} else {
-						unlocalizedName = "block" +
-							HelpersString.toUpperCaseHead(slot.getName()) +
-							glob.getCategoryName();
 					}
-
-					Exception e = HelpersReflect.setStaticField(ItemsOregen.class, unlocalizedName,
-						registerBlock(new BlockMulti(), ItemBlockMultiMirageCrops.class, unlocalizedName));
-					if (e != null) throw new RuntimeException(e);
-
 				}
 
 			}
-
 		}
 
 	}
@@ -122,15 +102,17 @@ public class ModuleOregen extends ModuleOregenBase
 	protected void registerItems()
 	{
 
-		// アイテムのインスタンス生成と登録とAPIへの代入
-		ItemsOregen.itemIngot = registerItem(new ItemMultiIconMirageCrops(), "itemIngot");
-		ItemsOregen.itemGem = registerItem(new ItemMultiIconMirageCrops(), "itemGem");
-		ItemsOregen.itemDust = registerItem(new ItemMultiIconMirageCrops(), "itemDust");
+		for (Slots enumSlot : ItemsOregen.Slots.values()) {
+			if (enumSlot.type == EnumSlotType.ITEM) {
 
-		// グロブスロットのインスタンス生成とAPIへの代入
-		ItemsOregen.slotIngot = new SlotAbstract();
-		ItemsOregen.slotGem = new SlotAbstract();
-		ItemsOregen.slotDust = new SlotAbstract();
+				String unlocalizedName = "item" + HelpersString.toUpperCaseHead(enumSlot.slot.getName());
+
+				Exception e = HelpersReflect.setStaticField(ItemsOregen.class, unlocalizedName,
+					registerItem(new ItemMultiIconMirageCrops(), unlocalizedName));
+				if (e != null) throw new RuntimeException(e);
+
+			}
+		}
 
 	}
 
@@ -138,72 +120,36 @@ public class ModuleOregen extends ModuleOregenBase
 	protected void configureBlocks()
 	{
 
-		// グロブ・スロットの後
-		ISlot[] slots = {
-			ItemsOregen.slotOre,
-			ItemsOregen.slotBlock,
-		};
+		for (Slots enumSlot : ItemsOregen.Slots.values()) {
+			if (enumSlot.type == EnumSlotType.BLOCK) {
 
-		for (IEnumGlobsSlotProvider<?>[] enumGlobs : ItemsOregen.enumGlobsList) {
-			IEnumGlobsSlotProvider<?> glob = enumGlobs[0];
+				for (GlobGroups enumGlobGroup : ItemsOregen.GlobGroups.values()) {
+					if (enumGlobGroup.globGroup.allowsSlot(enumSlot.slot)) {
 
-			for (ISlot slot : slots) {
+						String unlocalizedName;
+						if (enumSlot == ItemsOregen.Slots.block) {
+							unlocalizedName = "block" +
+								enumGlobGroup.globGroup.getName();
+						} else {
+							unlocalizedName = "block" +
+								HelpersString.toUpperCaseHead(enumSlot.slot.getName()) +
+								enumGlobGroup.globGroup.getName();
+						}
 
-				if (glob.isProviding(slot)) {
+						Object obj = HelpersReflect.getStaticField(ItemsOregen.class, unlocalizedName);
 
-					String unlocalizedName;
-					if (slot == ItemsOregen.slotBlock) {
-						unlocalizedName = "block" +
-							glob.getCategoryName();
-					} else {
-						unlocalizedName = "block" +
-							HelpersString.toUpperCaseHead(slot.getName()) +
-							glob.getCategoryName();
+						if (obj == null || obj instanceof Exception) {
+							throw new RuntimeException((Exception) obj);
+						}
+
+						configureBlock((Block) obj, unlocalizedName);
+
+						createMetaBlock(enumGlobGroup, (BlockMulti) obj, enumSlot.slot);
+
 					}
-
-					Object obj = HelpersReflect.getStaticField(ItemsOregen.class, unlocalizedName);
-
-					if (obj == null || obj instanceof Exception) {
-						throw new RuntimeException((Exception) obj);
-					}
-
-					configureBlock((Block) obj, unlocalizedName);
-
 				}
 
 			}
-
-		}
-
-		for (IEnumGlobsSlotProvider<?>[] enumGlobs : ItemsOregen.enumGlobsList) {
-			IEnumGlobsSlotProvider<?> glob = enumGlobs[0];
-
-			for (ISlot slot : slots) {
-
-				if (glob.isProviding(slot)) {
-
-					String unlocalizedName;
-					if (slot == ItemsOregen.slotBlock) {
-						unlocalizedName = "block" +
-							glob.getCategoryName();
-					} else {
-						unlocalizedName = "block" +
-							HelpersString.toUpperCaseHead(slot.getName()) +
-							glob.getCategoryName();
-					}
-
-					Object obj = HelpersReflect.getStaticField(ItemsOregen.class, unlocalizedName);
-
-					if (obj == null || obj instanceof Exception) {
-						throw new RuntimeException((Exception) obj);
-					}
-
-					createMetaBlock(glob.getValues(), (BlockMulti) obj, slot);
-
-				}
-
-			}
-
 		}
 
 	}
@@ -212,21 +158,23 @@ public class ModuleOregen extends ModuleOregenBase
 	protected void configureItems()
 	{
 
-		configureItem(ItemsOregen.itemIngot, "itemIngot");
-		configureItem(ItemsOregen.itemGem, "itemGem");
-		configureItem(ItemsOregen.itemDust, "itemDust");
+		for (Slots enumSlot : ItemsOregen.Slots.values()) {
+			if (enumSlot.type == EnumSlotType.ITEM) {
 
-		((SlotAbstract) ItemsOregen.slotIngot).setName("ingot");
-		((SlotAbstract) ItemsOregen.slotGem).setName("gem");
-		((SlotAbstract) ItemsOregen.slotDust).setName("dust");
+				String unlocalizedName = "item" + HelpersString.toUpperCaseHead(enumSlot.slot.getName());
 
-		// グロブ・スロットの後
-		createMetaItem(ItemsOregen.enumGlobsList,
-			(ItemMultiIconMirageCrops) ItemsOregen.itemIngot, ItemsOregen.slotIngot, MultiIcons.INGOT);
-		createMetaItem(ItemsOregen.enumGlobsList,
-			(ItemMultiIconMirageCrops) ItemsOregen.itemGem, ItemsOregen.slotGem, MultiIcons.GEM);
-		createMetaItem(ItemsOregen.enumGlobsList,
-			(ItemMultiIconMirageCrops) ItemsOregen.itemDust, ItemsOregen.slotDust, MultiIcons.DUST);
+				Object obj = HelpersReflect.getStaticField(ItemsOregen.class, unlocalizedName);
+
+				if (obj == null || obj instanceof Exception) {
+					throw new RuntimeException((Exception) obj);
+				}
+
+				configureItem((Item) obj, unlocalizedName);
+
+				createMetaItem(ItemsOregen.GlobGroups.values(), (ItemMultiIcon) obj, enumSlot.slot, enumSlot.icon);
+
+			}
+		}
 
 	}
 
@@ -246,7 +194,7 @@ public class ModuleOregen extends ModuleOregenBase
 		maxHeight = 128;
 		countPerCube = 0.4;
 		numberOfBlocks = 32;
-		ore = EnumGlobsCalciteGroup.calcite.glob.copy(ItemsOregen.slotOre);
+		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.calcite.glob);
 		biome = null;
 		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
@@ -256,7 +204,7 @@ public class ModuleOregen extends ModuleOregenBase
 		maxHeight = 96;
 		countPerCube = 1.8;
 		numberOfBlocks = 8;
-		ore = EnumGlobsCalciteGroup.magnesite.glob.copy(ItemsOregen.slotOre);
+		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.magnesite.glob);
 		biome = null;
 		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
@@ -264,7 +212,7 @@ public class ModuleOregen extends ModuleOregenBase
 		maxHeight = 80;
 		countPerCube = 1.6;
 		numberOfBlocks = 7;
-		ore = EnumGlobsCalciteGroup.siderite.glob.copy(ItemsOregen.slotOre);
+		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.siderite.glob);
 		biome = null;
 		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
@@ -272,7 +220,7 @@ public class ModuleOregen extends ModuleOregenBase
 		maxHeight = 64;
 		countPerCube = 1.4;
 		numberOfBlocks = 6;
-		ore = EnumGlobsCalciteGroup.smithsonite.glob.copy(ItemsOregen.slotOre);
+		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.smithsonite.glob);
 		biome = null;
 		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
@@ -282,7 +230,7 @@ public class ModuleOregen extends ModuleOregenBase
 		maxHeight = 48;
 		countPerCube = 0.9;
 		numberOfBlocks = 6;
-		ore = EnumGlobsCalciteGroup.rhodochrosite.glob.copy(ItemsOregen.slotOre);
+		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.rhodochrosite.glob);
 		biome = "ocean";
 		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
@@ -290,7 +238,7 @@ public class ModuleOregen extends ModuleOregenBase
 		maxHeight = 32;
 		countPerCube = 0.7;
 		numberOfBlocks = 5;
-		ore = EnumGlobsCalciteGroup.sphaerocobaltite.glob.copy(ItemsOregen.slotOre);
+		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.sphaerocobaltite.glob);
 		biome = "forest";
 		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
@@ -298,7 +246,7 @@ public class ModuleOregen extends ModuleOregenBase
 		maxHeight = 24;
 		countPerCube = 0.5;
 		numberOfBlocks = 4;
-		ore = EnumGlobsCalciteGroup.gaspeite.glob.copy(ItemsOregen.slotOre);
+		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.gaspeite.glob);
 		biome = "desert";
 		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
@@ -308,7 +256,7 @@ public class ModuleOregen extends ModuleOregenBase
 		maxHeight = 16;
 		countPerCube = 0.5;
 		numberOfBlocks = 1;
-		ore = EnumGlobsCalciteGroup.otavite.glob.copy(ItemsOregen.slotOre);
+		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.otavite.glob);
 		biome = "extreme";
 		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
@@ -319,7 +267,7 @@ public class ModuleOregen extends ModuleOregenBase
 		maxHeight = 60;
 		countPerCube = 0.1;
 		numberOfBlocks = 4;
-		ore = EnumGlobsOtherMetal.bismuth.glob.copy(ItemsOregen.slotOre);
+		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.bismuth.glob);
 		biome = null;
 		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
@@ -327,7 +275,7 @@ public class ModuleOregen extends ModuleOregenBase
 		maxHeight = 60;
 		countPerCube = 0.3;
 		numberOfBlocks = 8;
-		ore = EnumGlobsMirageMagic.spinatite.glob.copy(ItemsOregen.slotOre);
+		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.spinatite.glob);
 		biome = null;
 		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
@@ -338,7 +286,7 @@ public class ModuleOregen extends ModuleOregenBase
 		maxHeight = 128;
 		countPerCube = 0.8;
 		numberOfBlocks = 18;
-		ore = EnumGlobsMohsHardnessCrystal.apatite.glob.copy(ItemsOregen.slotOre);
+		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.apatite.glob);
 		biome = "extreme";
 		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 
@@ -346,7 +294,7 @@ public class ModuleOregen extends ModuleOregenBase
 		maxHeight = 128;
 		countPerCube = 1.5;
 		numberOfBlocks = 8;
-		ore = EnumGlobsMohsHardnessCrystal.fluorite.glob.copy(ItemsOregen.slotOre);
+		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.fluorite.glob);
 		biome = "extreme";
 		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
 

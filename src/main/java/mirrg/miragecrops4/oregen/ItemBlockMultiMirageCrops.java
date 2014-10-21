@@ -1,7 +1,6 @@
 package mirrg.miragecrops4.oregen;
 
 import mirrg.mir40.block.ItemBlockMulti;
-import mirrg.mir40.block.glob.MetablockGlob;
 import mirrg.mir40.multi.Multibase;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;

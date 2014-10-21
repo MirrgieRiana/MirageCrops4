@@ -4,21 +4,18 @@ import java.util.List;
 
 import mirrg.mir34.modding.IMod;
 import mirrg.mir40.block.BlockMulti;
-import mirrg.mir40.block.glob.MetablockGlob;
-import mirrg.mir40.glob.GlobAbstract;
-import mirrg.mir40.glob.api.HelpersGlob;
-import mirrg.mir40.glob.api.ISlot;
 import mirrg.mir40.icon.HelpersIcon;
 import mirrg.mir40.icon.MultiIcon;
 import mirrg.mir40.icon.api.IMultiIconShape;
 import mirrg.mir40.item.ItemMultiIcon;
-import mirrg.mir40.item.glob.MetaitemIconGlob;
 import mirrg.mir40.worldgen.FilterBiome;
 import mirrg.mir40.worldgen.WorldGeneratorXYZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre.CountPer;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobs;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobsSlotProvider;
+import mirrg.mir41.glob.api.IGlob;
+import mirrg.mir41.glob.api.ISlot;
+import mirrg.miragecrops4.api.oregen.ItemsOregen;
+import mirrg.miragecrops4.api.oregen.ItemsOregen.GlobGroups;
 import mirrg.miragecrops4.api.oregen.RegisterMaterialColor;
 import mirrg.miragecrops4.core.ModuleCore;
 import mirrg.miragecrops4.core.ModuleMirageCropsBase;
@@ -36,13 +33,6 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		super(mod);
 	}
 
-	protected void createGlob(IEnumGlobs[] globs)
-	{
-		for (int i = 0; i < globs.length; i++) {
-			globs[i].setGlob(new GlobAbstract());
-		}
-	}
-
 	protected void configureBlock(Block block, String name)
 	{
 		configureBlock(block, name, 3.0F, 5.0F, Block.soundTypePiston);
@@ -56,26 +46,25 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		item.setCreativeTab(ModuleCore.creativeTab);
 	}
 
-	protected void createMetaBlock(IEnumGlobsSlotProvider<?>[] globs, BlockMulti blockMulti, ISlot slot)
+	protected void createMetaBlock(GlobGroups enumGlobGroup, BlockMulti blockMulti, ISlot slot)
 	{
-		for (int i = 0; i < globs.length; i++) {
-			IEnumGlobsSlotProvider<?> enumGlob = globs[i];
+		List<IGlob> globs = enumGlobGroup.globGroup.getGlobs();
 
-			// グロブの設定
-			((GlobAbstract) enumGlob.getGlob()).setName(((Enum<?>) enumGlob).name());
+		for (int i = 0; i < globs.size(); i++) {
+			IGlob glob = globs.get(i);
+			String unlocalizedName = gdn(slot, glob);
 
 			// メタブロックの作成
-			MetablockGlob metablock = new MetablockGlob(enumGlob.getGlob(), slot);
+			MetablockGlob metablock = new MetablockGlob(glob, slot);
 
 			// マルチブロックにメタブロックを登録
 			blockMulti.multibase.bind(i, metablock);
 
 			// グロブにアイテムスタックを登録
-			((GlobAbstract) enumGlob.getGlob()).put(slot, new ItemStack(blockMulti, 1, i));
+			ItemsOregen.globManager.put(unlocalizedName, new ItemStack(blockMulti, 1, i));
 
 			// メタブロックの設定
 			{
-				String unlocalizedName = HelpersGlob.getDictionaryName(slot, enumGlob.getGlob());
 
 				metablock.unlocalizedName = unlocalizedName;
 				if (getMod().isClient()) {
@@ -87,7 +76,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 					}
 				}
 
-				if (enumGlob.isProviding(slot)) {
+				if (enumGlobGroup.globGroup.allowsSlot(slot)) {
 					// 鉱石辞書に登録
 					OreDictionary.registerOre(unlocalizedName, new ItemStack(blockMulti, 1, i));
 				}
@@ -98,29 +87,30 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 	}
 
 	protected void createMetaItem(
-		List<IEnumGlobsSlotProvider<?>[]> globsList, ItemMultiIcon itemMultiIcon,
+		GlobGroups[] enumGlobGroups, ItemMultiIcon itemMultiIcon,
 		ISlot slot, IMultiIconShape multiIconShape)
 	{
-		for (int j = 0; j < globsList.size(); j++) {
-			for (int i = 0; i < globsList.get(j).length; i++) {
-				IEnumGlobsSlotProvider<?> enumGlob = globsList.get(j)[i];
 
-				// グロブの設定
-				((GlobAbstract) enumGlob.getGlob()).setName(((Enum<?>) enumGlob).name());
+		for (int j = 0; j < enumGlobGroups.length; j++) {
+			GlobGroups enumGlobGroup = enumGlobGroups[j];
+			List<IGlob> globs = enumGlobGroup.globGroup.getGlobs();
+
+			for (int i = 0; i < globs.size(); i++) {
+				IGlob glob = globs.get(i);
+				String unlocalizedName = gdn(slot, glob);
 
 				// メタアイテムの作成
-				MetaitemIconGlob metaitemIcon = new MetaitemIconGlob(enumGlob.getGlob(), slot);
+				MetaitemIconGlob metaitemIcon = new MetaitemIconGlob(glob, slot);
 
 				// マルチブロックにメタアイテムを登録
 				int id = i + j * 16;
 				itemMultiIcon.multibase.bind(id, metaitemIcon);
 
 				// グロブにアイテムスタックを登録
-				((GlobAbstract) enumGlob.getGlob()).put(slot, new ItemStack(itemMultiIcon, 1, id));
+				ItemsOregen.globManager.put(unlocalizedName, new ItemStack(itemMultiIcon, 1, id));
 
 				// メタアイテムの設定
 				{
-					String unlocalizedName = HelpersGlob.getDictionaryName(slot, enumGlob.getGlob());
 
 					metaitemIcon.unlocalizedName = unlocalizedName;
 					if (getMod().isClient()) {
@@ -130,11 +120,11 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 						} else {
 							metaitemIcon.multiIcon =
 								new MultiIcon(multiIconShape,
-									RegisterMaterialColor.instance.get(enumGlob.getGlob().getName()));
+									RegisterMaterialColor.instance.get(glob.getName()));
 						}
 					}
 
-					if (enumGlob.isProviding(slot)) {
+					if (enumGlobGroup.globGroup.allowsSlot(slot)) {
 						// 鉱石辞書に登録
 						OreDictionary.registerOre(unlocalizedName, new ItemStack(itemMultiIcon, 1, id));
 					}
