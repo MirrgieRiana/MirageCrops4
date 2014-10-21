@@ -2,6 +2,7 @@ package mirrg.miragecrops4.fairy;
 
 import mirrg.mir34.modding.IMod;
 import mirrg.mir40.net.MessageFieldInt;
+import mirrg.mir41.glob.GlobGroup;
 import mirrg.mir41.glob.api.IGlob;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.GlobGroups;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.Globs;
@@ -123,34 +124,50 @@ public class ModuleFairy extends ModuleMirageCropsBase
 
 	}
 
-	private void addRecipeMineral(IGlob glob)
+	private void addRecipeMineral(GlobGroup<IGlob> globGroup, IGlob glob)
 	{
 
-		// 鉱石→結晶
-		GameRegistry.addRecipe(new ShapelessOreRecipe(
-			cpy(Slots.gem.slot, glob),
-			gdn(Slots.ore.slot, glob),
-			"craftingToolHardHammer"));
+		if (globGroup.allowsSlot(Slots.gem.slot)) {
 
-		// 結晶→粉末
-		GameRegistry.addRecipe(new ShapelessOreRecipe(
-			cpy(Slots.dust.slot, glob),
-			gdn(Slots.gem.slot, glob),
-			"craftingToolHardHammer"));
+			// 鉱石→結晶
+			GameRegistry.addRecipe(new ShapelessOreRecipe(
+				cpy(Slots.gem.slot, glob),
+				gdn(Slots.ore.slot, glob),
+				"craftingToolHardHammer"));
 
-		// 結晶*9→ブロック
-		GameRegistry.addRecipe(new ShapedOreRecipe(
-			cpy(Slots.block.slot, glob),
-			"XXX",
-			"XXX",
-			"XXX",
-			'X', gdn(Slots.gem.slot, glob)));
+			// 結晶→粉末
+			GameRegistry.addRecipe(new ShapelessOreRecipe(
+				cpy(Slots.dust.slot, glob),
+				gdn(Slots.gem.slot, glob),
+				"craftingToolHardHammer"));
 
-		// 結晶*9←ブロック
-		GameRegistry.addRecipe(new ShapedOreRecipe(
-			cpy(Slots.gem.slot, glob, 9),
-			"X",
-			'X', gdn(Slots.block.slot, glob)));
+		} else {
+
+			// 鉱石→粉末
+			GameRegistry.addRecipe(new ShapelessOreRecipe(
+				cpy(Slots.dust.slot, glob),
+				gdn(Slots.ore.slot, glob),
+				"craftingToolHardHammer"));
+
+		}
+
+		if (globGroup.allowsSlot(Slots.block.slot)) {
+
+			// 結晶*9→ブロック
+			GameRegistry.addRecipe(new ShapedOreRecipe(
+				cpy(Slots.block.slot, glob),
+				"XXX",
+				"XXX",
+				"XXX",
+				'X', gdn(Slots.gem.slot, glob)));
+
+			// 結晶*9←ブロック
+			GameRegistry.addRecipe(new ShapedOreRecipe(
+				cpy(Slots.gem.slot, glob, 9),
+				"X",
+				'X', gdn(Slots.block.slot, glob)));
+
+		}
 
 	}
 
@@ -174,13 +191,13 @@ public class ModuleFairy extends ModuleMirageCropsBase
 
 		// 鉱物 鉱石→結晶→粉末
 		for (IGlob glob : GlobGroups.CalciteGroup.globGroup.getGlobs()) {
-			addRecipeMineral(glob);
+			addRecipeMineral(GlobGroups.CalciteGroup.globGroup, glob);
 		}
 		for (IGlob glob : GlobGroups.MohsHardnessCrystal.globGroup.getGlobs()) {
-			addRecipeMineral(glob);
+			addRecipeMineral(GlobGroups.MohsHardnessCrystal.globGroup, glob);
 		}
 		for (IGlob glob : GlobGroups.MirageMagic.globGroup.getGlobs()) {
-			addRecipeMineral(glob);
+			addRecipeMineral(GlobGroups.MirageMagic.globGroup, glob);
 		}
 
 		// スピナタイト鉱石→スピナチウムインゴット
