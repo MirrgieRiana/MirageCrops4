@@ -96,8 +96,6 @@ public class ModuleCrops extends ModuleMirageCropsBase
 				String textureName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
 				if (HelpersIcon.getURLFromTextureName(textureName, HelpersIcon.TYPE_ITEMS) != null) {
 					metaitem.iconName = textureName;
-				} else {
-					System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
 				}
 				metaitem.iconName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
 			}
