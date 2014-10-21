@@ -25,7 +25,7 @@ public class ItemsOregen
 	/**
 	 * 鉱物・宝石
 	 */
-	public static enum EnumGlobsCalciteGroup implements IEnumGlobs
+	public static enum EnumGlobsCalciteGroup implements IEnumGlobsSlotProvider
 	{
 		calcite,
 		magnesite,
@@ -50,12 +50,42 @@ public class ItemsOregen
 			this.glob = glob;
 		}
 
+		@Override
+		public boolean isProvidingOre()
+		{
+			return true;
+		}
+
+		@Override
+		public boolean isProvidingBlock()
+		{
+			return true;
+		}
+
+		@Override
+		public boolean isProvidingIngot()
+		{
+			return false;
+		}
+
+		@Override
+		public boolean isProvidingGem()
+		{
+			return true;
+		}
+
+		@Override
+		public boolean isProvidingDust()
+		{
+			return true;
+		}
+
 	}
 
 	/**
 	 * 鉱物・宝石
 	 */
-	public static enum EnumGlobsMohsHardnessCrystal implements IEnumGlobs
+	public static enum EnumGlobsMohsHardnessCrystal implements IEnumGlobsSlotProvider
 	{
 		talc,
 		gypsum,
@@ -82,12 +112,42 @@ public class ItemsOregen
 			this.glob = glob;
 		}
 
+		@Override
+		public boolean isProvidingOre()
+		{
+			return true;
+		}
+
+		@Override
+		public boolean isProvidingBlock()
+		{
+			return true;
+		}
+
+		@Override
+		public boolean isProvidingIngot()
+		{
+			return false;
+		}
+
+		@Override
+		public boolean isProvidingGem()
+		{
+			return true;
+		}
+
+		@Override
+		public boolean isProvidingDust()
+		{
+			return true;
+		}
+
 	}
 
 	/**
 	 * 金属
 	 */
-	public static enum EnumGlobsOtherMetal implements IEnumGlobs
+	public static enum EnumGlobsOtherMetal implements IEnumGlobsSlotProvider
 	{
 		bismuth, ;
 
@@ -105,12 +165,42 @@ public class ItemsOregen
 			this.glob = glob;
 		}
 
+		@Override
+		public boolean isProvidingOre()
+		{
+			return true;
+		}
+
+		@Override
+		public boolean isProvidingBlock()
+		{
+			return true;
+		}
+
+		@Override
+		public boolean isProvidingIngot()
+		{
+			return true;
+		}
+
+		@Override
+		public boolean isProvidingGem()
+		{
+			return false;
+		}
+
+		@Override
+		public boolean isProvidingDust()
+		{
+			return true;
+		}
+
 	}
 
 	/**
 	 * 鉱物
 	 */
-	public static enum EnumGlobsMirageMagic implements IEnumGlobs
+	public static enum EnumGlobsMirageMagic implements IEnumGlobsSlotProvider
 	{
 		spinatite, ;
 
@@ -128,12 +218,42 @@ public class ItemsOregen
 			this.glob = glob;
 		}
 
+		@Override
+		public boolean isProvidingOre()
+		{
+			return true;
+		}
+
+		@Override
+		public boolean isProvidingBlock()
+		{
+			return false;
+		}
+
+		@Override
+		public boolean isProvidingIngot()
+		{
+			return false;
+		}
+
+		@Override
+		public boolean isProvidingGem()
+		{
+			return false;
+		}
+
+		@Override
+		public boolean isProvidingDust()
+		{
+			return true;
+		}
+
 	}
 
 	/**
 	 * 金属
 	 */
-	public static enum EnumGlobsMirageMaterial implements IEnumGlobs
+	public static enum EnumGlobsMirageMaterial implements IEnumGlobsSlotProvider
 	{
 		spinachium, ;
 
@@ -149,6 +269,36 @@ public class ItemsOregen
 		public void setGlob(IGlob glob)
 		{
 			this.glob = glob;
+		}
+
+		@Override
+		public boolean isProvidingOre()
+		{
+			return false;
+		}
+
+		@Override
+		public boolean isProvidingBlock()
+		{
+			return true;
+		}
+
+		@Override
+		public boolean isProvidingIngot()
+		{
+			return true;
+		}
+
+		@Override
+		public boolean isProvidingGem()
+		{
+			return false;
+		}
+
+		@Override
+		public boolean isProvidingDust()
+		{
+			return true;
 		}
 
 	}
@@ -167,6 +317,21 @@ public class ItemsOregen
 	public static ISlot slotIngot;
 	public static ISlot slotGem;
 	public static ISlot slotDust;
+
+	public static interface IEnumGlobsSlotProvider extends IEnumGlobs
+	{
+
+		public boolean isProvidingOre();
+
+		public boolean isProvidingBlock();
+
+		public boolean isProvidingIngot();
+
+		public boolean isProvidingGem();
+
+		public boolean isProvidingDust();
+
+	}
 
 	public static Block blockOreCalciteGroup;
 	public static Block blockOreMohsHardnessCrystal;
