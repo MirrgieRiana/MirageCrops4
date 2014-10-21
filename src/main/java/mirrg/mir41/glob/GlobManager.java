@@ -13,30 +13,35 @@ public class GlobManager<SLOT extends ISlot, GLOB extends IGlob>
 	implements IGlobManager<SLOT, GLOB>
 {
 
-	private Map<String, ItemStack> addItems = new Hashtable<String, ItemStack>();
+	private Map<String, ItemStack> allItems = new Hashtable<String, ItemStack>();
 
 	@Override
 	public Map<String, ItemStack> getAllItems()
 	{
-		return addItems;
+		return allItems;
 	}
 
 	@Override
 	public ItemStack get(String dictionaryName)
 	{
-		return addItems.get(dictionaryName);
+		return allItems.get(dictionaryName);
 	}
 
 	@Override
 	public boolean contains(String dictionaryName)
 	{
-		return addItems.containsKey(dictionaryName);
+		return allItems.containsKey(dictionaryName);
 	}
 
 	@Override
 	public boolean contains(ItemStack itemStack)
 	{
-		return addItems.containsValue(itemStack);
+		return allItems.containsValue(itemStack);
+	}
+
+	public void put(String dictionaryName, ItemStack itemStack)
+	{
+		allItems.put(dictionaryName, itemStack);
 	}
 
 	@Override
