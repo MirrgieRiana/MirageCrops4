@@ -70,6 +70,9 @@ public class ModuleOregen extends ModuleOregenBase
 		ItemsOregen.slotOre = new SlotAbstract();
 		ItemsOregen.slotBlock = new SlotAbstract();
 
+		((SlotAbstract) ItemsOregen.slotOre).setName("ore");
+		((SlotAbstract) ItemsOregen.slotBlock).setName("block");
+
 		// グロブのインスタンス生成とAPIへの代入
 		for (IEnumGlobs[] enumGlobs : ItemsOregen.enumGlobsList) {
 			createGlob(enumGlobs);
@@ -143,9 +146,6 @@ public class ModuleOregen extends ModuleOregenBase
 		configureBlock(ItemsOregen.blockMohsHardnessCrystal, "blockMohsHardnessCrystal");
 		configureBlock(ItemsOregen.blockOtherMetal, "blockOtherMetal");
 		configureBlock(ItemsOregen.blockMirageMaterial, "blockMirageMaterial");
-
-		((SlotAbstract) ItemsOregen.slotOre).setName("ore");
-		((SlotAbstract) ItemsOregen.slotBlock).setName("block");
 
 		// グロブ・スロットの後
 		createMetaBlock(EnumGlobsCalciteGroup.values(),
