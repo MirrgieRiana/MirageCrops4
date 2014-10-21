@@ -3,12 +3,16 @@ package mirrg.miragecrops4.oregen;
 import mirrg.mir34.modding.IMod;
 import mirrg.mir40.block.BlockMulti;
 import mirrg.mir40.glob.SlotAbstract;
+import mirrg.mir40.glob.api.ISlot;
+import mirrg.mir40.math.HelpersString;
+import mirrg.mir40.reflect.HelpersReflect;
 import mirrg.miragecrops4.api.oregen.ItemsOregen;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsCalciteGroup;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsMirageMagic;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsMohsHardnessCrystal;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumGlobsOtherMetal;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobs;
+import mirrg.miragecrops4.api.oregen.ItemsOregen.IEnumGlobsSlotProvider;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -63,24 +67,37 @@ public class ModuleOregen extends ModuleOregenBase
 	{
 
 		// ブロックのインスタンス生成と登録とAPIへの代入
-		ItemsOregen.blockOreCalciteGroup =
-			registerBlock(new BlockMulti(), ItemBlockMultiMirageCrops.class, "blockOreCalciteGroup");
-		ItemsOregen.blockOreMohsHardnessCrystal =
-			registerBlock(new BlockMulti(), ItemBlockMultiMirageCrops.class,
-				"blockOreMohsHardnessCrystal");
-		ItemsOregen.blockOreOtherMetal =
-			registerBlock(new BlockMulti(), ItemBlockMultiMirageCrops.class, "blockOreOtherMetal");
-		ItemsOregen.blockOreMirageMagic =
-			registerBlock(new BlockMulti(), ItemBlockMultiMirageCrops.class, "blockOreMirageMagic");
+		ISlot[] slots = {
+			ItemsOregen.slotOre,
+			ItemsOregen.slotBlock,
+		};
 
-		ItemsOregen.blockCalciteGroup =
-			registerBlock(new BlockMulti(), ItemBlockMultiMirageCrops.class, "blockCalciteGroup");
-		ItemsOregen.blockMohsHardnessCrystal =
-			registerBlock(new BlockMulti(), ItemBlockMultiMirageCrops.class, "blockMohsHardnessCrystal");
-		ItemsOregen.blockOtherMetal =
-			registerBlock(new BlockMulti(), ItemBlockMultiMirageCrops.class, "blockOtherMetal");
-		ItemsOregen.blockMirageMaterial =
-			registerBlock(new BlockMulti(), ItemBlockMultiMirageCrops.class, "blockMirageMaterial");
+		for (IEnumGlobsSlotProvider[] enumGlobs : ItemsOregen.enumGlobsList) {
+			IEnumGlobsSlotProvider glob = enumGlobs[0];
+
+			for (ISlot slot : slots) {
+
+				if (glob.isProviding(slot)) {
+
+					String unlocalizedName;
+					if (slot == ItemsOregen.slotBlock) {
+						unlocalizedName = "block" +
+							glob.getCategoryName();
+					} else {
+						unlocalizedName = "block" +
+							HelpersString.toUpperCaseHead(slot.getName()) +
+							glob.getCategoryName();
+					}
+
+					Exception e = HelpersReflect.setStaticField(ItemsOregen.class, unlocalizedName,
+						registerBlock(new BlockMulti(), ItemBlockMultiMirageCrops.class, unlocalizedName));
+					if (e != null) throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
 
 		// グロブのインスタンス生成とAPIへの代入
 		for (IEnumGlobs[] enumGlobs : ItemsOregen.enumGlobsList) {
