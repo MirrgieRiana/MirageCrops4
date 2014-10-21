@@ -66,7 +66,17 @@ public class ModuleOregen extends ModuleOregenBase
 	protected void registerBlocks()
 	{
 
+		// グロブスロットのインスタンス生成とAPIへの代入
+		ItemsOregen.slotOre = new SlotAbstract();
+		ItemsOregen.slotBlock = new SlotAbstract();
+
+		// グロブのインスタンス生成とAPIへの代入
+		for (IEnumGlobs[] enumGlobs : ItemsOregen.enumGlobsList) {
+			createGlob(enumGlobs);
+		}
+
 		// ブロックのインスタンス生成と登録とAPIへの代入
+		// グロブ・スロットインスタンス生成の後
 		ISlot[] slots = {
 			ItemsOregen.slotOre,
 			ItemsOregen.slotBlock,
@@ -98,15 +108,6 @@ public class ModuleOregen extends ModuleOregenBase
 			}
 
 		}
-
-		// グロブのインスタンス生成とAPIへの代入
-		for (IEnumGlobs[] enumGlobs : ItemsOregen.enumGlobsList) {
-			createGlob(enumGlobs);
-		}
-
-		// グロブスロットのインスタンス生成とAPIへの代入
-		ItemsOregen.slotOre = new SlotAbstract();
-		ItemsOregen.slotBlock = new SlotAbstract();
 
 	}
 
