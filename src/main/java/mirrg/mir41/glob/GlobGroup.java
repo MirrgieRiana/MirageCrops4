@@ -1,7 +1,7 @@
 package mirrg.mir41.glob;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashSet;
 import java.util.List;
 
 import mirrg.mir41.glob.api.IGlob;
@@ -12,7 +12,7 @@ public class GlobGroup<GLOB extends IGlob> extends Base implements IGlobGroup<GL
 {
 
 	protected ArrayList<GLOB> globs = new ArrayList<GLOB>();
-	protected Hashtable<String, Boolean> allowsSlot = new Hashtable<String, Boolean>();
+	protected HashSet<String> allowsSlot = new HashSet<String>();
 
 	public GlobGroup()
 	{
@@ -44,13 +44,19 @@ public class GlobGroup<GLOB extends IGlob> extends Base implements IGlobGroup<GL
 		return 16;
 	}
 
+	public void setAllowsSlot(ISlot slot, boolean value)
+	{
+		if (value) {
+			allowsSlot.add(slot.getName());
+		} else {
+			allowsSlot.remove(slot.getName());
+		}
+	}
+
 	@Override
 	public boolean allowsSlot(ISlot slot)
 	{
-		if (allowsSlot.containsKey(slot.getName())) {
-			return allowsSlot.get(slot.getName());
-		}
-		return false;
+		return allowsSlot.contains(slot.getName());
 	}
 
 }
