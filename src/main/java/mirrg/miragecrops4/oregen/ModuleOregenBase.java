@@ -24,6 +24,8 @@ import mirrg.miragecrops4.api.oregen.ItemsOregen.GlobGroups;
 import mirrg.miragecrops4.api.oregen.RegisterMaterialColor;
 import mirrg.miragecrops4.core.ModuleCore;
 import mirrg.miragecrops4.core.ModuleMirageCropsBase;
+import mirrg.miragecrops4.oregen.multi.MetablockGlob;
+import mirrg.miragecrops4.oregen.multi.MetaitemIconGlob;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

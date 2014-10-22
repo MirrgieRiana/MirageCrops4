@@ -11,6 +11,8 @@ import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumSlotType;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.GlobGroups;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.Globs;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.Slots;
+import mirrg.miragecrops4.oregen.multi.ItemBlockMultiMirageCrops;
+import mirrg.miragecrops4.oregen.multi.ItemMultiIconMirageCrops;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

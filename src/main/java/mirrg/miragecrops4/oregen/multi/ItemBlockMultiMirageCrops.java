@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.oregen;
+package mirrg.miragecrops4.oregen.multi;
 
 import mirrg.mir40.block.ItemBlockMulti;
 import mirrg.mir40.multi.Multibase;
