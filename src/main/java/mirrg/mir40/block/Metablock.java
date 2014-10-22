@@ -20,7 +20,7 @@ public class Metablock<MULTI extends Multibase<MULTI, META>, META extends Metabl
 	// ----------------------------- registration -----------------------------
 
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+	public void getSubBlocks(Item item, CreativeTabs creativeTabs, @SuppressWarnings("rawtypes") List list)
 	{
 		list.add(new ItemStack(item, 1, getIndex()));
 	}

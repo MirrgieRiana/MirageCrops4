@@ -32,7 +32,7 @@ public class BlockMulti<MULTI extends Multibase<MULTI, META>, META extends Metab
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+	public void getSubBlocks(Item item, CreativeTabs creativeTabs, @SuppressWarnings("rawtypes") List list)
 	{
 		for (Metablock<MULTI, META> metablock : multibase) {
 			if (metablock != null) {

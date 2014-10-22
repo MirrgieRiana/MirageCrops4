@@ -24,7 +24,7 @@ public class ItemMulti<MULTI extends Multibase<MULTI, META>, META extends Metait
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item arg0, CreativeTabs arg1, List arg2)
+	public void getSubItems(Item arg0, CreativeTabs arg1, @SuppressWarnings("rawtypes") List arg2)
 	{
 		for (Metaitem<MULTI, META> metaitem : multibase) {
 			if (metaitem != null) {

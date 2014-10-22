@@ -43,7 +43,8 @@ public class ItemFairyGlass extends ItemArmor
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack arg0, EntityPlayer arg1, List arg2, boolean arg3)
+	public void addInformation(
+		ItemStack arg0, EntityPlayer arg1, @SuppressWarnings("rawtypes") List arg2, boolean arg3)
 	{
 		super.addInformation(arg0, arg1, arg2, arg3);
 

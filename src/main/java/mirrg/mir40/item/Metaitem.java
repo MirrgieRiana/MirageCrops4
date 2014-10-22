@@ -17,7 +17,7 @@ public class Metaitem<MULTI extends Multibase<MULTI, META>, META extends Metaite
 {
 
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs arg1, List list)
+	public void getSubItems(Item item, CreativeTabs arg1, @SuppressWarnings("rawtypes") List list)
 	{
 		list.add(new ItemStack(item, 1, getIndex()));
 	}
