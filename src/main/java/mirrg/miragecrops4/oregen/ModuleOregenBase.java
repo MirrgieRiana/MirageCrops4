@@ -64,25 +64,26 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 			ItemsOregen.globManager.put(unlocalizedName, new ItemStack(blockMulti, 1, i));
 
 			// メタブロックの設定
-			{
-
-				metablock.unlocalizedName = unlocalizedName;
-				if (getMod().isClient()) {
-					String textureName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
-					if (HelpersIcon.getURLFromTextureName(textureName, HelpersIcon.TYPE_BLOCKS) != null) {
-						metablock.iconName = textureName;
-					} else {
-						metablock.iconName = getMod().getModId() + ":" + "NULL_ICON";
-					}
-				}
-
-			}
+			configureMetablock(metablock, unlocalizedName);
 
 			if (enumGlobGroup.globGroup.allowsSlot(slot)) {
 				// 鉱石辞書に登録
 				OreDictionary.registerOre(unlocalizedName, new ItemStack(blockMulti, 1, i));
 			}
 
+		}
+	}
+
+	private void configureMetablock(MetablockGlob metablock, String unlocalizedName)
+	{
+		metablock.unlocalizedName = unlocalizedName;
+		if (getMod().isClient()) {
+			String textureName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
+			if (HelpersIcon.getURLFromTextureName(textureName, HelpersIcon.TYPE_BLOCKS) != null) {
+				metablock.iconName = textureName;
+			} else {
+				metablock.iconName = getMod().getModId() + ":" + "NULL_ICON";
+			}
 		}
 	}
 
@@ -110,27 +111,28 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 				ItemsOregen.globManager.put(unlocalizedName, new ItemStack(itemMultiIcon, 1, id));
 
 				// メタアイテムの設定
-				{
-
-					metaitemIcon.unlocalizedName = unlocalizedName;
-					if (getMod().isClient()) {
-						String textureName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
-						if (HelpersIcon.getURLFromTextureName(textureName, HelpersIcon.TYPE_ITEMS) != null) {
-							metaitemIcon.iconName = textureName;
-						} else {
-							metaitemIcon.multiIcon =
-								new MultiIcon(multiIconShape,
-									RegisterMaterialColor.instance.get(glob.getName()));
-						}
-					}
-
-				}
+				configuteMetaitem(metaitemIcon, unlocalizedName,
+					RegisterMaterialColor.instance.get(glob.getName()), multiIconShape);
 
 				if (enumGlobGroup.globGroup.allowsSlot(slot)) {
 					// 鉱石辞書に登録
 					OreDictionary.registerOre(unlocalizedName, new ItemStack(itemMultiIcon, 1, id));
 				}
 
+			}
+		}
+	}
+
+	private void configuteMetaitem(MetaitemIconGlob metaitemIcon, String unlocalizedName,
+		int color, IMultiIconShape multiIconShape)
+	{
+		metaitemIcon.unlocalizedName = unlocalizedName;
+		if (getMod().isClient()) {
+			String textureName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
+			if (HelpersIcon.getURLFromTextureName(textureName, HelpersIcon.TYPE_ITEMS) != null) {
+				metaitemIcon.iconName = textureName;
+			} else {
+				metaitemIcon.multiIcon = new MultiIcon(multiIconShape, color);
 			}
 		}
 	}
