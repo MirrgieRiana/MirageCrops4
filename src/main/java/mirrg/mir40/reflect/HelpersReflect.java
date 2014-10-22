@@ -43,7 +43,7 @@ public class HelpersReflect
 	 * srcのうち、{@link ShadowingField}がついているpublic staticフィールドをdesuに代入する。<br>
 	 * 代入に失敗した場合、そのエントリの代入を行わずに次のエントリの代入を行う。<br>
 	 * 失敗した代入の例外は戻り値に返される。
-	 *
+	 * 
 	 * @see #shadowed(Class, Class, ArrayList)
 	 * @see #shadowing(Class, Class, ArrayList)
 	 */

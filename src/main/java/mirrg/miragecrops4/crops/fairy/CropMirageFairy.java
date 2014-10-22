@@ -7,7 +7,7 @@ import net.minecraft.nbt.NBTTagCompound;
 
 /**
  * オーバーライドはしない。カスタムデータの構築に関するヘルパーのみ提供する。有効・不正・削除状態がある。
- *
+ * 
  * <pre>
  * crop.getCustomData()
  * └ "fairy" : COMPOUND

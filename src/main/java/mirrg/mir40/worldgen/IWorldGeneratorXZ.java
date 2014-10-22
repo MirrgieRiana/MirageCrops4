@@ -10,7 +10,8 @@ public interface IWorldGeneratorXZ extends IWorldGenerator
 {
 
 	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider);
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator,
+		IChunkProvider chunkProvider);
 
 	public boolean isSpawnableAtCoord(World world, Random random, int x, int y, int z);
 

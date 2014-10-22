@@ -8,6 +8,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 public interface IWorldGeneratorXYZ
 {
 
-	public abstract void generate(World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider, Random random, int x, int y, int z);
+	public abstract void generate(World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider,
+		Random random, int x, int y, int z);
 
 }

@@ -19,9 +19,9 @@ public class ItemDustMirage extends Item
 		--p_77659_1_.stackSize;
 
 		p_77659_2_.playSoundEffect(
-			(double) ((float) p_77659_3_.posX + 0.5F),
-			(double) ((float) p_77659_3_.posY + 0.5F),
-			(double) ((float) p_77659_3_.posZ + 0.5F),
+			(float) p_77659_3_.posX + 0.5F,
+			(float) p_77659_3_.posY + 0.5F,
+			(float) p_77659_3_.posZ + 0.5F,
 			"random.fizz",
 			0.5F, 2.6F + (p_77659_2_.rand.nextFloat() - p_77659_2_.rand.nextFloat()) * 0.8F);
 

@@ -17,7 +17,7 @@ public interface IFairyHirable
 
 	/**
 	 * 指定された人数を雇用する。{@link IFairyHirable#getFairyCapacity} > 0である前提で呼び出される。
-	 *
+	 * 
 	 * @param population
 	 *            {@link IFairyHirable#getFairyCapacity}を超えない前提。
 	 */

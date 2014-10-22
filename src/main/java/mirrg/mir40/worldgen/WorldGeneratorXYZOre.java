@@ -47,7 +47,8 @@ public class WorldGeneratorXYZOre extends WorldGeneratorXYZOreAbstract
 	}
 
 	@Override
-	public void setBlock(World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider, Random random, int x, int y, int z)
+	public void setBlock(World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider, Random random,
+		int x, int y, int z)
 	{
 		world.setBlock(x, y, z, block, meta, 0);
 	}

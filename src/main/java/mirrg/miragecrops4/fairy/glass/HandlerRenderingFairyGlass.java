@@ -102,7 +102,7 @@ public class HandlerRenderingFairyGlass
 		Minecraft mc = Minecraft.getMinecraft();
 		if ((Minecraft.getMinecraft().thePlayer instanceof EntityPlayer))
 		{
-			onRenderLast(event, (EntityPlayer) Minecraft.getMinecraft().thePlayer);
+			onRenderLast(event, Minecraft.getMinecraft().thePlayer);
 		}
 	}
 

@@ -7,7 +7,7 @@ public interface ILogger
 
 	/**
 	 * ダンプファイルに出力
-	 *
+	 * 
 	 * @param format
 	 *            {@link String#format(String, Object...)}
 	 */
