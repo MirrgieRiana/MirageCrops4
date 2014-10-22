@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry excluding="ic2/|mods/railcraft/|thaumcraft/" kind="src" path="src/main/java"/>
+	<classpathentry including="ic2/|mods/railcraft/|thaumcraft/" kind="src" path="ic2api">
+		<attributes>
+			<attribute name="ignore_optional_problems" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/KDC7/.gradle/caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.0.1208/forgeBin-1.7.10-10.13.0.1208.jar"/>
