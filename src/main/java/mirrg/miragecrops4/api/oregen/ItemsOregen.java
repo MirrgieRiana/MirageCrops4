@@ -1,5 +1,6 @@
 package mirrg.miragecrops4.api.oregen;
 
+import mirrg.mir34.modding.IModule;
 import mirrg.mir40.icon.api.IMultiIconShape;
 import mirrg.mir41.glob.Glob;
 import mirrg.mir41.glob.GlobGroup;
@@ -13,6 +14,8 @@ import net.minecraft.item.Item;
 
 public class ItemsOregen
 {
+
+	public static IModule moduleOregen;
 
 	public static GlobManager<ISlot, IGlob> globManager = new GlobManager<ISlot, IGlob>();
 

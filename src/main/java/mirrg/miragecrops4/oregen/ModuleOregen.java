@@ -25,6 +25,8 @@ public class ModuleOregen extends ModuleOregenBase
 	public ModuleOregen(IMod mod)
 	{
 		super(mod);
+
+		ItemsOregen.moduleOregen = this;
 	}
 
 	@Override
