@@ -76,11 +76,11 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 					}
 				}
 
-				if (enumGlobGroup.globGroup.allowsSlot(slot)) {
-					// 鉱石辞書に登録
-					OreDictionary.registerOre(unlocalizedName, new ItemStack(blockMulti, 1, i));
-				}
+			}
 
+			if (enumGlobGroup.globGroup.allowsSlot(slot)) {
+				// 鉱石辞書に登録
+				OreDictionary.registerOre(unlocalizedName, new ItemStack(blockMulti, 1, i));
 			}
 
 		}
@@ -124,11 +124,11 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 						}
 					}
 
-					if (enumGlobGroup.globGroup.allowsSlot(slot)) {
-						// 鉱石辞書に登録
-						OreDictionary.registerOre(unlocalizedName, new ItemStack(itemMultiIcon, 1, id));
-					}
+				}
 
+				if (enumGlobGroup.globGroup.allowsSlot(slot)) {
+					// 鉱石辞書に登録
+					OreDictionary.registerOre(unlocalizedName, new ItemStack(itemMultiIcon, 1, id));
 				}
 
 			}
