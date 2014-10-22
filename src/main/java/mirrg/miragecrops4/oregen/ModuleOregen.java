@@ -7,6 +7,8 @@ import mirrg.mir40.item.ItemMultiIcon;
 import mirrg.mir40.math.HelpersString;
 import mirrg.mir40.reflect.HelpersReflect;
 import mirrg.mir41.glob.HelpersGlob;
+import mirrg.mir41.glob.api.IGlobGroup;
+import mirrg.mir41.glob.api.ISlot;
 import mirrg.miragecrops4.api.oregen.ItemsOregen;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumSlotType;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.GlobGroups;
@@ -75,15 +77,7 @@ public class ModuleOregen extends ModuleOregenBase
 				for (GlobGroups enumGlobGroup : ItemsOregen.GlobGroups.values()) {
 					if (enumGlobGroup.globGroup.allowsSlot(enumSlot.slot)) {
 
-						String unlocalizedName;
-						if (enumSlot == ItemsOregen.Slots.block) {
-							unlocalizedName = "block" +
-								enumGlobGroup.globGroup.getName();
-						} else {
-							unlocalizedName = "block" +
-								HelpersString.toUpperCaseHead(enumSlot.slot.getName()) +
-								enumGlobGroup.globGroup.getName();
-						}
+						String unlocalizedName = getBlockUnlocalizedName(enumSlot.slot, enumGlobGroup.globGroup);
 
 						Exception e = HelpersReflect.setStaticField(ItemsOregen.class, unlocalizedName,
 							registerBlock(new BlockMulti(), ItemBlockMultiMirageCrops.class, unlocalizedName));
@@ -97,6 +91,15 @@ public class ModuleOregen extends ModuleOregenBase
 
 	}
 
+	public static String getBlockUnlocalizedName(ISlot slot, IGlobGroup<?> globGroup)
+	{
+		if (slot.equals(ItemsOregen.Slots.block.slot)) {
+			return "block" + globGroup.getName();
+		} else {
+			return "block" + HelpersString.toUpperCaseHead(slot.getName()) + globGroup.getName();
+		}
+	}
+
 	/**
 	 * 各種インスタンス生成と登録とAPIへの代入
 	 */
@@ -107,7 +110,7 @@ public class ModuleOregen extends ModuleOregenBase
 		for (Slots enumSlot : ItemsOregen.Slots.values()) {
 			if (enumSlot.type == EnumSlotType.ITEM) {
 
-				String unlocalizedName = "item" + HelpersString.toUpperCaseHead(enumSlot.slot.getName());
+				String unlocalizedName = getItemUnlocalizedName(enumSlot.slot);
 
 				Exception e = HelpersReflect.setStaticField(ItemsOregen.class, unlocalizedName,
 					registerItem(new ItemMultiIconMirageCrops(), unlocalizedName));
@@ -116,6 +119,11 @@ public class ModuleOregen extends ModuleOregenBase
 			}
 		}
 
+	}
+
+	public static String getItemUnlocalizedName(ISlot slot)
+	{
+		return "item" + HelpersString.toUpperCaseHead(slot.getName());
 	}
 
 	@Override
@@ -128,15 +136,7 @@ public class ModuleOregen extends ModuleOregenBase
 				for (GlobGroups enumGlobGroup : ItemsOregen.GlobGroups.values()) {
 					if (enumGlobGroup.globGroup.allowsSlot(enumSlot.slot)) {
 
-						String unlocalizedName;
-						if (enumSlot == ItemsOregen.Slots.block) {
-							unlocalizedName = "block" +
-								enumGlobGroup.globGroup.getName();
-						} else {
-							unlocalizedName = "block" +
-								HelpersString.toUpperCaseHead(enumSlot.slot.getName()) +
-								enumGlobGroup.globGroup.getName();
-						}
+						String unlocalizedName = getBlockUnlocalizedName(enumSlot.slot, enumGlobGroup.globGroup);
 
 						Object obj = HelpersReflect.getStaticField(ItemsOregen.class, unlocalizedName);
 
@@ -163,7 +163,7 @@ public class ModuleOregen extends ModuleOregenBase
 		for (Slots enumSlot : ItemsOregen.Slots.values()) {
 			if (enumSlot.type == EnumSlotType.ITEM) {
 
-				String unlocalizedName = "item" + HelpersString.toUpperCaseHead(enumSlot.slot.getName());
+				String unlocalizedName = getItemUnlocalizedName(enumSlot.slot);
 
 				Object obj = HelpersReflect.getStaticField(ItemsOregen.class, unlocalizedName);
 
