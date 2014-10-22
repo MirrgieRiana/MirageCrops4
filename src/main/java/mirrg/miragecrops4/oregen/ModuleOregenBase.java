@@ -1,5 +1,7 @@
 package mirrg.miragecrops4.oregen;
 
+import static mirrg.miragecrops4.api.oregen.ItemsOregen.*;
+
 import java.util.List;
 
 import mirrg.mir34.modding.IMod;
@@ -9,11 +11,13 @@ import mirrg.mir40.icon.HelpersIcon;
 import mirrg.mir40.icon.MultiIcon;
 import mirrg.mir40.icon.api.IMultiIconShape;
 import mirrg.mir40.item.ItemMultiIcon;
+import mirrg.mir40.reflect.HelpersReflect;
 import mirrg.mir40.worldgen.FilterBiome;
 import mirrg.mir40.worldgen.WorldGeneratorXYZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre.CountPer;
 import mirrg.mir41.glob.api.IGlob;
+import mirrg.mir41.glob.api.IGlobGroup;
 import mirrg.mir41.glob.api.ISlot;
 import mirrg.miragecrops4.api.oregen.ItemsOregen;
 import mirrg.miragecrops4.api.oregen.ItemsOregen.GlobGroups;
@@ -73,6 +77,17 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 			}
 
 		}
+	}
+
+	public static void overrideMetablock(ISlot slot, IGlobGroup globGroup, IGlob glob, MetablockGlob metablock)
+	{
+		Object blockMulti = HelpersReflect.getStaticField(
+			ItemsOregen.class, getBlockUnlocalizedName(slot, globGroup));
+		if (blockMulti == null || blockMulti instanceof Exception) {
+			throw new RuntimeException((Exception) blockMulti);
+		}
+
+		((BlockMulti) blockMulti).multibase.bindForce(globGroup.getGlobs().indexOf(glob), metablock);
 	}
 
 	public static void configureMetablock(IModule module,
