@@ -87,8 +87,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		}
 	}
 
-	protected void createMetaItem(
-		GlobGroups[] enumGlobGroups, ItemMultiIcon itemMultiIcon, ISlot slot,
+	protected void createMetaItem(GlobGroups[] enumGlobGroups, ItemMultiIcon itemMultiIcon, ISlot slot,
 		IMultiIconShape multiIconShape)
 	{
 
