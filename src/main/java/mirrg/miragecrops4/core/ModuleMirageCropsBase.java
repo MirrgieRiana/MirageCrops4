@@ -2,13 +2,15 @@ package mirrg.miragecrops4.core;
 
 import mirrg.mir34.modding.IMod;
 import mirrg.mir34.modding.ModuleAbstract;
+import mirrg.mir41.glob.Glob;
 import mirrg.mir41.glob.GlobManager;
 import mirrg.mir41.glob.HelpersGlob;
+import mirrg.mir41.glob.Slot;
 import mirrg.mir41.glob.api.IGlob;
 import mirrg.mir41.glob.api.ISlot;
-import mirrg.miragecrops4.api.oregen.ItemsOregen;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.Globs;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.Slots;
+import mirrg.miragecrops4.oregen.global.ItemsOregen;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.Globs;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.Slots;
 import net.minecraft.block.Block;
 import net.minecraft.block.Block.SoundType;
 import net.minecraft.item.Item;
@@ -127,7 +129,7 @@ public abstract class ModuleMirageCropsBase extends ModuleAbstract
 	/**
 	 * {@link GlobManager#getDictionaryName(ISlot, IGlob)} の略
 	 */
-	protected String gdn(ISlot slot, IGlob glob)
+	protected String gdn(Slot slot, Glob glob)
 	{
 		return ItemsOregen.globManager.getDictionaryName(slot, glob);
 	}
@@ -136,7 +138,7 @@ public abstract class ModuleMirageCropsBase extends ModuleAbstract
 	 * {@link HelpersGlob#copy(mirrg.mir41.glob.api.IGlobManager, ISlot, IGlob)}
 	 * の略
 	 */
-	protected ItemStack cpy(ISlot slot, IGlob glob)
+	protected ItemStack cpy(Slot slot, Glob glob)
 	{
 		return HelpersGlob.copy(ItemsOregen.globManager, slot, glob);
 	}
@@ -145,7 +147,7 @@ public abstract class ModuleMirageCropsBase extends ModuleAbstract
 	 * {@link HelpersGlob#copy(mirrg.mir41.glob.api.IGlobManager, ISlot, IGlob, int)}
 	 * の略
 	 */
-	protected ItemStack cpy(ISlot slot, IGlob glob, int size)
+	protected ItemStack cpy(Slot slot, Glob glob, int size)
 	{
 		return HelpersGlob.copy(ItemsOregen.globManager, slot, glob, size);
 	}

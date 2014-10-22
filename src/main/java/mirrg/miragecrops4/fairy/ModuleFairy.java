@@ -2,16 +2,19 @@ package mirrg.miragecrops4.fairy;
 
 import mirrg.mir34.modding.IMod;
 import mirrg.mir40.net.MessageFieldInt;
+import mirrg.mir41.glob.Glob;
 import mirrg.mir41.glob.GlobGroup;
-import mirrg.mir41.glob.api.IGlob;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.GlobGroups;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.Globs;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.Slots;
 import mirrg.miragecrops4.core.ModuleCore;
 import mirrg.miragecrops4.core.ModuleMirageCropsBase;
 import mirrg.miragecrops4.fairy.glass.HandlerRenderingFairyGlass;
 import mirrg.miragecrops4.fairy.glass.ItemFairyGlass;
 import mirrg.miragecrops4.fairy.glass.MessageHandlerFairyGlass;
+import mirrg.miragecrops4.oregen.ModuleOregenBase;
+import mirrg.miragecrops4.oregen.global.ItemsOregen;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.GlobGroups;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.Globs;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.Slots;
+import mirrg.miragecrops4.oregen.multi.MetablockGlob;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
@@ -124,7 +127,7 @@ public class ModuleFairy extends ModuleMirageCropsBase
 
 	}
 
-	private void addRecipeMineral(GlobGroup<IGlob> globGroup, IGlob glob)
+	private void addRecipeMineral(GlobGroup<Glob> globGroup, Glob glob)
 	{
 
 		if (globGroup.allowsSlot(Slots.gem.slot)) {
@@ -190,13 +193,13 @@ public class ModuleFairy extends ModuleMirageCropsBase
 			'S', "stickWood"));
 
 		// 鉱物 鉱石→結晶→粉末
-		for (IGlob glob : GlobGroups.CalciteGroup.globGroup.getGlobs()) {
+		for (Glob glob : GlobGroups.CalciteGroup.globGroup.getGlobs()) {
 			addRecipeMineral(GlobGroups.CalciteGroup.globGroup, glob);
 		}
-		for (IGlob glob : GlobGroups.MohsHardnessCrystal.globGroup.getGlobs()) {
+		for (Glob glob : GlobGroups.MohsHardnessCrystal.globGroup.getGlobs()) {
 			addRecipeMineral(GlobGroups.MohsHardnessCrystal.globGroup, glob);
 		}
-		for (IGlob glob : GlobGroups.MirageMagic.globGroup.getGlobs()) {
+		for (Glob glob : GlobGroups.MirageMagic.globGroup.getGlobs()) {
 			addRecipeMineral(GlobGroups.MirageMagic.globGroup, glob);
 		}
 

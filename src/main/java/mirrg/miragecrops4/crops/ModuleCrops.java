@@ -13,7 +13,6 @@ import mirrg.miragecrops4.core.ModuleCore;
 import mirrg.miragecrops4.core.ModuleMirageCropsBase;
 import mirrg.miragecrops4.crops.fairy.CropMirageFairyHousing;
 import mirrg.miragecrops4.crops.fairy.CropMirageFairyWorkplace;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -55,7 +54,7 @@ public class ModuleCrops extends ModuleMirageCropsBase
 
 	//
 
-	public static Item craftingLeaf;
+	public static ItemMulti.Raw craftingLeaf;
 
 	public static CropCard cropSarracenia;
 	public static CropCard cropSpinach;
@@ -64,7 +63,7 @@ public class ModuleCrops extends ModuleMirageCropsBase
 	protected void registerItems()
 	{
 
-		craftingLeaf = registerItem(new ItemMulti(), "craftingLeaf");
+		craftingLeaf = registerItem(new ItemMulti.Raw(), "craftingLeaf");
 
 	}
 
@@ -77,16 +76,16 @@ public class ModuleCrops extends ModuleMirageCropsBase
 
 		craftingLeaf.setTextureName(getMod().getModId() + ":" + getModuleName() + "/" + "craftingLeafSarracenia");
 
-		configureCraftingLeaf((ItemMulti) craftingLeaf);
+		configureCraftingLeaf(craftingLeaf);
 
 	}
 
-	protected void configureCraftingLeaf(ItemMulti item)
+	protected void configureCraftingLeaf(ItemMulti.Raw item)
 	{
 
 		{
 			int index = 0;
-			Metaitem metaitem = new Metaitem();
+			Metaitem.Raw metaitem = new Metaitem.Raw();
 			String unlocalizedName = "craftingLeafSarracenia";
 
 			item.multibase.bind(index, metaitem);

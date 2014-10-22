@@ -1,19 +1,21 @@
 package mirrg.miragecrops4.oregen;
 
-import static mirrg.miragecrops4.api.oregen.ItemsOregen.*;
+import static mirrg.miragecrops4.oregen.global.HelpersModuleOregen.*;
+import static mirrg.miragecrops4.oregen.global.ItemsOregen.*;
 import mirrg.mir34.modding.IMod;
-import mirrg.mir40.block.BlockMulti;
-import mirrg.mir40.item.ItemMultiIcon;
 import mirrg.mir40.reflect.HelpersReflect;
 import mirrg.mir41.glob.HelpersGlob;
-import mirrg.miragecrops4.api.oregen.ItemsOregen;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.EnumSlotType;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.GlobGroups;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.Globs;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.Slots;
+import mirrg.miragecrops4.oregen.global.ItemsOregen;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumSlotType;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.GlobGroups;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.Globs;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.Slots;
+import mirrg.miragecrops4.oregen.global.RegisterMaterialColor;
+import mirrg.miragecrops4.oregen.multi.BlockMultiMirageCrops;
 import mirrg.miragecrops4.oregen.multi.ItemBlockMultiMirageCrops;
 import mirrg.miragecrops4.oregen.multi.ItemMultiIconMirageCrops;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -53,7 +55,7 @@ public class ModuleOregen extends ModuleOregenBase
 	public void handle(FMLPreInitializationEvent event)
 	{
 
-		ItemsOregen.registerMaterialColors();
+		RegisterMaterialColor.registerMaterialColors();
 
 		super.handle(event);
 
@@ -78,8 +80,12 @@ public class ModuleOregen extends ModuleOregenBase
 
 						String unlocalizedName = getBlockUnlocalizedName(enumSlot.slot, enumGlobGroup.globGroup);
 
-						Exception e = HelpersReflect.setStaticField(ItemsOregen.class, unlocalizedName,
-							registerBlock(new BlockMulti(), ItemBlockMultiMirageCrops.class, unlocalizedName));
+						Exception e = HelpersReflect.setStaticField(
+							ItemsOregen.class,
+							unlocalizedName,
+							registerBlock(new BlockMultiMirageCrops.Raw(Material.rock),
+								ItemBlockMultiMirageCrops.class,
+								unlocalizedName));
 						if (e != null) throw new RuntimeException(e);
 
 					}
@@ -103,7 +109,7 @@ public class ModuleOregen extends ModuleOregenBase
 				String unlocalizedName = getItemUnlocalizedName(enumSlot.slot);
 
 				Exception e = HelpersReflect.setStaticField(ItemsOregen.class, unlocalizedName,
-					registerItem(new ItemMultiIconMirageCrops(), unlocalizedName));
+					registerItem(new ItemMultiIconMirageCrops.Raw(), unlocalizedName));
 				if (e != null) throw new RuntimeException(e);
 
 			}
@@ -131,7 +137,7 @@ public class ModuleOregen extends ModuleOregenBase
 
 						configureBlock((Block) obj, unlocalizedName);
 
-						createMetaBlock(enumGlobGroup, (BlockMulti) obj, enumSlot.slot);
+						createMetaBlock(enumGlobGroup, (BlockMultiMirageCrops.Raw) obj, enumSlot.slot);
 
 					}
 				}
@@ -158,7 +164,8 @@ public class ModuleOregen extends ModuleOregenBase
 
 				configureItem((Item) obj, unlocalizedName);
 
-				createMetaItem(ItemsOregen.GlobGroups.values(), (ItemMultiIcon) obj, enumSlot.slot, enumSlot.icon);
+				createMetaItem(ItemsOregen.GlobGroups.values(), (ItemMultiIconMirageCrops.Raw) obj, enumSlot.slot,
+					enumSlot.icon);
 
 			}
 		}

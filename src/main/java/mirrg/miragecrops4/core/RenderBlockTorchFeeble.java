@@ -1,8 +1,8 @@
 package mirrg.miragecrops4.core;
 
-import static mirrg.miragecrops4.api.oregen.ItemsOregen.*;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.GlobGroups;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.Globs;
+import static mirrg.miragecrops4.oregen.global.ItemsOregen.*;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.GlobGroups;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.Globs;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;

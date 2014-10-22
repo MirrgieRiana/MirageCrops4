@@ -1,29 +1,30 @@
 package mirrg.miragecrops4.oregen;
 
-import static mirrg.miragecrops4.api.oregen.ItemsOregen.*;
-
 import java.util.List;
 
 import mirrg.mir34.modding.IMod;
 import mirrg.mir34.modding.IModule;
-import mirrg.mir40.block.BlockMulti;
 import mirrg.mir40.icon.HelpersIcon;
 import mirrg.mir40.icon.MultiIcon;
 import mirrg.mir40.icon.api.IMultiIconShape;
-import mirrg.mir40.item.ItemMultiIcon;
 import mirrg.mir40.reflect.HelpersReflect;
 import mirrg.mir40.worldgen.FilterBiome;
 import mirrg.mir40.worldgen.WorldGeneratorXYZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre.CountPer;
+import mirrg.mir41.glob.Glob;
+import mirrg.mir41.glob.Slot;
 import mirrg.mir41.glob.api.IGlob;
 import mirrg.mir41.glob.api.IGlobGroup;
 import mirrg.mir41.glob.api.ISlot;
-import mirrg.miragecrops4.api.oregen.ItemsOregen;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.GlobGroups;
-import mirrg.miragecrops4.api.oregen.RegisterMaterialColor;
 import mirrg.miragecrops4.core.ModuleCore;
 import mirrg.miragecrops4.core.ModuleMirageCropsBase;
+import mirrg.miragecrops4.oregen.global.HelpersModuleOregen;
+import mirrg.miragecrops4.oregen.global.ItemsOregen;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.GlobGroups;
+import mirrg.miragecrops4.oregen.global.RegisterMaterialColor;
+import mirrg.miragecrops4.oregen.multi.BlockMultiMirageCrops;
+import mirrg.miragecrops4.oregen.multi.ItemMultiIconMirageCrops;
 import mirrg.miragecrops4.oregen.multi.MetablockGlob;
 import mirrg.miragecrops4.oregen.multi.MetaitemIconGlob;
 import net.minecraft.block.Block;
@@ -53,16 +54,16 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		item.setCreativeTab(ModuleCore.creativeTab);
 	}
 
-	protected void createMetaBlock(GlobGroups enumGlobGroup, BlockMulti blockMulti, ISlot slot)
+	protected void createMetaBlock(GlobGroups enumGlobGroup, BlockMultiMirageCrops.Raw blockMulti, Slot slot)
 	{
-		List<IGlob> globs = enumGlobGroup.globGroup.getGlobs();
+		List<Glob> globs = enumGlobGroup.globGroup.getGlobs();
 
 		for (int i = 0; i < globs.size(); i++) {
-			IGlob glob = globs.get(i);
+			Glob glob = globs.get(i);
 			String unlocalizedName = gdn(slot, glob);
 
 			// メタブロックの作成
-			MetablockGlob metablock = new MetablockGlob(glob, slot);
+			MetablockGlob.Raw metablock = new MetablockGlob.Raw(glob, slot);
 
 			// マルチブロックにメタブロックを登録
 			blockMulti.multibase.bind(i, metablock);
@@ -81,19 +82,20 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		}
 	}
 
-	public static void overrideMetablock(ISlot slot, IGlobGroup globGroup, IGlob glob, MetablockGlob metablock)
+	public static void overrideMetablock(ISlot slot, IGlobGroup<?> globGroup, IGlob glob, MetablockGlob.Raw metablock)
 	{
 		Object blockMulti = HelpersReflect.getStaticField(
-			ItemsOregen.class, getBlockUnlocalizedName(slot, globGroup));
+			ItemsOregen.class, HelpersModuleOregen.getBlockUnlocalizedName(slot, globGroup));
 		if (blockMulti == null || blockMulti instanceof Exception) {
 			throw new RuntimeException((Exception) blockMulti);
 		}
 
-		((BlockMulti) blockMulti).multibase.bindForce(globGroup.getGlobs().indexOf(glob), metablock);
+		((BlockMultiMirageCrops.Raw) blockMulti).multibase.bindForce(
+			globGroup.getGlobs().indexOf(glob), metablock);
 	}
 
 	public static void configureMetablock(IModule module,
-		MetablockGlob metablock, String unlocalizedName)
+		MetablockGlob.Raw metablock, String unlocalizedName)
 	{
 		metablock.unlocalizedName = unlocalizedName;
 		if (module.getMod().isClient()) {
@@ -107,20 +109,20 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		}
 	}
 
-	protected void createMetaItem(GlobGroups[] enumGlobGroups, ItemMultiIcon itemMultiIcon, ISlot slot,
+	protected void createMetaItem(GlobGroups[] enumGlobGroups, ItemMultiIconMirageCrops.Raw itemMultiIcon, Slot slot,
 		IMultiIconShape multiIconShape)
 	{
 
 		for (int j = 0; j < enumGlobGroups.length; j++) {
 			GlobGroups enumGlobGroup = enumGlobGroups[j];
-			List<IGlob> globs = enumGlobGroup.globGroup.getGlobs();
+			List<Glob> globs = enumGlobGroup.globGroup.getGlobs();
 
 			for (int i = 0; i < globs.size(); i++) {
-				IGlob glob = globs.get(i);
+				Glob glob = globs.get(i);
 				String unlocalizedName = gdn(slot, glob);
 
 				// メタアイテムの作成
-				MetaitemIconGlob metaitemIcon = new MetaitemIconGlob(glob, slot);
+				MetaitemIconGlob.Raw metaitemIcon = new MetaitemIconGlob.Raw(glob, slot);
 
 				// マルチブロックにメタアイテムを登録
 				int id = i + j * 16;
@@ -143,7 +145,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 	}
 
 	public static void configuteMetaitem(IModule module,
-		MetaitemIconGlob metaitemIcon, String unlocalizedName, int color, IMultiIconShape multiIconShape)
+		MetaitemIconGlob.Raw metaitemIcon, String unlocalizedName, int color, IMultiIconShape multiIconShape)
 	{
 		metaitemIcon.unlocalizedName = unlocalizedName;
 		if (module.getMod().isClient()) {

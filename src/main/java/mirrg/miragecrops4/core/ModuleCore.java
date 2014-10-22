@@ -1,9 +1,9 @@
 package mirrg.miragecrops4.core;
 
 import mirrg.mir34.modding.IMod;
-import mirrg.miragecrops4.api.oregen.ItemsOregen;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.Globs;
-import mirrg.miragecrops4.api.oregen.ItemsOregen.Slots;
+import mirrg.miragecrops4.oregen.global.ItemsOregen;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.Globs;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.Slots;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
