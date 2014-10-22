@@ -18,11 +18,6 @@ public class MetablockGlob<MULTI extends Multibase<MULTI, META>, META extends Me
 		this.slot = slot;
 	}
 
-	protected MetablockGlob()
-	{
-
-	}
-
 	public IGlob getGlob()
 	{
 		return glob;
