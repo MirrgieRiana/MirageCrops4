@@ -31,4 +31,15 @@ public class ItemBlockMultiMirageCrops<MULTI extends Multibase<MULTI, META>, MET
 			StatCollector.translateToLocal("glob." + globName + ".name").trim());
 	}
 
+	@SuppressWarnings("rawtypes")
+	public static class Raw extends ItemBlockMultiMirageCrops
+	{
+
+		public Raw(Block block)
+		{
+			super(block);
+		}
+
+	}
+
 }

@@ -43,4 +43,15 @@ public class MetaitemIconGlob<MULTI extends Multibase<MULTI, META>, META extends
 		this.slot = slot;
 	}
 
+	@SuppressWarnings("rawtypes")
+	public static class Raw extends MetaitemIconGlob
+	{
+
+		public Raw(IGlob glob, ISlot slot)
+		{
+			super(glob, slot);
+		}
+
+	}
+
 }

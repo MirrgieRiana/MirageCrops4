@@ -43,4 +43,15 @@ public class MetablockGlob<MULTI extends Multibase<MULTI, META>, META extends Me
 		this.slot = slot;
 	}
 
+	@SuppressWarnings("rawtypes")
+	public static class Raw extends MetablockGlob
+	{
+
+		public Raw(IGlob glob, ISlot slot)
+		{
+			super(glob, slot);
+		}
+
+	}
+
 }

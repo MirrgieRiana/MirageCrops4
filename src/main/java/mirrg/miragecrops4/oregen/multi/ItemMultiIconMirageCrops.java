@@ -25,4 +25,10 @@ public class ItemMultiIconMirageCrops<MULTI extends Multibase<MULTI, META>, META
 			StatCollector.translateToLocal("glob." + globName + ".name").trim());
 	}
 
+	@SuppressWarnings("rawtypes")
+	public static class Raw extends ItemMultiIconMirageCrops
+	{
+
+	}
+
 }
