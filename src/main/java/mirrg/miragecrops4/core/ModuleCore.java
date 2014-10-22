@@ -10,6 +10,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -39,6 +41,23 @@ public class ModuleCore extends ModuleMirageCropsBase
 
 		super.handle(event);
 
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static RenderBlockTorchFeeble renderBlockTorchFeeble;
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void handleClient(FMLInitializationEvent event)
+	{
+
+		{
+			int renderId = RenderingRegistry.getNextAvailableRenderId();
+			renderBlockTorchFeeble = new RenderBlockTorchFeeble(renderId);
+			RenderingRegistry.registerBlockHandler(renderId, renderBlockTorchFeeble);
+		}
+
+		super.handleClient(event);
 	}
 
 	//
@@ -74,7 +93,7 @@ public class ModuleCore extends ModuleMirageCropsBase
 	protected void configureBlocks()
 	{
 
-		configureBlock(blockTorchFeeble, "blockTorchFeeble", 0.0F, 0.0F, Block.soundTypeWood);
+		configureBlock(blockTorchFeeble, "blockTorchFeeble", 0.15F, 0.0F, Block.soundTypeWood);
 		blockTorchFeeble.setCreativeTab(creativeTab);
 
 	}
