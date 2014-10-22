@@ -67,4 +67,10 @@ public class BlockMulti<MULTI extends Multibase<MULTI, META>, META extends Metab
 		}
 	}
 
+	@SuppressWarnings("rawtypes")
+	public static class Raw extends BlockMulti
+	{
+
+	}
+
 }
