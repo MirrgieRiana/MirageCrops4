@@ -3,6 +3,7 @@ package mirrg.miragecrops4.oregen;
 import java.util.List;
 
 import mirrg.mir34.modding.IMod;
+import mirrg.mir34.modding.IModule;
 import mirrg.mir40.block.BlockMulti;
 import mirrg.mir40.icon.HelpersIcon;
 import mirrg.mir40.icon.MultiIcon;
@@ -64,7 +65,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 			ItemsOregen.globManager.put(unlocalizedName, new ItemStack(blockMulti, 1, i));
 
 			// メタブロックの設定
-			configureMetablock(metablock, unlocalizedName);
+			configureMetablock(this, metablock, unlocalizedName);
 
 			if (enumGlobGroup.globGroup.allowsSlot(slot)) {
 				// 鉱石辞書に登録
@@ -74,15 +75,17 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		}
 	}
 
-	private void configureMetablock(MetablockGlob metablock, String unlocalizedName)
+	public static void configureMetablock(IModule module,
+		MetablockGlob metablock, String unlocalizedName)
 	{
 		metablock.unlocalizedName = unlocalizedName;
-		if (getMod().isClient()) {
-			String textureName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
+		if (module.getMod().isClient()) {
+			String textureName =
+				module.getMod().getModId() + ":" + module.getModuleName() + "/" + unlocalizedName;
 			if (HelpersIcon.getURLFromTextureName(textureName, HelpersIcon.TYPE_BLOCKS) != null) {
 				metablock.iconName = textureName;
 			} else {
-				metablock.iconName = getMod().getModId() + ":" + "NULL_ICON";
+				metablock.iconName = module.getMod().getModId() + ":" + "NULL_ICON";
 			}
 		}
 	}
@@ -110,7 +113,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 				ItemsOregen.globManager.put(unlocalizedName, new ItemStack(itemMultiIcon, 1, id));
 
 				// メタアイテムの設定
-				configuteMetaitem(metaitemIcon, unlocalizedName,
+				configuteMetaitem(this, metaitemIcon, unlocalizedName,
 					RegisterMaterialColor.instance.get(glob.getName()), multiIconShape);
 
 				if (enumGlobGroup.globGroup.allowsSlot(slot)) {
@@ -122,12 +125,13 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		}
 	}
 
-	private void configuteMetaitem(MetaitemIconGlob metaitemIcon, String unlocalizedName,
-		int color, IMultiIconShape multiIconShape)
+	public static void configuteMetaitem(IModule module,
+		MetaitemIconGlob metaitemIcon, String unlocalizedName, int color, IMultiIconShape multiIconShape)
 	{
 		metaitemIcon.unlocalizedName = unlocalizedName;
-		if (getMod().isClient()) {
-			String textureName = getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName;
+		if (module.getMod().isClient()) {
+			String textureName =
+				module.getMod().getModId() + ":" + module.getModuleName() + "/" + unlocalizedName;
 			if (HelpersIcon.getURLFromTextureName(textureName, HelpersIcon.TYPE_ITEMS) != null) {
 				metaitemIcon.iconName = textureName;
 			} else {
