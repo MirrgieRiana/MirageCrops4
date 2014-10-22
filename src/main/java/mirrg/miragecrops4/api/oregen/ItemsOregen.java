@@ -2,11 +2,13 @@ package mirrg.miragecrops4.api.oregen;
 
 import mirrg.mir34.modding.IModule;
 import mirrg.mir40.icon.api.IMultiIconShape;
+import mirrg.mir40.math.HelpersString;
 import mirrg.mir41.glob.Glob;
 import mirrg.mir41.glob.GlobGroup;
 import mirrg.mir41.glob.GlobManager;
 import mirrg.mir41.glob.Slot;
 import mirrg.mir41.glob.api.IGlob;
+import mirrg.mir41.glob.api.IGlobGroup;
 import mirrg.mir41.glob.api.ISlot;
 import mirrg.miragecrops4.oregen.MultiIcons;
 import net.minecraft.block.Block;
@@ -244,6 +246,20 @@ public class ItemsOregen
 		registerMaterialColor("platinum", 0xFFF6DD);
 		registerMaterialColor("aluminium", 0xC0D3F7);
 
+	}
+
+	public static String getBlockUnlocalizedName(ISlot slot, IGlobGroup<?> globGroup)
+	{
+		if (slot.equals(Slots.block.slot)) {
+			return "block" + globGroup.getName();
+		} else {
+			return "block" + HelpersString.toUpperCaseHead(slot.getName()) + globGroup.getName();
+		}
+	}
+
+	public static String getItemUnlocalizedName(ISlot slot)
+	{
+		return "item" + HelpersString.toUpperCaseHead(slot.getName());
 	}
 
 }
