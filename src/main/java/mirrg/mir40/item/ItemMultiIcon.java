@@ -39,4 +39,10 @@ public class ItemMultiIcon<MULTI extends Multibase<MULTI, META>, META extends Me
 		return multibase.get(meta).getColorFromItemStack(par1ItemStack, pass);
 	}
 
+	@SuppressWarnings("rawtypes")
+	public static class Raw extends ItemMultiIcon
+	{
+
+	}
+
 }

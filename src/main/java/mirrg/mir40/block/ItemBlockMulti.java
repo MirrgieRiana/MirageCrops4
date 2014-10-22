@@ -30,4 +30,15 @@ public class ItemBlockMulti<MULTI extends Multibase<MULTI, META>, META extends M
 		return meta;
 	}
 
+	@SuppressWarnings("rawtypes")
+	public static class Raw extends ItemBlockMulti
+	{
+
+		public Raw(Block block)
+		{
+			super(block);
+		}
+
+	}
+
 }

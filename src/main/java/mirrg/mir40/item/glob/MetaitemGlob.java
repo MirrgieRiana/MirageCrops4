@@ -18,11 +18,6 @@ public class MetaitemGlob<MULTI extends Multibase<MULTI, META>, META extends Met
 		this.slot = slot;
 	}
 
-	protected MetaitemGlob()
-	{
-
-	}
-
 	public IGlob getGlob()
 	{
 		return glob;
@@ -41,6 +36,17 @@ public class MetaitemGlob<MULTI extends Multibase<MULTI, META>, META extends Met
 	protected void setSlot(ISlot slot)
 	{
 		this.slot = slot;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public static class Raw extends MetaitemGlob
+	{
+
+		public Raw(IGlob glob, ISlot slot)
+		{
+			super(glob, slot);
+		}
+
 	}
 
 }

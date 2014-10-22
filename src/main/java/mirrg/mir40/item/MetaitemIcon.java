@@ -46,4 +46,10 @@ public class MetaitemIcon<MULTI extends Multibase<MULTI, META>, META extends Met
 		return multiIcon.getColor(pass);
 	}
 
+	@SuppressWarnings("rawtypes")
+	public static class Raw extends MetaitemIcon
+	{
+
+	}
+
 }

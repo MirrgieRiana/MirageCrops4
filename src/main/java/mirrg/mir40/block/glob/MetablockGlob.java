@@ -18,11 +18,6 @@ public class MetablockGlob<MULTI extends Multibase<MULTI, META>, META extends Me
 		this.slot = slot;
 	}
 
-	protected MetablockGlob()
-	{
-
-	}
-
 	public IGlob getGlob()
 	{
 		return glob;
@@ -41,6 +36,17 @@ public class MetablockGlob<MULTI extends Multibase<MULTI, META>, META extends Me
 	protected void setSlot(ISlot slot)
 	{
 		this.slot = slot;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public static class Raw extends MetablockGlob
+	{
+
+		public Raw(IGlob glob, ISlot slot)
+		{
+			super(glob, slot);
+		}
+
 	}
 
 }

@@ -64,4 +64,10 @@ public class Metablock<MULTI extends Multibase<MULTI, META>, META extends Metabl
 		return "tile." + unlocalizedName;
 	}
 
+	@SuppressWarnings("rawtypes")
+	public static class Raw extends Metablock
+	{
+
+	}
+
 }

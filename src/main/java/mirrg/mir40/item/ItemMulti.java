@@ -72,4 +72,10 @@ public class ItemMulti<MULTI extends Multibase<MULTI, META>, META extends Metait
 		return multibase.get(meta).getUnlocalizedName(arg0);
 	}
 
+	@SuppressWarnings("rawtypes")
+	public static class Raw extends ItemMulti
+	{
+
+	}
+
 }

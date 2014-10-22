@@ -54,4 +54,10 @@ public class Metaitem<MULTI extends Multibase<MULTI, META>, META extends Metaite
 		return "item." + unlocalizedName;
 	}
 
+	@SuppressWarnings("rawtypes")
+	public static class Raw extends Metaitem
+	{
+
+	}
+
 }
