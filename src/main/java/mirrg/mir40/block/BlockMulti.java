@@ -19,9 +19,9 @@ public class BlockMulti<MULTI extends Multibase<MULTI, META>, META extends Metab
 
 	public Multibase<MULTI, META> multibase = new Multibase<MULTI, META>(16);
 
-	public BlockMulti()
+	public BlockMulti(Material material)
 	{
-		super(Material.rock);
+		super(material);
 	}
 
 	@Override
@@ -70,6 +70,11 @@ public class BlockMulti<MULTI extends Multibase<MULTI, META>, META extends Metab
 	@SuppressWarnings("rawtypes")
 	public static class Raw extends BlockMulti
 	{
+
+		public Raw(Material material)
+		{
+			super(material);
+		}
 
 	}
 
