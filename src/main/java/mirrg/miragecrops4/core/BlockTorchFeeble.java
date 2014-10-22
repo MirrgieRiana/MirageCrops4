@@ -61,6 +61,7 @@ public class BlockTorchFeeble extends Block
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public int getRenderType()
 	{
 		return ModuleCore.renderBlockTorchFeeble.getRenderId();
@@ -82,7 +83,7 @@ public class BlockTorchFeeble extends Block
 	}
 
 	@SideOnly(Side.CLIENT)
-	public IIcon overridedIcon = null;
+	public IIcon overridedIcon;
 
 	@Override
 	@SideOnly(Side.CLIENT)
