@@ -17,6 +17,11 @@ public class Multibase<MULTI extends Multibase<MULTI, META>, META extends Metaba
 	{
 		if (contains(index)) throw new DuplicatedBindingToIndexException(this, index);
 		if (!meta.isBindable()) throw new DuplicatedBindingMetaException(meta, index, this);
+		bindForce(index, meta);
+	}
+
+	public void bindForce(int index, META meta)
+	{
 		meta.bind(index, (MULTI) this);
 		metas[index] = meta;
 	}
