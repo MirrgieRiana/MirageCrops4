@@ -2,8 +2,8 @@ package mirrg.miragecrops4.core;
 
 import mirrg.mir34.modding.IMod;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.Globs;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.Slots;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlob;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumSlot;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -105,42 +105,42 @@ public class ModuleCore extends ModuleMirageCropsBase
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 12),
 			"X",
 			"Y",
-			'X', gdn(Slots.gem, Globs.calcite),
+			'X', gdn(EnumSlot.gem, EnumGlob.calcite),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 10),
 			"X",
 			"Y",
-			'X', gdn(Slots.gem, Globs.magnesite),
+			'X', gdn(EnumSlot.gem, EnumGlob.magnesite),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 8),
 			"X",
 			"Y",
-			'X', gdn(Slots.gem, Globs.smithsonite),
+			'X', gdn(EnumSlot.gem, EnumGlob.smithsonite),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 6),
 			"X",
 			"Y",
-			'X', gdn(Slots.gem, Globs.siderite),
+			'X', gdn(EnumSlot.gem, EnumGlob.siderite),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 4),
 			"X",
 			"Y",
-			'X', gdn(Slots.gem, Globs.sphaerocobaltite),
+			'X', gdn(EnumSlot.gem, EnumGlob.sphaerocobaltite),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 3),
 			"X",
 			"Y",
-			'X', gdn(Slots.gem, Globs.gaspeite),
+			'X', gdn(EnumSlot.gem, EnumGlob.gaspeite),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 2),
 			"X",
 			"Y",
-			'X', gdn(Slots.gem, Globs.rhodochrosite),
+			'X', gdn(EnumSlot.gem, EnumGlob.rhodochrosite),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 1),
 			"X",
 			"Y",
-			'X', gdn(Slots.gem, Globs.otavite),
+			'X', gdn(EnumSlot.gem, EnumGlob.otavite),
 			'Y', Blocks.torch));
 
 	}

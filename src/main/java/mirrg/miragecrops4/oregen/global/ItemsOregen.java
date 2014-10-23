@@ -6,7 +6,7 @@ import mirrg.mir41.glob.GlobGroup;
 import mirrg.mir41.glob.GlobManager;
 import mirrg.mir41.glob.Slot;
 import mirrg.miragecrops4.oregen.ModuleOregen;
-import mirrg.miragecrops4.oregen.global.MultiIcons.MultiIconShapes;
+import mirrg.miragecrops4.oregen.global.MultiIcons.EnumMultiIconShape;
 import mirrg.miragecrops4.oregen.multi.BlockMultiMirageCrops;
 import mirrg.miragecrops4.oregen.multi.ItemMultiIconMirageCrops;
 
@@ -22,19 +22,19 @@ public class ItemsOregen
 		BLOCK, ITEM,
 	}
 
-	public static enum Slots
+	public static enum EnumSlot
 	{
 		ore(EnumSlotType.BLOCK, null),
 		block(EnumSlotType.BLOCK, null),
-		ingot(EnumSlotType.ITEM, MultiIcons.MultiIconShapes.INGOT),
-		gem(EnumSlotType.ITEM, MultiIcons.MultiIconShapes.GEM),
-		dust(EnumSlotType.ITEM, MultiIcons.MultiIconShapes.DUST), ;
+		ingot(EnumSlotType.ITEM, MultiIcons.EnumMultiIconShape.INGOT),
+		gem(EnumSlotType.ITEM, MultiIcons.EnumMultiIconShape.GEM),
+		dust(EnumSlotType.ITEM, MultiIcons.EnumMultiIconShape.DUST), ;
 
 		public final Slot slot;
 		public final EnumSlotType type;
-		public final MultiIconShapes enumMultiIconShape;
+		public final EnumMultiIconShape enumMultiIconShape;
 
-		private Slots(EnumSlotType type, MultiIconShapes enumMultiIconShape)
+		private EnumSlot(EnumSlotType type, EnumMultiIconShape enumMultiIconShape)
 		{
 			slot = new Slot(name());
 			this.type = type;
@@ -48,7 +48,7 @@ public class ItemsOregen
 
 	}
 
-	public static enum Globs
+	public static enum EnumGlob
 	{
 		calcite,
 		magnesite,
@@ -74,14 +74,14 @@ public class ItemsOregen
 
 		public final Glob glob;
 
-		private Globs()
+		private EnumGlob()
 		{
 			glob = new Glob(name());
 		}
 
 	}
 
-	public static enum GlobGroups
+	public static enum EnumGlobGroup
 	{
 		CalciteGroup,
 		MohsHardnessCrystal,
@@ -91,7 +91,7 @@ public class ItemsOregen
 
 		public final GlobGroup<Glob> globGroup;
 
-		private GlobGroups()
+		private EnumGlobGroup()
 		{
 			globGroup = new GlobGroup<Glob>(name());
 		}
@@ -101,69 +101,69 @@ public class ItemsOregen
 	static
 	{
 		{
-			GlobGroup<Glob> globGroup = GlobGroups.CalciteGroup.globGroup;
-			globGroup.setAllowsSlot(Slots.ore.slot, true);
-			globGroup.setAllowsSlot(Slots.block.slot, true);
-			globGroup.setAllowsSlot(Slots.ingot.slot, false);
-			globGroup.setAllowsSlot(Slots.gem.slot, true);
-			globGroup.setAllowsSlot(Slots.dust.slot, true);
-			globGroup.registerGlob(Globs.calcite.glob);
-			globGroup.registerGlob(Globs.magnesite.glob);
-			globGroup.registerGlob(Globs.siderite.glob);
-			globGroup.registerGlob(Globs.rhodochrosite.glob);
-			globGroup.registerGlob(Globs.smithsonite.glob);
-			globGroup.registerGlob(Globs.sphaerocobaltite.glob);
-			globGroup.registerGlob(Globs.gaspeite.glob);
-			globGroup.registerGlob(Globs.otavite.glob);
+			GlobGroup<Glob> globGroup = EnumGlobGroup.CalciteGroup.globGroup;
+			globGroup.setAllowsSlot(EnumSlot.ore.slot, true);
+			globGroup.setAllowsSlot(EnumSlot.block.slot, true);
+			globGroup.setAllowsSlot(EnumSlot.ingot.slot, false);
+			globGroup.setAllowsSlot(EnumSlot.gem.slot, true);
+			globGroup.setAllowsSlot(EnumSlot.dust.slot, true);
+			globGroup.registerGlob(EnumGlob.calcite.glob);
+			globGroup.registerGlob(EnumGlob.magnesite.glob);
+			globGroup.registerGlob(EnumGlob.siderite.glob);
+			globGroup.registerGlob(EnumGlob.rhodochrosite.glob);
+			globGroup.registerGlob(EnumGlob.smithsonite.glob);
+			globGroup.registerGlob(EnumGlob.sphaerocobaltite.glob);
+			globGroup.registerGlob(EnumGlob.gaspeite.glob);
+			globGroup.registerGlob(EnumGlob.otavite.glob);
 		}
 
 		{
-			GlobGroup<Glob> globGroup = GlobGroups.MohsHardnessCrystal.globGroup;
-			globGroup.setAllowsSlot(Slots.ore.slot, true);
-			globGroup.setAllowsSlot(Slots.block.slot, true);
-			globGroup.setAllowsSlot(Slots.ingot.slot, false);
-			globGroup.setAllowsSlot(Slots.gem.slot, true);
-			globGroup.setAllowsSlot(Slots.dust.slot, true);
-			globGroup.registerGlob(Globs.talc.glob);
-			globGroup.registerGlob(Globs.gypsum.glob);
-			globGroup.registerGlob(Globs.calcite.glob);
-			globGroup.registerGlob(Globs.fluorite.glob);
-			globGroup.registerGlob(Globs.apatite.glob);
-			globGroup.registerGlob(Globs.orthoclase.glob);
-			globGroup.registerGlob(Globs.certusQuartz.glob);
-			globGroup.registerGlob(Globs.topaz.glob);
-			globGroup.registerGlob(Globs.ruby.glob);
-			globGroup.registerGlob(Globs.diamond.glob);
+			GlobGroup<Glob> globGroup = EnumGlobGroup.MohsHardnessCrystal.globGroup;
+			globGroup.setAllowsSlot(EnumSlot.ore.slot, true);
+			globGroup.setAllowsSlot(EnumSlot.block.slot, true);
+			globGroup.setAllowsSlot(EnumSlot.ingot.slot, false);
+			globGroup.setAllowsSlot(EnumSlot.gem.slot, true);
+			globGroup.setAllowsSlot(EnumSlot.dust.slot, true);
+			globGroup.registerGlob(EnumGlob.talc.glob);
+			globGroup.registerGlob(EnumGlob.gypsum.glob);
+			globGroup.registerGlob(EnumGlob.calcite.glob);
+			globGroup.registerGlob(EnumGlob.fluorite.glob);
+			globGroup.registerGlob(EnumGlob.apatite.glob);
+			globGroup.registerGlob(EnumGlob.orthoclase.glob);
+			globGroup.registerGlob(EnumGlob.certusQuartz.glob);
+			globGroup.registerGlob(EnumGlob.topaz.glob);
+			globGroup.registerGlob(EnumGlob.ruby.glob);
+			globGroup.registerGlob(EnumGlob.diamond.glob);
 		}
 
 		{
-			GlobGroup<Glob> globGroup = GlobGroups.OtherMetal.globGroup;
-			globGroup.setAllowsSlot(Slots.ore.slot, true);
-			globGroup.setAllowsSlot(Slots.block.slot, true);
-			globGroup.setAllowsSlot(Slots.ingot.slot, true);
-			globGroup.setAllowsSlot(Slots.gem.slot, false);
-			globGroup.setAllowsSlot(Slots.dust.slot, true);
-			globGroup.registerGlob(Globs.bismuth.glob);
+			GlobGroup<Glob> globGroup = EnumGlobGroup.OtherMetal.globGroup;
+			globGroup.setAllowsSlot(EnumSlot.ore.slot, true);
+			globGroup.setAllowsSlot(EnumSlot.block.slot, true);
+			globGroup.setAllowsSlot(EnumSlot.ingot.slot, true);
+			globGroup.setAllowsSlot(EnumSlot.gem.slot, false);
+			globGroup.setAllowsSlot(EnumSlot.dust.slot, true);
+			globGroup.registerGlob(EnumGlob.bismuth.glob);
 		}
 
 		{
-			GlobGroup<Glob> globGroup = GlobGroups.MirageMagic.globGroup;
-			globGroup.setAllowsSlot(Slots.ore.slot, true);
-			globGroup.setAllowsSlot(Slots.block.slot, false);
-			globGroup.setAllowsSlot(Slots.ingot.slot, false);
-			globGroup.setAllowsSlot(Slots.gem.slot, true);
-			globGroup.setAllowsSlot(Slots.dust.slot, true);
-			globGroup.registerGlob(Globs.spinatite.glob);
+			GlobGroup<Glob> globGroup = EnumGlobGroup.MirageMagic.globGroup;
+			globGroup.setAllowsSlot(EnumSlot.ore.slot, true);
+			globGroup.setAllowsSlot(EnumSlot.block.slot, false);
+			globGroup.setAllowsSlot(EnumSlot.ingot.slot, false);
+			globGroup.setAllowsSlot(EnumSlot.gem.slot, true);
+			globGroup.setAllowsSlot(EnumSlot.dust.slot, true);
+			globGroup.registerGlob(EnumGlob.spinatite.glob);
 		}
 
 		{
-			GlobGroup<Glob> globGroup = GlobGroups.MirageMaterial.globGroup;
-			globGroup.setAllowsSlot(Slots.ore.slot, false);
-			globGroup.setAllowsSlot(Slots.block.slot, true);
-			globGroup.setAllowsSlot(Slots.ingot.slot, true);
-			globGroup.setAllowsSlot(Slots.gem.slot, false);
-			globGroup.setAllowsSlot(Slots.dust.slot, true);
-			globGroup.registerGlob(Globs.spinachium.glob);
+			GlobGroup<Glob> globGroup = EnumGlobGroup.MirageMaterial.globGroup;
+			globGroup.setAllowsSlot(EnumSlot.ore.slot, false);
+			globGroup.setAllowsSlot(EnumSlot.block.slot, true);
+			globGroup.setAllowsSlot(EnumSlot.ingot.slot, true);
+			globGroup.setAllowsSlot(EnumSlot.gem.slot, false);
+			globGroup.setAllowsSlot(EnumSlot.dust.slot, true);
+			globGroup.registerGlob(EnumGlob.spinachium.glob);
 		}
 
 	}
