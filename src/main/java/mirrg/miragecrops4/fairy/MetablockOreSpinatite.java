@@ -19,7 +19,7 @@ public class MetablockOreSpinatite extends MetablockGlob.Raw
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random random)
 	{
-		int rand = world.rand.nextInt(120);
+		int rand = world.rand.nextInt(300);
 
 		if (rand == 0) tryCorroding(world, x + 1, y, z, random);
 		else if (rand == 1) tryCorroding(world, x - 1, y, z, random);
@@ -49,7 +49,17 @@ public class MetablockOreSpinatite extends MetablockGlob.Raw
 		t += isOreSpinatite(world, x, y, z + 1) ? 1 : 0;
 		t += isOreSpinatite(world, x, y, z - 1) ? 1 : 0;
 		if (t >= 2) {
-			putOreSpinatite(world, x, y, z);
+			int m = 0;
+			m += world.isAirBlock(x + 1, y, z) ? 1 : 0;
+			m += world.isAirBlock(x - 1, y, z) ? 1 : 0;
+			m += world.isAirBlock(x, y + 1, z) ? 1 : 0;
+			m += world.isAirBlock(x, y - 1, z) ? 1 : 0;
+			m += world.isAirBlock(x, y, z + 1) ? 1 : 0;
+			m += world.isAirBlock(x, y, z - 1) ? 1 : 0;
+
+			if (m >= 1) {
+				putOreSpinatite(world, x, y, z);
+			}
 		}
 	}
 
