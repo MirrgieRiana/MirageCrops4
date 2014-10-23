@@ -165,7 +165,7 @@ public class ModuleOregen extends ModuleOregenBase
 				configureItem((Item) obj, unlocalizedName);
 
 				createMetaItem(ItemsOregen.GlobGroups.values(), (ItemMultiIconMirageCrops.Raw) obj, enumSlot.slot,
-					enumSlot.icon);
+					enumSlot.icon());
 
 			}
 		}

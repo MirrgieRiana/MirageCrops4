@@ -7,6 +7,7 @@ import mirrg.mir41.glob.GlobManager;
 import mirrg.mir41.glob.Slot;
 import mirrg.miragecrops4.oregen.ModuleOregen;
 import mirrg.miragecrops4.oregen.MultiIcons;
+import mirrg.miragecrops4.oregen.MultiIcons.MultiIconShapes;
 import mirrg.miragecrops4.oregen.multi.BlockMultiMirageCrops;
 import mirrg.miragecrops4.oregen.multi.ItemMultiIconMirageCrops;
 
@@ -26,19 +27,24 @@ public class ItemsOregen
 	{
 		ore(EnumSlotType.BLOCK, null),
 		block(EnumSlotType.BLOCK, null),
-		ingot(EnumSlotType.ITEM, MultiIcons.INGOT),
-		gem(EnumSlotType.ITEM, MultiIcons.GEM),
-		dust(EnumSlotType.ITEM, MultiIcons.DUST), ;
+		ingot(EnumSlotType.ITEM, MultiIcons.MultiIconShapes.INGOT),
+		gem(EnumSlotType.ITEM, MultiIcons.MultiIconShapes.GEM),
+		dust(EnumSlotType.ITEM, MultiIcons.MultiIconShapes.DUST), ;
 
 		public final Slot slot;
 		public final EnumSlotType type;
-		public final IMultiIconShape icon;
+		public final MultiIconShapes enumMultiIconShape;
 
-		private Slots(EnumSlotType type, IMultiIconShape icon)
+		private Slots(EnumSlotType type, MultiIconShapes enumMultiIconShape)
 		{
 			slot = new Slot(name());
 			this.type = type;
-			this.icon = icon;
+			this.enumMultiIconShape = enumMultiIconShape;
+		}
+
+		public IMultiIconShape icon()
+		{
+			return enumMultiIconShape.shape;
 		}
 
 	}
