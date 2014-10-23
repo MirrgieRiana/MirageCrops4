@@ -67,6 +67,15 @@ public class ModuleFairy extends ModuleMirageCropsBase
 
 		super.handle(event);
 
+		{
+			MetablockGlob.Raw metablock = new MetablockOreSpinatite(EnumGlob.spinatite.glob, EnumSlot.ore.slot);
+
+			ModuleOregenBase.overrideMetablock(
+				EnumSlot.ore.slot, EnumGlobGroup.MirageMagic.globGroup, EnumGlob.spinatite.glob, metablock);
+			ModuleOregenBase.configureMetablock(
+				ItemsOregen.moduleOregen, metablock, gdn(EnumSlot.ore, EnumGlob.spinatite));
+		}
+
 	}
 
 	@Override
