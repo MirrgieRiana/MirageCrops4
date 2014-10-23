@@ -19,19 +19,28 @@ public class MetablockOreSpinatite extends MetablockGlob.Raw
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random random)
 	{
-		if (world.rand.nextInt(1) == 0)
-		{
-			tryCorroding(world, x + 1, y, z, random);
-			tryCorroding(world, x - 1, y, z, random);
-			tryCorroding(world, x, y + 1, z, random);
-			tryCorroding(world, x, y - 1, z, random);
-			tryCorroding(world, x, y, z + 1, random);
-			tryCorroding(world, x, y, z - 1, random);
-		}
+		int rand = world.rand.nextInt(120);
+
+		if (rand == 0) tryCorroding(world, x + 1, y, z, random);
+		else if (rand == 1) tryCorroding(world, x - 1, y, z, random);
+		else if (rand == 2) tryCorroding(world, x, y + 1, z, random);
+		else if (rand == 3) tryCorroding(world, x, y - 1, z, random);
+		else if (rand == 4) tryCorroding(world, x, y, z + 1, random);
+		else if (rand == 5) tryCorroding(world, x, y, z - 1, random);
 	}
+
+	protected final static int airReach = 5;
 
 	protected void tryCorroding(World world, int x, int y, int z, Random random)
 	{
+		for (int i = 0; i < 10; i++) {
+			int xi = world.rand.nextInt(1 + airReach * 2) - airReach;
+			int yi = world.rand.nextInt(1 + airReach * 2) - airReach;
+			int zi = world.rand.nextInt(1 + airReach * 2) - airReach;
+
+			if (isOreSpinatite(world, x + xi, y + yi, z + zi)) return;
+		}
+
 		int t = 0;
 		t += isOreSpinatite(world, x + 1, y, z) ? 1 : 0;
 		t += isOreSpinatite(world, x - 1, y, z) ? 1 : 0;
