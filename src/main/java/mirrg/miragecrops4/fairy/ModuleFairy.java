@@ -11,9 +11,9 @@ import mirrg.miragecrops4.fairy.glass.ItemFairyGlass;
 import mirrg.miragecrops4.fairy.glass.MessageHandlerFairyGlass;
 import mirrg.miragecrops4.oregen.ModuleOregenBase;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.GlobGroups;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.Globs;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.Slots;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlobGroup;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlob;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumSlot;
 import mirrg.miragecrops4.oregen.multi.MetablockGlob;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -130,45 +130,45 @@ public class ModuleFairy extends ModuleMirageCropsBase
 	private void addRecipeMineral(GlobGroup<Glob> globGroup, Glob glob)
 	{
 
-		if (globGroup.allowsSlot(Slots.gem.slot)) {
+		if (globGroup.allowsSlot(EnumSlot.gem.slot)) {
 
 			// 鉱石→結晶
 			GameRegistry.addRecipe(new ShapelessOreRecipe(
-				cpy(Slots.gem.slot, glob),
-				gdn(Slots.ore.slot, glob),
+				cpy(EnumSlot.gem.slot, glob),
+				gdn(EnumSlot.ore.slot, glob),
 				"craftingToolHardHammer"));
 
 			// 結晶→粉末
 			GameRegistry.addRecipe(new ShapelessOreRecipe(
-				cpy(Slots.dust.slot, glob),
-				gdn(Slots.gem.slot, glob),
+				cpy(EnumSlot.dust.slot, glob),
+				gdn(EnumSlot.gem.slot, glob),
 				"craftingToolHardHammer"));
 
 		} else {
 
 			// 鉱石→粉末
 			GameRegistry.addRecipe(new ShapelessOreRecipe(
-				cpy(Slots.dust.slot, glob),
-				gdn(Slots.ore.slot, glob),
+				cpy(EnumSlot.dust.slot, glob),
+				gdn(EnumSlot.ore.slot, glob),
 				"craftingToolHardHammer"));
 
 		}
 
-		if (globGroup.allowsSlot(Slots.block.slot)) {
+		if (globGroup.allowsSlot(EnumSlot.block.slot)) {
 
 			// 結晶*9→ブロック
 			GameRegistry.addRecipe(new ShapedOreRecipe(
-				cpy(Slots.block.slot, glob),
+				cpy(EnumSlot.block.slot, glob),
 				"XXX",
 				"XXX",
 				"XXX",
-				'X', gdn(Slots.gem.slot, glob)));
+				'X', gdn(EnumSlot.gem.slot, glob)));
 
 			// 結晶*9←ブロック
 			GameRegistry.addRecipe(new ShapedOreRecipe(
-				cpy(Slots.gem.slot, glob, 9),
+				cpy(EnumSlot.gem.slot, glob, 9),
 				"X",
-				'X', gdn(Slots.block.slot, glob)));
+				'X', gdn(EnumSlot.block.slot, glob)));
 
 		}
 
@@ -181,26 +181,26 @@ public class ModuleFairy extends ModuleMirageCropsBase
 		GameRegistry.addRecipe(new ShapedOreRecipe(craftingFairyGlass,
 			"III",
 			"IGI",
-			'I', gdn(Slots.ingot, Globs.spinachium),
-			'G', gdn(Slots.gem, Globs.calcite)));
+			'I', gdn(EnumSlot.ingot, EnumGlob.spinachium),
+			'G', gdn(EnumSlot.gem, EnumGlob.calcite)));
 
 		// 124578スピナチウム+6棒→スピナチウムのハンマー
 		GameRegistry.addRecipe(new ShapedOreRecipe(craftingToolHardHammerSpinachium,
 			"II ",
 			"IIS",
 			"II ",
-			'I', gdn(Slots.ingot, Globs.spinachium),
+			'I', gdn(EnumSlot.ingot, EnumGlob.spinachium),
 			'S', "stickWood"));
 
 		// 鉱物 鉱石→結晶→粉末
-		for (Glob glob : GlobGroups.CalciteGroup.globGroup.getGlobs()) {
-			addRecipeMineral(GlobGroups.CalciteGroup.globGroup, glob);
+		for (Glob glob : EnumGlobGroup.CalciteGroup.globGroup.getGlobs()) {
+			addRecipeMineral(EnumGlobGroup.CalciteGroup.globGroup, glob);
 		}
-		for (Glob glob : GlobGroups.MohsHardnessCrystal.globGroup.getGlobs()) {
-			addRecipeMineral(GlobGroups.MohsHardnessCrystal.globGroup, glob);
+		for (Glob glob : EnumGlobGroup.MohsHardnessCrystal.globGroup.getGlobs()) {
+			addRecipeMineral(EnumGlobGroup.MohsHardnessCrystal.globGroup, glob);
 		}
-		for (Glob glob : GlobGroups.MirageMagic.globGroup.getGlobs()) {
-			addRecipeMineral(GlobGroups.MirageMagic.globGroup, glob);
+		for (Glob glob : EnumGlobGroup.MirageMagic.globGroup.getGlobs()) {
+			addRecipeMineral(EnumGlobGroup.MirageMagic.globGroup, glob);
 		}
 
 		// スピナタイト鉱石→スピナチウムインゴット
@@ -208,25 +208,25 @@ public class ModuleFairy extends ModuleMirageCropsBase
 		// スピナタイト粉→スピナチウム粉
 		// スピナチウム粉→スピナチウムインゴット
 		GameRegistry.addSmelting(
-			cpy(Slots.ore, Globs.spinatite),
-			cpy(Slots.ingot, Globs.spinachium), 1);
+			cpy(EnumSlot.ore, EnumGlob.spinatite),
+			cpy(EnumSlot.ingot, EnumGlob.spinachium), 1);
 		GameRegistry.addSmelting(
-			cpy(Slots.gem, Globs.spinatite),
-			cpy(Slots.ingot, Globs.spinachium), 1);
+			cpy(EnumSlot.gem, EnumGlob.spinatite),
+			cpy(EnumSlot.ingot, EnumGlob.spinachium), 1);
 		GameRegistry.addSmelting(
-			cpy(Slots.dust, Globs.spinatite),
-			cpy(Slots.dust, Globs.spinachium), 1);
+			cpy(EnumSlot.dust, EnumGlob.spinatite),
+			cpy(EnumSlot.dust, EnumGlob.spinachium), 1);
 		GameRegistry.addSmelting(
-			cpy(Slots.dust, Globs.spinachium),
-			cpy(Slots.ingot, Globs.spinachium), 1);
+			cpy(EnumSlot.dust, EnumGlob.spinachium),
+			cpy(EnumSlot.ingot, EnumGlob.spinachium), 1);
 
 		// カルサイト粉+スピナチウム粉→ミラージュパウダー
 		GameRegistry.addRecipe(new ShapelessOreRecipe(
 			new ItemStack(dustMirage, 4),
-			gdn(Slots.dust, Globs.calcite),
-			gdn(Slots.dust, Globs.calcite),
-			gdn(Slots.dust, Globs.calcite),
-			gdn(Slots.dust, Globs.spinachium)));
+			gdn(EnumSlot.dust, EnumGlob.calcite),
+			gdn(EnumSlot.dust, EnumGlob.calcite),
+			gdn(EnumSlot.dust, EnumGlob.calcite),
+			gdn(EnumSlot.dust, EnumGlob.spinachium)));
 		;
 
 	}
