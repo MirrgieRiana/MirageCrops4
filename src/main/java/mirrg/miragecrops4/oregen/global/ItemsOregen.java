@@ -6,8 +6,7 @@ import mirrg.mir41.glob.GlobGroup;
 import mirrg.mir41.glob.GlobManager;
 import mirrg.mir41.glob.Slot;
 import mirrg.miragecrops4.oregen.ModuleOregen;
-import mirrg.miragecrops4.oregen.MultiIcons;
-import mirrg.miragecrops4.oregen.MultiIcons.MultiIconShapes;
+import mirrg.miragecrops4.oregen.global.MultiIcons.MultiIconShapes;
 import mirrg.miragecrops4.oregen.multi.BlockMultiMirageCrops;
 import mirrg.miragecrops4.oregen.multi.ItemMultiIconMirageCrops;
 
