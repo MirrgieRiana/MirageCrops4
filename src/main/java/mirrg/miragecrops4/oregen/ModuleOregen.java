@@ -177,121 +177,39 @@ public class ModuleOregen extends ModuleOregenBase
 	 */
 	protected void registerWorldgen()
 	{
-		int minHeight;
-		int maxHeight;
-		double countPerCube;
-		double numberOfBlocks;
-		ItemStack ore;
-		String biome;
 
-		minHeight = 0;
-		maxHeight = 128;
-		countPerCube = 0.4;
-		numberOfBlocks = 32;
-		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.calcite.glob);
-		biome = null;
-		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
+		//           mi ma   CPC  nu  bio   ore
+		rwfcpc(this, 0, 128, 0.4, 32, null, cpo(Globs.calcite));
+		rwfcpc(this, 0, 96, 1.8, 8, null, cpo(Globs.magnesite));
+		rwfcpc(this, 0, 80, 1.6, 7, null, cpo(Globs.siderite));
+		rwfcpc(this, 0, 64, 1.4, 6, null, cpo(Globs.smithsonite));
+		rwfcpc(this, 0, 48, 0.9, 6, "ocean", cpo(Globs.rhodochrosite));
+		rwfcpc(this, 0, 32, 0.7, 5, "forest", cpo(Globs.sphaerocobaltite));
+		rwfcpc(this, 0, 24, 0.5, 4, "desert", cpo(Globs.gaspeite));
+		rwfcpc(this, 0, 16, 0.5, 1, "extreme", cpo(Globs.otavite));
+		rwfcpc(this, 0, 60, 0.1, 4, null, cpo(Globs.bismuth));
+		rwfcpc(this, 0, 60, 0.3, 8, null, cpo(Globs.spinatite));
+		rwfcpc(this, 64, 128, 0.8, 18, "extreme", cpo(Globs.apatite));
+		rwfcpc(this, 64, 128, 1.5, 8, "extreme", cpo(Globs.fluorite));
 
-		//
+	}
 
-		minHeight = 0;
-		maxHeight = 96;
-		countPerCube = 1.8;
-		numberOfBlocks = 8;
-		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.magnesite.glob);
-		biome = null;
-		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
+	private void rwfcpc(ModuleOregenBase moduleOregenBase,
+		int minHeight, int maxHeight, double countPerCube, double numberOfBlocks, String biome,
+		ItemStack ore)
+	{
+		moduleOregenBase.registerWorldgenFromCountPerCube(
+			minHeight, maxHeight, countPerCube, numberOfBlocks, biome, ore);
+	}
 
-		minHeight = 0;
-		maxHeight = 80;
-		countPerCube = 1.6;
-		numberOfBlocks = 7;
-		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.siderite.glob);
-		biome = null;
-		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
+	private ItemStack cp(Slots enumSlot, Globs enumGlob)
+	{
+		return HelpersGlob.copy(globManager, enumSlot.slot, enumGlob.glob);
+	}
 
-		minHeight = 0;
-		maxHeight = 64;
-		countPerCube = 1.4;
-		numberOfBlocks = 6;
-		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.smithsonite.glob);
-		biome = null;
-		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
-
-		//
-
-		minHeight = 0;
-		maxHeight = 48;
-		countPerCube = 0.9;
-		numberOfBlocks = 6;
-		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.rhodochrosite.glob);
-		biome = "ocean";
-		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
-
-		minHeight = 0;
-		maxHeight = 32;
-		countPerCube = 0.7;
-		numberOfBlocks = 5;
-		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.sphaerocobaltite.glob);
-		biome = "forest";
-		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
-
-		minHeight = 0;
-		maxHeight = 24;
-		countPerCube = 0.5;
-		numberOfBlocks = 4;
-		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.gaspeite.glob);
-		biome = "desert";
-		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
-
-		//
-
-		minHeight = 0;
-		maxHeight = 16;
-		countPerCube = 0.5;
-		numberOfBlocks = 1;
-		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.otavite.glob);
-		biome = "extreme";
-		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
-
-		//
-		//
-
-		minHeight = 0;
-		maxHeight = 60;
-		countPerCube = 0.1;
-		numberOfBlocks = 4;
-		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.bismuth.glob);
-		biome = null;
-		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
-
-		minHeight = 0;
-		maxHeight = 60;
-		countPerCube = 0.3;
-		numberOfBlocks = 8;
-		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.spinatite.glob);
-		biome = null;
-		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
-
-		//
-		//
-
-		minHeight = 64;
-		maxHeight = 128;
-		countPerCube = 0.8;
-		numberOfBlocks = 18;
-		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.apatite.glob);
-		biome = "extreme";
-		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
-
-		minHeight = 64;
-		maxHeight = 128;
-		countPerCube = 1.5;
-		numberOfBlocks = 8;
-		ore = HelpersGlob.copy(globManager, Slots.ore.slot, Globs.fluorite.glob);
-		biome = "extreme";
-		registerWorldgenFromCountPerCube(minHeight, maxHeight, countPerCube, numberOfBlocks, ore, biome);
-
+	private ItemStack cpo(Globs enumGlob)
+	{
+		return cp(Slots.ore, enumGlob);
 	}
 
 }

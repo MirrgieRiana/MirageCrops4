@@ -160,8 +160,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 	}
 
 	protected void registerWorldgenFromCountPerCube(int minHeight, int maxHeight, double countPerCube,
-		double numberOfBlocks, ItemStack ore,
-		String biome)
+		double numberOfBlocks, String biome, ItemStack ore)
 	{
 		WorldGeneratorXZOre iWorldGeneratorXY;
 
