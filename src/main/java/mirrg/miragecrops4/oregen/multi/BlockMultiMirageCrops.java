@@ -14,6 +14,7 @@ public class BlockMultiMirageCrops<MULTI extends Multibase<MULTI, META>, META ex
 	public BlockMultiMirageCrops(Material material)
 	{
 		super(material);
+		setTickRandomly(true);
 	}
 
 	@SuppressWarnings("rawtypes")
