@@ -1,46 +1,91 @@
 package mirrg.mir40.multi;
 
+import mirrg.eclipse.annotation.Nullable;
 import mirrg.mir40.multi.api.IMeta;
+import mirrg.mir40.multi.api.IMulti;
 
-public class Metabase<MULTI extends Multibase<MULTI, META>, META extends Metabase<MULTI, META>>
+public class Metabase<MULTI extends IMulti<MULTI, META>, META extends IMeta<MULTI, META>>
 	implements IMeta<MULTI, META>
 {
 
-	MULTI multi;
+	@Nullable
+	private MULTI multi;
 
 	@Override
+	public boolean isBound()
+	{
+		return multi != null;
+	}
+
+	@Override
+	@Nullable
 	public MULTI getMulti()
 	{
 		return multi;
 	}
 
-	int index;
+	@SuppressWarnings("unchecked")
+	@Override
+	public META getMeta()
+	{
+		return (META) this;
+	}
+
+	private int index;
 
 	@Override
 	public int getIndex()
 	{
+		if (!isBound()) throw new NullPointerException();
 		return index;
 	}
 
-	boolean isBound = false;
+	@Override
+	public void bind(int index, MULTI multi)
+	{
+		if (isBound()) throw new DuplicatedBindingMetaException(this, index, multi);
+
+		if (multi.isBound(index)) {
+			if (multi.getMeta(index) != this) {
+				// 不正な呼び出し
+
+				throw new DuplicatedBindingToIndexException(multi, index, this);
+			} else {
+				// 後にこっちのbindが呼ばれた
+
+				this.index = index;
+				this.multi = multi;
+			}
+		} else {
+			// 先にこっちのbindが呼ばれた
+
+			this.index = index; // A
+			this.multi = multi;
+
+			multi.bind(index, getMeta()); // Aの後
+		}
+
+	}
 
 	@Override
-	public boolean isBound()
+	public boolean clearBindind()
 	{
-		return isBound;
-	}
+		if (!isBound()) return false;
 
-	boolean isBindable()
-	{
-		return !isBound();
-	}
+		if (multi.isBound(index)) {
+			// 先にこっちのbindが呼ばれた
 
-	void bind(int index, MULTI multi)
-	{
-		if (!isBindable()) throw new DuplicatedBindingMetaException(this, index, multi);
-		this.index = index;
-		this.multi = multi;
-		isBound = true;
+			MULTI multi2 = multi;
+			multi = null; // A
+
+			multi2.clearBindind(index); // Aの後
+		} else {
+			// 後にこっちのbindが呼ばれた
+
+			multi = null;
+		}
+
+		return true;
 	}
 
 }

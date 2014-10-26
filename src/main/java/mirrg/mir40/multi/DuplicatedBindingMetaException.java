@@ -1,11 +1,14 @@
 package mirrg.mir40.multi;
 
+import mirrg.mir40.multi.api.IMeta;
+import mirrg.mir40.multi.api.IMulti;
+
 public class DuplicatedBindingMetaException extends RuntimeException
 {
 
-	public DuplicatedBindingMetaException(Metabase<?, ?> metabase, int index, Object multi)
+	public DuplicatedBindingMetaException(IMeta<?, ?> meta, int index, IMulti<?, ?> multi)
 	{
-		super("metabase: " + metabase + " index: " + index + " multi: " + multi);
+		super("meta: " + meta + " index: " + index + " oldMulti: " + meta.getMulti() + " newMulti: " + multi);
 	}
 
 }
