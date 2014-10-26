@@ -78,7 +78,7 @@ public class TestMulti
 			}
 
 			Assert.assertSame(null, meta0.getMulti());
-			meta0.bind(0, (MULTI) multi);
+			meta0.bind(0, multi);
 			Assert.assertEquals(0, meta0.getIndex());
 			Assert.assertSame(multi, meta0.getMulti());
 			Assert.assertSame(meta0, multi.getMeta(0));
@@ -95,7 +95,7 @@ public class TestMulti
 
 			Assert.assertSame(meta1, meta1.getMeta());
 
-			meta1.bind(1, (MULTI) multi);
+			meta1.bind(1, multi);
 		}
 
 		// 番地を取得

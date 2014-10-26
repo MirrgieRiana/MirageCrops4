@@ -1,6 +1,5 @@
 package mirrg.mir41.glob;
 
-
 public class Slot extends Base implements ISlot
 {
 

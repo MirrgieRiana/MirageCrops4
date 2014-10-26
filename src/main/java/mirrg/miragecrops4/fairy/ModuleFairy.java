@@ -18,9 +18,6 @@ import mirrg.miragecrops4.lib.ModuleMirageCropsBase;
 import mirrg.miragecrops4.lib.multi.MetablockOregen;
 import mirrg.miragecrops4.oregen.ModuleOregenBase;
 import mirrg.miragecrops4.oregen.global.GlobsOregen;
-import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumGlob;
-import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumGlobGroup;
-import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumSlot;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -77,10 +74,12 @@ public class ModuleFairy extends ModuleMirageCropsBase
 		super.handle(event);
 
 		{
-			MetablockOregen metablock = new MetablockOreSpinatite(GlobsOregen.EnumGlob.spinatite.glob, GlobsOregen.EnumSlot.ore.slot);
+			MetablockOregen metablock = new MetablockOreSpinatite(GlobsOregen.EnumGlob.spinatite.glob,
+				GlobsOregen.EnumSlot.ore.slot);
 
 			ModuleOregenBase.overrideMetablock(
-				GlobsOregen.EnumSlot.ore.slot, GlobsOregen.EnumGlobGroup.MirageMagic.globGroup, GlobsOregen.EnumGlob.spinatite.glob, metablock);
+				GlobsOregen.EnumSlot.ore.slot, GlobsOregen.EnumGlobGroup.MirageMagic.globGroup,
+				GlobsOregen.EnumGlob.spinatite.glob, metablock);
 			ModuleOregenBase.configureMetablock(
 				ItemsOregen.moduleOregen, metablock, gdn(GlobsOregen.EnumSlot.ore, GlobsOregen.EnumGlob.spinatite));
 		}

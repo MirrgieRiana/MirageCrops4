@@ -2,7 +2,6 @@ package mirrg.h.multi;
 
 import java.util.Iterator;
 
-
 public class Multi<MULTI extends IMulti<MULTI, META>, META extends IMeta<MULTI, META>>
 	implements IMulti<MULTI, META>
 {

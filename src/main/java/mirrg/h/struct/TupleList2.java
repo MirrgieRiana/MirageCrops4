@@ -7,6 +7,11 @@ public class TupleList2<X, Y>
 	implements Iterable<Tuple<X, Y>>
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4984146283438849578L;
+
 	public TupleList2(Iterable<X> x, Iterable<Y> y)
 	{
 		super(x, y);
@@ -22,6 +27,11 @@ public class TupleList2<X, Y>
 		extends Tuple<Iterator<X>, Iterator<Y>>
 		implements Iterator<Tuple<X, Y>>
 	{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -199832514292839113L;
+
 		public IteratorImpl(Iterable<X> x, Iterable<Y> y)
 		{
 			super(x.iterator(), y.iterator());

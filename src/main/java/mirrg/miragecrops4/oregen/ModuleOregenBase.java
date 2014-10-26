@@ -25,7 +25,6 @@ import mirrg.miragecrops4.lib.multi.ItemMultiIconOregen;
 import mirrg.miragecrops4.lib.multi.MetablockOregen;
 import mirrg.miragecrops4.lib.multi.MetaitemIconOregen;
 import mirrg.miragecrops4.oregen.global.GlobsOregen;
-import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumGlobGroup;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -109,7 +108,8 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		}
 	}
 
-	protected void createMetaItem(GlobsOregen.EnumGlobGroup[] enumGlobGroups, ItemMultiIconOregen itemMultiIcon, Slot slot,
+	protected void createMetaItem(GlobsOregen.EnumGlobGroup[] enumGlobGroups, ItemMultiIconOregen itemMultiIcon,
+		Slot slot,
 		IMultiIconShape multiIconShape)
 	{
 

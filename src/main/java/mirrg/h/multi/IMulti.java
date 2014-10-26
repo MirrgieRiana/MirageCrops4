@@ -16,7 +16,7 @@ public interface IMulti<MULTI extends IMulti<MULTI, META>, META extends IMeta<MU
 
 	/**
 	 * 現在の状態
-	 *
+	 * 
 	 * @return 連結状態の場合にtrue、未連結状態の場合にfalse
 	 */
 	public boolean isBound(int index);
@@ -34,7 +34,7 @@ public interface IMulti<MULTI extends IMulti<MULTI, META>, META extends IMeta<MU
 	/**
 	 * 連結状態の場合、アイテムを返す。<br>
 	 * 実連結状態の場合、0番目のスロットのアイテムを返す。<br>
-	 *
+	 * 
 	 * @throws NullPointerException
 	 *             0番目のスロットが未連結である場合にこれにアクセスした場合
 	 */
@@ -43,7 +43,7 @@ public interface IMulti<MULTI extends IMulti<MULTI, META>, META extends IMeta<MU
 	/**
 	 * メタアイテムにこのインスタンスを連結する。<br>
 	 * メタアイテムも連結状態になる。
-	 *
+	 * 
 	 * @throws DuplicatedBindingMetaException
 	 *             指定のスロットが既に連結済みだった場合
 	 * @throws DuplicatedBindingToIndexException
@@ -55,7 +55,7 @@ public interface IMulti<MULTI extends IMulti<MULTI, META>, META extends IMeta<MU
 	 * 既存の連結を消去し、未連結状態に戻る。<br>
 	 * 未連結状態である場合、何も行われない。<br>
 	 * 連結していたメタアイテムも未連結状態に戻る。
-	 *
+	 * 
 	 * @return 連結の消去が行われた場合に真
 	 */
 	public boolean clearBindind(int index);

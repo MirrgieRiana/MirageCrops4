@@ -6,8 +6,6 @@ import mirrg.miragecrops4.core.torch.ItemBlockTorchFeeble;
 import mirrg.miragecrops4.core.torch.RenderBlockTorchFeeble;
 import mirrg.miragecrops4.lib.ModuleMirageCropsBase;
 import mirrg.miragecrops4.oregen.global.GlobsOregen;
-import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumGlob;
-import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumSlot;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;

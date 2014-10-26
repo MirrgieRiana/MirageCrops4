@@ -14,7 +14,7 @@ public interface IMeta<MULTI extends IMulti<MULTI, META>, META extends IMeta<MUL
 
 	/**
 	 * 現在の状態
-	 *
+	 * 
 	 * @return 連結状態の場合にtrue、未連結状態の場合にfalse
 	 */
 	public boolean isBound();
@@ -33,7 +33,7 @@ public interface IMeta<MULTI extends IMulti<MULTI, META>, META extends IMeta<MUL
 
 	/**
 	 * 連結された親コンテナの連結先スロットインデックスを返す。
-	 *
+	 * 
 	 * @throws NullPointerException
 	 *             このオブジェクトが未連結の場合
 	 */
@@ -42,7 +42,7 @@ public interface IMeta<MULTI extends IMulti<MULTI, META>, META extends IMeta<MUL
 	/**
 	 * 親コンテナのスロットにこのインスタンスを連結する。<br>
 	 * 親コンテナのスロットも連結状態になる。
-	 *
+	 * 
 	 * @throws DuplicatedBindingMetaException
 	 *             親コンテナのスロットが既に連結済みだった場合
 	 * @throws DuplicatedBindingToIndexException
@@ -54,7 +54,7 @@ public interface IMeta<MULTI extends IMulti<MULTI, META>, META extends IMeta<MUL
 	 * 既存の連結を消去し、未連結状態に戻る。<br>
 	 * 未連結状態である場合、何も行われない。<br>
 	 * 親コンテナの連結先スロットも未連結状態に戻る。
-	 *
+	 * 
 	 * @return 連結の消去が行われた場合に真
 	 */
 	public boolean clearBindind();

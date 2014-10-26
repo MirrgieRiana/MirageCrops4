@@ -9,8 +9,6 @@ import mirrg.mir41.glob.IGlob;
 import mirrg.mir41.glob.ISlot;
 import mirrg.mir41.glob.Slot;
 import mirrg.miragecrops4.oregen.global.GlobsOregen;
-import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumGlob;
-import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumSlot;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
 import net.minecraft.block.Block;
 import net.minecraft.block.Block.SoundType;

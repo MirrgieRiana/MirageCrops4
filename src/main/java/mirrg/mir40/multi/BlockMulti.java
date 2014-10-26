@@ -8,7 +8,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.relauncher.Side;
@@ -39,7 +38,7 @@ public class BlockMulti<MULTI extends IMulti<MULTI, META>, META extends IMetablo
 	{
 		for (META meta : multi) {
 			if (meta != null) {
-				meta.getSubBlocks(item, creativeTabs, (List<ItemStack>) list);
+				meta.getSubBlocks(item, creativeTabs, list);
 			}
 		}
 	}

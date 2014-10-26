@@ -30,7 +30,7 @@ public class ItemMulti<MULTI extends IMulti<MULTI, META>, META extends IMetaitem
 	{
 		for (META meta : multi) {
 			if (meta != null) {
-				meta.getSubItems(arg0, arg1, (List<ItemStack>) arg2);
+				meta.getSubItems(arg0, arg1, arg2);
 			}
 		}
 	}

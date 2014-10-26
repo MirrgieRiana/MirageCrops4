@@ -42,6 +42,11 @@ public class MultiIconShape implements IMultiIconShape
 	public static class Entry extends Tuple3<String, Double, Integer>
 	{
 
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 4332354450488632004L;
+
 		private Entry(String name, double defaultColorRate, int channel)
 		{
 			super(name, defaultColorRate, channel);
