@@ -5,7 +5,7 @@ import mirrg.mir41.glob.IGlobGroup;
 import mirrg.mir41.glob.ISlot;
 import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumSlot;
 
-public class HelpersModuleOregen
+public class HelpersOregen
 {
 
 	public static String getBlockUnlocalizedName(ISlot slot, IGlobGroup<?> globGroup)

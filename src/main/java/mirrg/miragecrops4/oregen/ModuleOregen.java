@@ -1,6 +1,6 @@
 package mirrg.miragecrops4.oregen;
 
-import static mirrg.miragecrops4.oregen.global.HelpersModuleOregen.*;
+import static mirrg.miragecrops4.oregen.global.HelpersOregen.*;
 import static mirrg.miragecrops4.oregen.global.ItemsOregen.*;
 import mirrg.h.multi.Multi;
 import mirrg.mir34.modding.IMod;

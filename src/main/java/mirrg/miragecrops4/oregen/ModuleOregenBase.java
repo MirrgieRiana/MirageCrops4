@@ -24,7 +24,7 @@ import mirrg.miragecrops4.lib.multi.BlockMultiOregen;
 import mirrg.miragecrops4.lib.multi.ItemMultiIconOregen;
 import mirrg.miragecrops4.lib.multi.MetablockOregen;
 import mirrg.miragecrops4.lib.multi.MetaitemIconOregen;
-import mirrg.miragecrops4.oregen.global.HelpersModuleOregen;
+import mirrg.miragecrops4.oregen.global.HelpersOregen;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
 import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlobGroup;
 import net.minecraft.block.Block;
@@ -85,7 +85,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 	public static void overrideMetablock(ISlot slot, IGlobGroup<?> globGroup, IGlob glob, MetablockOregen metablock)
 	{
 		Object blockMulti = HelpersReflect.getStaticField(
-			ItemsOregen.class, HelpersModuleOregen.getBlockUnlocalizedName(slot, globGroup));
+			ItemsOregen.class, HelpersOregen.getBlockUnlocalizedName(slot, globGroup));
 		if (blockMulti == null || blockMulti instanceof Exception) {
 			throw new RuntimeException((Exception) blockMulti);
 		}
