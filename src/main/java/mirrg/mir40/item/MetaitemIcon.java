@@ -1,25 +1,28 @@
 package mirrg.mir40.item;
 
 import mirrg.mir40.icon.MultiIcon;
-import mirrg.mir40.multi.Multibase;
+import mirrg.mir40.item.api.IMetaitemIcon;
+import mirrg.mir40.multi.api.IMulti;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class MetaitemIcon<MULTI extends Multibase<MULTI, META>, META extends MetaitemIcon<MULTI, META>>
-	extends Metaitem<MULTI, META>
+public class MetaitemIcon<MULTI extends IMulti<MULTI, META>, META extends IMetaitemIcon<MULTI, META>>
+	extends Metaitem<MULTI, META> implements IMetaitemIcon<MULTI, META>
 {
 
 	public MultiIcon multiIcon;
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public int getRenderPasses(int metadata)
 	{
 		return multiIcon.getLength();
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamageForRenderPass(int meta, int pass)
 	{
@@ -40,16 +43,11 @@ public class MetaitemIcon<MULTI extends Multibase<MULTI, META>, META extends Met
 		return;
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack par1ItemStack, int pass)
 	{
 		return multiIcon.getColor(pass);
-	}
-
-	@SuppressWarnings("rawtypes")
-	public static class Raw extends MetaitemIcon
-	{
-
 	}
 
 }

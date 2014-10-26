@@ -1,14 +1,22 @@
 package mirrg.mir40.item;
 
-import mirrg.mir40.multi.Multibase;
+import java.lang.reflect.Constructor;
+
+import mirrg.mir40.item.api.IMetaitemIcon;
+import mirrg.mir40.multi.api.IMulti;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemMultiIcon<MULTI extends Multibase<MULTI, META>, META extends MetaitemIcon<MULTI, META>>
+public class ItemMultiIcon<MULTI extends IMulti<MULTI, META>, META extends IMetaitemIcon<MULTI, META>>
 	extends ItemMulti<MULTI, META>
 {
+
+	public ItemMultiIcon(Constructor<MULTI> constructorMulti, Object[] argumentsConstructorMulti)
+	{
+		super(constructorMulti, argumentsConstructorMulti);
+	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -21,28 +29,22 @@ public class ItemMultiIcon<MULTI extends Multibase<MULTI, META>, META extends Me
 	@SideOnly(Side.CLIENT)
 	public int getRenderPasses(int metadata)
 	{
-		return multibase.get(metadata).getRenderPasses(metadata);
+		return multi.getMeta(metadata).getRenderPasses(metadata);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamageForRenderPass(int meta, int pass)
+	public IIcon getIconFromDamageForRenderPass(int metaId, int pass)
 	{
-		return multibase.get(meta).getIconFromDamageForRenderPass(meta, pass);
+		return multi.getMeta(metaId).getIconFromDamageForRenderPass(metaId, pass);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int getColorFromItemStack(ItemStack par1ItemStack, int pass)
+	public int getColorFromItemStack(ItemStack itemStack, int pass)
 	{
-		int meta = par1ItemStack.getItemDamage();
-		return multibase.get(meta).getColorFromItemStack(par1ItemStack, pass);
-	}
-
-	@SuppressWarnings("rawtypes")
-	public static class Raw extends ItemMultiIcon
-	{
-
+		int meta = itemStack.getItemDamage();
+		return multi.getMeta(meta).getColorFromItemStack(itemStack, pass);
 	}
 
 }
