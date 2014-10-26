@@ -1,6 +1,12 @@
 package mirrg.miragecrops4.fairy;
 
 import mirrg.mir34.modding.IMod;
+import mirrg.mir40.block.BlockMulti;
+import mirrg.mir40.block.ItemBlockMulti;
+import mirrg.mir40.block.Metablock;
+import mirrg.mir40.block.api.IMetablock;
+import mirrg.mir40.multi.Multibase;
+import mirrg.mir40.multi.api.IMulti;
 import mirrg.mir40.net.MessageFieldInt;
 import mirrg.mir41.glob.Glob;
 import mirrg.mir41.glob.GlobGroup;
@@ -15,6 +21,8 @@ import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlob;
 import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlobGroup;
 import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumSlot;
 import mirrg.miragecrops4.oregen.multi.MetablockOregen;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
@@ -96,6 +104,16 @@ public class ModuleFairy extends ModuleMirageCropsBase
 	public static ItemDustMirage dustMirage;
 	public static Item craftingToolMirageFairy;
 
+	public static BlockMulti blockMirageMachine;
+
+	@Override
+	protected void registerBlocks()
+	{
+		blockMirageMachine = registerBlock(
+			new BlockMulti(Material.piston, new Multibase(new Metablock[16])),
+			ItemBlockMulti.class, "blockMirageMachine");
+	}
+
 	@Override
 	protected void registerItems()
 	{
@@ -104,6 +122,28 @@ public class ModuleFairy extends ModuleMirageCropsBase
 			new ItemToolCrafting(), "craftingToolHardHammerSpinachium");
 		dustMirage = registerItem(new ItemDustMirage(), "dustMirage");
 		craftingToolMirageFairy = registerItem(new Item(), "craftingToolMirageFairy");
+	}
+
+	@Override
+	protected void configureBlocks()
+	{
+		configureBlock(blockMirageMachine, "blockMirageMachine", 0.5f, 0, Block.soundTypePiston);
+		blockMirageMachine.setCreativeTab(ModuleCore.creativeTab);
+
+		bindMetablock(blockMirageMachine, 0, new Metablock(), "blockMirageMachineVeryLow");
+		bindMetablock(blockMirageMachine, 1, new Metablock(), "blockMirageMachineLow");
+		bindMetablock(blockMirageMachine, 2, new Metablock(), "blockMirageMachineMiddle");
+		bindMetablock(blockMirageMachine, 3, new Metablock(), "blockMirageMachineHigh");
+		bindMetablock(blockMirageMachine, 4, new Metablock(), "blockMirageMachineVeryHigh");
+
+	}
+
+	private <MULTI extends IMulti<MULTI, META>, META extends IMetablock<MULTI, META>> void bindMetablock(
+		BlockMulti<MULTI, META> blockMulti, int id, META meta, String unlocalizedName)
+	{
+		meta.setUnlocalizedName(unlocalizedName);
+		meta.setIconName(getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName);
+		blockMulti.multi.bind(id, meta);
 	}
 
 	@Override
