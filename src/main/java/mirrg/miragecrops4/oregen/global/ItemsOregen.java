@@ -7,8 +7,8 @@ import mirrg.mir41.glob.GlobManager;
 import mirrg.mir41.glob.Slot;
 import mirrg.miragecrops4.oregen.ModuleOregen;
 import mirrg.miragecrops4.oregen.global.MultiIcons.EnumMultiIconShape;
-import mirrg.miragecrops4.oregen.multi.BlockMultiMirageCrops;
-import mirrg.miragecrops4.oregen.multi.ItemMultiIconMirageCrops;
+import mirrg.miragecrops4.oregen.multi.BlockMultiOregen;
+import mirrg.miragecrops4.oregen.multi.ItemMultiIconOregen;
 
 public class ItemsOregen
 {
@@ -168,18 +168,18 @@ public class ItemsOregen
 
 	}
 
-	public static BlockMultiMirageCrops.Raw blockOreCalciteGroup;
-	public static BlockMultiMirageCrops.Raw blockOreMohsHardnessCrystal;
-	public static BlockMultiMirageCrops.Raw blockOreOtherMetal;
-	public static BlockMultiMirageCrops.Raw blockOreMirageMagic;
+	public static BlockMultiOregen blockOreCalciteGroup;
+	public static BlockMultiOregen blockOreMohsHardnessCrystal;
+	public static BlockMultiOregen blockOreOtherMetal;
+	public static BlockMultiOregen blockOreMirageMagic;
 
-	public static BlockMultiMirageCrops.Raw blockCalciteGroup;
-	public static BlockMultiMirageCrops.Raw blockMohsHardnessCrystal;
-	public static BlockMultiMirageCrops.Raw blockOtherMetal;
-	public static BlockMultiMirageCrops.Raw blockMirageMaterial;
+	public static BlockMultiOregen blockCalciteGroup;
+	public static BlockMultiOregen blockMohsHardnessCrystal;
+	public static BlockMultiOregen blockOtherMetal;
+	public static BlockMultiOregen blockMirageMaterial;
 
-	public static ItemMultiIconMirageCrops.Raw itemIngot;
-	public static ItemMultiIconMirageCrops.Raw itemGem;
-	public static ItemMultiIconMirageCrops.Raw itemDust;
+	public static ItemMultiIconOregen itemIngot;
+	public static ItemMultiIconOregen itemGem;
+	public static ItemMultiIconOregen itemDust;
 
 }

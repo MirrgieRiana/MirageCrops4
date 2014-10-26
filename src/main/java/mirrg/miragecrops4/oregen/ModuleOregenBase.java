@@ -23,10 +23,10 @@ import mirrg.miragecrops4.oregen.global.HelpersModuleOregen;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
 import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlobGroup;
 import mirrg.miragecrops4.oregen.global.RegisterMaterialColor;
-import mirrg.miragecrops4.oregen.multi.BlockMultiMirageCrops;
-import mirrg.miragecrops4.oregen.multi.ItemMultiIconMirageCrops;
-import mirrg.miragecrops4.oregen.multi.MetablockGlob;
-import mirrg.miragecrops4.oregen.multi.MetaitemIconGlob;
+import mirrg.miragecrops4.oregen.multi.BlockMultiOregen;
+import mirrg.miragecrops4.oregen.multi.ItemMultiIconOregen;
+import mirrg.miragecrops4.oregen.multi.MetablockOregen;
+import mirrg.miragecrops4.oregen.multi.MetaitemIconOregen;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -54,7 +54,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		item.setCreativeTab(ModuleCore.creativeTab);
 	}
 
-	protected void createMetaBlock(EnumGlobGroup enumGlobGroup, BlockMultiMirageCrops.Raw blockMulti, Slot slot)
+	protected void createMetaBlock(EnumGlobGroup enumGlobGroup, BlockMultiOregen blockMulti, Slot slot)
 	{
 		List<Glob> globs = enumGlobGroup.globGroup.getGlobs();
 
@@ -63,10 +63,10 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 			String unlocalizedName = gdn(slot, glob);
 
 			// メタブロックの作成
-			MetablockGlob.Raw metablock = new MetablockGlob.Raw(glob, slot);
+			MetablockOregen metablock = new MetablockOregen(glob, slot);
 
 			// マルチブロックにメタブロックを登録
-			blockMulti.multibase.bind(i, metablock);
+			blockMulti.multi.bind(i, metablock);
 
 			// グロブにアイテムスタックを登録
 			ItemsOregen.globManager.put(unlocalizedName, new ItemStack(blockMulti, 1, i));
@@ -82,7 +82,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		}
 	}
 
-	public static void overrideMetablock(ISlot slot, IGlobGroup<?> globGroup, IGlob glob, MetablockGlob.Raw metablock)
+	public static void overrideMetablock(ISlot slot, IGlobGroup<?> globGroup, IGlob glob, MetablockOregen metablock)
 	{
 		Object blockMulti = HelpersReflect.getStaticField(
 			ItemsOregen.class, HelpersModuleOregen.getBlockUnlocalizedName(slot, globGroup));
@@ -90,12 +90,12 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 			throw new RuntimeException((Exception) blockMulti);
 		}
 
-		((BlockMultiMirageCrops.Raw) blockMulti).multibase.bindForce(
-			globGroup.getGlobs().indexOf(glob), metablock);
+		((BlockMultiOregen) blockMulti).multi.clearBindind(globGroup.getGlobs().indexOf(glob));
+		((BlockMultiOregen) blockMulti).multi.bind(globGroup.getGlobs().indexOf(glob), metablock);
 	}
 
 	public static void configureMetablock(IModule module,
-		MetablockGlob.Raw metablock, String unlocalizedName)
+		MetablockOregen metablock, String unlocalizedName)
 	{
 		metablock.unlocalizedName = unlocalizedName;
 		if (module.getMod().isClient()) {
@@ -109,7 +109,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		}
 	}
 
-	protected void createMetaItem(EnumGlobGroup[] enumGlobGroups, ItemMultiIconMirageCrops.Raw itemMultiIcon, Slot slot,
+	protected void createMetaItem(EnumGlobGroup[] enumGlobGroups, ItemMultiIconOregen itemMultiIcon, Slot slot,
 		IMultiIconShape multiIconShape)
 	{
 
@@ -122,11 +122,11 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 				String unlocalizedName = gdn(slot, glob);
 
 				// メタアイテムの作成
-				MetaitemIconGlob.Raw metaitemIcon = new MetaitemIconGlob.Raw(glob, slot);
+				MetaitemIconOregen metaitemIcon = new MetaitemIconOregen(glob, slot);
 
 				// マルチブロックにメタアイテムを登録
 				int id = i + j * 16;
-				itemMultiIcon.multibase.bind(id, metaitemIcon);
+				itemMultiIcon.multi.bind(id, metaitemIcon);
 
 				// グロブにアイテムスタックを登録
 				ItemsOregen.globManager.put(unlocalizedName, new ItemStack(itemMultiIcon, 1, id));
@@ -145,7 +145,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 	}
 
 	public static void configuteMetaitem(IModule module,
-		MetaitemIconGlob.Raw metaitemIcon, String unlocalizedName, int color, IMultiIconShape multiIconShape)
+		MetaitemIconOregen metaitemIcon, String unlocalizedName, int color, IMultiIconShape multiIconShape)
 	{
 		metaitemIcon.unlocalizedName = unlocalizedName;
 		if (module.getMod().isClient()) {

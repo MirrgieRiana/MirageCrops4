@@ -11,10 +11,10 @@ import mirrg.miragecrops4.fairy.glass.ItemFairyGlass;
 import mirrg.miragecrops4.fairy.glass.MessageHandlerFairyGlass;
 import mirrg.miragecrops4.oregen.ModuleOregenBase;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlobGroup;
 import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlob;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlobGroup;
 import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumSlot;
-import mirrg.miragecrops4.oregen.multi.MetablockGlob;
+import mirrg.miragecrops4.oregen.multi.MetablockOregen;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
@@ -68,7 +68,7 @@ public class ModuleFairy extends ModuleMirageCropsBase
 		super.handle(event);
 
 		{
-			MetablockGlob.Raw metablock = new MetablockOreSpinatite(EnumGlob.spinatite.glob, EnumSlot.ore.slot);
+			MetablockOregen metablock = new MetablockOreSpinatite(EnumGlob.spinatite.glob, EnumSlot.ore.slot);
 
 			ModuleOregenBase.overrideMetablock(
 				EnumSlot.ore.slot, EnumGlobGroup.MirageMagic.globGroup, EnumGlob.spinatite.glob, metablock);

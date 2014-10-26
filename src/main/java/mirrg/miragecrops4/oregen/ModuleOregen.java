@@ -3,18 +3,21 @@ package mirrg.miragecrops4.oregen;
 import static mirrg.miragecrops4.oregen.global.HelpersModuleOregen.*;
 import static mirrg.miragecrops4.oregen.global.ItemsOregen.*;
 import mirrg.mir34.modding.IMod;
+import mirrg.mir40.multi.Multibase;
 import mirrg.mir40.reflect.HelpersReflect;
 import mirrg.mir41.glob.HelpersGlob;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
-import mirrg.miragecrops4.oregen.global.MultiIcons;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumSlotType;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlobGroup;
 import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlob;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlobGroup;
 import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumSlot;
+import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumSlotType;
+import mirrg.miragecrops4.oregen.global.MultiIcons;
 import mirrg.miragecrops4.oregen.global.RegisterMaterialColor;
-import mirrg.miragecrops4.oregen.multi.BlockMultiMirageCrops;
-import mirrg.miragecrops4.oregen.multi.ItemBlockMultiMirageCrops;
-import mirrg.miragecrops4.oregen.multi.ItemMultiIconMirageCrops;
+import mirrg.miragecrops4.oregen.multi.BlockMultiOregen;
+import mirrg.miragecrops4.oregen.multi.IMetablockOregen;
+import mirrg.miragecrops4.oregen.multi.IMetaitemIconOregen;
+import mirrg.miragecrops4.oregen.multi.ItemBlockMultiOregen;
+import mirrg.miragecrops4.oregen.multi.ItemMultiIconOregen;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
@@ -84,8 +87,8 @@ public class ModuleOregen extends ModuleOregenBase
 						Exception e = HelpersReflect.setStaticField(
 							ItemsOregen.class,
 							unlocalizedName,
-							registerBlock(new BlockMultiMirageCrops.Raw(Material.rock),
-								ItemBlockMultiMirageCrops.class,
+							registerBlock(new BlockMultiOregen(Material.rock, new Multibase(new IMetablockOregen[16])),
+								ItemBlockMultiOregen.class,
 								unlocalizedName));
 						if (e != null) throw new RuntimeException(e);
 
@@ -109,8 +112,12 @@ public class ModuleOregen extends ModuleOregenBase
 
 				String unlocalizedName = getItemUnlocalizedName(enumSlot.slot);
 
-				Exception e = HelpersReflect.setStaticField(ItemsOregen.class, unlocalizedName,
-					registerItem(new ItemMultiIconMirageCrops.Raw(), unlocalizedName));
+				Exception e = HelpersReflect
+					.setStaticField(
+						ItemsOregen.class,
+						unlocalizedName,
+						registerItem(new ItemMultiIconOregen(new Multibase(new IMetaitemIconOregen[256])),
+							unlocalizedName));
 				if (e != null) throw new RuntimeException(e);
 
 			}
@@ -138,7 +145,7 @@ public class ModuleOregen extends ModuleOregenBase
 
 						configureBlock((Block) obj, unlocalizedName);
 
-						createMetaBlock(enumGlobGroup, (BlockMultiMirageCrops.Raw) obj, enumSlot.slot);
+						createMetaBlock(enumGlobGroup, (BlockMultiOregen) obj, enumSlot.slot);
 
 					}
 				}
@@ -165,7 +172,7 @@ public class ModuleOregen extends ModuleOregenBase
 
 				configureItem((Item) obj, unlocalizedName);
 
-				createMetaItem(ItemsOregen.EnumGlobGroup.values(), (ItemMultiIconMirageCrops.Raw) obj, enumSlot.slot,
+				createMetaItem(ItemsOregen.EnumGlobGroup.values(), (ItemMultiIconOregen) obj, enumSlot.slot,
 					enumSlot.icon());
 
 			}

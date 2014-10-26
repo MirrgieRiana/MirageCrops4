@@ -5,11 +5,11 @@ import java.util.Random;
 import mirrg.mir41.glob.api.IGlob;
 import mirrg.mir41.glob.api.ISlot;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
-import mirrg.miragecrops4.oregen.multi.MetablockGlob;
+import mirrg.miragecrops4.oregen.multi.MetablockOregen;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
-public class MetablockOreSpinatite extends MetablockGlob.Raw
+public class MetablockOreSpinatite extends MetablockOregen
 {
 	public MetablockOreSpinatite(IGlob glob, ISlot slot)
 	{

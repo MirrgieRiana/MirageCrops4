@@ -9,6 +9,8 @@ import mirrg.mir40.crop.HandlerSpritesBasic;
 import mirrg.mir40.icon.HelpersIcon;
 import mirrg.mir40.item.ItemMulti;
 import mirrg.mir40.item.Metaitem;
+import mirrg.mir40.multi.Multibase;
+import mirrg.mir40.multi.api.IMeta;
 import mirrg.miragecrops4.core.ModuleCore;
 import mirrg.miragecrops4.core.ModuleMirageCropsBase;
 import mirrg.miragecrops4.crops.fairy.CropMirageFairyHousing;
@@ -54,7 +56,7 @@ public class ModuleCrops extends ModuleMirageCropsBase
 
 	//
 
-	public static ItemMulti.Raw craftingLeaf;
+	public static ItemMulti craftingLeaf;
 
 	public static CropCard cropSarracenia;
 	public static CropCard cropSpinach;
@@ -63,7 +65,7 @@ public class ModuleCrops extends ModuleMirageCropsBase
 	protected void registerItems()
 	{
 
-		craftingLeaf = registerItem(new ItemMulti.Raw(), "craftingLeaf");
+		craftingLeaf = registerItem(new ItemMulti(new Multibase(new IMeta[10])), "craftingLeaf");
 
 	}
 
@@ -80,15 +82,15 @@ public class ModuleCrops extends ModuleMirageCropsBase
 
 	}
 
-	protected void configureCraftingLeaf(ItemMulti.Raw item)
+	protected void configureCraftingLeaf(ItemMulti item)
 	{
 
 		{
 			int index = 0;
-			Metaitem.Raw metaitem = new Metaitem.Raw();
+			Metaitem metaitem = new Metaitem();
 			String unlocalizedName = "craftingLeafSarracenia";
 
-			item.multibase.bind(index, metaitem);
+			item.multi.bind(index, metaitem);
 
 			metaitem.unlocalizedName = unlocalizedName;
 			if (getMod().isClient()) {
