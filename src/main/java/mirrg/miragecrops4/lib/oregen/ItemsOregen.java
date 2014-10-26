@@ -1,5 +1,6 @@
-package mirrg.miragecrops4.oregen.global;
+package mirrg.miragecrops4.lib.oregen;
 
+import mirrg.mir34.modding.IModule;
 import mirrg.mir40.math.HelpersString;
 import mirrg.mir41.glob.Glob;
 import mirrg.mir41.glob.GlobManager;
@@ -8,12 +9,11 @@ import mirrg.mir41.glob.ISlot;
 import mirrg.mir41.glob.Slot;
 import mirrg.miragecrops4.lib.multi.BlockMultiOregen;
 import mirrg.miragecrops4.lib.multi.ItemMultiIconOregen;
-import mirrg.miragecrops4.oregen.ModuleOregen;
 
 public class ItemsOregen
 {
 
-	public static ModuleOregen moduleOregen;
+	public static IModule moduleOregen;
 
 	public static GlobManager<Slot, Glob> globManager = new GlobManager<Slot, Glob>();
 

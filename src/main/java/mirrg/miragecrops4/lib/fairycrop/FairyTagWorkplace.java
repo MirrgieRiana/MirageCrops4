@@ -1,8 +1,8 @@
-package mirrg.miragecrops4.crops.fairy;
+package mirrg.miragecrops4.lib.fairycrop;
 
 import net.minecraft.nbt.NBTTagCompound;
 
-public class FairyTagHousing implements IFairyTag
+public class FairyTagWorkplace implements IFairyTag
 {
 	public int population;
 	public int populationMax;

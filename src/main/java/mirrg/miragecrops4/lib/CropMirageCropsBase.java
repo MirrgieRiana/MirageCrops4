@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.crops;
+package mirrg.miragecrops4.lib;
 
 import ic2.api.crops.ICropTile;
 import mirrg.mir40.crop.CropMirage;

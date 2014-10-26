@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.oregen;
+package mirrg.miragecrops4.lib;
 
 import java.util.List;
 
@@ -17,15 +17,13 @@ import mirrg.mir41.glob.IGlob;
 import mirrg.mir41.glob.IGlobGroup;
 import mirrg.mir41.glob.ISlot;
 import mirrg.mir41.glob.Slot;
-import mirrg.miragecrops4.core.ModuleCore;
-import mirrg.miragecrops4.lib.ModuleMirageCropsBase;
-import mirrg.miragecrops4.lib.RegisterMaterialColor;
+import mirrg.miragecrops4.api.APICore;
 import mirrg.miragecrops4.lib.multi.BlockMultiOregen;
 import mirrg.miragecrops4.lib.multi.ItemMultiIconOregen;
 import mirrg.miragecrops4.lib.multi.MetablockOregen;
 import mirrg.miragecrops4.lib.multi.MetaitemIconOregen;
-import mirrg.miragecrops4.oregen.global.GlobsOregen;
-import mirrg.miragecrops4.oregen.global.ItemsOregen;
+import mirrg.miragecrops4.lib.oregen.GlobsOregen;
+import mirrg.miragecrops4.lib.oregen.ItemsOregen;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -43,14 +41,14 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 	protected void configureBlock(Block block, String name)
 	{
 		configureBlock(block, name, 3.0F, 5.0F, Block.soundTypePiston);
-		block.setCreativeTab(ModuleCore.creativeTab);
+		block.setCreativeTab(APICore.creativeTab);
 	}
 
 	@Override
 	protected void configureItem(Item item, String name)
 	{
 		super.configureItem(item, name);
-		item.setCreativeTab(ModuleCore.creativeTab);
+		item.setCreativeTab(APICore.creativeTab);
 	}
 
 	protected void createMetaBlock(GlobsOregen.EnumGlobGroup enumGlobGroup, BlockMultiOregen blockMulti, Slot slot)

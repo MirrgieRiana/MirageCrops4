@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.oregen.global;
+package mirrg.miragecrops4.lib.oregen;
 
 import mirrg.mir40.icon.IMultiIconShape;
 import mirrg.mir41.glob.Glob;

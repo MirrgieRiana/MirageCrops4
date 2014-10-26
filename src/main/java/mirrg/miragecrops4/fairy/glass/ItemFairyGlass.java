@@ -9,8 +9,8 @@ import java.util.Hashtable;
 import java.util.List;
 
 import mirrg.mir40.net.MessageFieldInt;
-import mirrg.miragecrops4.crops.fairy.ICropDataView;
 import mirrg.miragecrops4.fairy.ModuleFairy;
+import mirrg.miragecrops4.lib.fairycrop.ICropDataView;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;

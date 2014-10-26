@@ -10,15 +10,15 @@ import mirrg.mir40.multi.Metablock;
 import mirrg.mir40.net.MessageFieldInt;
 import mirrg.mir41.glob.Glob;
 import mirrg.mir41.glob.GlobGroup;
-import mirrg.miragecrops4.core.ModuleCore;
+import mirrg.miragecrops4.api.APICore;
 import mirrg.miragecrops4.fairy.glass.HandlerRenderingFairyGlass;
 import mirrg.miragecrops4.fairy.glass.ItemFairyGlass;
 import mirrg.miragecrops4.fairy.glass.MessageHandlerFairyGlass;
 import mirrg.miragecrops4.lib.ModuleMirageCropsBase;
+import mirrg.miragecrops4.lib.ModuleOregenBase;
 import mirrg.miragecrops4.lib.multi.MetablockOregen;
-import mirrg.miragecrops4.oregen.ModuleOregenBase;
-import mirrg.miragecrops4.oregen.global.GlobsOregen;
-import mirrg.miragecrops4.oregen.global.ItemsOregen;
+import mirrg.miragecrops4.lib.oregen.GlobsOregen;
+import mirrg.miragecrops4.lib.oregen.ItemsOregen;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
@@ -128,7 +128,7 @@ public class ModuleFairy extends ModuleMirageCropsBase
 	protected void configureBlocks()
 	{
 		configureBlock(blockMirageMachine, "blockMirageMachine", 0.5f, 0, Block.soundTypePiston);
-		blockMirageMachine.setCreativeTab(ModuleCore.creativeTab);
+		blockMirageMachine.setCreativeTab(APICore.creativeTab);
 
 		bindMetablock(blockMirageMachine, 0, new Metablock(), "blockMirageMachineVeryLow");
 		bindMetablock(blockMirageMachine, 1, new Metablock(), "blockMirageMachineLow");
@@ -153,7 +153,7 @@ public class ModuleFairy extends ModuleMirageCropsBase
 		{
 			String name = "craftingFairyGlass";
 			configureItem(craftingFairyGlass, name);
-			craftingFairyGlass.setCreativeTab(ModuleCore.creativeTab);
+			craftingFairyGlass.setCreativeTab(APICore.creativeTab);
 			craftingFairyGlass.armorTexture1 =
 				getMod().getModId() + ":textures/models/armor/" + getModuleName() + "/" + name + "_1.png";
 			craftingFairyGlass.armorTexture2 =
@@ -161,16 +161,16 @@ public class ModuleFairy extends ModuleMirageCropsBase
 		}
 
 		configureItem(craftingToolHardHammerSpinachium, "craftingToolHardHammerSpinachium");
-		craftingToolHardHammerSpinachium.setCreativeTab(ModuleCore.creativeTab);
+		craftingToolHardHammerSpinachium.setCreativeTab(APICore.creativeTab);
 		craftingToolHardHammerSpinachium.setMaxDamage(32 - 1);
 		OreDictionary.registerOre("craftingToolHardHammer",
 			new ItemStack(craftingToolHardHammerSpinachium, 1, 32767));
 
 		configureItem(dustMirage, "dustMirage");
-		dustMirage.setCreativeTab(ModuleCore.creativeTab);
+		dustMirage.setCreativeTab(APICore.creativeTab);
 
 		configureItem(craftingToolMirageFairy, "craftingToolMirageFairy");
-		craftingToolMirageFairy.setCreativeTab(ModuleCore.creativeTab);
+		craftingToolMirageFairy.setCreativeTab(APICore.creativeTab);
 		OreDictionary.registerOre("craftingToolMirageFairy",
 			new ItemStack(craftingToolMirageFairy));
 

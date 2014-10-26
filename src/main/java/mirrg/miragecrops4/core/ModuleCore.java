@@ -1,12 +1,13 @@
 package mirrg.miragecrops4.core;
 
 import mirrg.mir34.modding.IMod;
+import mirrg.miragecrops4.api.APICore;
 import mirrg.miragecrops4.core.torch.BlockTorchFeeble;
 import mirrg.miragecrops4.core.torch.ItemBlockTorchFeeble;
 import mirrg.miragecrops4.core.torch.RenderBlockTorchFeeble;
 import mirrg.miragecrops4.lib.ModuleMirageCropsBase;
-import mirrg.miragecrops4.oregen.global.GlobsOregen;
-import mirrg.miragecrops4.oregen.global.ItemsOregen;
+import mirrg.miragecrops4.lib.oregen.GlobsOregen;
+import mirrg.miragecrops4.lib.oregen.ItemsOregen;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -65,14 +66,12 @@ public class ModuleCore extends ModuleMirageCropsBase
 
 	//
 
-	public static CreativeTabs creativeTab;
-
 	public static Block blockTorchFeeble;
 
 	private void prepareCreativeTabs()
 	{
 
-		creativeTab = new CreativeTabs("miragecrops4") {
+		APICore.creativeTab = new CreativeTabs("miragecrops4") {
 
 			@Override
 			@SideOnly(Side.CLIENT)
@@ -97,7 +96,7 @@ public class ModuleCore extends ModuleMirageCropsBase
 	{
 
 		configureBlock(blockTorchFeeble, "blockTorchFeeble", 0.15F, 0.0F, Block.soundTypeWood);
-		blockTorchFeeble.setCreativeTab(creativeTab);
+		blockTorchFeeble.setCreativeTab(APICore.creativeTab);
 
 	}
 

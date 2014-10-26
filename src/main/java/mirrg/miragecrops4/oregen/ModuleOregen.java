@@ -1,10 +1,11 @@
 package mirrg.miragecrops4.oregen;
 
-import static mirrg.miragecrops4.oregen.global.ItemsOregen.*;
+import static mirrg.miragecrops4.lib.oregen.ItemsOregen.*;
 import mirrg.h.multi.Multi;
 import mirrg.mir34.modding.IMod;
 import mirrg.mir40.reflect.HelpersReflect;
 import mirrg.mir41.glob.HelpersGlob;
+import mirrg.miragecrops4.lib.ModuleOregenBase;
 import mirrg.miragecrops4.lib.MultiIcons;
 import mirrg.miragecrops4.lib.RegisterMaterialColor;
 import mirrg.miragecrops4.lib.multi.BlockMultiOregen;
@@ -12,8 +13,8 @@ import mirrg.miragecrops4.lib.multi.IMetablockOregen;
 import mirrg.miragecrops4.lib.multi.IMetaitemIconOregen;
 import mirrg.miragecrops4.lib.multi.ItemBlockMultiOregen;
 import mirrg.miragecrops4.lib.multi.ItemMultiIconOregen;
-import mirrg.miragecrops4.oregen.global.GlobsOregen;
-import mirrg.miragecrops4.oregen.global.ItemsOregen;
+import mirrg.miragecrops4.lib.oregen.GlobsOregen;
+import mirrg.miragecrops4.lib.oregen.ItemsOregen;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
@@ -184,27 +185,27 @@ public class ModuleOregen extends ModuleOregenBase
 	protected void registerWorldgen()
 	{
 
-		//           mi ma   CPC  nu  bio   ore
-		rwfcpc(this, 0, 128, 0.4, 32, null, cpo(GlobsOregen.EnumGlob.calcite));
-		rwfcpc(this, 0, 96, 1.8, 8, null, cpo(GlobsOregen.EnumGlob.magnesite));
-		rwfcpc(this, 0, 80, 1.6, 7, null, cpo(GlobsOregen.EnumGlob.siderite));
-		rwfcpc(this, 0, 64, 1.4, 6, null, cpo(GlobsOregen.EnumGlob.smithsonite));
-		rwfcpc(this, 0, 48, 0.9, 6, "ocean", cpo(GlobsOregen.EnumGlob.rhodochrosite));
-		rwfcpc(this, 0, 32, 0.7, 5, "forest", cpo(GlobsOregen.EnumGlob.sphaerocobaltite));
-		rwfcpc(this, 0, 24, 0.5, 4, "desert", cpo(GlobsOregen.EnumGlob.gaspeite));
-		rwfcpc(this, 0, 16, 0.5, 1, "extreme", cpo(GlobsOregen.EnumGlob.otavite));
-		rwfcpc(this, 0, 60, 0.1, 4, null, cpo(GlobsOregen.EnumGlob.bismuth));
-		rwfcpc(this, 0, 60, 0.3, 8, null, cpo(GlobsOregen.EnumGlob.spinatite));
-		rwfcpc(this, 64, 128, 0.8, 18, "extreme", cpo(GlobsOregen.EnumGlob.apatite));
-		rwfcpc(this, 64, 128, 1.5, 8, "extreme", cpo(GlobsOregen.EnumGlob.fluorite));
+		//     mi ma   CPC  nu  bio   ore
+		rwfcpc(0, 128, 0.4, 32, null, cpo(GlobsOregen.EnumGlob.calcite));
+		rwfcpc(0, 96, 1.8, 8, null, cpo(GlobsOregen.EnumGlob.magnesite));
+		rwfcpc(0, 80, 1.6, 7, null, cpo(GlobsOregen.EnumGlob.siderite));
+		rwfcpc(0, 64, 1.4, 6, null, cpo(GlobsOregen.EnumGlob.smithsonite));
+		rwfcpc(0, 48, 0.9, 6, "ocean", cpo(GlobsOregen.EnumGlob.rhodochrosite));
+		rwfcpc(0, 32, 0.7, 5, "forest", cpo(GlobsOregen.EnumGlob.sphaerocobaltite));
+		rwfcpc(0, 24, 0.5, 4, "desert", cpo(GlobsOregen.EnumGlob.gaspeite));
+		rwfcpc(0, 16, 0.5, 1, "extreme", cpo(GlobsOregen.EnumGlob.otavite));
+		rwfcpc(0, 60, 0.1, 4, null, cpo(GlobsOregen.EnumGlob.bismuth));
+		rwfcpc(0, 60, 0.3, 8, null, cpo(GlobsOregen.EnumGlob.spinatite));
+		rwfcpc(64, 128, 0.8, 18, "extreme", cpo(GlobsOregen.EnumGlob.apatite));
+		rwfcpc(64, 128, 1.5, 8, "extreme", cpo(GlobsOregen.EnumGlob.fluorite));
 
 	}
 
-	private void rwfcpc(ModuleOregenBase moduleOregenBase,
+	private void rwfcpc(
 		int minHeight, int maxHeight, double countPerCube, double numberOfBlocks, String biome,
 		ItemStack ore)
 	{
-		moduleOregenBase.registerWorldgenFromCountPerCube(
+		registerWorldgenFromCountPerCube(
 			minHeight, maxHeight, countPerCube, numberOfBlocks, biome, ore);
 	}
 

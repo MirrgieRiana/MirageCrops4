@@ -11,10 +11,11 @@ import mirrg.mir40.crop.HandlerSpritesBasic;
 import mirrg.mir40.icon.HelpersIcon;
 import mirrg.mir40.multi.ItemMulti;
 import mirrg.mir40.multi.Metaitem;
-import mirrg.miragecrops4.core.ModuleCore;
-import mirrg.miragecrops4.crops.fairy.CropMirageFairyHousing;
-import mirrg.miragecrops4.crops.fairy.CropMirageFairyWorkplace;
+import mirrg.miragecrops4.api.APICore;
+import mirrg.miragecrops4.lib.CropMirageCropsBase;
 import mirrg.miragecrops4.lib.ModuleMirageCropsBase;
+import mirrg.miragecrops4.lib.fairycrop.CropMirageFairyHousing;
+import mirrg.miragecrops4.lib.fairycrop.CropMirageFairyWorkplace;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -74,7 +75,7 @@ public class ModuleCrops extends ModuleMirageCropsBase
 	{
 
 		configureItem(craftingLeaf, "craftingLeaf");
-		craftingLeaf.setCreativeTab(ModuleCore.creativeTab);
+		craftingLeaf.setCreativeTab(APICore.creativeTab);
 
 		craftingLeaf.setTextureName(getMod().getModId() + ":" + getModuleName() + "/" + "craftingLeafSarracenia");
 

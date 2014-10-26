@@ -1,10 +1,12 @@
 package mirrg.miragecrops4;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
+import mirrg.mir34.modding.IMod;
+import mirrg.mir34.modding.IModule;
 import mirrg.mir34.modding.ModAbstract;
-import mirrg.miragecrops4.core.ModuleCore;
-import mirrg.miragecrops4.crops.ModuleCrops;
-import mirrg.miragecrops4.fairy.ModuleFairy;
-import mirrg.miragecrops4.oregen.ModuleOregen;
+import mirrg.mir40.math.HelpersString;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -33,10 +35,41 @@ public class ModMirageCrops4 extends ModAbstract
 	@Override
 	protected void loadModules()
 	{
-		addModule(new ModuleCore(this));
-		addModule(new ModuleOregen(this));
-		addModule(new ModuleFairy(this));
-		addModule(new ModuleCrops(this));
+		addModule(createModule(getClass().getPackage().getName() + ".%s", "Module%s", "core"));
+		addModule(createModule(getClass().getPackage().getName() + ".%s", "Module%s", "oregen"));
+		addModule(createModule(getClass().getPackage().getName() + ".%s", "Module%s", "fairy"));
+		addModule(createModule(getClass().getPackage().getName() + ".%s", "Module%s", "crops"));
+	}
+
+	@SuppressWarnings("unchecked")
+	private IModule createModule(String packageFormat, String classFormat, String module)
+	{
+		String packageName = String.format(packageFormat, module);
+		String className = String.format(classFormat, HelpersString.toUpperCaseHead(module));
+
+		Class<? extends IModule> clazz;
+
+		try {
+			clazz = (Class<? extends IModule>) Class.forName(packageName + "." + className);
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+
+		Constructor<? extends IModule> constructor;
+		try {
+			constructor = clazz.getConstructor(IMod.class);
+		} catch (NoSuchMethodException | SecurityException e) {
+			throw new RuntimeException(e);
+		}
+
+		IModule object;
+		try {
+			object = constructor.newInstance(this);
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			throw new RuntimeException(e);
+		}
+
+		return object;
 	}
 
 	/**
