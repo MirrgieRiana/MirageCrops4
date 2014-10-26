@@ -1,7 +1,5 @@
 package mirrg.mir40.block;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import mirrg.mir40.block.api.IMetablock;
@@ -23,20 +21,10 @@ public class BlockMulti<MULTI extends IMulti<MULTI, META>, META extends IMetablo
 
 	public final MULTI multi;
 
-	public BlockMulti(Material material, Constructor<MULTI> constructorMulti, Object... argumentsConstructorMulti)
+	public BlockMulti(Material material, MULTI multi)
 	{
 		super(material);
-		try {
-			multi = constructorMulti.newInstance(argumentsConstructorMulti);
-		} catch (InstantiationException e) {
-			throw new RuntimeException(e);
-		} catch (IllegalAccessException e) {
-			throw new RuntimeException(e);
-		} catch (IllegalArgumentException e) {
-			throw new RuntimeException(e);
-		} catch (InvocationTargetException e) {
-			throw new RuntimeException(e);
-		}
+		this.multi = multi;
 	}
 
 	@Override

@@ -1,7 +1,5 @@
 package mirrg.mir40.item;
 
-import java.lang.reflect.Constructor;
-
 import mirrg.mir40.item.api.IMetaitemIcon;
 import mirrg.mir40.multi.api.IMulti;
 import net.minecraft.item.ItemStack;
@@ -13,9 +11,9 @@ public class ItemMultiIcon<MULTI extends IMulti<MULTI, META>, META extends IMeta
 	extends ItemMulti<MULTI, META>
 {
 
-	public ItemMultiIcon(Constructor<MULTI> constructorMulti, Object[] argumentsConstructorMulti)
+	public ItemMultiIcon(MULTI multi)
 	{
-		super(constructorMulti, argumentsConstructorMulti);
+		super(multi);
 	}
 
 	@Override

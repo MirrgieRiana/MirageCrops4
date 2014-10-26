@@ -1,7 +1,5 @@
 package mirrg.mir40.item;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import mirrg.mir40.item.api.IMetaitem;
@@ -20,19 +18,9 @@ public class ItemMulti<MULTI extends IMulti<MULTI, META>, META extends IMetaitem
 
 	public final MULTI multi;
 
-	public ItemMulti(Constructor<MULTI> constructorMulti, Object... argumentsConstructorMulti)
+	public ItemMulti(MULTI multi)
 	{
-		try {
-			multi = constructorMulti.newInstance(argumentsConstructorMulti);
-		} catch (InstantiationException e) {
-			throw new RuntimeException(e);
-		} catch (IllegalAccessException e) {
-			throw new RuntimeException(e);
-		} catch (IllegalArgumentException e) {
-			throw new RuntimeException(e);
-		} catch (InvocationTargetException e) {
-			throw new RuntimeException(e);
-		}
+		this.multi = multi;
 		setHasSubtypes(true);
 	}
 
