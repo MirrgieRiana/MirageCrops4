@@ -3,36 +3,25 @@ package mirrg.miragecrops4.oregen.multi;
 import java.util.Random;
 
 import mirrg.mir40.block.BlockMulti;
-import mirrg.mir40.multi.Multibase;
+import mirrg.mir40.multi.api.IMulti;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
 
-public class BlockMultiMirageCrops<MULTI extends Multibase<MULTI, META>, META extends MetablockGlob<MULTI, META>>
+public class BlockMultiMirageCrops<MULTI extends IMulti<MULTI, META>, META extends IMetablockOregen<MULTI, META>>
 	extends BlockMulti<MULTI, META>
 {
 
-	public BlockMultiMirageCrops(Material material)
+	public BlockMultiMirageCrops(Material material, MULTI multi)
 	{
-		super(material);
+		super(material, multi);
 		setTickRandomly(true);
-	}
-
-	@SuppressWarnings("rawtypes")
-	public static class Raw extends BlockMultiMirageCrops
-	{
-
-		public Raw(Material material)
-		{
-			super(material);
-		}
-
 	}
 
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random random)
 	{
-		int meta = world.getBlockMetadata(x, y, z);
-		multibase.get(meta).updateTick(world, x, y, z, random);
+		int metaId = world.getBlockMetadata(x, y, z);
+		multi.getMeta(metaId).updateTick(world, x, y, z, random);
 	}
 
 }

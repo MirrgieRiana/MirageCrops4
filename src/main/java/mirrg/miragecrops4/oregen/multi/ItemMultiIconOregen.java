@@ -1,13 +1,18 @@
 package mirrg.miragecrops4.oregen.multi;
 
 import mirrg.mir40.item.ItemMultiIcon;
-import mirrg.mir40.multi.Multibase;
+import mirrg.mir40.multi.api.IMulti;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
-public class ItemMultiIconMirageCrops<MULTI extends Multibase<MULTI, META>, META extends MetaitemIconGlob<MULTI, META>>
+public class ItemMultiIconOregen<MULTI extends IMulti<MULTI, META>, META extends IMetaitemIconOregen<MULTI, META>>
 	extends ItemMultiIcon<MULTI, META>
 {
+
+	public ItemMultiIconOregen(MULTI multi)
+	{
+		super(multi);
+	}
 
 	@Override
 	public String getItemStackDisplayName(ItemStack p_77653_1_)
@@ -16,19 +21,13 @@ public class ItemMultiIconMirageCrops<MULTI extends Multibase<MULTI, META>, META
 			return super.getItemStackDisplayName(p_77653_1_);
 		}
 
-		String globName = multibase.get(p_77653_1_.getItemDamage()).getGlob().getName();
-		String slotName = multibase.get(p_77653_1_.getItemDamage()).getSlot().getName();
+		String globName = multi.getMeta(p_77653_1_.getItemDamage()).getGlob().getName();
+		String slotName = multi.getMeta(p_77653_1_.getItemDamage()).getSlot().getName();
 
 		String format = StatCollector.translateToLocal("slot." + slotName + ".format").trim();
 
 		return String.format(format,
 			StatCollector.translateToLocal("glob." + globName + ".name").trim());
-	}
-
-	@SuppressWarnings("rawtypes")
-	public static class Raw extends ItemMultiIconMirageCrops
-	{
-
 	}
 
 }
