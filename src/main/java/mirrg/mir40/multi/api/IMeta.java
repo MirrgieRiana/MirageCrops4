@@ -1,8 +1,6 @@
 package mirrg.mir40.multi.api;
 
 import mirrg.eclipse.annotation.Nullable;
-import mirrg.mir40.multi.DuplicatedBindingMetaException;
-import mirrg.mir40.multi.DuplicatedBindingToIndexException;
 
 /**
  * 同時に一つの親コンテナ（{@link IMulti}）のスロットに連結可能なメタアイテム。<br>

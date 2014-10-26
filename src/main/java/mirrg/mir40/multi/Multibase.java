@@ -2,6 +2,8 @@ package mirrg.mir40.multi;
 
 import java.util.Iterator;
 
+import mirrg.mir40.multi.api.DuplicatedBindingMetaException;
+import mirrg.mir40.multi.api.DuplicatedBindingToIndexException;
 import mirrg.mir40.multi.api.IMeta;
 import mirrg.mir40.multi.api.IMulti;
 

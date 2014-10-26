@@ -1,6 +1,8 @@
 package mirrg.mir40.multi;
 
 import mirrg.eclipse.annotation.Nullable;
+import mirrg.mir40.multi.api.DuplicatedBindingMetaException;
+import mirrg.mir40.multi.api.DuplicatedBindingToIndexException;
 import mirrg.mir40.multi.api.IMeta;
 import mirrg.mir40.multi.api.IMulti;
 

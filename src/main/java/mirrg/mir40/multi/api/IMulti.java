@@ -1,8 +1,5 @@
 package mirrg.mir40.multi.api;
 
-import mirrg.mir40.multi.DuplicatedBindingMetaException;
-import mirrg.mir40.multi.DuplicatedBindingToIndexException;
-
 /**
  * 多数のスロットを持ち、スロットごとに同時に一つのメタアイテム（{@link IMeta}）に連結可能なコンテナ。<br>
  * スロットごとに未連結状態と連結状態が存在する（{@link #isBound(int)}）。<br>

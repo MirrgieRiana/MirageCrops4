@@ -1,7 +1,4 @@
-package mirrg.mir40.multi;
-
-import mirrg.mir40.multi.api.IMeta;
-import mirrg.mir40.multi.api.IMulti;
+package mirrg.mir40.multi.api;
 
 public class DuplicatedBindingToIndexException extends RuntimeException
 {
