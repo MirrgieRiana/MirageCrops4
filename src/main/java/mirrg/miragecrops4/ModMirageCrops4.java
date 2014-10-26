@@ -1,6 +1,7 @@
-package mirrg.miragecrops4.core;
+package mirrg.miragecrops4;
 
 import mirrg.mir34.modding.ModAbstract;
+import mirrg.miragecrops4.core.ModuleCore;
 import mirrg.miragecrops4.crops.ModuleCrops;
 import mirrg.miragecrops4.fairy.ModuleFairy;
 import mirrg.miragecrops4.oregen.ModuleOregen;
