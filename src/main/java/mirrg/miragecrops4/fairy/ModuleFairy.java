@@ -1,12 +1,12 @@
 package mirrg.miragecrops4.fairy;
 
+import mirrg.h.multi.IMulti;
+import mirrg.h.multi.Multi;
 import mirrg.mir34.modding.IMod;
 import mirrg.mir40.block.BlockMulti;
 import mirrg.mir40.block.ItemBlockMulti;
 import mirrg.mir40.block.Metablock;
 import mirrg.mir40.block.api.IMetablock;
-import mirrg.mir40.multi.IMulti;
-import mirrg.mir40.multi.Multi;
 import mirrg.mir40.net.MessageFieldInt;
 import mirrg.mir41.glob.Glob;
 import mirrg.mir41.glob.GlobGroup;

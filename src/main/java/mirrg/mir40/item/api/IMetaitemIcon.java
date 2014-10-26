@@ -1,6 +1,6 @@
 package mirrg.mir40.item.api;
 
-import mirrg.mir40.multi.IMulti;
+import mirrg.h.multi.IMulti;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;

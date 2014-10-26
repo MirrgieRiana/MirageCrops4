@@ -1,13 +1,13 @@
-package mirrg.mir40.multi.test;
+package mirrg.h.multi.test;
 
 import java.util.Arrays;
 import java.util.List;
 
 import junit.framework.Assert;
-import mirrg.mir40.multi.IMeta;
-import mirrg.mir40.multi.IMulti;
-import mirrg.mir40.multi.Meta;
-import mirrg.mir40.multi.Multi;
+import mirrg.h.multi.IMeta;
+import mirrg.h.multi.IMulti;
+import mirrg.h.multi.Meta;
+import mirrg.h.multi.Multi;
 
 import org.junit.Test;
 import org.junit.runner.JUnitCore;

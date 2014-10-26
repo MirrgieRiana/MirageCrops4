@@ -2,6 +2,8 @@ package mirrg.miragecrops4.crops;
 
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
+import mirrg.h.multi.IMeta;
+import mirrg.h.multi.Multi;
 import mirrg.mir34.modding.IMod;
 import mirrg.mir40.crop.CropMirage;
 import mirrg.mir40.crop.HandlerHarvestOneItem;
@@ -9,8 +11,6 @@ import mirrg.mir40.crop.HandlerSpritesBasic;
 import mirrg.mir40.icon.HelpersIcon;
 import mirrg.mir40.item.ItemMulti;
 import mirrg.mir40.item.Metaitem;
-import mirrg.mir40.multi.IMeta;
-import mirrg.mir40.multi.Multi;
 import mirrg.miragecrops4.core.ModuleCore;
 import mirrg.miragecrops4.core.ModuleMirageCropsBase;
 import mirrg.miragecrops4.crops.fairy.CropMirageFairyHousing;

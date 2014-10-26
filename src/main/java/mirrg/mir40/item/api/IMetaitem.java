@@ -2,8 +2,8 @@ package mirrg.mir40.item.api;
 
 import java.util.List;
 
-import mirrg.mir40.multi.IMeta;
-import mirrg.mir40.multi.IMulti;
+import mirrg.h.multi.IMeta;
+import mirrg.h.multi.IMulti;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;

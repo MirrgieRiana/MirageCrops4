@@ -1,5 +1,5 @@
 @NonNullByDefault
-package mirrg.mir40.multi;
+package mirrg.h.multi;
 
 import mirrg.eclipse.annotation.NonNullByDefault;
 
