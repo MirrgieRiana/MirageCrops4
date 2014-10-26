@@ -4,8 +4,8 @@ import java.util.Random;
 
 import mirrg.h.multi.IMulti;
 import mirrg.mir40.multi.IMetablock;
-import mirrg.mir41.glob.api.IGlob;
-import mirrg.mir41.glob.api.ISlot;
+import mirrg.mir41.glob.IGlob;
+import mirrg.mir41.glob.ISlot;
 import net.minecraft.world.World;
 
 public interface IMetablockOregen<MULTI extends IMulti<MULTI, META>, META extends IMetablockOregen<MULTI, META>>

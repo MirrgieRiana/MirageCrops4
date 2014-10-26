@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import mirrg.mir41.glob.api.IGlob;
-import mirrg.mir41.glob.api.IGlobGroup;
-import mirrg.mir41.glob.api.ISlot;
 
 public class GlobGroup<GLOB extends IGlob> extends Base implements IGlobGroup<GLOB>
 {

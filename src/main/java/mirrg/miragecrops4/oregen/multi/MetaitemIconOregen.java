@@ -2,8 +2,8 @@ package mirrg.miragecrops4.oregen.multi;
 
 import mirrg.h.multi.IMulti;
 import mirrg.mir40.multi.MetaitemIcon;
-import mirrg.mir41.glob.api.IGlob;
-import mirrg.mir41.glob.api.ISlot;
+import mirrg.mir41.glob.IGlob;
+import mirrg.mir41.glob.ISlot;
 
 public class MetaitemIconOregen<MULTI extends IMulti<MULTI, META>, META extends IMetaitemIconOregen<MULTI, META>>
 	extends MetaitemIcon<MULTI, META> implements IMetaitemIconOregen<MULTI, META>

@@ -2,8 +2,8 @@ package mirrg.miragecrops4.fairy;
 
 import java.util.Random;
 
-import mirrg.mir41.glob.api.IGlob;
-import mirrg.mir41.glob.api.ISlot;
+import mirrg.mir41.glob.IGlob;
+import mirrg.mir41.glob.ISlot;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
 import mirrg.miragecrops4.oregen.multi.MetablockOregen;
 import net.minecraft.init.Blocks;

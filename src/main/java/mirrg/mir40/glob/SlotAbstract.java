@@ -1,6 +1,5 @@
 package mirrg.mir40.glob;
 
-import mirrg.mir40.glob.api.ISlot;
 
 public class SlotAbstract implements ISlot
 {

@@ -1,8 +1,5 @@
 package mirrg.mir41.glob;
 
-import mirrg.mir41.glob.api.IGlob;
-import mirrg.mir41.glob.api.IGlobManager;
-import mirrg.mir41.glob.api.ISlot;
 import net.minecraft.item.ItemStack;
 
 public class HelpersGlob

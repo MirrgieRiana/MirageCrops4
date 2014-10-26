@@ -1,4 +1,4 @@
-package mirrg.mir41.glob.api;
+package mirrg.mir41.glob;
 
 import java.util.Map;
 

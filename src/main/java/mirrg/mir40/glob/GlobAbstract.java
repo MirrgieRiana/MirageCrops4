@@ -2,8 +2,6 @@ package mirrg.mir40.glob;
 
 import java.util.Hashtable;
 
-import mirrg.mir40.glob.api.IGlob;
-import mirrg.mir40.glob.api.ISlot;
 import net.minecraft.item.ItemStack;
 
 public class GlobAbstract implements IGlob

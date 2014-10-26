@@ -1,8 +1,8 @@
 package mirrg.miragecrops4.oregen.global;
 
 import mirrg.mir40.math.HelpersString;
-import mirrg.mir41.glob.api.IGlobGroup;
-import mirrg.mir41.glob.api.ISlot;
+import mirrg.mir41.glob.IGlobGroup;
+import mirrg.mir41.glob.ISlot;
 import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumSlot;
 
 public class HelpersModuleOregen

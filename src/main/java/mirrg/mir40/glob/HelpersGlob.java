@@ -1,4 +1,4 @@
-package mirrg.mir40.glob.api;
+package mirrg.mir40.glob;
 
 import mirrg.mir40.math.HelpersString;
 import net.minecraft.item.ItemStack;
