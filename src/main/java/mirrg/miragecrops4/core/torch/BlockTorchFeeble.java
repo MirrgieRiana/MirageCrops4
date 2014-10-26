@@ -34,6 +34,7 @@ public class BlockTorchFeeble extends Block
 		return p_149692_1_;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs p_149666_2_, @SuppressWarnings("rawtypes") List list)
