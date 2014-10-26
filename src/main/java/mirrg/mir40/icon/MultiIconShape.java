@@ -1,7 +1,6 @@
 package mirrg.mir40.icon;
 
 import mirrg.h.struct.Tuple3;
-import mirrg.mir40.icon.api.IMultiIconShape;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;

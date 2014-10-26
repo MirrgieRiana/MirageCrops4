@@ -1,4 +1,4 @@
-package mirrg.mir40.icon.api;
+package mirrg.mir40.icon;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;

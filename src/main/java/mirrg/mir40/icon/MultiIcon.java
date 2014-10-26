@@ -1,7 +1,5 @@
 package mirrg.mir40.icon;
 
-import mirrg.mir40.icon.api.IMultiIcon;
-import mirrg.mir40.icon.api.IMultiIconShape;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;

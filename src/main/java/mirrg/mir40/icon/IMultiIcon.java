@@ -1,4 +1,4 @@
-package mirrg.mir40.icon.api;
+package mirrg.mir40.icon;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
