@@ -1,7 +1,7 @@
 package mirrg.miragecrops4.core.torch;
 
 import static mirrg.miragecrops4.oregen.global.ItemsOregen.*;
-import mirrg.miragecrops4.core.RenderBlockAbstract;
+import mirrg.miragecrops4.lib.RenderBlockAbstract;
 import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlobGroup;
 import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlob;
 import net.minecraft.block.Block;

@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.core;
+package mirrg.miragecrops4.lib;
 
 import mirrg.mir34.modding.IMod;
 import mirrg.mir34.modding.ModuleAbstract;

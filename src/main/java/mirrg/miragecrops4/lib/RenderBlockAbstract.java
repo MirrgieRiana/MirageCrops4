@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.core;
+package mirrg.miragecrops4.lib;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;

@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.oregen.multi;
+package mirrg.miragecrops4.lib.multi;
 
 import mirrg.h.multi.IMulti;
 import mirrg.mir40.multi.IMetaitemIcon;
