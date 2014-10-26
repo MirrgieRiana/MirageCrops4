@@ -1,7 +1,7 @@
-package mirrg.miragecrops4.oregen.global;
+package mirrg.miragecrops4.lib;
 
 import static mirrg.mir40.icon.MultiIconShape.*;
-import static mirrg.miragecrops4.oregen.global.MultiIcons.EnumMultiIconShape.*;
+import static mirrg.miragecrops4.lib.MultiIcons.EnumMultiIconShape.*;
 import mirrg.mir40.icon.IMultiIconShape;
 import mirrg.mir40.icon.MultiIconShape;
 import cpw.mods.fml.relauncher.Side;

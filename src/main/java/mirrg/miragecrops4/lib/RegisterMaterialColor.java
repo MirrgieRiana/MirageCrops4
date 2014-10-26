@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.oregen.global;
+package mirrg.miragecrops4.lib;
 
 import java.util.Hashtable;
 

@@ -5,10 +5,11 @@ import mirrg.mir41.glob.Glob;
 import mirrg.mir41.glob.GlobGroup;
 import mirrg.mir41.glob.GlobManager;
 import mirrg.mir41.glob.Slot;
+import mirrg.miragecrops4.lib.MultiIcons;
+import mirrg.miragecrops4.lib.MultiIcons.EnumMultiIconShape;
 import mirrg.miragecrops4.lib.multi.BlockMultiOregen;
 import mirrg.miragecrops4.lib.multi.ItemMultiIconOregen;
 import mirrg.miragecrops4.oregen.ModuleOregen;
-import mirrg.miragecrops4.oregen.global.MultiIcons.EnumMultiIconShape;
 
 public class ItemsOregen
 {
