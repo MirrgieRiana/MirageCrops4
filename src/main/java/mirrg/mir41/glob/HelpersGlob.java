@@ -14,7 +14,9 @@ public class HelpersGlob
 	public static <SLOT extends ISlot, GLOB extends IGlob>
 		ItemStack copy(IGlobManager<SLOT, GLOB> globManager, SLOT slot, GLOB glob)
 	{
-		return get(globManager, slot, glob).copy();
+		ItemStack itemStack = get(globManager, slot, glob);
+		if (itemStack == null) throw new NullPointerException(slot.getName() + " " + glob.getName());
+		return itemStack.copy();
 	}
 
 	public static <SLOT extends ISlot, GLOB extends IGlob>
