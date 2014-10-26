@@ -1,16 +1,18 @@
 package mirrg.mir40.block;
 
-import mirrg.mir40.multi.Multibase;
+import mirrg.mir40.block.api.IMetablock;
+import mirrg.mir40.multi.api.IMulti;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
-public class ItemBlockMulti<MULTI extends Multibase<MULTI, META>, META extends Metablock<MULTI, META>>
+public class ItemBlockMulti<MULTI extends IMulti<MULTI, META>, META extends IMetablock<MULTI, META>>
 	extends ItemBlock
 {
 
-	protected BlockMulti<MULTI, META> blockMulti;
+	public BlockMulti<MULTI, META> blockMulti;
 
+	@SuppressWarnings("unchecked")
 	public ItemBlockMulti(Block block)
 	{
 		super(block);
@@ -21,24 +23,13 @@ public class ItemBlockMulti<MULTI extends Multibase<MULTI, META>, META extends M
 	@Override
 	public String getUnlocalizedName(ItemStack itemStack)
 	{
-		return blockMulti.multibase.get(itemStack.getItemDamage()).getUnlocalizedName(itemStack);
+		return blockMulti.multi.getMeta(itemStack.getItemDamage()).getUnlocalizedName(itemStack);
 	}
 
 	@Override
-	public int getMetadata(int meta)
+	public int getMetadata(int metaId)
 	{
-		return meta;
-	}
-
-	@SuppressWarnings("rawtypes")
-	public static class Raw extends ItemBlockMulti
-	{
-
-		public Raw(Block block)
-		{
-			super(block);
-		}
-
+		return metaId;
 	}
 
 }
