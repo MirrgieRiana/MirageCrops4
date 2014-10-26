@@ -1,6 +1,5 @@
 package mirrg.miragecrops4.oregen;
 
-import static mirrg.miragecrops4.oregen.global.HelpersOregen.*;
 import static mirrg.miragecrops4.oregen.global.ItemsOregen.*;
 import mirrg.h.multi.Multi;
 import mirrg.mir34.modding.IMod;
@@ -14,10 +13,6 @@ import mirrg.miragecrops4.lib.multi.IMetaitemIconOregen;
 import mirrg.miragecrops4.lib.multi.ItemBlockMultiOregen;
 import mirrg.miragecrops4.lib.multi.ItemMultiIconOregen;
 import mirrg.miragecrops4.oregen.global.GlobsOregen;
-import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumGlob;
-import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumGlobGroup;
-import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumSlot;
-import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumSlotType;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -83,7 +78,8 @@ public class ModuleOregen extends ModuleOregenBase
 				for (GlobsOregen.EnumGlobGroup enumGlobGroup : GlobsOregen.EnumGlobGroup.values()) {
 					if (enumGlobGroup.globGroup.allowsSlot(enumSlot.slot)) {
 
-						String unlocalizedName = ItemsOregen.getBlockUnlocalizedName(enumSlot.slot, enumGlobGroup.globGroup);
+						String unlocalizedName = ItemsOregen.getBlockUnlocalizedName(enumSlot.slot,
+							enumGlobGroup.globGroup);
 
 						Exception e = HelpersReflect.setStaticField(
 							ItemsOregen.class,
@@ -136,7 +132,8 @@ public class ModuleOregen extends ModuleOregenBase
 				for (GlobsOregen.EnumGlobGroup enumGlobGroup : GlobsOregen.EnumGlobGroup.values()) {
 					if (enumGlobGroup.globGroup.allowsSlot(enumSlot.slot)) {
 
-						String unlocalizedName = ItemsOregen.getBlockUnlocalizedName(enumSlot.slot, enumGlobGroup.globGroup);
+						String unlocalizedName = ItemsOregen.getBlockUnlocalizedName(enumSlot.slot,
+							enumGlobGroup.globGroup);
 
 						Object obj = HelpersReflect.getStaticField(ItemsOregen.class, unlocalizedName);
 
