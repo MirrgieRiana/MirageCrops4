@@ -2,7 +2,7 @@ package mirrg.mir40.multi;
 
 import mirrg.eclipse.annotation.Nullable;
 
-public class Metabase<MULTI extends IMulti<MULTI, META>, META extends IMeta<MULTI, META>>
+public class Meta<MULTI extends IMulti<MULTI, META>, META extends IMeta<MULTI, META>>
 	implements IMeta<MULTI, META>
 {
 

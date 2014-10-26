@@ -3,13 +3,13 @@ package mirrg.mir40.multi;
 import java.util.Iterator;
 
 
-public class Multibase<MULTI extends IMulti<MULTI, META>, META extends IMeta<MULTI, META>>
+public class Multi<MULTI extends IMulti<MULTI, META>, META extends IMeta<MULTI, META>>
 	implements IMulti<MULTI, META>
 {
 
 	private final META[] metas;
 
-	public Multibase(META[] metas)
+	public Multi(META[] metas)
 	{
 		this.metas = metas;
 	}

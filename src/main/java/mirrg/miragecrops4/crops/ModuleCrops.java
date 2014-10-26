@@ -10,7 +10,7 @@ import mirrg.mir40.icon.HelpersIcon;
 import mirrg.mir40.item.ItemMulti;
 import mirrg.mir40.item.Metaitem;
 import mirrg.mir40.multi.IMeta;
-import mirrg.mir40.multi.Multibase;
+import mirrg.mir40.multi.Multi;
 import mirrg.miragecrops4.core.ModuleCore;
 import mirrg.miragecrops4.core.ModuleMirageCropsBase;
 import mirrg.miragecrops4.crops.fairy.CropMirageFairyHousing;
@@ -65,7 +65,7 @@ public class ModuleCrops extends ModuleMirageCropsBase
 	protected void registerItems()
 	{
 
-		craftingLeaf = registerItem(new ItemMulti(new Multibase(new IMeta[10])), "craftingLeaf");
+		craftingLeaf = registerItem(new ItemMulti(new Multi(new IMeta[10])), "craftingLeaf");
 
 	}
 

@@ -6,7 +6,7 @@ import mirrg.mir40.block.ItemBlockMulti;
 import mirrg.mir40.block.Metablock;
 import mirrg.mir40.block.api.IMetablock;
 import mirrg.mir40.multi.IMulti;
-import mirrg.mir40.multi.Multibase;
+import mirrg.mir40.multi.Multi;
 import mirrg.mir40.net.MessageFieldInt;
 import mirrg.mir41.glob.Glob;
 import mirrg.mir41.glob.GlobGroup;
@@ -110,7 +110,7 @@ public class ModuleFairy extends ModuleMirageCropsBase
 	protected void registerBlocks()
 	{
 		blockMirageMachine = registerBlock(
-			new BlockMulti(Material.piston, new Multibase(new Metablock[16])),
+			new BlockMulti(Material.piston, new Multi(new Metablock[16])),
 			ItemBlockMulti.class, "blockMirageMachine");
 	}
 

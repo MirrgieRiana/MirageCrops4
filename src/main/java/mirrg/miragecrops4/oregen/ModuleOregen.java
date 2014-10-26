@@ -3,7 +3,7 @@ package mirrg.miragecrops4.oregen;
 import static mirrg.miragecrops4.oregen.global.HelpersModuleOregen.*;
 import static mirrg.miragecrops4.oregen.global.ItemsOregen.*;
 import mirrg.mir34.modding.IMod;
-import mirrg.mir40.multi.Multibase;
+import mirrg.mir40.multi.Multi;
 import mirrg.mir40.reflect.HelpersReflect;
 import mirrg.mir41.glob.HelpersGlob;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
@@ -87,7 +87,7 @@ public class ModuleOregen extends ModuleOregenBase
 						Exception e = HelpersReflect.setStaticField(
 							ItemsOregen.class,
 							unlocalizedName,
-							registerBlock(new BlockMultiOregen(Material.rock, new Multibase(new IMetablockOregen[16])),
+							registerBlock(new BlockMultiOregen(Material.rock, new Multi(new IMetablockOregen[16])),
 								ItemBlockMultiOregen.class,
 								unlocalizedName));
 						if (e != null) throw new RuntimeException(e);
@@ -116,7 +116,7 @@ public class ModuleOregen extends ModuleOregenBase
 					.setStaticField(
 						ItemsOregen.class,
 						unlocalizedName,
-						registerItem(new ItemMultiIconOregen(new Multibase(new IMetaitemIconOregen[256])),
+						registerItem(new ItemMultiIconOregen(new Multi(new IMetaitemIconOregen[256])),
 							unlocalizedName));
 				if (e != null) throw new RuntimeException(e);
 

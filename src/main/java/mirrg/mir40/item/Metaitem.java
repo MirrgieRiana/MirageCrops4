@@ -4,7 +4,7 @@ import java.util.List;
 
 import mirrg.mir40.item.api.IMetaitem;
 import mirrg.mir40.multi.IMulti;
-import mirrg.mir40.multi.Metabase;
+import mirrg.mir40.multi.Meta;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -14,7 +14,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class Metaitem<MULTI extends IMulti<MULTI, META>, META extends IMetaitem<MULTI, META>>
-	extends Metabase<MULTI, META> implements IMetaitem<MULTI, META>
+	extends Meta<MULTI, META> implements IMetaitem<MULTI, META>
 {
 
 	@Override

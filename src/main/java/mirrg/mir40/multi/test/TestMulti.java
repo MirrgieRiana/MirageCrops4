@@ -6,8 +6,8 @@ import java.util.List;
 import junit.framework.Assert;
 import mirrg.mir40.multi.IMeta;
 import mirrg.mir40.multi.IMulti;
-import mirrg.mir40.multi.Metabase;
-import mirrg.mir40.multi.Multibase;
+import mirrg.mir40.multi.Meta;
+import mirrg.mir40.multi.Multi;
 
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
@@ -27,7 +27,7 @@ public class TestMulti
 	{
 		MULTI multi;
 
-		multi = (MULTI) new Multibase<>(new IMeta[5]);
+		multi = (MULTI) new Multi<>(new IMeta[5]);
 		Assert.assertTrue("インスタンス生成", true);
 
 		Assert.assertSame(multi, multi.getMulti());
@@ -56,7 +56,7 @@ public class TestMulti
 		// 0番地にmetaから連結
 		META meta0;
 		{
-			meta0 = (META) new Metabase<>();
+			meta0 = (META) new Meta<>();
 			Assert.assertTrue("インスタンス生成", true);
 
 			Assert.assertSame(meta0, meta0.getMeta());
@@ -90,7 +90,7 @@ public class TestMulti
 		// 1番地にmultiから連結
 		META meta1;
 		{
-			meta1 = (META) new Metabase<>();
+			meta1 = (META) new Meta<>();
 			Assert.assertTrue("インスタンス生成", true);
 
 			Assert.assertSame(meta1, meta1.getMeta());
@@ -172,7 +172,7 @@ public class TestMulti
 		}
 
 		// 3に連結
-		META meta3 = (META) new Metabase<>();
+		META meta3 = (META) new Meta<>();
 		multi.bind(3, meta3);
 
 		{
@@ -195,7 +195,7 @@ public class TestMulti
 		}
 
 		// 4に連結
-		META meta4 = (META) new Metabase<>();
+		META meta4 = (META) new Meta<>();
 		multi.bind(4, meta4);
 
 		{
@@ -207,7 +207,7 @@ public class TestMulti
 		}
 
 		// 1, 2に連結
-		META meta2 = (META) new Metabase<>();
+		META meta2 = (META) new Meta<>();
 		multi.bind(1, meta1);
 		multi.bind(2, meta2);
 
