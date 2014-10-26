@@ -83,7 +83,7 @@ public class ModuleOregen extends ModuleOregenBase
 				for (GlobsOregen.EnumGlobGroup enumGlobGroup : GlobsOregen.EnumGlobGroup.values()) {
 					if (enumGlobGroup.globGroup.allowsSlot(enumSlot.slot)) {
 
-						String unlocalizedName = getBlockUnlocalizedName(enumSlot.slot, enumGlobGroup.globGroup);
+						String unlocalizedName = ItemsOregen.getBlockUnlocalizedName(enumSlot.slot, enumGlobGroup.globGroup);
 
 						Exception e = HelpersReflect.setStaticField(
 							ItemsOregen.class,
@@ -111,7 +111,7 @@ public class ModuleOregen extends ModuleOregenBase
 		for (GlobsOregen.EnumSlot enumSlot : GlobsOregen.EnumSlot.values()) {
 			if (enumSlot.type == GlobsOregen.EnumSlotType.ITEM) {
 
-				String unlocalizedName = getItemUnlocalizedName(enumSlot.slot);
+				String unlocalizedName = ItemsOregen.getItemUnlocalizedName(enumSlot.slot);
 
 				Exception e = HelpersReflect
 					.setStaticField(
@@ -136,7 +136,7 @@ public class ModuleOregen extends ModuleOregenBase
 				for (GlobsOregen.EnumGlobGroup enumGlobGroup : GlobsOregen.EnumGlobGroup.values()) {
 					if (enumGlobGroup.globGroup.allowsSlot(enumSlot.slot)) {
 
-						String unlocalizedName = getBlockUnlocalizedName(enumSlot.slot, enumGlobGroup.globGroup);
+						String unlocalizedName = ItemsOregen.getBlockUnlocalizedName(enumSlot.slot, enumGlobGroup.globGroup);
 
 						Object obj = HelpersReflect.getStaticField(ItemsOregen.class, unlocalizedName);
 
@@ -163,7 +163,7 @@ public class ModuleOregen extends ModuleOregenBase
 		for (GlobsOregen.EnumSlot enumSlot : GlobsOregen.EnumSlot.values()) {
 			if (enumSlot.type == GlobsOregen.EnumSlotType.ITEM) {
 
-				String unlocalizedName = getItemUnlocalizedName(enumSlot.slot);
+				String unlocalizedName = ItemsOregen.getItemUnlocalizedName(enumSlot.slot);
 
 				Object obj = HelpersReflect.getStaticField(ItemsOregen.class, unlocalizedName);
 
