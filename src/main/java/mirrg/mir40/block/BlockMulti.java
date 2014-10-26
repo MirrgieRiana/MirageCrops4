@@ -3,7 +3,6 @@ package mirrg.mir40.block;
 import java.util.List;
 
 import mirrg.h.multi.IMulti;
-import mirrg.mir40.block.api.IMetablock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;

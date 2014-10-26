@@ -4,7 +4,6 @@ import java.util.List;
 
 import mirrg.h.multi.IMulti;
 import mirrg.h.multi.Meta;
-import mirrg.mir40.item.api.IMetaitem;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;

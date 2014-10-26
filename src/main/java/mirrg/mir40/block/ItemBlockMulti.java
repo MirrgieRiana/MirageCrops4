@@ -1,7 +1,6 @@
 package mirrg.mir40.block;
 
 import mirrg.h.multi.IMulti;
-import mirrg.mir40.block.api.IMetablock;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;

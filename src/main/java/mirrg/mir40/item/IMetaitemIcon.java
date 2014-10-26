@@ -1,4 +1,4 @@
-package mirrg.mir40.item.api;
+package mirrg.mir40.item;
 
 import mirrg.h.multi.IMulti;
 import net.minecraft.client.renderer.texture.IIconRegister;
