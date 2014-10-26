@@ -21,3 +21,5 @@ build/resources/*
 build/sources/*
 build/tmp/*
 *-api.zip
+.classpath
+.project
