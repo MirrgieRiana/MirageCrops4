@@ -6,11 +6,11 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
-public class ItemBlockMultiMirageCrops<MULTI extends IMulti<MULTI, META>, META extends IMetablockOregen<MULTI, META>>
+public class ItemBlockMultiOregen<MULTI extends IMulti<MULTI, META>, META extends IMetablockOregen<MULTI, META>>
 	extends ItemBlockMulti<MULTI, META>
 {
 
-	public ItemBlockMultiMirageCrops(Block block)
+	public ItemBlockMultiOregen(Block block)
 	{
 		super(block);
 	}

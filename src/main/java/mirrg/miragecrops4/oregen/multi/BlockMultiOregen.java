@@ -7,11 +7,11 @@ import mirrg.mir40.multi.api.IMulti;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
 
-public class BlockMultiMirageCrops<MULTI extends IMulti<MULTI, META>, META extends IMetablockOregen<MULTI, META>>
+public class BlockMultiOregen<MULTI extends IMulti<MULTI, META>, META extends IMetablockOregen<MULTI, META>>
 	extends BlockMulti<MULTI, META>
 {
 
-	public BlockMultiMirageCrops(Material material, MULTI multi)
+	public BlockMultiOregen(Material material, MULTI multi)
 	{
 		super(material, multi);
 		setTickRandomly(true);
