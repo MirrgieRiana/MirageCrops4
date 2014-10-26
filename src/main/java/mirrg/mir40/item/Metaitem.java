@@ -60,4 +60,16 @@ public class Metaitem<MULTI extends IMulti<MULTI, META>, META extends IMetaitem<
 		return "item." + unlocalizedName;
 	}
 
+	@Override
+	public void setIconName(String iconName)
+	{
+		this.iconName = iconName;
+	}
+
+	@Override
+	public void setUnlocalizedName(String unlocalizedName)
+	{
+		this.unlocalizedName = unlocalizedName;
+	}
+
 }

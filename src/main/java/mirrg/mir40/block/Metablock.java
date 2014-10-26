@@ -71,4 +71,16 @@ public class Metablock<MULTI extends IMulti<MULTI, META>, META extends IMetabloc
 		return "tile." + unlocalizedName;
 	}
 
+	@Override
+	public void setIconName(String iconName)
+	{
+		this.iconName = iconName;
+	}
+
+	@Override
+	public void setUnlocalizedName(String unlocalizedName)
+	{
+		this.unlocalizedName = unlocalizedName;
+	}
+
 }

@@ -28,4 +28,8 @@ public interface IMetaitem<MULTI extends IMulti<MULTI, META>, META extends IMeta
 
 	public String getUnlocalizedName(ItemStack itemStack);
 
+	public void setIconName(String iconName);
+
+	public void setUnlocalizedName(String unlocalizedName);
+
 }
