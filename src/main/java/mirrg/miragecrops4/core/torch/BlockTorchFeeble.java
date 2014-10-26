@@ -1,9 +1,10 @@
-package mirrg.miragecrops4.core;
+package mirrg.miragecrops4.core.torch;
 
 import java.util.List;
 import java.util.Random;
 
 import mirrg.mir40.math.HelpersMath;
+import mirrg.miragecrops4.core.ModuleCore;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;

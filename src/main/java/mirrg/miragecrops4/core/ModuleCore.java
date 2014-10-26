@@ -1,6 +1,9 @@
 package mirrg.miragecrops4.core;
 
 import mirrg.mir34.modding.IMod;
+import mirrg.miragecrops4.core.torch.BlockTorchFeeble;
+import mirrg.miragecrops4.core.torch.ItemBlockTorchFeeble;
+import mirrg.miragecrops4.core.torch.RenderBlockTorchFeeble;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
 import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlob;
 import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumSlot;

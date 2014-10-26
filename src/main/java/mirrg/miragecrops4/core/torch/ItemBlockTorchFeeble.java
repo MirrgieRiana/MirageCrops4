@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.core;
+package mirrg.miragecrops4.core.torch;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
