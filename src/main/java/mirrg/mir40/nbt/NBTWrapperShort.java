@@ -1,4 +1,4 @@
-package mirrg.mir40.data;
+package mirrg.mir40.nbt;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagShort;

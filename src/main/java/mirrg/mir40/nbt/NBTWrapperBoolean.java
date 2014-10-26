@@ -1,17 +1,17 @@
-package mirrg.mir40.data;
+package mirrg.mir40.nbt;
 
 import net.minecraft.nbt.NBTTagByte;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class NBTWrapperByte extends NBTWrapperBase<NBTTagByte, Byte>
+public class NBTWrapperBoolean extends NBTWrapperBase<NBTTagByte, Boolean>
 {
 
-	public NBTWrapperByte(String name)
+	public NBTWrapperBoolean(String name)
 	{
 		super(name);
 	}
 
-	public NBTWrapperByte(String name, NBTWrapperCompound parent)
+	public NBTWrapperBoolean(String name, NBTWrapperCompound parent)
 	{
 		super(name, parent);
 	}
@@ -23,20 +23,20 @@ public class NBTWrapperByte extends NBTWrapperBase<NBTTagByte, Byte>
 	}
 
 	@Override
-	protected Byte readFromParent(NBTTagCompound parentNbt)
+	protected Boolean readFromParent(NBTTagCompound parentNbt)
 	{
 		if (isReadableFromParent(parentNbt)) {
-			return parentNbt.getByte(getName());
+			return parentNbt.getBoolean(getName());
 		} else {
 			return null;
 		}
 	}
 
 	@Override
-	protected void writeToParent(NBTTagCompound parentNbt, Byte value)
+	protected void writeToParent(NBTTagCompound parentNbt, Boolean value)
 	{
 		if (isWritableToParent(parentNbt)) {
-			parentNbt.setByte(getName(), value);
+			parentNbt.setBoolean(getName(), value);
 		} else {
 			throw new NullPointerException("" + parentNbt);
 		}

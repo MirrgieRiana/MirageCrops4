@@ -1,10 +1,10 @@
-package mirrg.mir40.data.example;
+package mirrg.mir40.nbt.example;
 
-import mirrg.mir40.data.NBTWrapperByte;
-import mirrg.mir40.data.NBTWrapperCompound;
-import mirrg.mir40.data.NBTWrapperFloat;
-import mirrg.mir40.data.NBTWrapperInt;
-import mirrg.mir40.data.NBTWrapperString;
+import mirrg.mir40.nbt.NBTWrapperByte;
+import mirrg.mir40.nbt.NBTWrapperCompound;
+import mirrg.mir40.nbt.NBTWrapperFloat;
+import mirrg.mir40.nbt.NBTWrapperInt;
+import mirrg.mir40.nbt.NBTWrapperString;
 
 /**
  * <pre>

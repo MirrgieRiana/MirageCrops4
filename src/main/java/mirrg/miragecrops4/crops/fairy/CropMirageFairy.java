@@ -1,7 +1,7 @@
 package mirrg.miragecrops4.crops.fairy;
 
 import ic2.api.crops.ICropTile;
-import mirrg.mir40.data.EnumNBTTypes;
+import mirrg.mir40.nbt.EnumNBTTypes;
 import mirrg.miragecrops4.crops.CropMirageCropsBase;
 import net.minecraft.nbt.NBTTagCompound;
 
