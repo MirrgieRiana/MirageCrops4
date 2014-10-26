@@ -1,4 +1,4 @@
-package mirrg.mir40.block;
+package mirrg.mir40.multi;
 
 import mirrg.h.multi.IMulti;
 import net.minecraft.block.Block;

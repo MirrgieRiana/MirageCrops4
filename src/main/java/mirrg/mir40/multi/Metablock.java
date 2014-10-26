@@ -1,4 +1,4 @@
-package mirrg.mir40.block;
+package mirrg.mir40.multi;
 
 import java.util.List;
 

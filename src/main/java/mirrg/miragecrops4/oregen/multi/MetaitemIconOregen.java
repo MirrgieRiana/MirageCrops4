@@ -1,7 +1,7 @@
 package mirrg.miragecrops4.oregen.multi;
 
 import mirrg.h.multi.IMulti;
-import mirrg.mir40.item.MetaitemIcon;
+import mirrg.mir40.multi.MetaitemIcon;
 import mirrg.mir41.glob.api.IGlob;
 import mirrg.mir41.glob.api.ISlot;
 

@@ -3,7 +3,7 @@ package mirrg.miragecrops4.oregen.multi;
 import java.util.Random;
 
 import mirrg.h.multi.IMulti;
-import mirrg.mir40.block.BlockMulti;
+import mirrg.mir40.multi.BlockMulti;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
 

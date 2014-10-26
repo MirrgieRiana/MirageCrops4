@@ -1,4 +1,4 @@
-package mirrg.mir40.block;
+package mirrg.mir40.multi;
 
 import java.util.List;
 
@@ -9,25 +9,20 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public interface IMetablock<MULTI extends IMulti<MULTI, META>, META extends IMetablock<MULTI, META>>
+public interface IMetaitem<MULTI extends IMulti<MULTI, META>, META extends IMetaitem<MULTI, META>>
 	extends IMeta<MULTI, META>
 {
 
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List<ItemStack> list);
+	public void getSubItems(Item item, CreativeTabs arg1, List<ItemStack> list);
+
+	public IIcon getIcon(ItemStack arg0, int arg1);
 
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(IBlockAccess blockAccess, int x, int y, int z, int side);
-
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta);
-
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister iconRegister);
+	public void registerIcons(IIconRegister iconRegister);
 
 	public String getPlainName(ItemStack itemStack);
 

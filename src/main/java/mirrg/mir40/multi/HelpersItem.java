@@ -1,4 +1,4 @@
-package mirrg.mir40.item;
+package mirrg.mir40.multi;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
