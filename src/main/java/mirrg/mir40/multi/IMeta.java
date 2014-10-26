@@ -1,4 +1,4 @@
-package mirrg.mir40.multi.api;
+package mirrg.mir40.multi;
 
 import mirrg.eclipse.annotation.Nullable;
 

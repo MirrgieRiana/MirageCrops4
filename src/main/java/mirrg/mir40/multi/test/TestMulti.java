@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import junit.framework.Assert;
+import mirrg.mir40.multi.IMeta;
+import mirrg.mir40.multi.IMulti;
 import mirrg.mir40.multi.Metabase;
 import mirrg.mir40.multi.Multibase;
-import mirrg.mir40.multi.api.IMeta;
-import mirrg.mir40.multi.api.IMulti;
 
 import org.junit.Test;
 import org.junit.runner.JUnitCore;

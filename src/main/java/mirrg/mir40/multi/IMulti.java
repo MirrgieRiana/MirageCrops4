@@ -1,4 +1,4 @@
-package mirrg.mir40.multi.api;
+package mirrg.mir40.multi;
 
 /**
  * 多数のスロットを持ち、スロットごとに同時に一つのメタアイテム（{@link IMeta}）に連結可能なコンテナ。<br>

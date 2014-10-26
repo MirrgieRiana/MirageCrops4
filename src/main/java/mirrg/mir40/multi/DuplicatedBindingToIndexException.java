@@ -1,4 +1,4 @@
-package mirrg.mir40.multi.api;
+package mirrg.mir40.multi;
 
 public class DuplicatedBindingToIndexException extends RuntimeException
 {
