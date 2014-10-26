@@ -13,11 +13,12 @@ import mirrg.miragecrops4.lib.multi.IMetablockOregen;
 import mirrg.miragecrops4.lib.multi.IMetaitemIconOregen;
 import mirrg.miragecrops4.lib.multi.ItemBlockMultiOregen;
 import mirrg.miragecrops4.lib.multi.ItemMultiIconOregen;
+import mirrg.miragecrops4.oregen.global.GlobsOregen;
+import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumGlob;
+import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumGlobGroup;
+import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumSlot;
+import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumSlotType;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlob;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlobGroup;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumSlot;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumSlotType;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
@@ -76,10 +77,10 @@ public class ModuleOregen extends ModuleOregenBase
 	protected void registerBlocks()
 	{
 
-		for (EnumSlot enumSlot : ItemsOregen.EnumSlot.values()) {
-			if (enumSlot.type == EnumSlotType.BLOCK) {
+		for (GlobsOregen.EnumSlot enumSlot : GlobsOregen.EnumSlot.values()) {
+			if (enumSlot.type == GlobsOregen.EnumSlotType.BLOCK) {
 
-				for (EnumGlobGroup enumGlobGroup : ItemsOregen.EnumGlobGroup.values()) {
+				for (GlobsOregen.EnumGlobGroup enumGlobGroup : GlobsOregen.EnumGlobGroup.values()) {
 					if (enumGlobGroup.globGroup.allowsSlot(enumSlot.slot)) {
 
 						String unlocalizedName = getBlockUnlocalizedName(enumSlot.slot, enumGlobGroup.globGroup);
@@ -107,8 +108,8 @@ public class ModuleOregen extends ModuleOregenBase
 	protected void registerItems()
 	{
 
-		for (EnumSlot enumSlot : ItemsOregen.EnumSlot.values()) {
-			if (enumSlot.type == EnumSlotType.ITEM) {
+		for (GlobsOregen.EnumSlot enumSlot : GlobsOregen.EnumSlot.values()) {
+			if (enumSlot.type == GlobsOregen.EnumSlotType.ITEM) {
 
 				String unlocalizedName = getItemUnlocalizedName(enumSlot.slot);
 
@@ -129,10 +130,10 @@ public class ModuleOregen extends ModuleOregenBase
 	protected void configureBlocks()
 	{
 
-		for (EnumSlot enumSlot : ItemsOregen.EnumSlot.values()) {
-			if (enumSlot.type == EnumSlotType.BLOCK) {
+		for (GlobsOregen.EnumSlot enumSlot : GlobsOregen.EnumSlot.values()) {
+			if (enumSlot.type == GlobsOregen.EnumSlotType.BLOCK) {
 
-				for (EnumGlobGroup enumGlobGroup : ItemsOregen.EnumGlobGroup.values()) {
+				for (GlobsOregen.EnumGlobGroup enumGlobGroup : GlobsOregen.EnumGlobGroup.values()) {
 					if (enumGlobGroup.globGroup.allowsSlot(enumSlot.slot)) {
 
 						String unlocalizedName = getBlockUnlocalizedName(enumSlot.slot, enumGlobGroup.globGroup);
@@ -159,8 +160,8 @@ public class ModuleOregen extends ModuleOregenBase
 	protected void configureItems()
 	{
 
-		for (EnumSlot enumSlot : ItemsOregen.EnumSlot.values()) {
-			if (enumSlot.type == EnumSlotType.ITEM) {
+		for (GlobsOregen.EnumSlot enumSlot : GlobsOregen.EnumSlot.values()) {
+			if (enumSlot.type == GlobsOregen.EnumSlotType.ITEM) {
 
 				String unlocalizedName = getItemUnlocalizedName(enumSlot.slot);
 
@@ -172,7 +173,7 @@ public class ModuleOregen extends ModuleOregenBase
 
 				configureItem((Item) obj, unlocalizedName);
 
-				createMetaItem(ItemsOregen.EnumGlobGroup.values(), (ItemMultiIconOregen) obj, enumSlot.slot,
+				createMetaItem(GlobsOregen.EnumGlobGroup.values(), (ItemMultiIconOregen) obj, enumSlot.slot,
 					enumSlot.icon());
 
 			}
@@ -187,18 +188,18 @@ public class ModuleOregen extends ModuleOregenBase
 	{
 
 		//           mi ma   CPC  nu  bio   ore
-		rwfcpc(this, 0, 128, 0.4, 32, null, cpo(EnumGlob.calcite));
-		rwfcpc(this, 0, 96, 1.8, 8, null, cpo(EnumGlob.magnesite));
-		rwfcpc(this, 0, 80, 1.6, 7, null, cpo(EnumGlob.siderite));
-		rwfcpc(this, 0, 64, 1.4, 6, null, cpo(EnumGlob.smithsonite));
-		rwfcpc(this, 0, 48, 0.9, 6, "ocean", cpo(EnumGlob.rhodochrosite));
-		rwfcpc(this, 0, 32, 0.7, 5, "forest", cpo(EnumGlob.sphaerocobaltite));
-		rwfcpc(this, 0, 24, 0.5, 4, "desert", cpo(EnumGlob.gaspeite));
-		rwfcpc(this, 0, 16, 0.5, 1, "extreme", cpo(EnumGlob.otavite));
-		rwfcpc(this, 0, 60, 0.1, 4, null, cpo(EnumGlob.bismuth));
-		rwfcpc(this, 0, 60, 0.3, 8, null, cpo(EnumGlob.spinatite));
-		rwfcpc(this, 64, 128, 0.8, 18, "extreme", cpo(EnumGlob.apatite));
-		rwfcpc(this, 64, 128, 1.5, 8, "extreme", cpo(EnumGlob.fluorite));
+		rwfcpc(this, 0, 128, 0.4, 32, null, cpo(GlobsOregen.EnumGlob.calcite));
+		rwfcpc(this, 0, 96, 1.8, 8, null, cpo(GlobsOregen.EnumGlob.magnesite));
+		rwfcpc(this, 0, 80, 1.6, 7, null, cpo(GlobsOregen.EnumGlob.siderite));
+		rwfcpc(this, 0, 64, 1.4, 6, null, cpo(GlobsOregen.EnumGlob.smithsonite));
+		rwfcpc(this, 0, 48, 0.9, 6, "ocean", cpo(GlobsOregen.EnumGlob.rhodochrosite));
+		rwfcpc(this, 0, 32, 0.7, 5, "forest", cpo(GlobsOregen.EnumGlob.sphaerocobaltite));
+		rwfcpc(this, 0, 24, 0.5, 4, "desert", cpo(GlobsOregen.EnumGlob.gaspeite));
+		rwfcpc(this, 0, 16, 0.5, 1, "extreme", cpo(GlobsOregen.EnumGlob.otavite));
+		rwfcpc(this, 0, 60, 0.1, 4, null, cpo(GlobsOregen.EnumGlob.bismuth));
+		rwfcpc(this, 0, 60, 0.3, 8, null, cpo(GlobsOregen.EnumGlob.spinatite));
+		rwfcpc(this, 64, 128, 0.8, 18, "extreme", cpo(GlobsOregen.EnumGlob.apatite));
+		rwfcpc(this, 64, 128, 1.5, 8, "extreme", cpo(GlobsOregen.EnumGlob.fluorite));
 
 	}
 
@@ -210,14 +211,14 @@ public class ModuleOregen extends ModuleOregenBase
 			minHeight, maxHeight, countPerCube, numberOfBlocks, biome, ore);
 	}
 
-	private ItemStack cp(EnumSlot enumSlot, EnumGlob enumGlob)
+	private ItemStack cp(GlobsOregen.EnumSlot enumSlot, GlobsOregen.EnumGlob enumGlob)
 	{
 		return HelpersGlob.copy(globManager, enumSlot.slot, enumGlob.glob);
 	}
 
-	private ItemStack cpo(EnumGlob enumGlob)
+	private ItemStack cpo(GlobsOregen.EnumGlob enumGlob)
 	{
-		return cp(EnumSlot.ore, enumGlob);
+		return cp(GlobsOregen.EnumSlot.ore, enumGlob);
 	}
 
 }

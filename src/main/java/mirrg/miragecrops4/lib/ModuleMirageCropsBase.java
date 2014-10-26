@@ -8,9 +8,10 @@ import mirrg.mir41.glob.HelpersGlob;
 import mirrg.mir41.glob.IGlob;
 import mirrg.mir41.glob.ISlot;
 import mirrg.mir41.glob.Slot;
+import mirrg.miragecrops4.oregen.global.GlobsOregen;
+import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumGlob;
+import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumSlot;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlob;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumSlot;
 import net.minecraft.block.Block;
 import net.minecraft.block.Block.SoundType;
 import net.minecraft.item.Item;
@@ -155,7 +156,7 @@ public abstract class ModuleMirageCropsBase extends ModuleAbstract
 	/**
 	 * {@link GlobManager#getDictionaryName(ISlot, IGlob)} の略
 	 */
-	protected String gdn(EnumSlot enumSlot, EnumGlob enumGlob)
+	protected String gdn(GlobsOregen.EnumSlot enumSlot, GlobsOregen.EnumGlob enumGlob)
 	{
 		return gdn(enumSlot.slot, enumGlob.glob);
 	}
@@ -164,7 +165,7 @@ public abstract class ModuleMirageCropsBase extends ModuleAbstract
 	 * {@link HelpersGlob#copy(mirrg.mir41.glob.api.IGlobManager, ISlot, IGlob)}
 	 * の略
 	 */
-	protected ItemStack cpy(EnumSlot enumSlot, EnumGlob enumGlob)
+	protected ItemStack cpy(GlobsOregen.EnumSlot enumSlot, GlobsOregen.EnumGlob enumGlob)
 	{
 		return cpy(enumSlot.slot, enumGlob.glob);
 	}
@@ -173,7 +174,7 @@ public abstract class ModuleMirageCropsBase extends ModuleAbstract
 	 * {@link HelpersGlob#copy(mirrg.mir41.glob.api.IGlobManager, ISlot, IGlob, int)}
 	 * の略
 	 */
-	protected ItemStack cpy(EnumSlot enumSlot, EnumGlob enumGlob, int size)
+	protected ItemStack cpy(GlobsOregen.EnumSlot enumSlot, GlobsOregen.EnumGlob enumGlob, int size)
 	{
 		return cpy(enumSlot.slot, enumGlob.glob, size);
 	}

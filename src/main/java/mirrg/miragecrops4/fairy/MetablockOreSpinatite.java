@@ -5,6 +5,7 @@ import java.util.Random;
 import mirrg.mir41.glob.IGlob;
 import mirrg.mir41.glob.ISlot;
 import mirrg.miragecrops4.lib.multi.MetablockOregen;
+import mirrg.miragecrops4.oregen.global.GlobsOregen;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -72,13 +73,13 @@ public class MetablockOreSpinatite extends MetablockOregen
 	{
 		return (world.getBlock(x, y, z) == ItemsOregen.blockOreMirageMagic) &&
 			world.getBlockMetadata(x, y, z) ==
-			ItemsOregen.EnumGlobGroup.MirageMagic.globGroup.getGlobs().indexOf(ItemsOregen.EnumGlob.spinatite.glob);
+			GlobsOregen.EnumGlobGroup.MirageMagic.globGroup.getGlobs().indexOf(GlobsOregen.EnumGlob.spinatite.glob);
 	}
 
 	protected void putOreSpinatite(World world, int x, int y, int z)
 	{
 		world.setBlock(x, y, z, ItemsOregen.blockOreMirageMagic,
-			ItemsOregen.EnumGlobGroup.MirageMagic.globGroup.getGlobs().indexOf(ItemsOregen.EnumGlob.spinatite.glob), 3);
+			GlobsOregen.EnumGlobGroup.MirageMagic.globGroup.getGlobs().indexOf(GlobsOregen.EnumGlob.spinatite.glob), 3);
 	}
 
 }

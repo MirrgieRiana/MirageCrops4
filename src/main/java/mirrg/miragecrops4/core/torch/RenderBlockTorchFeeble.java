@@ -2,8 +2,9 @@ package mirrg.miragecrops4.core.torch;
 
 import static mirrg.miragecrops4.oregen.global.ItemsOregen.*;
 import mirrg.miragecrops4.lib.RenderBlockAbstract;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlobGroup;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlob;
+import mirrg.miragecrops4.oregen.global.GlobsOregen;
+import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumGlob;
+import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumGlobGroup;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
@@ -37,7 +38,7 @@ public class RenderBlockTorchFeeble extends RenderBlockAbstract
 
 			BlockTorchFeeble btf = (BlockTorchFeeble) block;
 			btf.overridedIcon = blockCalciteGroup.getIcon(
-				EnumGlobGroup.CalciteGroup.globGroup.getGlobs().indexOf(EnumGlob.calcite), 0);
+				GlobsOregen.EnumGlobGroup.CalciteGroup.globGroup.getGlobs().indexOf(GlobsOregen.EnumGlob.calcite), 0);
 
 			f = 0.1f;
 			renderer.setRenderBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.1F, 0.5F + f);
@@ -63,7 +64,7 @@ public class RenderBlockTorchFeeble extends RenderBlockAbstract
 
 			BlockTorchFeeble btf = (BlockTorchFeeble) block;
 			btf.overridedIcon = blockCalciteGroup.getIcon(
-				EnumGlobGroup.CalciteGroup.globGroup.getGlobs().indexOf(EnumGlob.calcite), 0);
+				GlobsOregen.EnumGlobGroup.CalciteGroup.globGroup.getGlobs().indexOf(GlobsOregen.EnumGlob.calcite), 0);
 
 			f = 0.1f;
 			renderer.setRenderBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.1F, 0.5F + f);

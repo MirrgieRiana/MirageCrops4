@@ -24,9 +24,10 @@ import mirrg.miragecrops4.lib.multi.BlockMultiOregen;
 import mirrg.miragecrops4.lib.multi.ItemMultiIconOregen;
 import mirrg.miragecrops4.lib.multi.MetablockOregen;
 import mirrg.miragecrops4.lib.multi.MetaitemIconOregen;
+import mirrg.miragecrops4.oregen.global.GlobsOregen;
+import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumGlobGroup;
 import mirrg.miragecrops4.oregen.global.HelpersOregen;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlobGroup;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -54,7 +55,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		item.setCreativeTab(ModuleCore.creativeTab);
 	}
 
-	protected void createMetaBlock(EnumGlobGroup enumGlobGroup, BlockMultiOregen blockMulti, Slot slot)
+	protected void createMetaBlock(GlobsOregen.EnumGlobGroup enumGlobGroup, BlockMultiOregen blockMulti, Slot slot)
 	{
 		List<Glob> globs = enumGlobGroup.globGroup.getGlobs();
 
@@ -109,12 +110,12 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		}
 	}
 
-	protected void createMetaItem(EnumGlobGroup[] enumGlobGroups, ItemMultiIconOregen itemMultiIcon, Slot slot,
+	protected void createMetaItem(GlobsOregen.EnumGlobGroup[] enumGlobGroups, ItemMultiIconOregen itemMultiIcon, Slot slot,
 		IMultiIconShape multiIconShape)
 	{
 
 		for (int j = 0; j < enumGlobGroups.length; j++) {
-			EnumGlobGroup enumGlobGroup = enumGlobGroups[j];
+			GlobsOregen.EnumGlobGroup enumGlobGroup = enumGlobGroups[j];
 			List<Glob> globs = enumGlobGroup.globGroup.getGlobs();
 
 			for (int i = 0; i < globs.size(); i++) {

@@ -5,9 +5,10 @@ import mirrg.miragecrops4.core.torch.BlockTorchFeeble;
 import mirrg.miragecrops4.core.torch.ItemBlockTorchFeeble;
 import mirrg.miragecrops4.core.torch.RenderBlockTorchFeeble;
 import mirrg.miragecrops4.lib.ModuleMirageCropsBase;
+import mirrg.miragecrops4.oregen.global.GlobsOregen;
+import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumGlob;
+import mirrg.miragecrops4.oregen.global.GlobsOregen.EnumSlot;
 import mirrg.miragecrops4.oregen.global.ItemsOregen;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumGlob;
-import mirrg.miragecrops4.oregen.global.ItemsOregen.EnumSlot;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -109,42 +110,42 @@ public class ModuleCore extends ModuleMirageCropsBase
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 12),
 			"X",
 			"Y",
-			'X', gdn(EnumSlot.gem, EnumGlob.calcite),
+			'X', gdn(GlobsOregen.EnumSlot.gem, GlobsOregen.EnumGlob.calcite),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 10),
 			"X",
 			"Y",
-			'X', gdn(EnumSlot.gem, EnumGlob.magnesite),
+			'X', gdn(GlobsOregen.EnumSlot.gem, GlobsOregen.EnumGlob.magnesite),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 8),
 			"X",
 			"Y",
-			'X', gdn(EnumSlot.gem, EnumGlob.smithsonite),
+			'X', gdn(GlobsOregen.EnumSlot.gem, GlobsOregen.EnumGlob.smithsonite),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 6),
 			"X",
 			"Y",
-			'X', gdn(EnumSlot.gem, EnumGlob.siderite),
+			'X', gdn(GlobsOregen.EnumSlot.gem, GlobsOregen.EnumGlob.siderite),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 4),
 			"X",
 			"Y",
-			'X', gdn(EnumSlot.gem, EnumGlob.sphaerocobaltite),
+			'X', gdn(GlobsOregen.EnumSlot.gem, GlobsOregen.EnumGlob.sphaerocobaltite),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 3),
 			"X",
 			"Y",
-			'X', gdn(EnumSlot.gem, EnumGlob.gaspeite),
+			'X', gdn(GlobsOregen.EnumSlot.gem, GlobsOregen.EnumGlob.gaspeite),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 2),
 			"X",
 			"Y",
-			'X', gdn(EnumSlot.gem, EnumGlob.rhodochrosite),
+			'X', gdn(GlobsOregen.EnumSlot.gem, GlobsOregen.EnumGlob.rhodochrosite),
 			'Y', Blocks.torch));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockTorchFeeble, 1, 1),
 			"X",
 			"Y",
-			'X', gdn(EnumSlot.gem, EnumGlob.otavite),
+			'X', gdn(GlobsOregen.EnumSlot.gem, GlobsOregen.EnumGlob.otavite),
 			'Y', Blocks.torch));
 
 	}
