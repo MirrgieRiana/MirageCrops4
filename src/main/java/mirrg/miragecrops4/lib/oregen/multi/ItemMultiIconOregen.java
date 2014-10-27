@@ -1,18 +1,17 @@
-package mirrg.miragecrops4.lib.multi;
+package mirrg.miragecrops4.lib.oregen.multi;
 
 import mirrg.h.multi.IMulti;
-import mirrg.mir40.multi.ItemBlockMulti;
-import net.minecraft.block.Block;
+import mirrg.mir40.multi.ItemMultiIcon;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
-public class ItemBlockMultiOregen<MULTI extends IMulti<MULTI, META>, META extends IMetablockOregen<MULTI, META>>
-	extends ItemBlockMulti<MULTI, META>
+public class ItemMultiIconOregen<MULTI extends IMulti<MULTI, META>, META extends IMetaitemIconOregen<MULTI, META>>
+	extends ItemMultiIcon<MULTI, META>
 {
 
-	public ItemBlockMultiOregen(Block block)
+	public ItemMultiIconOregen(MULTI multi)
 	{
-		super(block);
+		super(multi);
 	}
 
 	@Override
@@ -22,8 +21,8 @@ public class ItemBlockMultiOregen<MULTI extends IMulti<MULTI, META>, META extend
 			return super.getItemStackDisplayName(p_77653_1_);
 		}
 
-		String globName = blockMulti.multi.getMeta(p_77653_1_.getItemDamage()).getGlob().getName();
-		String slotName = blockMulti.multi.getMeta(p_77653_1_.getItemDamage()).getSlot().getName();
+		String globName = multi.getMeta(p_77653_1_.getItemDamage()).getGlob().getName();
+		String slotName = multi.getMeta(p_77653_1_.getItemDamage()).getSlot().getName();
 
 		String format = StatCollector.translateToLocal("slot." + slotName + ".format").trim();
 

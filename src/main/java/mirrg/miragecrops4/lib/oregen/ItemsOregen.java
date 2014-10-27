@@ -4,8 +4,8 @@ import mirrg.mir34.modding.IModule;
 import mirrg.mir41.glob.Glob;
 import mirrg.mir41.glob.GlobManager;
 import mirrg.mir41.glob.Slot;
-import mirrg.miragecrops4.lib.multi.BlockMultiOregen;
-import mirrg.miragecrops4.lib.multi.ItemMultiIconOregen;
+import mirrg.miragecrops4.lib.oregen.multi.BlockMultiOregen;
+import mirrg.miragecrops4.lib.oregen.multi.ItemMultiIconOregen;
 
 public class ItemsOregen
 {

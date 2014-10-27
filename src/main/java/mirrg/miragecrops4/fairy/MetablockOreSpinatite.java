@@ -4,9 +4,9 @@ import java.util.Random;
 
 import mirrg.mir41.glob.IGlob;
 import mirrg.mir41.glob.ISlot;
-import mirrg.miragecrops4.lib.multi.MetablockOregen;
 import mirrg.miragecrops4.lib.oregen.GlobsOregen;
 import mirrg.miragecrops4.lib.oregen.ItemsOregen;
+import mirrg.miragecrops4.lib.oregen.multi.MetablockOregen;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 

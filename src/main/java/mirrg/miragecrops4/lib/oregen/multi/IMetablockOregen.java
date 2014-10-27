@@ -1,4 +1,4 @@
-package mirrg.miragecrops4.lib.multi;
+package mirrg.miragecrops4.lib.oregen.multi;
 
 import java.util.Random;
 

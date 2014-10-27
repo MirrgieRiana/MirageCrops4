@@ -8,13 +8,13 @@ import mirrg.mir40.math.HelpersString;
 import mirrg.mir40.reflect.HelpersReflect;
 import mirrg.mir41.glob.IGlobGroup;
 import mirrg.mir41.glob.ISlot;
-import mirrg.miragecrops4.lib.multi.BlockMultiOregen;
-import mirrg.miragecrops4.lib.multi.ItemMultiIconOregen;
-import mirrg.miragecrops4.lib.multi.MetablockOregen;
-import mirrg.miragecrops4.lib.multi.MetaitemIconOregen;
 import mirrg.miragecrops4.lib.oregen.GlobsOregen.EnumGlob;
 import mirrg.miragecrops4.lib.oregen.GlobsOregen.EnumGlobGroup;
 import mirrg.miragecrops4.lib.oregen.GlobsOregen.EnumSlot;
+import mirrg.miragecrops4.lib.oregen.multi.BlockMultiOregen;
+import mirrg.miragecrops4.lib.oregen.multi.ItemMultiIconOregen;
+import mirrg.miragecrops4.lib.oregen.multi.MetablockOregen;
+import mirrg.miragecrops4.lib.oregen.multi.MetaitemIconOregen;
 
 public class HelpersOregen
 {
