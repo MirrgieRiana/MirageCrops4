@@ -1,5 +1,7 @@
 package mirrg.miragecrops4.oregen;
 
+import static mirrg.miragecrops4.lib.oregen.ItemsOregen.*;
+
 import java.util.List;
 
 import mirrg.mir34.modding.IMod;
@@ -9,6 +11,7 @@ import mirrg.mir40.worldgen.WorldGeneratorXYZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre.CountPer;
 import mirrg.mir41.glob.Glob;
+import mirrg.mir41.glob.HelpersGlob;
 import mirrg.mir41.glob.Slot;
 import mirrg.miragecrops4.api.APICore;
 import mirrg.miragecrops4.lib.ModuleMirageCropsBase;
@@ -126,6 +129,24 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		}
 
 		GameRegistry.registerWorldGenerator(iWorldGeneratorXY, 801);
+	}
+
+	protected void rwfcpc(
+		int minHeight, int maxHeight, double countPerCube, double numberOfBlocks, String biome,
+		ItemStack ore)
+	{
+		registerWorldgenFromCountPerCube(
+			minHeight, maxHeight, countPerCube, numberOfBlocks, biome, ore);
+	}
+
+	protected ItemStack cp(GlobsOregen.EnumSlot enumSlot, GlobsOregen.EnumGlob enumGlob)
+	{
+		return HelpersGlob.copy(globManager, enumSlot.slot, enumGlob.glob);
+	}
+
+	protected ItemStack cpo(GlobsOregen.EnumGlob enumGlob)
+	{
+		return cp(GlobsOregen.EnumSlot.ore, enumGlob);
 	}
 
 }

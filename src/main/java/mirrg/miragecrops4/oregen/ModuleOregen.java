@@ -1,10 +1,8 @@
 package mirrg.miragecrops4.oregen;
 
-import static mirrg.miragecrops4.lib.oregen.ItemsOregen.*;
 import mirrg.h.multi.Multi;
 import mirrg.mir34.modding.IMod;
 import mirrg.mir40.reflect.HelpersReflect;
-import mirrg.mir41.glob.HelpersGlob;
 import mirrg.miragecrops4.lib.RegisterMaterialColor;
 import mirrg.miragecrops4.lib.oregen.GlobsOregen;
 import mirrg.miragecrops4.lib.oregen.HelpersOregen;
@@ -18,7 +16,6 @@ import mirrg.miragecrops4.lib.oregen.multi.ItemMultiIconOregen;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -199,24 +196,6 @@ public class ModuleOregen extends ModuleOregenBase
 		rwfcpc(64, 128, 0.8, 18, "extreme", cpo(GlobsOregen.EnumGlob.apatite));
 		rwfcpc(64, 128, 1.5, 8, "extreme", cpo(GlobsOregen.EnumGlob.fluorite));
 
-	}
-
-	private void rwfcpc(
-		int minHeight, int maxHeight, double countPerCube, double numberOfBlocks, String biome,
-		ItemStack ore)
-	{
-		registerWorldgenFromCountPerCube(
-			minHeight, maxHeight, countPerCube, numberOfBlocks, biome, ore);
-	}
-
-	private ItemStack cp(GlobsOregen.EnumSlot enumSlot, GlobsOregen.EnumGlob enumGlob)
-	{
-		return HelpersGlob.copy(globManager, enumSlot.slot, enumGlob.glob);
-	}
-
-	private ItemStack cpo(GlobsOregen.EnumGlob enumGlob)
-	{
-		return cp(GlobsOregen.EnumSlot.ore, enumGlob);
 	}
 
 }
