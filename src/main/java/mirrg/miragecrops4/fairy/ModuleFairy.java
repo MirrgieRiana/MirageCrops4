@@ -15,7 +15,6 @@ import mirrg.miragecrops4.fairy.glass.HandlerRenderingFairyGlass;
 import mirrg.miragecrops4.fairy.glass.ItemFairyGlass;
 import mirrg.miragecrops4.fairy.glass.MessageHandlerFairyGlass;
 import mirrg.miragecrops4.lib.ModuleMirageCropsBase;
-import mirrg.miragecrops4.lib.ModuleOregenBase;
 import mirrg.miragecrops4.lib.multi.MetablockOregen;
 import mirrg.miragecrops4.lib.oregen.GlobsOregen;
 import mirrg.miragecrops4.lib.oregen.HelpersOregen;
@@ -81,7 +80,7 @@ public class ModuleFairy extends ModuleMirageCropsBase
 			HelpersOregen.overrideMetablock(
 				GlobsOregen.EnumSlot.ore, GlobsOregen.EnumGlobGroup.MirageMagic,
 				GlobsOregen.EnumGlob.spinatite, metablock);
-			ModuleOregenBase.configureMetablock(
+			HelpersOregen.configureMetablock(
 				ItemsOregen.moduleOregen, metablock, gdn(GlobsOregen.EnumSlot.ore, GlobsOregen.EnumGlob.spinatite));
 		}
 

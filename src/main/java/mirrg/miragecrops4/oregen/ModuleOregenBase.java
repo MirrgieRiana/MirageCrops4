@@ -1,12 +1,9 @@
-package mirrg.miragecrops4.lib;
+package mirrg.miragecrops4.oregen;
 
 import java.util.List;
 
 import mirrg.mir34.modding.IMod;
-import mirrg.mir34.modding.IModule;
-import mirrg.mir40.icon.HelpersIcon;
 import mirrg.mir40.icon.IMultiIconShape;
-import mirrg.mir40.icon.MultiIcon;
 import mirrg.mir40.worldgen.FilterBiome;
 import mirrg.mir40.worldgen.WorldGeneratorXYZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre;
@@ -14,11 +11,14 @@ import mirrg.mir40.worldgen.WorldGeneratorXZOre.CountPer;
 import mirrg.mir41.glob.Glob;
 import mirrg.mir41.glob.Slot;
 import mirrg.miragecrops4.api.APICore;
+import mirrg.miragecrops4.lib.ModuleMirageCropsBase;
+import mirrg.miragecrops4.lib.RegisterMaterialColor;
 import mirrg.miragecrops4.lib.multi.BlockMultiOregen;
 import mirrg.miragecrops4.lib.multi.ItemMultiIconOregen;
 import mirrg.miragecrops4.lib.multi.MetablockOregen;
 import mirrg.miragecrops4.lib.multi.MetaitemIconOregen;
 import mirrg.miragecrops4.lib.oregen.GlobsOregen;
+import mirrg.miragecrops4.lib.oregen.HelpersOregen;
 import mirrg.miragecrops4.lib.oregen.ItemsOregen;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -65,28 +65,13 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 			ItemsOregen.globManager.put(unlocalizedName, new ItemStack(blockMulti, 1, i));
 
 			// メタブロックの設定
-			configureMetablock(this, metablock, unlocalizedName);
+			HelpersOregen.configureMetablock(this, metablock, unlocalizedName);
 
 			if (enumGlobGroup.globGroup.allowsSlot(slot)) {
 				// 鉱石辞書に登録
 				OreDictionary.registerOre(unlocalizedName, new ItemStack(blockMulti, 1, i));
 			}
 
-		}
-	}
-
-	public static void configureMetablock(IModule module,
-		MetablockOregen metablock, String unlocalizedName)
-	{
-		metablock.unlocalizedName = unlocalizedName;
-		if (module.getMod().isClient()) {
-			String textureName =
-				module.getMod().getModId() + ":" + module.getModuleName() + "/" + unlocalizedName;
-			if (HelpersIcon.getURLFromTextureName(textureName, HelpersIcon.TYPE_BLOCKS) != null) {
-				metablock.iconName = textureName;
-			} else {
-				metablock.iconName = module.getMod().getModId() + ":" + "NULL_ICON";
-			}
 		}
 	}
 
@@ -114,7 +99,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 				ItemsOregen.globManager.put(unlocalizedName, new ItemStack(itemMultiIcon, 1, id));
 
 				// メタアイテムの設定
-				configuteMetaitem(this, metaitemIcon, unlocalizedName,
+				HelpersOregen.configuteMetaitem(this, metaitemIcon, unlocalizedName,
 					RegisterMaterialColor.instance.get(glob.getName()), multiIconShape);
 
 				if (enumGlobGroup.globGroup.allowsSlot(slot)) {
@@ -122,21 +107,6 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 					OreDictionary.registerOre(unlocalizedName, new ItemStack(itemMultiIcon, 1, id));
 				}
 
-			}
-		}
-	}
-
-	public static void configuteMetaitem(IModule module,
-		MetaitemIconOregen metaitemIcon, String unlocalizedName, int color, IMultiIconShape multiIconShape)
-	{
-		metaitemIcon.unlocalizedName = unlocalizedName;
-		if (module.getMod().isClient()) {
-			String textureName =
-				module.getMod().getModId() + ":" + module.getModuleName() + "/" + unlocalizedName;
-			if (HelpersIcon.getURLFromTextureName(textureName, HelpersIcon.TYPE_ITEMS) != null) {
-				metaitemIcon.iconName = textureName;
-			} else {
-				metaitemIcon.multiIcon = new MultiIcon(multiIconShape, color);
 			}
 		}
 	}

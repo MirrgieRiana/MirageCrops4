@@ -1,5 +1,9 @@
 package mirrg.miragecrops4.lib.oregen;
 
+import mirrg.mir34.modding.IModule;
+import mirrg.mir40.icon.HelpersIcon;
+import mirrg.mir40.icon.IMultiIconShape;
+import mirrg.mir40.icon.MultiIcon;
 import mirrg.mir40.math.HelpersString;
 import mirrg.mir40.reflect.HelpersReflect;
 import mirrg.mir41.glob.IGlobGroup;
@@ -77,6 +81,34 @@ public class HelpersOregen
 
 		itemMulti.multi.clearBindind(metaId);
 		itemMulti.multi.bind(metaId, metaitem);
+	}
+
+	public static void configureMetablock(IModule module,
+		MetablockOregen metablock, String unlocalizedName)
+	{
+		metablock.unlocalizedName = unlocalizedName;
+		if (module.getMod().isClient()) {
+			String textureName = module.getMod().getModId() + ":" + module.getModuleName() + "/" + unlocalizedName;
+			if (HelpersIcon.getURLFromTextureName(textureName, HelpersIcon.TYPE_BLOCKS) != null) {
+				metablock.iconName = textureName;
+			} else {
+				metablock.iconName = module.getMod().getModId() + ":" + "NULL_ICON";
+			}
+		}
+	}
+
+	public static void configuteMetaitem(IModule module,
+		MetaitemIconOregen metaitemIcon, String unlocalizedName, int color, IMultiIconShape multiIconShape)
+	{
+		metaitemIcon.unlocalizedName = unlocalizedName;
+		if (module.getMod().isClient()) {
+			String textureName = module.getMod().getModId() + ":" + module.getModuleName() + "/" + unlocalizedName;
+			if (HelpersIcon.getURLFromTextureName(textureName, HelpersIcon.TYPE_ITEMS) != null) {
+				metaitemIcon.iconName = textureName;
+			} else {
+				metaitemIcon.multiIcon = new MultiIcon(multiIconShape, color);
+			}
+		}
 	}
 
 }
