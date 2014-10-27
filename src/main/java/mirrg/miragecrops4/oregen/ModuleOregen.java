@@ -14,6 +14,7 @@ import mirrg.miragecrops4.lib.multi.IMetaitemIconOregen;
 import mirrg.miragecrops4.lib.multi.ItemBlockMultiOregen;
 import mirrg.miragecrops4.lib.multi.ItemMultiIconOregen;
 import mirrg.miragecrops4.lib.oregen.GlobsOregen;
+import mirrg.miragecrops4.lib.oregen.HelpersOregen;
 import mirrg.miragecrops4.lib.oregen.ItemsOregen;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -79,7 +80,7 @@ public class ModuleOregen extends ModuleOregenBase
 				for (GlobsOregen.EnumGlobGroup enumGlobGroup : GlobsOregen.EnumGlobGroup.values()) {
 					if (enumGlobGroup.globGroup.allowsSlot(enumSlot.slot)) {
 
-						String unlocalizedName = ItemsOregen.getBlockUnlocalizedName(enumSlot.slot,
+						String unlocalizedName = HelpersOregen.getBlockUnlocalizedName(enumSlot.slot,
 							enumGlobGroup.globGroup);
 
 						Exception e = HelpersReflect.setStaticField(
@@ -108,7 +109,7 @@ public class ModuleOregen extends ModuleOregenBase
 		for (GlobsOregen.EnumSlot enumSlot : GlobsOregen.EnumSlot.values()) {
 			if (enumSlot.type == GlobsOregen.EnumSlotType.ITEM) {
 
-				String unlocalizedName = ItemsOregen.getItemUnlocalizedName(enumSlot.slot);
+				String unlocalizedName = HelpersOregen.getItemUnlocalizedName(enumSlot.slot);
 
 				Exception e = HelpersReflect
 					.setStaticField(
@@ -133,7 +134,7 @@ public class ModuleOregen extends ModuleOregenBase
 				for (GlobsOregen.EnumGlobGroup enumGlobGroup : GlobsOregen.EnumGlobGroup.values()) {
 					if (enumGlobGroup.globGroup.allowsSlot(enumSlot.slot)) {
 
-						String unlocalizedName = ItemsOregen.getBlockUnlocalizedName(enumSlot.slot,
+						String unlocalizedName = HelpersOregen.getBlockUnlocalizedName(enumSlot.slot,
 							enumGlobGroup.globGroup);
 
 						Object obj = HelpersReflect.getStaticField(ItemsOregen.class, unlocalizedName);
@@ -161,7 +162,7 @@ public class ModuleOregen extends ModuleOregenBase
 		for (GlobsOregen.EnumSlot enumSlot : GlobsOregen.EnumSlot.values()) {
 			if (enumSlot.type == GlobsOregen.EnumSlotType.ITEM) {
 
-				String unlocalizedName = ItemsOregen.getItemUnlocalizedName(enumSlot.slot);
+				String unlocalizedName = HelpersOregen.getItemUnlocalizedName(enumSlot.slot);
 
 				Object obj = HelpersReflect.getStaticField(ItemsOregen.class, unlocalizedName);
 

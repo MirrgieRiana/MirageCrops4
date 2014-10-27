@@ -1,11 +1,8 @@
 package mirrg.miragecrops4.lib.oregen;
 
 import mirrg.mir34.modding.IModule;
-import mirrg.mir40.math.HelpersString;
 import mirrg.mir41.glob.Glob;
 import mirrg.mir41.glob.GlobManager;
-import mirrg.mir41.glob.IGlobGroup;
-import mirrg.mir41.glob.ISlot;
 import mirrg.mir41.glob.Slot;
 import mirrg.miragecrops4.lib.multi.BlockMultiOregen;
 import mirrg.miragecrops4.lib.multi.ItemMultiIconOregen;
@@ -30,19 +27,5 @@ public class ItemsOregen
 	public static ItemMultiIconOregen itemIngot;
 	public static ItemMultiIconOregen itemGem;
 	public static ItemMultiIconOregen itemDust;
-
-	public static String getBlockUnlocalizedName(ISlot slot, IGlobGroup<?> globGroup)
-	{
-		if (slot.equals(GlobsOregen.EnumSlot.block.slot)) {
-			return "block" + globGroup.getName();
-		} else {
-			return "block" + HelpersString.toUpperCaseHead(slot.getName()) + globGroup.getName();
-		}
-	}
-
-	public static String getItemUnlocalizedName(ISlot slot)
-	{
-		return "item" + HelpersString.toUpperCaseHead(slot.getName());
-	}
 
 }
