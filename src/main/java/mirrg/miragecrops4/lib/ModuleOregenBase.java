@@ -7,15 +7,11 @@ import mirrg.mir34.modding.IModule;
 import mirrg.mir40.icon.HelpersIcon;
 import mirrg.mir40.icon.IMultiIconShape;
 import mirrg.mir40.icon.MultiIcon;
-import mirrg.mir40.reflect.HelpersReflect;
 import mirrg.mir40.worldgen.FilterBiome;
 import mirrg.mir40.worldgen.WorldGeneratorXYZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre.CountPer;
 import mirrg.mir41.glob.Glob;
-import mirrg.mir41.glob.IGlob;
-import mirrg.mir41.glob.IGlobGroup;
-import mirrg.mir41.glob.ISlot;
 import mirrg.mir41.glob.Slot;
 import mirrg.miragecrops4.api.APICore;
 import mirrg.miragecrops4.lib.multi.BlockMultiOregen;
@@ -77,18 +73,6 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 			}
 
 		}
-	}
-
-	public static void overrideMetablock(ISlot slot, IGlobGroup<?> globGroup, IGlob glob, MetablockOregen metablock)
-	{
-		Object blockMulti = HelpersReflect.getStaticField(
-			ItemsOregen.class, ItemsOregen.getBlockUnlocalizedName(slot, globGroup));
-		if (blockMulti == null || blockMulti instanceof Exception) {
-			throw new RuntimeException((Exception) blockMulti);
-		}
-
-		((BlockMultiOregen) blockMulti).multi.clearBindind(globGroup.getGlobs().indexOf(glob));
-		((BlockMultiOregen) blockMulti).multi.bind(globGroup.getGlobs().indexOf(glob), metablock);
 	}
 
 	public static void configureMetablock(IModule module,
