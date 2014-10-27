@@ -142,7 +142,9 @@ public class ModuleFairy extends ModuleMirageCropsBase
 		BlockMulti<MULTI, META> blockMulti, int id, META meta, String unlocalizedName)
 	{
 		meta.setUnlocalizedName(unlocalizedName);
-		meta.setIconName(getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName);
+		if (getMod().isClient()) {
+			meta.setIconName(getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName);
+		}
 		blockMulti.multi.bind(id, meta);
 	}
 
