@@ -4,8 +4,7 @@ import mirrg.mir40.icon.IMultiIconShape;
 import mirrg.mir41.glob.Glob;
 import mirrg.mir41.glob.GlobGroup;
 import mirrg.mir41.glob.Slot;
-import mirrg.miragecrops4.lib.MultiIcons;
-import mirrg.miragecrops4.lib.MultiIcons.EnumMultiIconShape;
+import mirrg.miragecrops4.lib.oregen.MultiIcons.EnumMultiIconShape;
 
 public class GlobsOregen
 {
