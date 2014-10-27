@@ -70,7 +70,7 @@ public class HelpersOregen
 		int metaId = getMetablockId(enumGlobGroup, enumGlob);
 
 		blockMulti.multi.clearBindind(metaId);
-		blockMulti.multi.bind(enumGlobGroup.globGroup.getGlobs().indexOf(enumGlob), metablock);
+		blockMulti.multi.bind(metaId, metablock);
 	}
 
 	public static void overrideMetaitem(EnumSlot enumSlot, EnumGlobGroup enumGlobGroup, EnumGlob enumGlob,
