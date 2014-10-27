@@ -79,8 +79,8 @@ public class ModuleFairy extends ModuleMirageCropsBase
 				GlobsOregen.EnumSlot.ore.slot);
 
 			HelpersOregen.overrideMetablock(
-				GlobsOregen.EnumSlot.ore.slot, GlobsOregen.EnumGlobGroup.MirageMagic.globGroup,
-				GlobsOregen.EnumGlob.spinatite.glob, metablock);
+				GlobsOregen.EnumSlot.ore, GlobsOregen.EnumGlobGroup.MirageMagic,
+				GlobsOregen.EnumGlob.spinatite, metablock);
 			ModuleOregenBase.configureMetablock(
 				ItemsOregen.moduleOregen, metablock, gdn(GlobsOregen.EnumSlot.ore, GlobsOregen.EnumGlob.spinatite));
 		}
