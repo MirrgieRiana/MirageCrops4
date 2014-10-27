@@ -5,7 +5,8 @@ import mirrg.mir34.modding.IMod;
 import mirrg.mir40.reflect.HelpersReflect;
 import mirrg.miragecrops4.lib.RegisterMaterialColor;
 import mirrg.miragecrops4.lib.oregen.GlobsOregen;
-import mirrg.miragecrops4.lib.oregen.HelpersOregen;
+import mirrg.miragecrops4.lib.oregen.GlobsOregen.EnumGlobGroup;
+import mirrg.miragecrops4.lib.oregen.GlobsOregen.EnumSlot;
 import mirrg.miragecrops4.lib.oregen.ItemsOregen;
 import mirrg.miragecrops4.lib.oregen.MultiIcons;
 import mirrg.miragecrops4.lib.oregen.multi.BlockMultiOregen;
@@ -67,112 +68,53 @@ public class ModuleOregen extends ModuleOregenBase
 	 * 各種インスタンス生成と登録とAPIへの代入
 	 */
 	@Override
-	protected void registerBlocks()
+	protected void registerBlocks(EnumSlot enumSlot, EnumGlobGroup enumGlobGroup, String unlocalizedName)
 	{
-
-		for (GlobsOregen.EnumSlot enumSlot : GlobsOregen.EnumSlot.values()) {
-			if (enumSlot.type == GlobsOregen.EnumSlotType.BLOCK) {
-
-				for (GlobsOregen.EnumGlobGroup enumGlobGroup : GlobsOregen.EnumGlobGroup.values()) {
-					if (enumGlobGroup.globGroup.allowsSlot(enumSlot.slot)) {
-
-						String unlocalizedName = HelpersOregen.getBlockUnlocalizedName(enumSlot.slot,
-							enumGlobGroup.globGroup);
-
-						Exception e = HelpersReflect.setStaticField(
-							ItemsOregen.class,
-							unlocalizedName,
-							registerBlock(new BlockMultiOregen(Material.rock, new Multi(new IMetablockOregen[16])),
-								ItemBlockMultiOregen.class,
-								unlocalizedName));
-						if (e != null) throw new RuntimeException(e);
-
-					}
-				}
-
-			}
-		}
-
+		Exception e = HelpersReflect.setStaticField(
+			ItemsOregen.class,
+			unlocalizedName,
+			registerBlock(new BlockMultiOregen(Material.rock, new Multi(new IMetablockOregen[16])),
+				ItemBlockMultiOregen.class,
+				unlocalizedName));
+		if (e != null) throw new RuntimeException(e);
 	}
 
 	/**
 	 * 各種インスタンス生成と登録とAPIへの代入
 	 */
 	@Override
-	protected void registerItems()
+	protected void registerItems(EnumSlot enumSlot, String unlocalizedName)
 	{
+		Exception e = HelpersReflect.setStaticField(
+			ItemsOregen.class,
+			unlocalizedName,
+			registerItem(new ItemMultiIconOregen(new Multi(new IMetaitemIconOregen[256])),
+				unlocalizedName));
+		if (e != null) throw new RuntimeException(e);
+	}
 
-		for (GlobsOregen.EnumSlot enumSlot : GlobsOregen.EnumSlot.values()) {
-			if (enumSlot.type == GlobsOregen.EnumSlotType.ITEM) {
+	@Override
+	protected void configureBlocks(EnumSlot enumSlot, EnumGlobGroup enumGlobGroup, String unlocalizedName)
+	{
+		Object obj = HelpersReflect.getStaticField(ItemsOregen.class, unlocalizedName);
+		if (obj == null || obj instanceof Exception) throw new RuntimeException((Exception) obj);
 
-				String unlocalizedName = HelpersOregen.getItemUnlocalizedName(enumSlot.slot);
+		configureBlock((Block) obj, unlocalizedName);
 
-				Exception e = HelpersReflect
-					.setStaticField(
-						ItemsOregen.class,
-						unlocalizedName,
-						registerItem(new ItemMultiIconOregen(new Multi(new IMetaitemIconOregen[256])),
-							unlocalizedName));
-				if (e != null) throw new RuntimeException(e);
-
-			}
-		}
+		createMetaBlock(enumGlobGroup, (BlockMultiOregen) obj, enumSlot.slot);
 
 	}
 
 	@Override
-	protected void configureBlocks()
+	protected void configureItems(EnumSlot enumSlot, String unlocalizedName)
 	{
+		Object obj = HelpersReflect.getStaticField(ItemsOregen.class, unlocalizedName);
+		if (obj == null || obj instanceof Exception) throw new RuntimeException((Exception) obj);
 
-		for (GlobsOregen.EnumSlot enumSlot : GlobsOregen.EnumSlot.values()) {
-			if (enumSlot.type == GlobsOregen.EnumSlotType.BLOCK) {
+		configureItem((Item) obj, unlocalizedName);
 
-				for (GlobsOregen.EnumGlobGroup enumGlobGroup : GlobsOregen.EnumGlobGroup.values()) {
-					if (enumGlobGroup.globGroup.allowsSlot(enumSlot.slot)) {
-
-						String unlocalizedName = HelpersOregen.getBlockUnlocalizedName(enumSlot.slot,
-							enumGlobGroup.globGroup);
-
-						Object obj = HelpersReflect.getStaticField(ItemsOregen.class, unlocalizedName);
-
-						if (obj == null || obj instanceof Exception) {
-							throw new RuntimeException((Exception) obj);
-						}
-
-						configureBlock((Block) obj, unlocalizedName);
-
-						createMetaBlock(enumGlobGroup, (BlockMultiOregen) obj, enumSlot.slot);
-
-					}
-				}
-
-			}
-		}
-
-	}
-
-	@Override
-	protected void configureItems()
-	{
-
-		for (GlobsOregen.EnumSlot enumSlot : GlobsOregen.EnumSlot.values()) {
-			if (enumSlot.type == GlobsOregen.EnumSlotType.ITEM) {
-
-				String unlocalizedName = HelpersOregen.getItemUnlocalizedName(enumSlot.slot);
-
-				Object obj = HelpersReflect.getStaticField(ItemsOregen.class, unlocalizedName);
-
-				if (obj == null || obj instanceof Exception) {
-					throw new RuntimeException((Exception) obj);
-				}
-
-				configureItem((Item) obj, unlocalizedName);
-
-				createMetaItem(GlobsOregen.EnumGlobGroup.values(), (ItemMultiIconOregen) obj, enumSlot.slot,
-					enumSlot.icon());
-
-			}
-		}
+		createMetaItem(GlobsOregen.EnumGlobGroup.values(), (ItemMultiIconOregen) obj, enumSlot.slot,
+			enumSlot.icon());
 
 	}
 

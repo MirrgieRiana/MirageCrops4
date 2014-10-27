@@ -17,6 +17,8 @@ import mirrg.miragecrops4.api.APICore;
 import mirrg.miragecrops4.lib.ModuleMirageCropsBase;
 import mirrg.miragecrops4.lib.RegisterMaterialColor;
 import mirrg.miragecrops4.lib.oregen.GlobsOregen;
+import mirrg.miragecrops4.lib.oregen.GlobsOregen.EnumGlobGroup;
+import mirrg.miragecrops4.lib.oregen.GlobsOregen.EnumSlot;
 import mirrg.miragecrops4.lib.oregen.HelpersOregen;
 import mirrg.miragecrops4.lib.oregen.ItemsOregen;
 import mirrg.miragecrops4.lib.oregen.multi.BlockMultiOregen;
@@ -148,5 +150,119 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 	{
 		return cp(GlobsOregen.EnumSlot.ore, enumGlob);
 	}
+
+	protected interface IHandler_eachBlock
+	{
+
+		void handle(GlobsOregen.EnumSlot enumSlot, GlobsOregen.EnumGlobGroup enumGlobGroup, String unlocalizedName);
+
+	}
+
+	protected void eachBlock(IHandler_eachBlock handler)
+	{
+		for (GlobsOregen.EnumSlot enumSlot : GlobsOregen.EnumSlot.values()) {
+			if (enumSlot.type == GlobsOregen.EnumSlotType.BLOCK) {
+
+				for (GlobsOregen.EnumGlobGroup enumGlobGroup : GlobsOregen.EnumGlobGroup.values()) {
+					if (enumGlobGroup.globGroup.allowsSlot(enumSlot.slot)) {
+
+						handler.handle(enumSlot, enumGlobGroup,
+							HelpersOregen.getBlockUnlocalizedName(enumSlot.slot, enumGlobGroup.globGroup));
+
+					}
+				}
+
+			}
+		}
+	}
+
+	protected interface IHandler_eachItem
+	{
+
+		void handle(GlobsOregen.EnumSlot enumSlot, String unlocalizedName);
+
+	}
+
+	protected void eachItem(IHandler_eachItem handler)
+	{
+		for (GlobsOregen.EnumSlot enumSlot : GlobsOregen.EnumSlot.values()) {
+			if (enumSlot.type == GlobsOregen.EnumSlotType.ITEM) {
+
+				handler.handle(enumSlot,
+					HelpersOregen.getItemUnlocalizedName(enumSlot.slot));
+
+			}
+		}
+	}
+
+	/**
+	 * 各種インスタンス生成と登録とAPIへの代入
+	 */
+	@Override
+	protected void registerBlocks()
+	{
+		eachBlock(new IHandler_eachBlock() {
+
+			@Override
+			public void handle(EnumSlot enumSlot, EnumGlobGroup enumGlobGroup, String unlocalizedName)
+			{
+				registerBlocks(enumSlot, enumGlobGroup, unlocalizedName);
+			}
+
+		});
+	}
+
+	/**
+	 * 各種インスタンス生成と登録とAPIへの代入
+	 */
+	@Override
+	protected void registerItems()
+	{
+		eachItem(new IHandler_eachItem() {
+
+			@Override
+			public void handle(EnumSlot enumSlot, String unlocalizedName)
+			{
+				registerItems(enumSlot, unlocalizedName);
+			}
+
+		});
+	}
+
+	@Override
+	protected void configureBlocks()
+	{
+		eachBlock(new IHandler_eachBlock() {
+
+			@Override
+			public void handle(EnumSlot enumSlot, EnumGlobGroup enumGlobGroup, String unlocalizedName)
+			{
+				configureBlocks(enumSlot, enumGlobGroup, unlocalizedName);
+			}
+
+		});
+	}
+
+	@Override
+	protected void configureItems()
+	{
+		eachItem(new IHandler_eachItem() {
+
+			@Override
+			public void handle(EnumSlot enumSlot, String unlocalizedName)
+			{
+				configureItems(enumSlot, unlocalizedName);
+			}
+
+		});
+	}
+
+	protected abstract void registerBlocks(EnumSlot enumSlot, EnumGlobGroup enumGlobGroup, String unlocalizedName);
+
+	protected abstract void registerItems(EnumSlot enumSlot, String unlocalizedName);
+
+	protected abstract void configureBlocks(EnumSlot enumSlot, EnumGlobGroup enumGlobGroup, String unlocalizedName);
+
+	protected abstract void configureItems(EnumSlot enumSlot, String unlocalizedName);
 
 }
