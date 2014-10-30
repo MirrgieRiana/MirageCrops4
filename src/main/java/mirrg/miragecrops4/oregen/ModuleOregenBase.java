@@ -130,19 +130,6 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		GameRegistry.registerWorldGenerator(iWorldGeneratorXY, 801);
 	}
 
-	public static void rwfcpc(
-		int minHeight, int maxHeight, double countPerCube, double numberOfBlocks, String biome,
-		ItemStack ore)
-	{
-		registerWorldgenFromCountPerCube(
-			minHeight, maxHeight, countPerCube, numberOfBlocks, biome, ore);
-	}
-
-	public static ItemStack cpo(GlobsOregen.EnumGlob enumGlob)
-	{
-		return cpy(GlobsOregen.EnumSlot.ore, enumGlob);
-	}
-
 	public static interface IHandler_eachBlock
 	{
 
