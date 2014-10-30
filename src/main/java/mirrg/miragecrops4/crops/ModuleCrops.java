@@ -20,6 +20,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 
+@SuppressWarnings({
+	"rawtypes", "unchecked"
+})
 public class ModuleCrops extends ModuleMirageCropsBase
 {
 

@@ -10,6 +10,7 @@ import mirrg.miragecrops4.lib.oregen.multi.MetablockOregen;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
+@SuppressWarnings("rawtypes")
 public class MetablockOreSpinatite extends MetablockOregen
 {
 	public MetablockOreSpinatite(IGlob glob, ISlot slot)

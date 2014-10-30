@@ -7,6 +7,7 @@ import mirrg.mir41.glob.Slot;
 import mirrg.miragecrops4.lib.oregen.multi.BlockMultiOregen;
 import mirrg.miragecrops4.lib.oregen.multi.ItemMultiIconOregen;
 
+@SuppressWarnings("rawtypes")
 public class ItemsOregen
 {
 

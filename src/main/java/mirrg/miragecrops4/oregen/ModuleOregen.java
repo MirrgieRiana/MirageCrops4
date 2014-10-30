@@ -22,6 +22,9 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+@SuppressWarnings({
+	"rawtypes", "unchecked"
+})
 public class ModuleOregen extends ModuleOregenBase
 {
 

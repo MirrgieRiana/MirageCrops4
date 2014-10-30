@@ -1,5 +1,6 @@
 package mirrg.miragecrops4.lib.oregen;
 
+import mirrg.eclipse.annotation.NonNull;
 import mirrg.mir34.modding.IModule;
 import mirrg.mir40.icon.HelpersIcon;
 import mirrg.mir40.icon.IMultiIconShape;
@@ -16,6 +17,9 @@ import mirrg.miragecrops4.lib.oregen.multi.ItemMultiIconOregen;
 import mirrg.miragecrops4.lib.oregen.multi.MetablockOregen;
 import mirrg.miragecrops4.lib.oregen.multi.MetaitemIconOregen;
 
+@SuppressWarnings({
+	"rawtypes", "unchecked"
+})
 public class HelpersOregen
 {
 
@@ -64,7 +68,7 @@ public class HelpersOregen
 	}
 
 	public static void overrideMetablock(EnumSlot enumSlot, EnumGlobGroup enumGlobGroup, EnumGlob enumGlob,
-		MetablockOregen metablock)
+		@NonNull MetablockOregen metablock)
 	{
 		BlockMultiOregen blockMulti = getBlock(enumSlot.slot, enumGlobGroup.globGroup);
 		int metaId = getMetablockId(enumGlobGroup, enumGlob);
@@ -74,7 +78,7 @@ public class HelpersOregen
 	}
 
 	public static void overrideMetaitem(EnumSlot enumSlot, EnumGlobGroup enumGlobGroup, EnumGlob enumGlob,
-		MetaitemIconOregen metaitem)
+		@NonNull MetaitemIconOregen metaitem)
 	{
 		ItemMultiIconOregen itemMulti = getItem(enumSlot.slot);
 		int metaId = getMetaitemId(enumGlobGroup, enumGlob);
