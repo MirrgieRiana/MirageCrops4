@@ -96,7 +96,7 @@ public abstract class ModuleMirageCropsBase extends ModuleAbstract
 
 	//
 
-	protected <T extends Block> T registerBlock(
+	public static <T extends Block> T registerBlock(
 		T block, Class<? extends ItemBlock> classItemBlock, String name)
 	{
 		GameRegistry.registerBlock(block, classItemBlock, name);
@@ -113,7 +113,7 @@ public abstract class ModuleMirageCropsBase extends ModuleAbstract
 		block.setStepSound(stepSound);
 	}
 
-	protected <T extends Item> T registerItem(T item, String name)
+	public static <T extends Item> T registerItem(T item, String name)
 	{
 		GameRegistry.registerItem(item, name);
 		return item;
@@ -128,7 +128,7 @@ public abstract class ModuleMirageCropsBase extends ModuleAbstract
 	/**
 	 * {@link GlobManager#getDictionaryName(ISlot, IGlob)} の略
 	 */
-	protected String gdn(Slot slot, Glob glob)
+	public static String gdn(Slot slot, Glob glob)
 	{
 		return ItemsOregen.globManager.getDictionaryName(slot, glob);
 	}
@@ -137,7 +137,7 @@ public abstract class ModuleMirageCropsBase extends ModuleAbstract
 	 * {@link HelpersGlob#copy(mirrg.mir41.glob.api.IGlobManager, ISlot, IGlob)}
 	 * の略
 	 */
-	protected ItemStack cpy(Slot slot, Glob glob)
+	public static ItemStack cpy(Slot slot, Glob glob)
 	{
 		return HelpersGlob.copy(ItemsOregen.globManager, slot, glob);
 	}
@@ -146,7 +146,7 @@ public abstract class ModuleMirageCropsBase extends ModuleAbstract
 	 * {@link HelpersGlob#copy(mirrg.mir41.glob.api.IGlobManager, ISlot, IGlob, int)}
 	 * の略
 	 */
-	protected ItemStack cpy(Slot slot, Glob glob, int size)
+	public static ItemStack cpy(Slot slot, Glob glob, int size)
 	{
 		return HelpersGlob.copy(ItemsOregen.globManager, slot, glob, size);
 	}
@@ -154,7 +154,7 @@ public abstract class ModuleMirageCropsBase extends ModuleAbstract
 	/**
 	 * {@link GlobManager#getDictionaryName(ISlot, IGlob)} の略
 	 */
-	protected String gdn(GlobsOregen.EnumSlot enumSlot, GlobsOregen.EnumGlob enumGlob)
+	public static String gdn(GlobsOregen.EnumSlot enumSlot, GlobsOregen.EnumGlob enumGlob)
 	{
 		return gdn(enumSlot.slot, enumGlob.glob);
 	}
@@ -163,7 +163,7 @@ public abstract class ModuleMirageCropsBase extends ModuleAbstract
 	 * {@link HelpersGlob#copy(mirrg.mir41.glob.api.IGlobManager, ISlot, IGlob)}
 	 * の略
 	 */
-	protected ItemStack cpy(GlobsOregen.EnumSlot enumSlot, GlobsOregen.EnumGlob enumGlob)
+	public static ItemStack cpy(GlobsOregen.EnumSlot enumSlot, GlobsOregen.EnumGlob enumGlob)
 	{
 		return cpy(enumSlot.slot, enumGlob.glob);
 	}
@@ -172,7 +172,7 @@ public abstract class ModuleMirageCropsBase extends ModuleAbstract
 	 * {@link HelpersGlob#copy(mirrg.mir41.glob.api.IGlobManager, ISlot, IGlob, int)}
 	 * の略
 	 */
-	protected ItemStack cpy(GlobsOregen.EnumSlot enumSlot, GlobsOregen.EnumGlob enumGlob, int size)
+	public static ItemStack cpy(GlobsOregen.EnumSlot enumSlot, GlobsOregen.EnumGlob enumGlob, int size)
 	{
 		return cpy(enumSlot.slot, enumGlob.glob, size);
 	}

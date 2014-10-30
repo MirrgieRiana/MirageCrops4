@@ -1,7 +1,5 @@
 package mirrg.miragecrops4.oregen;
 
-import static mirrg.miragecrops4.lib.oregen.ItemsOregen.*;
-
 import java.util.List;
 
 import mirrg.mir34.modding.IMod;
@@ -11,7 +9,6 @@ import mirrg.mir40.worldgen.WorldGeneratorXYZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre;
 import mirrg.mir40.worldgen.WorldGeneratorXZOre.CountPer;
 import mirrg.mir41.glob.Glob;
-import mirrg.mir41.glob.HelpersGlob;
 import mirrg.mir41.glob.Slot;
 import mirrg.miragecrops4.api.APICore;
 import mirrg.miragecrops4.lib.ModuleMirageCropsBase;
@@ -116,7 +113,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		}
 	}
 
-	protected void registerWorldgenFromCountPerCube(int minHeight, int maxHeight, double countPerCube,
+	public static void registerWorldgenFromCountPerCube(int minHeight, int maxHeight, double countPerCube,
 		double numberOfBlocks, String biome, ItemStack ore)
 	{
 		WorldGeneratorXZOre iWorldGeneratorXY;
@@ -133,7 +130,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		GameRegistry.registerWorldGenerator(iWorldGeneratorXY, 801);
 	}
 
-	protected void rwfcpc(
+	public static void rwfcpc(
 		int minHeight, int maxHeight, double countPerCube, double numberOfBlocks, String biome,
 		ItemStack ore)
 	{
@@ -141,24 +138,19 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 			minHeight, maxHeight, countPerCube, numberOfBlocks, biome, ore);
 	}
 
-	protected ItemStack cp(GlobsOregen.EnumSlot enumSlot, GlobsOregen.EnumGlob enumGlob)
+	public static ItemStack cpo(GlobsOregen.EnumGlob enumGlob)
 	{
-		return HelpersGlob.copy(globManager, enumSlot.slot, enumGlob.glob);
+		return cpy(GlobsOregen.EnumSlot.ore, enumGlob);
 	}
 
-	protected ItemStack cpo(GlobsOregen.EnumGlob enumGlob)
-	{
-		return cp(GlobsOregen.EnumSlot.ore, enumGlob);
-	}
-
-	protected interface IHandler_eachBlock
+	public static interface IHandler_eachBlock
 	{
 
 		void handle(GlobsOregen.EnumSlot enumSlot, GlobsOregen.EnumGlobGroup enumGlobGroup, String unlocalizedName);
 
 	}
 
-	protected void eachBlock(IHandler_eachBlock handler)
+	public static void eachBlock(IHandler_eachBlock handler)
 	{
 		for (GlobsOregen.EnumSlot enumSlot : GlobsOregen.EnumSlot.values()) {
 			if (enumSlot.type == GlobsOregen.EnumSlotType.BLOCK) {
@@ -176,14 +168,14 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 		}
 	}
 
-	protected interface IHandler_eachItem
+	public static interface IHandler_eachItem
 	{
 
 		void handle(GlobsOregen.EnumSlot enumSlot, String unlocalizedName);
 
 	}
 
-	protected void eachItem(IHandler_eachItem handler)
+	public static void eachItem(IHandler_eachItem handler)
 	{
 		for (GlobsOregen.EnumSlot enumSlot : GlobsOregen.EnumSlot.values()) {
 			if (enumSlot.type == GlobsOregen.EnumSlotType.ITEM) {
