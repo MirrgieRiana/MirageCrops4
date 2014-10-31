@@ -2,6 +2,7 @@ package mirrg.mir41.glob;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 public class GlobGroup<GLOB extends IGlob> extends Base implements IGlobGroup<GLOB>
@@ -53,6 +54,18 @@ public class GlobGroup<GLOB extends IGlob> extends Base implements IGlobGroup<GL
 	public boolean allowsSlot(ISlot slot)
 	{
 		return allowsSlot.contains(slot.getName());
+	}
+
+	@Override
+	public int indexOf(GLOB glob)
+	{
+		return globs.indexOf(glob);
+	}
+
+	@Override
+	public Iterator<GLOB> iterator()
+	{
+		return globs.iterator();
 	}
 
 }

@@ -59,12 +59,12 @@ public class HelpersOregen
 
 	public static int getMetablockId(EnumGlobGroup enumGlobGroup, EnumGlob enumGlob)
 	{
-		return enumGlobGroup.globGroup.getGlobs().indexOf(enumGlob.glob);
+		return enumGlobGroup.globGroup.indexOf(enumGlob.glob);
 	}
 
 	public static int getMetaitemId(EnumGlobGroup enumGlobGroup, EnumGlob enumGlob)
 	{
-		return enumGlobGroup.ordinal() * 16 + enumGlobGroup.globGroup.getGlobs().indexOf(enumGlob.glob);
+		return enumGlobGroup.ordinal() * 16 + enumGlobGroup.globGroup.indexOf(enumGlob.glob);
 	}
 
 	public static void overrideMetablock(EnumSlot enumSlot, EnumGlobGroup enumGlobGroup, EnumGlob enumGlob,

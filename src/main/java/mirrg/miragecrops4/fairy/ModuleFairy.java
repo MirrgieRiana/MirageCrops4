@@ -247,13 +247,13 @@ public class ModuleFairy extends ModuleMirageCropsBase
 			'S', "stickWood"));
 
 		// 鉱物 鉱石→結晶→粉末
-		for (Glob glob : GlobsOregen.EnumGlobGroup.CalciteGroup.globGroup.getGlobs()) {
+		for (Glob glob : GlobsOregen.EnumGlobGroup.CalciteGroup.globGroup) {
 			addRecipeMineral(GlobsOregen.EnumGlobGroup.CalciteGroup.globGroup, glob);
 		}
-		for (Glob glob : GlobsOregen.EnumGlobGroup.MohsHardnessCrystal.globGroup.getGlobs()) {
+		for (Glob glob : GlobsOregen.EnumGlobGroup.MohsHardnessCrystal.globGroup) {
 			addRecipeMineral(GlobsOregen.EnumGlobGroup.MohsHardnessCrystal.globGroup, glob);
 		}
-		for (Glob glob : GlobsOregen.EnumGlobGroup.MirageMagic.globGroup.getGlobs()) {
+		for (Glob glob : GlobsOregen.EnumGlobGroup.MirageMagic.globGroup) {
 			addRecipeMineral(GlobsOregen.EnumGlobGroup.MirageMagic.globGroup, glob);
 		}
 

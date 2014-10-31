@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * キャメルケース大文字の名前
  */
-public interface IGlobGroup<GLOB extends IGlob>
+public interface IGlobGroup<GLOB extends IGlob> extends Iterable<GLOB>
 {
 
 	public String getName();
@@ -13,5 +13,7 @@ public interface IGlobGroup<GLOB extends IGlob>
 	public List<GLOB> getGlobs();
 
 	public boolean allowsSlot(ISlot slot);
+
+	public int indexOf(GLOB glob);
 
 }

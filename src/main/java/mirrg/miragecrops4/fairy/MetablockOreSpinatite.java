@@ -74,13 +74,13 @@ public class MetablockOreSpinatite extends MetablockOregen
 	{
 		return (world.getBlock(x, y, z) == ItemsOregen.blockOreMirageMagic) &&
 			world.getBlockMetadata(x, y, z) ==
-			GlobsOregen.EnumGlobGroup.MirageMagic.globGroup.getGlobs().indexOf(GlobsOregen.EnumGlob.spinatite.glob);
+			GlobsOregen.EnumGlobGroup.MirageMagic.globGroup.indexOf(GlobsOregen.EnumGlob.spinatite.glob);
 	}
 
 	protected void putOreSpinatite(World world, int x, int y, int z)
 	{
 		world.setBlock(x, y, z, ItemsOregen.blockOreMirageMagic,
-			GlobsOregen.EnumGlobGroup.MirageMagic.globGroup.getGlobs().indexOf(GlobsOregen.EnumGlob.spinatite.glob), 3);
+			GlobsOregen.EnumGlobGroup.MirageMagic.globGroup.indexOf(GlobsOregen.EnumGlob.spinatite.glob), 3);
 	}
 
 }

@@ -36,7 +36,7 @@ public class RenderBlockTorchFeeble extends RenderBlockAbstract
 
 			BlockTorchFeeble btf = (BlockTorchFeeble) block;
 			btf.overridedIcon = blockCalciteGroup.getIcon(
-				GlobsOregen.EnumGlobGroup.CalciteGroup.globGroup.getGlobs().indexOf(GlobsOregen.EnumGlob.calcite), 0);
+				GlobsOregen.EnumGlobGroup.CalciteGroup.globGroup.indexOf(GlobsOregen.EnumGlob.calcite.glob), 0);
 
 			f = 0.1f;
 			renderer.setRenderBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.1F, 0.5F + f);
@@ -62,7 +62,7 @@ public class RenderBlockTorchFeeble extends RenderBlockAbstract
 
 			BlockTorchFeeble btf = (BlockTorchFeeble) block;
 			btf.overridedIcon = blockCalciteGroup.getIcon(
-				GlobsOregen.EnumGlobGroup.CalciteGroup.globGroup.getGlobs().indexOf(GlobsOregen.EnumGlob.calcite), 0);
+				GlobsOregen.EnumGlobGroup.CalciteGroup.globGroup.indexOf(GlobsOregen.EnumGlob.calcite.glob), 0);
 
 			f = 0.1f;
 			renderer.setRenderBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.1F, 0.5F + f);
