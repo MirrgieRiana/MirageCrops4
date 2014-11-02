@@ -109,9 +109,10 @@ public class TileEntityMir41Connected extends TileEntityMir41 implements IPipeCo
 
 	protected ArrayList<Tuple<FluidTank, String>> fluidTanks = new ArrayList<Tuple<FluidTank, String>>();
 
-	protected void add(FluidTank fluidTank, String tagName)
+	protected <T extends FluidTank> T add(T fluidTank, String tagName)
 	{
 		fluidTanks.add(new Tuple<FluidTank, String>(fluidTank, tagName));
+		return fluidTank;
 	}
 
 	protected FluidTank getFluidTankFill(ForgeDirection arg0, Fluid arg1)
@@ -192,9 +193,10 @@ public class TileEntityMir41Connected extends TileEntityMir41 implements IPipeCo
 
 	protected ArrayList<Tuple<Inventory, String>> inventories = new ArrayList<Tuple<Inventory, String>>();
 
-	protected void add(Inventory inventory, String tagName)
+	protected <T extends Inventory> T add(T inventory, String tagName)
 	{
 		inventories.add(new Tuple<Inventory, String>(inventory, tagName));
+		return inventory;
 	}
 
 	@Override
@@ -318,9 +320,10 @@ public class TileEntityMir41Connected extends TileEntityMir41 implements IPipeCo
 
 	protected ArrayList<Tuple<EnergyTank, String>> energyTanks = new ArrayList<Tuple<EnergyTank, String>>();
 
-	protected void add(EnergyTank energyTank, String tagName)
+	protected <T extends EnergyTank> T add(T energyTank, String tagName)
 	{
 		energyTanks.add(new Tuple<EnergyTank, String>(energyTank, tagName));
+		return energyTank;
 	}
 
 }
