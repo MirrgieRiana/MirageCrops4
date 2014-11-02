@@ -84,7 +84,7 @@ public class TileEntityMir41 extends TileEntity implements IGuiProvider, ISetDir
 
 	protected ResourceLocation getGuiTexture(ContainerMir41 container)
 	{
-		return null; // TODO
+		return null;
 	}
 
 	protected boolean hasGui()
