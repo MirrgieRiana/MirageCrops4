@@ -98,10 +98,12 @@ public class GuiMir41 extends GuiContainer
 	protected void drawGuiContainerBackgroundLayer(float arg0, int mouseX, int mouseY)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		mc.renderEngine.bindTexture(guiTexture);
-		int xStart = (width - xSize) / 2;
-		int yStart = (height - ySize) / 2;
-		drawTexturedModalRect(xStart, yStart, 0, 0, xSize, ySize);
+		if (guiTexture != null) {
+			mc.renderEngine.bindTexture(guiTexture);
+			int xStart = (width - xSize) / 2;
+			int yStart = (height - ySize) / 2;
+			drawTexturedModalRect(xStart, yStart, 0, 0, xSize, ySize);
+		}
 
 		drawSlotsLayer(EnumLayer.Background, container.getSlots(), RendererSlot.instance, mouseX, mouseY);
 		drawSlotsLayer(EnumLayer.Background, container.fluidSlots, RendererFluidSlot.instance, mouseX, mouseY);
