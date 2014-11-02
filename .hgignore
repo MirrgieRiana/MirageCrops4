@@ -24,3 +24,4 @@ build/tmp/*
 .classpath
 .project
 logs/*
+BuildCraft-6.0.x.zip
