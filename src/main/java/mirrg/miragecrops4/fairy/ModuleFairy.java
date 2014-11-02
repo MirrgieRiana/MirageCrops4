@@ -10,6 +10,7 @@ import mirrg.mir40.multi.Metablock;
 import mirrg.mir40.net.MessageFieldInt;
 import mirrg.mir41.glob.Glob;
 import mirrg.mir41.glob.GlobGroup;
+import mirrg.mir41.tile.guihandler.GuiHandler;
 import mirrg.miragecrops4.api.APICore;
 import mirrg.miragecrops4.fairy.glass.HandlerRenderingFairyGlass;
 import mirrg.miragecrops4.fairy.glass.ItemFairyGlass;
@@ -58,6 +59,8 @@ public class ModuleFairy extends ModuleMirageCropsBase
 
 	public static SimpleNetworkWrapper snw;
 
+	public static GuiHandler guiHandler;
+
 	@Override
 	public void handle(FMLPreInitializationEvent event)
 	{
@@ -66,6 +69,8 @@ public class ModuleFairy extends ModuleMirageCropsBase
 
 		super.handle(event);
 
+		GameRegistry.registerTileEntity(TileEntityMachine_test.class, "Machine_test");
+		
 	}
 
 	@Override
@@ -87,6 +92,10 @@ public class ModuleFairy extends ModuleMirageCropsBase
 				ItemsOregen.moduleOregen, metablock, gdn(GlobsOregen.EnumSlot.ore, GlobsOregen.EnumGlob.spinatite));
 		}
 
+		{
+			guiHandler = new GuiHandler(1, getMod());
+			NetworkRegistry.INSTANCE.registerGuiHandler(getMod(), guiHandler);
+		}
 	}
 
 	@Override
