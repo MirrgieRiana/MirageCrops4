@@ -5,7 +5,6 @@ import mirrg.mir40.nbt.EnumNBTTypes;
 import mirrg.mir41.tile.guihandler.IGuiProvider;
 import mirrg.mir41.tile.inventory.IInventoryName;
 import mirrg.mir41.tile.inventory.ISetDirty;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -67,7 +66,7 @@ public class TileEntityMir41 extends TileEntity implements IGuiProvider, ISetDir
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public GuiScreen createGui(EntityPlayer player, World world, int x, int y, int z)
+	public GuiMir41 createGui(EntityPlayer player, World world, int x, int y, int z)
 	{
 		if (!hasGui()) return null;
 		ContainerMir41 container = createContainer(player, world, x, y, z);
