@@ -13,8 +13,6 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.tileentity.TileEntityFurnace;
 
 public class ContainerMir41 extends Container
 {
@@ -121,76 +119,59 @@ public class ContainerMir41 extends Container
 	}
 
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
+	public ItemStack transferStackInSlot(EntityPlayer player, int slotId)
 	{
-		ItemStack itemstack = null;
-		Slot slot = (Slot) this.inventorySlots.get(par2);
+		Slot slot = (Slot) this.inventorySlots.get(slotId);
+		if (slot == null) return null;
+		if (!slot.getHasStack()) return null;
 
-		if (slot != null && slot.getHasStack())
-		{
-			ItemStack itemstack1 = slot.getStack();
-			itemstack = itemstack1.copy();
+		int sourceInventoryIndex = inventoryChain.getAddress(slotId)[0];
+		int[] transferInventoryIndexes = transferInventoriesTable.get(sourceInventoryIndex);
 
-			if (par2 == 2)
-			{
-				if (!this.mergeItemStack(itemstack1, 3, 39, true))
-				{
-					return null;
-				}
+		ItemStack itemstack1 = slot.getStack();
+		ItemStack itemstack = itemstack1.copy();
 
-				slot.onSlotChange(itemstack1, itemstack);
+		boolean moved = false;
+
+		for (int i = 0; i < transferInventoryIndexes.length; i++) {
+			int transferInventoryIndex = transferInventoryIndexes[i];
+			IInventory transferInventory = inventoryChain.getInventory(transferInventoryIndex);
+
+			if (mergeItemStack(itemstack1,
+				inventoryChain.getGlobalSlotIndex(transferInventoryIndex, 0),
+				inventoryChain.getGlobalSlotIndex(transferInventoryIndex, transferInventory.getSizeInventory()),
+				inventoryInverseTable.get(transferInventoryIndex))) {
+				// 移動が行われた
+				moved = true;
 			}
-			else if (par2 != 1 && par2 != 0)
-			{
-				if (FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null)
-				{
-					if (!this.mergeItemStack(itemstack1, 0, 1, false))
-					{
-						return null;
-					}
-				}
-				else if (TileEntityFurnace.isItemFuel(itemstack1))
-				{
-					if (!this.mergeItemStack(itemstack1, 1, 2, false))
-					{
-						return null;
-					}
-				}
-				else if (par2 >= 3 && par2 < 30)
-				{
-					if (!this.mergeItemStack(itemstack1, 30, 39, false))
-					{
-						return null;
-					}
-				}
-				else if (par2 >= 30 && par2 < 39 && !this.mergeItemStack(itemstack1, 3, 30, false))
-				{
-					return null;
-				}
-			}
-			else if (!this.mergeItemStack(itemstack1, 3, 39, false))
-			{
-				return null;
+			if (itemstack1.stackSize == 0) {
+				// 移動が完了した
+				break;
 			}
 
-			if (itemstack1.stackSize == 0)
-			{
-				slot.putStack((ItemStack) null);
-			}
-			else
-			{
-				slot.onSlotChanged();
-			}
+		}
 
-			if (itemstack1.stackSize == itemstack.stackSize)
-			{
-				return null;
-			}
+		if (!moved) return null;
 
-			slot.onPickupFromSlot(par1EntityPlayer, itemstack1);
+		if (itemstack1.stackSize == 0) {
+			slot.putStack((ItemStack) null);
+		} else {
+			slot.onSlotChanged();
 		}
 
 		return itemstack;
+	}
+
+	/**
+	 * アイテムをstart～end-1のスロットに移動させる。<br>
+	 * 移動が完了したかどうかは、stackのサイズが変更されるのでそれを見る。
+	 * 
+	 * @return 移動が行われたか否か
+	 */
+	@Override
+	protected boolean mergeItemStack(ItemStack stack, int start, int end, boolean inverse)
+	{
+		return super.mergeItemStack(stack, start, end, inverse);
 	}
 
 }
