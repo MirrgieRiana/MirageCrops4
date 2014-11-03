@@ -261,17 +261,17 @@ public class TileEntityMir41Connected extends TileEntityMir41 implements IPipeCo
 
 	//
 
-	protected Inventory[] getInventoryInsert(int side, ItemStack itemStack)
+	protected IInventory[] getInventoryInsert(int side, ItemStack itemStack)
 	{
 		return null;
 	}
 
-	protected Inventory[] getInventoryExtract(int side, ItemStack itemStack)
+	protected IInventory[] getInventoryExtract(int side, ItemStack itemStack)
 	{
 		return null;
 	}
 
-	protected Inventory[] getInventoryAccessible(int side)
+	protected IInventory[] getInventoryAccessible(int side)
 	{
 		return null;
 	}
@@ -279,7 +279,7 @@ public class TileEntityMir41Connected extends TileEntityMir41 implements IPipeCo
 	@Override
 	public int[] getAccessibleSlotsFromSide(int side)
 	{
-		Inventory[] invenotries = getInventoryAccessible(side);
+		IInventory[] invenotries = getInventoryAccessible(side);
 		if (invenotries == null) return new int[0];
 		return inventoryChain.getSlotsOfInventory(invenotries);
 	}
@@ -287,11 +287,11 @@ public class TileEntityMir41Connected extends TileEntityMir41 implements IPipeCo
 	@Override
 	public boolean canInsertItem(int slot, ItemStack itemStack, int side)
 	{
-		Inventory[] invenotries = getInventoryInsert(side, itemStack);
+		IInventory[] invenotries = getInventoryInsert(side, itemStack);
 		if (invenotries == null) return false;
 
-		Inventory inventoryFromGlobalSlotIndex = inventoryChain.getInventoryFromGlobalSlotIndex(slot);
-		for (Inventory invenotryInChain : invenotries) {
+		IInventory inventoryFromGlobalSlotIndex = inventoryChain.getInventoryFromGlobalSlotIndex(slot);
+		for (IInventory invenotryInChain : invenotries) {
 			if (inventoryFromGlobalSlotIndex == invenotryInChain) {
 				return true;
 			}
@@ -303,11 +303,11 @@ public class TileEntityMir41Connected extends TileEntityMir41 implements IPipeCo
 	@Override
 	public boolean canExtractItem(int slot, ItemStack itemStack, int side)
 	{
-		Inventory[] invenotries = getInventoryExtract(side, itemStack);
+		IInventory[] invenotries = getInventoryExtract(side, itemStack);
 		if (invenotries == null) return false;
 
-		Inventory inventoryFromGlobalSlotIndex = inventoryChain.getInventoryFromGlobalSlotIndex(slot);
-		for (Inventory invenotryInChain : invenotries) {
+		IInventory inventoryFromGlobalSlotIndex = inventoryChain.getInventoryFromGlobalSlotIndex(slot);
+		for (IInventory invenotryInChain : invenotries) {
 			if (inventoryFromGlobalSlotIndex == invenotryInChain) {
 				return true;
 			}

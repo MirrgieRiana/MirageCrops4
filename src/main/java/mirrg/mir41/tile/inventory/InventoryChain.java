@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 public class InventoryChain implements IInventory
 {
 
-	protected ArrayList<Inventory> inventories = new ArrayList<Inventory>();
+	protected ArrayList<IInventory> inventories = new ArrayList<IInventory>();
 	protected IInventoryName name;
 	protected int inventoryStackLimit = 64;
 	protected ISetDirty parent;
@@ -20,7 +20,7 @@ public class InventoryChain implements IInventory
 		this.name = name;
 	}
 
-	public void add(Inventory inventory)
+	public void add(IInventory inventory)
 	{
 		inventories.add(inventory);
 	}
@@ -33,7 +33,7 @@ public class InventoryChain implements IInventory
 		if (globalSlotIndex < 0) return null;
 
 		for (int i = 0; i < inventories.size(); i++) {
-			Inventory inventory = inventories.get(i);
+			IInventory inventory = inventories.get(i);
 
 			if (globalSlotIndex < inventory.getSizeInventory()) {
 				return new int[] {
@@ -52,7 +52,7 @@ public class InventoryChain implements IInventory
 	public int getSizeInventory()
 	{
 		int size = 0;
-		for (Inventory inventory : inventories) {
+		for (IInventory inventory : inventories) {
 			size += inventory.getSizeInventory();
 		}
 		return size;
@@ -135,13 +135,13 @@ public class InventoryChain implements IInventory
 		return inventories.get(address[0]).isItemValidForSlot(address[1], var2);
 	}
 
-	public int[] getSlotsOfInventory(Inventory... inventoryList)
+	public int[] getSlotsOfInventory(IInventory... inventoryList)
 	{
 		ArrayList<Integer> slots = new ArrayList<Integer>();
 
 		int size = 0;
-		for (Inventory inventory : inventories) {
-			for (Inventory inventory2 : inventoryList) {
+		for (IInventory inventory : inventories) {
+			for (IInventory inventory2 : inventoryList) {
 				if (inventory == inventory2) {
 					for (int i = 0; i < inventory.getSizeInventory(); i++) {
 						slots.add(size + i);
@@ -160,12 +160,12 @@ public class InventoryChain implements IInventory
 		return slots2;
 	}
 
-	public int getInventoryIndex(Inventory inventory)
+	public int getInventoryIndex(IInventory inventory)
 	{
 		return inventories.indexOf(inventory);
 	}
 
-	public Inventory getInventoryFromGlobalSlotIndex(int globalSlotIndex)
+	public IInventory getInventoryFromGlobalSlotIndex(int globalSlotIndex)
 	{
 		return inventories.get(getAddress(globalSlotIndex)[0]);
 	}
