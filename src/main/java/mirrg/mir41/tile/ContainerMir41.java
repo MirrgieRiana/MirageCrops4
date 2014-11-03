@@ -1,12 +1,16 @@
 package mirrg.mir41.tile;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
+import mirrg.java8.function.IntUnaryOperator;
 import mirrg.mir41.tile.inventory.EnergySlot;
 import mirrg.mir41.tile.inventory.FluidSlot;
+import mirrg.mir41.tile.inventory.InventoryChain;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
@@ -20,6 +24,9 @@ public class ContainerMir41 extends Container
 	protected final BlockPointer blockPointer;
 	protected final ArrayList<FluidSlot> fluidSlots = new ArrayList<FluidSlot>();
 	protected final ArrayList<EnergySlot> energySlots = new ArrayList<EnergySlot>();
+	protected final InventoryChain inventoryChain = new InventoryChain(null, null);
+	protected final Hashtable<Integer, int[]> transferInventoriesTable = new Hashtable<>();
+	protected final Hashtable<Integer, Boolean> inventoryInverseTable = new Hashtable<>();
 
 	public ContainerMir41(EntityPlayer player, ITileEntityMir41 tile, BlockPointer blockPointer)
 	{
@@ -59,9 +66,26 @@ public class ContainerMir41 extends Container
 		return energySlots;
 	}
 
-	public void addSlot(Slot slot)
+	public void addInventory(IInventory inventory, IntUnaryOperator x, IntUnaryOperator y, boolean inverse)
 	{
-		super.addSlotToContainer(slot);
+		inventoryChain.add(inventory);
+
+		for (int i = 0; i < inventory.getSizeInventory(); i++) {
+			super.addSlotToContainer(new Slot(inventory, i, x.applyAsInt(i), y.applyAsInt(i)));
+		}
+
+		inventoryInverseTable.put(inventoryChain.getInventoryCount() - 1, inverse);
+	}
+
+	/**
+	 * @deprecated
+	 * @see {@link #addInventory(IInventory)}
+	 */
+	@Deprecated
+	@Override
+	protected Slot addSlotToContainer(Slot p_addSlotToContainer_1_)
+	{
+		return super.addSlotToContainer(p_addSlotToContainer_1_);
 	}
 
 	public void addFluidSlot(FluidSlot fluidSlot)
@@ -79,6 +103,21 @@ public class ContainerMir41 extends Container
 	{
 		if (blockPointer.getTileEntity() != tileEntity) return false;
 		return player.getDistanceSq(blockPointer.x + 0.5D, blockPointer.y + 0.5D, blockPointer.z + 0.5D) <= 8 * 8;
+	}
+
+	public void setTransferInventories(IInventory source, IInventory... destinations)
+	{
+		int[] destinationInventoryIndexes = new int[destinations.length];
+		for (int i = 0; i < destinationInventoryIndexes.length; i++) {
+			destinationInventoryIndexes[i] = inventoryChain.getInventoryIndex(destinations[i]);
+		}
+
+		setTransferInventories(inventoryChain.getInventoryIndex(source), destinationInventoryIndexes);
+	}
+
+	public void setTransferInventories(int sourceInventoryIndex, int... destinationInventoryIndexes)
+	{
+		transferInventoriesTable.put(sourceInventoryIndex, destinationInventoryIndexes);
 	}
 
 	@Override
