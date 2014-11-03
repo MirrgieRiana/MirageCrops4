@@ -6,6 +6,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
+/**
+ * 複数のインベントリを結合し、新たな通し番号によるスロットへの参照を与えます。
+ */
 public class InventoryChain implements IInventory
 {
 
