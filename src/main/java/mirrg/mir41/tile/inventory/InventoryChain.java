@@ -51,6 +51,19 @@ public class InventoryChain implements IInventory
 		return null;
 	}
 
+	public int getGlobalSlotIndex(int inventoryIndex, int localSlotIndexInInventory)
+	{
+		for (int i = 0; i < inventoryIndex; i++) {
+			localSlotIndexInInventory += inventories.get(i).getSizeInventory();
+		}
+		return localSlotIndexInInventory;
+	}
+
+	public IInventory getInventory(int index)
+	{
+		return inventories.get(index);
+	}
+
 	@Override
 	public int getSizeInventory()
 	{
@@ -171,6 +184,11 @@ public class InventoryChain implements IInventory
 	public IInventory getInventoryFromGlobalSlotIndex(int globalSlotIndex)
 	{
 		return inventories.get(getAddress(globalSlotIndex)[0]);
+	}
+
+	public int getInventoryCount()
+	{
+		return inventories.size();
 	}
 
 }
