@@ -5,16 +5,11 @@ import java.util.Random;
 public class HelpersMath
 {
 
+	public static final Random random = new Random();
+
 	public static int floorRandom(double value)
 	{
-		int integer = (int) Math.floor(value);
-		double addition = value - integer;
-
-		if (Math.random() < addition) {
-			integer++;
-		}
-
-		return integer;
+		return floorRandom(value, random);
 	}
 
 	public static int floorRandom(double value, Random random)
