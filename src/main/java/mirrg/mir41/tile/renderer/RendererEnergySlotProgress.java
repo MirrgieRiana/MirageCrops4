@@ -17,11 +17,13 @@ public class RendererEnergySlotProgress implements IRenderer<EnergySlot>
 
 	public static final RendererEnergySlotProgress instance = new RendererEnergySlotProgress();
 
+	public String domain = "mir41";
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void drawForegroundLayer(IGuiRenderHelper gui, EnergySlot t, int mouseX, int mouseY)
 	{
-		ResourceLocation texture = new ResourceLocation("miragecrops" + ":" + "textures/gui/progress_foreground.png");
+		ResourceLocation texture = new ResourceLocation(domain + ":" + "textures/gui/progress_foreground.png");
 		gui.getMinecraft().renderEngine.bindTexture(texture);
 
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -56,7 +58,7 @@ public class RendererEnergySlotProgress implements IRenderer<EnergySlot>
 		int xStart = (gui.getScreenWidth() - gui.getGuiWidth()) / 2;
 		int yStart = (gui.getScreenHeight() - gui.getGuiHeight()) / 2;
 
-		ResourceLocation texture = new ResourceLocation("miragecrops" + ":" + "textures/gui/progress_background.png");
+		ResourceLocation texture = new ResourceLocation(domain + ":" + "textures/gui/progress_background.png");
 		gui.getMinecraft().renderEngine.bindTexture(texture);
 
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);

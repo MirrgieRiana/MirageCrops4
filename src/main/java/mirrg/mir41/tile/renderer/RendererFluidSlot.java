@@ -18,6 +18,8 @@ public class RendererFluidSlot implements IRenderer<FluidSlot>
 
 	public static final RendererFluidSlot instance = new RendererFluidSlot();
 
+	public String domain = "mir41";
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void drawForegroundLayer(IGuiRenderHelper gui, FluidSlot t, int mouseX, int mouseY)
@@ -60,7 +62,7 @@ public class RendererFluidSlot implements IRenderer<FluidSlot>
 		}
 
 		{
-			ResourceLocation texture = new ResourceLocation("miragecrops" + ":" + "textures/gui/miragefont.png");
+			ResourceLocation texture = new ResourceLocation(domain + ":" + "textures/gui/miragefont.png");
 			gui.getMinecraft().renderEngine.bindTexture(texture);
 
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
