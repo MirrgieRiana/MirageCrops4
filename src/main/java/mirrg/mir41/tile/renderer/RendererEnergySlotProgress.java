@@ -2,6 +2,7 @@ package mirrg.mir41.tile.renderer;
 
 import java.util.ArrayList;
 
+import mirrg.mir40.math.HelpersCollision;
 import mirrg.mir41.tile.inventory.EnergySlot;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.util.ResourceLocation;
@@ -104,16 +105,8 @@ public class RendererEnergySlotProgress implements IRenderer<EnergySlot>
 		int xStart = (gui.getScreenWidth() - gui.getGuiWidth()) / 2;
 		int yStart = (gui.getScreenHeight() - gui.getGuiHeight()) / 2;
 
-		return isHit(xStart + t.x, yStart + t.y, xStart + t.x + t.w, yStart + t.y + t.h, mouseX, mouseY);
-	}
-
-	public static boolean isHit(int x1, int y1, int x2, int y2, int mouseX, int mouseY)
-	{
-		if (mouseX < x1) return false;
-		if (mouseX > x2) return false;
-		if (mouseY < y1) return false;
-		if (mouseY > y2) return false;
-		return true;
+		return HelpersCollision.isHit(mouseX, mouseY,
+			xStart + t.x, yStart + t.y, xStart + t.x + t.w, yStart + t.y + t.h) > 0;
 	}
 
 }
