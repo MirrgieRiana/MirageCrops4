@@ -1,9 +1,16 @@
 package mirrg.miragecrops4.lib.oregen.multi;
 
+import java.util.List;
+
 import mirrg.h.multi.IMulti;
 import mirrg.mir40.multi.MetaitemIcon;
 import mirrg.mir41.glob.IGlob;
 import mirrg.mir41.glob.ISlot;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class MetaitemIconOregen<MULTI extends IMulti<MULTI, META>, META extends IMetaitemIconOregen<MULTI, META>>
 	extends MetaitemIcon<MULTI, META> implements IMetaitemIconOregen<MULTI, META>
@@ -11,6 +18,8 @@ public class MetaitemIconOregen<MULTI extends IMulti<MULTI, META>, META extends 
 
 	protected IGlob glob;
 	protected ISlot slot;
+
+	public boolean isAllowed = false;
 
 	public MetaitemIconOregen(IGlob glob, ISlot slot)
 	{
@@ -40,6 +49,13 @@ public class MetaitemIconOregen<MULTI extends IMulti<MULTI, META>, META extends 
 	public void setSlot(ISlot slot)
 	{
 		this.slot = slot;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(Item item, CreativeTabs arg1, List<ItemStack> list)
+	{
+		if (isAllowed) super.getSubItems(item, arg1, list);
 	}
 
 }
