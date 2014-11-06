@@ -48,7 +48,7 @@ public class BlockMulti<MULTI extends IMulti<MULTI, META>, META extends IMetablo
 	public IIcon getIcon(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
 		int metaId = blockAccess.getBlockMetadata(x, y, z);
-		return multi.getMeta(metaId).getIcon(blockAccess, x, y, z, metaId);
+		return multi.getMeta(metaId).getIcon(blockAccess, x, y, z, side);
 	}
 
 	@Override
