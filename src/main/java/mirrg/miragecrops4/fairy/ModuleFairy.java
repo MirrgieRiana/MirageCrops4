@@ -69,8 +69,6 @@ public class ModuleFairy extends ModuleMirageCropsBase
 
 		super.handle(event);
 
-		GameRegistry.registerTileEntity(TileEntityMachine_test.class, "Machine_test");
-		
 	}
 
 	@Override
