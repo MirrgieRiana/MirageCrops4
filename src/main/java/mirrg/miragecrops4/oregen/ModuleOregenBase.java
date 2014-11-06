@@ -64,7 +64,7 @@ public abstract class ModuleOregenBase extends ModuleMirageCropsBase
 			MetablockOregen metablock = new MetablockOregen(glob, slot);
 
 			// マルチブロックにメタブロックを登録
-			blockMulti.multi.bind(i, metablock);
+			blockMulti.getMulti().bind(i, metablock);
 
 			// グロブにアイテムスタックを登録
 			ItemsOregen.globManager.put(unlocalizedName, new ItemStack(blockMulti, 1, i));

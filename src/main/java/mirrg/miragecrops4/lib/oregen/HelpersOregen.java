@@ -73,8 +73,8 @@ public class HelpersOregen
 		BlockMultiOregen blockMulti = getBlock(enumSlot.slot, enumGlobGroup.globGroup);
 		int metaId = getMetablockId(enumGlobGroup, enumGlob);
 
-		blockMulti.multi.clearBindind(metaId);
-		blockMulti.multi.bind(metaId, metablock);
+		blockMulti.getMulti().clearBindind(metaId);
+		blockMulti.getMulti().bind(metaId, metablock);
 	}
 
 	public static void overrideMetaitem(EnumSlot enumSlot, EnumGlobGroup enumGlobGroup, EnumGlob enumGlob,

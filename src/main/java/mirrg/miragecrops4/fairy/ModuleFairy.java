@@ -180,7 +180,7 @@ public class ModuleFairy extends ModuleMirageCropsBase
 		if (getMod().isClient()) {
 			meta.setIconName(getMod().getModId() + ":" + getModuleName() + "/" + unlocalizedName);
 		}
-		blockMulti.multi.bind(id, meta);
+		blockMulti.getMulti().bind(id, meta);
 	}
 
 	@Override

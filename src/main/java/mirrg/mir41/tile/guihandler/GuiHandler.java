@@ -35,7 +35,7 @@ public class GuiHandler extends GuiHandlerSuper
 			}
 
 			if (block instanceof BlockMulti) {
-				IMetablock<?, ?> meta = ((BlockMulti<?, ?>) block).multi.getMeta(world.getBlockMetadata(x, y, z));
+				IMetablock<?, ?> meta = ((BlockMulti<?, ?>) block).getMeta(world, x, y, z);
 
 				if (meta instanceof IGuiProvider) {
 					return ((IGuiProvider) meta).createGui(player, world, x, y, z);
@@ -65,7 +65,7 @@ public class GuiHandler extends GuiHandlerSuper
 			}
 
 			if (block instanceof BlockMulti) {
-				IMetablock<?, ?> meta = ((BlockMulti<?, ?>) block).multi.getMeta(world.getBlockMetadata(x, y, z));
+				IMetablock<?, ?> meta = ((BlockMulti<?, ?>) block).getMeta(world, x, y, z);
 
 				if (meta instanceof IGuiProvider) {
 					return ((IGuiProvider) meta).createContainer(player, world, x, y, z);

@@ -22,7 +22,7 @@ public class ItemBlockMulti<MULTI extends IMulti<MULTI, META>, META extends IMet
 	@Override
 	public String getUnlocalizedName(ItemStack itemStack)
 	{
-		return blockMulti.multi.getMeta(itemStack.getItemDamage()).getUnlocalizedName(itemStack);
+		return blockMulti.getMeta(itemStack).getUnlocalizedName(itemStack);
 	}
 
 	@Override

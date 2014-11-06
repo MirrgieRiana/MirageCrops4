@@ -22,8 +22,8 @@ public class ItemBlockMultiOregen<MULTI extends IMulti<MULTI, META>, META extend
 			return super.getItemStackDisplayName(p_77653_1_);
 		}
 
-		String globName = blockMulti.multi.getMeta(p_77653_1_.getItemDamage()).getGlob().getName();
-		String slotName = blockMulti.multi.getMeta(p_77653_1_.getItemDamage()).getSlot().getName();
+		String globName = blockMulti.getMeta(p_77653_1_).getGlob().getName();
+		String slotName = blockMulti.getMeta(p_77653_1_).getSlot().getName();
 
 		String format = StatCollector.translateToLocal("slot." + slotName + ".format").trim();
 

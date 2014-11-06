@@ -20,8 +20,7 @@ public class BlockMultiOregen<MULTI extends IMulti<MULTI, META>, META extends IM
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random random)
 	{
-		int metaId = world.getBlockMetadata(x, y, z);
-		multi.getMeta(metaId).updateTick(world, x, y, z, random);
+		getMeta(world, x, y, z).updateTick(world, x, y, z, random);
 	}
 
 }
