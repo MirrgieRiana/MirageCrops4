@@ -114,14 +114,31 @@ public class ModuleFairy extends ModuleMirageCropsBase
 	public static ItemDustMirage dustMirage;
 	public static Item craftingToolMirageFairy;
 
-	public static BlockMulti blockMirageMachine;
+	public static BlockMulti blockMirageMachineTier10;
+	public static BlockMulti blockMirageMachineTier11;
+	public static BlockMulti blockMirageMachineTier12;
+	public static BlockMulti blockMirageMachineTier13;
+	public static BlockMulti blockMirageMachineTier14;
 
 	@Override
 	protected void registerBlocks()
 	{
-		blockMirageMachine = registerBlock(
+		blockMirageMachineTier10 = registerBlock(
 			new BlockMulti(Material.piston, new Multi(new Metablock[16])),
-			ItemBlockMulti.class, "blockMirageMachine");
+			ItemBlockMulti.class, "blockMirageMachineTier10");
+		blockMirageMachineTier11 = registerBlock(
+			new BlockMulti(Material.piston, new Multi(new Metablock[16])),
+			ItemBlockMulti.class, "blockMirageMachineTier11");
+		blockMirageMachineTier12 = registerBlock(
+			new BlockMulti(Material.piston, new Multi(new Metablock[16])),
+			ItemBlockMulti.class, "blockMirageMachineTier12");
+		blockMirageMachineTier13 = registerBlock(
+			new BlockMulti(Material.piston, new Multi(new Metablock[16])),
+			ItemBlockMulti.class, "blockMirageMachineTier13");
+		blockMirageMachineTier14 = registerBlock(
+			new BlockMulti(Material.piston, new Multi(new Metablock[16])),
+			ItemBlockMulti.class, "blockMirageMachineTier14");
+
 	}
 
 	@Override
@@ -137,14 +154,22 @@ public class ModuleFairy extends ModuleMirageCropsBase
 	@Override
 	protected void configureBlocks()
 	{
-		configureBlock(blockMirageMachine, "blockMirageMachine", 0.5f, 0, Block.soundTypePiston);
-		blockMirageMachine.setCreativeTab(APICore.creativeTab);
+		configureBlock(blockMirageMachineTier10, "blockMirageMachineTier10", 0.5f, 0, Block.soundTypePiston);
+		blockMirageMachineTier10.setCreativeTab(APICore.creativeTab);
+		configureBlock(blockMirageMachineTier11, "blockMirageMachineTier11", 0.5f, 0, Block.soundTypePiston);
+		blockMirageMachineTier11.setCreativeTab(APICore.creativeTab);
+		configureBlock(blockMirageMachineTier12, "blockMirageMachineTier12", 0.5f, 0, Block.soundTypePiston);
+		blockMirageMachineTier12.setCreativeTab(APICore.creativeTab);
+		configureBlock(blockMirageMachineTier13, "blockMirageMachineTier13", 0.5f, 0, Block.soundTypePiston);
+		blockMirageMachineTier13.setCreativeTab(APICore.creativeTab);
+		configureBlock(blockMirageMachineTier14, "blockMirageMachineTier14", 0.5f, 0, Block.soundTypePiston);
+		blockMirageMachineTier14.setCreativeTab(APICore.creativeTab);
 
-		bindMetablock(blockMirageMachine, 0, new Metablock(), "blockMirageMachineVeryLow");
-		bindMetablock(blockMirageMachine, 1, new Metablock(), "blockMirageMachineLow");
-		bindMetablock(blockMirageMachine, 2, new Metablock(), "blockMirageMachineMiddle");
-		bindMetablock(blockMirageMachine, 3, new Metablock(), "blockMirageMachineHigh");
-		bindMetablock(blockMirageMachine, 4, new Metablock(), "blockMirageMachineVeryHigh");
+		bindMetablock(blockMirageMachineTier10, 0, new Metablock(), "blockMirageMachineTier10");
+		bindMetablock(blockMirageMachineTier11, 0, new Metablock(), "blockMirageMachineTier11");
+		bindMetablock(blockMirageMachineTier12, 0, new Metablock(), "blockMirageMachineTier12");
+		bindMetablock(blockMirageMachineTier13, 0, new Metablock(), "blockMirageMachineTier13");
+		bindMetablock(blockMirageMachineTier14, 0, new Metablock(), "blockMirageMachineTier14");
 
 	}
 
