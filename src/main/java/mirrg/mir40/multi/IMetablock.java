@@ -24,7 +24,7 @@ public interface IMetablock<MULTI extends IMulti<MULTI, META>, META extends IMet
 	public IIcon getIcon(IBlockAccess blockAccess, int x, int y, int z, int side);
 
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta);
+	public IIcon getIcon(int side, int metaId);
 
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister);

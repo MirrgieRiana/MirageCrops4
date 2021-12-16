@@ -42,7 +42,7 @@ public class Metablock<MULTI extends IMulti<MULTI, META>, META extends IMetabloc
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
+	public IIcon getIcon(int side, int metaId)
 	{
 		return icon;
 	}

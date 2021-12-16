@@ -84,14 +84,10 @@ public class BlockTorchFeeble extends Block
 		return super.collisionRayTrace(world, x, y, z, p_149731_5_, p_149731_6_);
 	}
 
-	@SideOnly(Side.CLIENT)
-	public IIcon overridedIcon;
-
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
 	{
-		if (overridedIcon != null) return overridedIcon;
 		return super.getIcon(p_149691_1_, p_149691_2_);
 	}
 
@@ -99,7 +95,6 @@ public class BlockTorchFeeble extends Block
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side)
 	{
-		if (overridedIcon != null) return overridedIcon;
 		return super.getIcon(world, x, y, z, side);
 	}
 

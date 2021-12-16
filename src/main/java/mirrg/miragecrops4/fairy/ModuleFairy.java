@@ -1,12 +1,11 @@
 package mirrg.miragecrops4.fairy;
 
+import static mirrg.miragecrops4.fairy.ModuleFairy.BlocksModuleFairy.*;
 import mirrg.h.multi.IMulti;
 import mirrg.h.multi.Multi;
 import mirrg.mir34.modding.IMod;
 import mirrg.mir40.multi.BlockMulti;
 import mirrg.mir40.multi.IMetablock;
-import mirrg.mir40.multi.ItemBlockMulti;
-import mirrg.mir40.multi.Metablock;
 import mirrg.mir40.net.MessageFieldInt;
 import mirrg.mir41.glob.Glob;
 import mirrg.mir41.glob.GlobGroup;
@@ -15,6 +14,12 @@ import mirrg.miragecrops4.api.APICore;
 import mirrg.miragecrops4.fairy.glass.HandlerRenderingFairyGlass;
 import mirrg.miragecrops4.fairy.glass.ItemFairyGlass;
 import mirrg.miragecrops4.fairy.glass.MessageHandlerFairyGlass;
+import mirrg.miragecrops4.fairy.machine.TileEntityMirageMachineChest;
+import mirrg.miragecrops4.fairy.multi.BlockMultiMirageMachine;
+import mirrg.miragecrops4.fairy.multi.ItemBlockMultiMirageMachine;
+import mirrg.miragecrops4.fairy.multi.MetablockMirageMachine;
+import mirrg.miragecrops4.fairy.multi.RenderBlockMirageMachine;
+import mirrg.miragecrops4.fairy.multi.TileEntityMirageMachine;
 import mirrg.miragecrops4.lib.ModuleMirageCropsBase;
 import mirrg.miragecrops4.lib.oregen.GlobsOregen;
 import mirrg.miragecrops4.lib.oregen.HelpersOregen;
@@ -29,6 +34,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -61,6 +67,9 @@ public class ModuleFairy extends ModuleMirageCropsBase
 
 	public static GuiHandler guiHandler;
 
+	@SideOnly(Side.CLIENT)
+	public static RenderBlockMirageMachine renderBlockMirageMachine;
+
 	@Override
 	public void handle(FMLPreInitializationEvent event)
 	{
@@ -68,6 +77,9 @@ public class ModuleFairy extends ModuleMirageCropsBase
 		snw = NetworkRegistry.INSTANCE.newSimpleChannel(getMod().getModId());
 
 		super.handle(event);
+
+		GameRegistry.registerTileEntity(TileEntityMirageMachine.class, "MirageMachine");
+		GameRegistry.registerTileEntity(TileEntityMirageMachineChest.class, "MirageMachineChest");
 
 	}
 
@@ -101,6 +113,12 @@ public class ModuleFairy extends ModuleMirageCropsBase
 	public void handleClient(FMLInitializationEvent event)
 	{
 
+		{
+			int renderId = RenderingRegistry.getNextAvailableRenderId();
+			renderBlockMirageMachine = new RenderBlockMirageMachine(renderId);
+			RenderingRegistry.registerBlockHandler(renderId, renderBlockMirageMachine);
+		}
+
 		MinecraftForge.EVENT_BUS.register(new HandlerRenderingFairyGlass());
 
 		super.handleClient(event);
@@ -114,31 +132,31 @@ public class ModuleFairy extends ModuleMirageCropsBase
 	public static ItemDustMirage dustMirage;
 	public static Item craftingToolMirageFairy;
 
-	public static BlockMulti blockMirageMachineTier10;
-	public static BlockMulti blockMirageMachineTier11;
-	public static BlockMulti blockMirageMachineTier12;
-	public static BlockMulti blockMirageMachineTier13;
-	public static BlockMulti blockMirageMachineTier14;
+	public static class BlocksModuleFairy
+	{
+		public static BlockMultiMirageMachine tier10;
+		public static BlockMultiMirageMachine tier11;
+		public static BlockMultiMirageMachine tier12;
+		public static BlockMultiMirageMachine tier13;
+		public static BlockMultiMirageMachine tier14;
+	}
 
 	@Override
 	protected void registerBlocks()
 	{
-		blockMirageMachineTier10 = registerBlock(
-			new BlockMulti(Material.piston, new Multi(new Metablock[16])),
-			ItemBlockMulti.class, "blockMirageMachineTier10");
-		blockMirageMachineTier11 = registerBlock(
-			new BlockMulti(Material.piston, new Multi(new Metablock[16])),
-			ItemBlockMulti.class, "blockMirageMachineTier11");
-		blockMirageMachineTier12 = registerBlock(
-			new BlockMulti(Material.piston, new Multi(new Metablock[16])),
-			ItemBlockMulti.class, "blockMirageMachineTier12");
-		blockMirageMachineTier13 = registerBlock(
-			new BlockMulti(Material.piston, new Multi(new Metablock[16])),
-			ItemBlockMulti.class, "blockMirageMachineTier13");
-		blockMirageMachineTier14 = registerBlock(
-			new BlockMulti(Material.piston, new Multi(new Metablock[16])),
-			ItemBlockMulti.class, "blockMirageMachineTier14");
+		String p = "blockMirageMachine"; // prefix
+		Class<ItemBlockMultiMirageMachine> cib = ItemBlockMultiMirageMachine.class;
 
+		tier10 = registerBlock(createBlock(), cib, p + "Tier10");
+		tier11 = registerBlock(createBlock(), cib, p + "Tier11");
+		tier12 = registerBlock(createBlock(), cib, p + "Tier12");
+		tier13 = registerBlock(createBlock(), cib, p + "Tier13");
+		tier14 = registerBlock(createBlock(), cib, p + "Tier14");
+	}
+
+	private BlockMultiMirageMachine createBlock()
+	{
+		return new BlockMultiMirageMachine(Material.piston, new Multi(new MetablockMirageMachine[256]));
 	}
 
 	@Override
@@ -154,26 +172,41 @@ public class ModuleFairy extends ModuleMirageCropsBase
 	@Override
 	protected void configureBlocks()
 	{
-		configureBlock(blockMirageMachineTier10, "blockMirageMachineTier10", 0.5f, 0, Block.soundTypePiston);
-		blockMirageMachineTier10.setCreativeTab(APICore.creativeTab);
-		configureBlock(blockMirageMachineTier11, "blockMirageMachineTier11", 0.5f, 0, Block.soundTypePiston);
-		blockMirageMachineTier11.setCreativeTab(APICore.creativeTab);
-		configureBlock(blockMirageMachineTier12, "blockMirageMachineTier12", 0.5f, 0, Block.soundTypePiston);
-		blockMirageMachineTier12.setCreativeTab(APICore.creativeTab);
-		configureBlock(blockMirageMachineTier13, "blockMirageMachineTier13", 0.5f, 0, Block.soundTypePiston);
-		blockMirageMachineTier13.setCreativeTab(APICore.creativeTab);
-		configureBlock(blockMirageMachineTier14, "blockMirageMachineTier14", 0.5f, 0, Block.soundTypePiston);
-		blockMirageMachineTier14.setCreativeTab(APICore.creativeTab);
+		String p = "blockMirageMachine"; // prefix
 
-		bindMetablock(blockMirageMachineTier10, 0, new Metablock(), "blockMirageMachineTier10");
-		bindMetablock(blockMirageMachineTier11, 0, new Metablock(), "blockMirageMachineTier11");
-		bindMetablock(blockMirageMachineTier12, 0, new Metablock(), "blockMirageMachineTier12");
-		bindMetablock(blockMirageMachineTier13, 0, new Metablock(), "blockMirageMachineTier13");
-		bindMetablock(blockMirageMachineTier14, 0, new Metablock(), "blockMirageMachineTier14");
+		configureBlock(tier10, p + "Tier10", 0.5f, 0, Block.soundTypePiston);
+		tier10.setCreativeTab(APICore.creativeTab);
+		configureBlock(tier11, p + "Tier11", 0.5f, 0, Block.soundTypePiston);
+		tier11.setCreativeTab(APICore.creativeTab);
+		configureBlock(tier12, p + "Tier12", 0.5f, 0, Block.soundTypePiston);
+		tier12.setCreativeTab(APICore.creativeTab);
+		configureBlock(tier13, p + "Tier13", 0.5f, 0, Block.soundTypePiston);
+		tier13.setCreativeTab(APICore.creativeTab);
+		configureBlock(tier14, p + "Tier14", 0.5f, 0, Block.soundTypePiston);
+		tier14.setCreativeTab(APICore.creativeTab);
 
+		bmb(tier10, 0, createMetablock(null), p + "Tier10");
+		bmb(tier11, 0, createMetablock(null), p + "Tier11");
+		bmb(tier12, 0, createMetablock(null), p + "Tier12");
+		bmb(tier13, 0, createMetablock(null), p + "Tier13");
+		bmb(tier14, 0, createMetablock(null), p + "Tier14");
+
+		bmb(tier10, 16, createMetablock(TileEntityMirageMachineChest.class), p + "ChestTier10");
+		bmb(tier11, 16, createMetablock(TileEntityMirageMachineChest.class), p + "ChestTier11");
+		bmb(tier12, 16, createMetablock(TileEntityMirageMachineChest.class), p + "ChestTier12");
+		bmb(tier13, 16, createMetablock(TileEntityMirageMachineChest.class), p + "ChestTier13");
+		bmb(tier14, 16, createMetablock(TileEntityMirageMachineChest.class), p + "ChestTier14");
 	}
 
-	private <MULTI extends IMulti<MULTI, META>, META extends IMetablock<MULTI, META>> void bindMetablock(
+	private MetablockMirageMachine createMetablock(Class<?> classTileEntity)
+	{
+		MetablockMirageMachine metablock = new MetablockMirageMachine();
+		if (classTileEntity != null) metablock.classTileEntity = classTileEntity;
+		return metablock;
+	}
+
+	// bindMetablock
+	private <MULTI extends IMulti<MULTI, META>, META extends IMetablock<MULTI, META>> void bmb(
 		BlockMulti<MULTI, META> blockMulti, int id, META meta, String unlocalizedName)
 	{
 		meta.setUnlocalizedName(unlocalizedName);
